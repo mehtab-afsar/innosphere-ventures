@@ -1,10 +1,37 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useRef, useEffect } from "react";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
-    <section className="min-h-screen flex items-center px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto w-full">
+    <section className="relative min-h-screen flex items-center px-6 lg:px-12 overflow-hidden bg-black">
+      {/* Video Background - Top Right Corner */}
+      <div className="absolute top-0 right-0 w-[50%] h-[70%]">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover rounded-bl-3xl"
+        >
+          <source src="/India_Illuminated_Earth_Video.mp4" type="video/mp4" />
+        </video>
+        {/* Gradient fade on left edge */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent w-[30%]" />
+        {/* Gradient fade on bottom edge */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent h-[30%] top-auto bottom-0" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <h1 className="text-6xl lg:text-8xl font-extralight leading-[1.1] mb-8 text-gray-100">
             Empowering
