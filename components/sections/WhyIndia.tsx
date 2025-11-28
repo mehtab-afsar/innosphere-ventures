@@ -23,9 +23,13 @@ export function WhyIndia() {
             <br />
             <span className="font-light">transformative impact</span>
           </h2>
-          <p className="text-xl font-extralight text-white/60 max-w-3xl mx-auto">
-            Every investment is an instrument of change. India's innovation frontier represents
-            the convergence of talent, technology, and transformative potential.
+          <p className="text-xl font-extralight text-white/60 max-w-3xl mx-auto mb-6">
+            India's startup ecosystem is a fast-expanding galaxy.
+          </p>
+          <p className="text-lg font-extralight text-white/50 max-w-3xl mx-auto">
+            This is the new innovation cosmos of India — distributed, diverse, and accelerating.
+            India's innovation flywheel is accelerating — a Deep Tech Nation is emerging.
+            A nation moving from outsourcing to innovation and tech leadership.
           </p>
         </div>
 

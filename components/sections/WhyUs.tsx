@@ -31,8 +31,8 @@ export function WhyUs() {
             </p>
             <div className="space-y-1 text-xs font-extralight text-white/40">
               <div>80–120 seed investments</div>
-              <div>0% management fee (first close)</div>
-              <div>Carry-aligned with ecosystem</div>
+              <div>Ecosystem-aligned carry</div>
+              <div>Systemic, not unicorn chasing</div>
             </div>
           </div>
 
@@ -44,12 +44,12 @@ export function WhyUs() {
               <h3 className="text-2xl font-light text-white">Ecosystem Power</h3>
             </div>
             <p className="font-extralight text-white/60 leading-relaxed mb-4 text-sm">
-              We build with incubators, universities, and local partners. Community-first investing.
+              Built with incubators, universities, and local partners. Embedded frontier access.
             </p>
             <div className="space-y-1 text-xs font-extralight text-white/40">
-              <div>KIIT-TBI partnership</div>
-              <div>Harvard Trek diaspora bridge</div>
-              <div>Portfolio-first value creation</div>
+              <div>Programmatic value creation</div>
+              <div>InnoSphere Academy</div>
+              <div>Deep ecosystem integration</div>
             </div>
           </div>
 
@@ -61,12 +61,13 @@ export function WhyUs() {
               <h3 className="text-2xl font-light text-white">Distributed Access</h3>
             </div>
             <p className="font-extralight text-white/60 leading-relaxed mb-4 text-sm">
-              Beyond the metros. Tier 2/3 founders, local LP circles, diaspora bridges.
+              Beyond the metros. We invest in founders at the real frontiers of India.
             </p>
             <div className="space-y-1 text-xs font-extralight text-white/40">
-              <div>Reaching founders where they are</div>
-              <div>Local capital circles</div>
-              <div>Inclusive innovation ecosystem</div>
+              <div>Tier 2/3 innovation hubs</div>
+              <div>University deep-tech labs</div>
+              <div>Local founder networks</div>
+              <div>Reaching talent where it rises</div>
             </div>
           </div>
 
@@ -78,12 +79,13 @@ export function WhyUs() {
               <h3 className="text-2xl font-light text-white">Edge Alpha Approach</h3>
             </div>
             <p className="font-extralight text-white/60 leading-relaxed mb-4 text-sm">
-              Signal-driven investing. Portfolio construction meets precision execution.
+              Signal-driven investing. Precision-led portfolio construction.
             </p>
             <div className="space-y-1 text-xs font-extralight text-white/40">
-              <div>Systematic signals & data patterns</div>
-              <div>Early exit opportunities</div>
-              <div>Powered by Edge Alpha frameworks</div>
+              <div>Algorithmic scoring</div>
+              <div>Data-driven innovation mapping</div>
+              <div>Outcome-based term sheets</div>
+              <div>Repeatable discovery of outliers</div>
             </div>
           </div>
 

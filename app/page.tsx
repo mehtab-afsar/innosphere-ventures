@@ -7,7 +7,6 @@ import { PortfolioCarousel } from "@/components/sections/PortfolioCarousel";
 import { WhyIndia } from "@/components/sections/WhyIndia";
 import { WhyNow } from "@/components/sections/WhyNow";
 import { WhyUs } from "@/components/sections/WhyUs";
-import { EdgeAlphaSignals } from "@/components/sections/EdgeAlphaSignals";
 import { OurCollective } from "@/components/sections/OurCollective";
 import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/sections/Footer";
@@ -24,8 +23,6 @@ export default function Home() {
       <WhyNow />
       <Separator className="bg-white/10" />
       <WhyUs />
-      <Separator className="bg-white/10" />
-      <EdgeAlphaSignals />
       <Separator className="bg-white/10" />
       <OurCollective />
       <CTA />

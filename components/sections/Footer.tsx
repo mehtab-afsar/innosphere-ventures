@@ -24,7 +24,7 @@ export function Footer() {
               <li><a href="#why-india" className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4">Why India</a></li>
               <li><a href="#why-now" className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4">Why Now</a></li>
               <li><a href="#why-us" className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4">Why Us</a></li>
-              <li><a href="#signals" className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4">Edge Alpha Signals</a></li>
+              <li><a href="/signals" className="hover:text-white transition-colors duration-200 hover:underline underline-offset-4">Edge Alpha Signals</a></li>
             </ul>
           </div>
 
