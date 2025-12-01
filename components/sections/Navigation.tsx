@@ -29,7 +29,7 @@ export function Navigation() {
             <a href="#why-now" className="hover:text-white transition-colors duration-200">Why Now</a>
             <a href="#why-us" className="hover:text-white transition-colors duration-200">Why Us</a>
             <a href="/signals" className="hover:text-white transition-colors duration-200">Signals</a>
-            <a href="#collective" className="hover:text-white transition-colors duration-200">Collective</a>
+            <a href="/leadership" className="hover:text-white transition-colors duration-200">Leadership</a>
             <a href="#contact" className="hover:text-white transition-colors duration-200">Contact</a>
           </div>
           <button
@@ -45,7 +45,7 @@ export function Navigation() {
             <a href="#why-now" className="block hover:text-white transition-colors">Why Now</a>
             <a href="#why-us" className="block hover:text-white transition-colors">Why Us</a>
             <a href="/signals" className="block hover:text-white transition-colors">Signals</a>
-            <a href="#collective" className="block hover:text-white transition-colors">Collective</a>
+            <a href="/leadership" className="block hover:text-white transition-colors">Leadership</a>
             <a href="#contact" className="block hover:text-white transition-colors">Contact</a>
           </div>
         )}
