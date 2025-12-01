@@ -1,11 +1,136 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Network, Map, TrendingUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
+interface CardProps {
+  icon: typeof Sparkles;
+  title: string;
+  description: string;
+  points: string[];
+  index: number;
+}
+
+function AnimatedCard({ icon: Icon, title, description, points, index }: CardProps) {
+  const [progress, setProgress] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!cardRef.current) return;
+
+      const rect = cardRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const start = windowHeight * 0.9;
+      const end = windowHeight * 0.5;
+
+      if (rect.top <= start && rect.top >= end) {
+        const p = 1 - (rect.top - end) / (start - end);
+        setProgress(Math.max(0, Math.min(1, p)));
+      } else if (rect.top < end) {
+        setProgress(1);
+      } else {
+        setProgress(0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const easedProgress = progress < 0.5
+    ? 2 * progress * progress
+    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+  return (
+    <div
+      ref={cardRef}
+      className="glass-card p-10 group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-white/10"
+      style={{
+        opacity: easedProgress,
+        transform: `translateY(${(1 - easedProgress) * 30}px)`,
+      }}
+    >
+      {/* Icon */}
+      <div
+        className="flex items-center gap-5 mb-5"
+        style={{
+          opacity: easedProgress,
+          transform: `translateX(${(1 - easedProgress) * -20}px)`,
+        }}
+      >
+        <div className="p-4 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-all duration-300">
+          <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+        </div>
+        <h3 className="text-2xl lg:text-3xl font-light text-white">{title}</h3>
+      </div>
+
+      {/* Description */}
+      <p
+        className="font-extralight text-white/70 leading-relaxed mb-5 text-base lg:text-lg"
+        style={{
+          opacity: easedProgress * 0.9,
+          transform: `translateY(${(1 - easedProgress) * 15}px)`,
+        }}
+      >
+        {description}
+      </p>
+
+      {/* Points */}
+      <div className="space-y-2">
+        {points.map((point, i) => (
+          <div
+            key={i}
+            className="text-sm lg:text-base font-extralight text-white/50 flex items-center gap-2"
+            style={{
+              opacity: Math.max(0, easedProgress - i * 0.05),
+              transform: `translateX(${(1 - Math.max(0, easedProgress - i * 0.05)) * -10}px)`,
+            }}
+          >
+            <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
+            {point}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const cards = [
+  {
+    icon: Sparkles,
+    title: "Conviction Capital",
+    description: "We go early, where others hesitate. First-check courage backed by systematic signals.",
+    points: ["80–120 seed investments", "Ecosystem-aligned carry", "Systemic, not unicorn chasing"]
+  },
+  {
+    icon: Network,
+    title: "Ecosystem Power",
+    description: "Built with incubators, universities, and local partners. Embedded frontier access.",
+    points: ["Programmatic value creation", "InnoSphere Academy", "Deep ecosystem integration"]
+  },
+  {
+    icon: Map,
+    title: "Distributed Access",
+    description: "Beyond the metros. We invest in founders at the real frontiers of India.",
+    points: ["Tier 2/3 innovation hubs", "University deep-tech labs", "Local founder networks", "Reaching talent where it rises"]
+  },
+  {
+    icon: TrendingUp,
+    title: "Edge Alpha Approach",
+    description: "Signal-driven investing. Precision-led portfolio construction.",
+    points: ["Algorithmic scoring", "Data-driven innovation mapping", "Outcome-based term sheets", "Repeatable discovery of outliers"]
+  }
+];
 
 export function WhyUs() {
   return (
     <section id="why-us" className="py-32 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20 text-center scroll-reveal">
+        <div className="mb-20 text-center">
           <Badge className="mb-4 font-light bg-white text-black border-white hover:bg-white/90">
             Why Us
           </Badge>
@@ -16,79 +141,18 @@ export function WhyUs() {
           </h2>
         </div>
 
-        {/* Compact 2x2 Grid with Glassmorphism */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-
-          <div className="glass-card p-8 group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-white/10 scroll-reveal">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-all duration-300">
-                <Sparkles className="w-7 h-7 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-light text-white">Conviction Capital</h3>
-            </div>
-            <p className="font-extralight text-white/60 leading-relaxed mb-4 text-sm">
-              We go early, where others hesitate. First-check courage backed by systematic signals.
-            </p>
-            <div className="space-y-1 text-xs font-extralight text-white/40">
-              <div>80–120 seed investments</div>
-              <div>Ecosystem-aligned carry</div>
-              <div>Systemic, not unicorn chasing</div>
-            </div>
-          </div>
-
-          <div className="glass-card p-8 group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-white/10 scroll-reveal">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-all duration-300">
-                <Network className="w-7 h-7 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-light text-white">Ecosystem Power</h3>
-            </div>
-            <p className="font-extralight text-white/60 leading-relaxed mb-4 text-sm">
-              Built with incubators, universities, and local partners. Embedded frontier access.
-            </p>
-            <div className="space-y-1 text-xs font-extralight text-white/40">
-              <div>Programmatic value creation</div>
-              <div>InnoSphere Academy</div>
-              <div>Deep ecosystem integration</div>
-            </div>
-          </div>
-
-          <div className="glass-card p-8 group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-white/10 scroll-reveal">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-all duration-300">
-                <Map className="w-7 h-7 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-light text-white">Distributed Access</h3>
-            </div>
-            <p className="font-extralight text-white/60 leading-relaxed mb-4 text-sm">
-              Beyond the metros. We invest in founders at the real frontiers of India.
-            </p>
-            <div className="space-y-1 text-xs font-extralight text-white/40">
-              <div>Tier 2/3 innovation hubs</div>
-              <div>University deep-tech labs</div>
-              <div>Local founder networks</div>
-              <div>Reaching talent where it rises</div>
-            </div>
-          </div>
-
-          <div className="glass-card p-8 group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-white/10 scroll-reveal">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-all duration-300">
-                <TrendingUp className="w-7 h-7 text-white" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-2xl font-light text-white">Edge Alpha Approach</h3>
-            </div>
-            <p className="font-extralight text-white/60 leading-relaxed mb-4 text-sm">
-              Signal-driven investing. Precision-led portfolio construction.
-            </p>
-            <div className="space-y-1 text-xs font-extralight text-white/40">
-              <div>Algorithmic scoring</div>
-              <div>Data-driven innovation mapping</div>
-              <div>Outcome-based term sheets</div>
-              <div>Repeatable discovery of outliers</div>
-            </div>
-          </div>
-
+        {/* Animated 2x2 Grid */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {cards.map((card, index) => (
+            <AnimatedCard
+              key={index}
+              icon={card.icon}
+              title={card.title}
+              description={card.description}
+              points={card.points}
+              index={index}
+            />
+          ))}
         </div>
       </div>
     </section>

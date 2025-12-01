@@ -1,6 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Target, MapPin, Users, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -18,19 +19,22 @@ export function WhyIndia() {
           <Badge className="mb-4 font-light bg-white text-black border-white hover:bg-white/90">
             Why India
           </Badge>
-          <h2 className="text-5xl lg:text-6xl font-extralight mb-6 text-white">
-            Systemic opportunity,
+          <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-white leading-tight">
+            India's innovation flywheel is accelerating —
             <br />
-            <span className="font-light">transformative impact</span>
+            <span className="font-light">a Deep Tech Nation is emerging.</span>
           </h2>
           <p className="text-xl font-extralight text-white/60 max-w-3xl mx-auto mb-6">
             India's startup ecosystem is a fast-expanding galaxy.
           </p>
-          <p className="text-lg font-extralight text-white/50 max-w-3xl mx-auto">
+          <p className="text-lg font-extralight text-white/50 max-w-3xl mx-auto mb-8">
             This is the new innovation cosmos of India — distributed, diverse, and accelerating.
-            India's innovation flywheel is accelerating — a Deep Tech Nation is emerging.
-            A nation moving from outsourcing to innovation and tech leadership.
+            <br />
+            A nation moving from outsourcing to innovation and tech leadership:
           </p>
+          <Button size="sm" className="bg-white/10 text-white hover:bg-white/20 font-light text-sm border border-white/20">
+            Join the Trek
+          </Button>
         </div>
 
         {/* Simple 2-Column Grid Layout */}

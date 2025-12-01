@@ -63,6 +63,15 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Centered Edge Alpha Statement */}
+      <div className="absolute bottom-24 left-0 right-0 text-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
+        <p className="text-3xl lg:text-5xl font-extralight text-white leading-relaxed">
+          Powered by <span className="font-medium">Edge Alpha</span> — the signal engine
+          <br />
+          behind India's next innovation frontier.
+        </p>
+      </div>
     </section>
   );
 }
