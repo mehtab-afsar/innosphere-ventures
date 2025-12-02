@@ -183,10 +183,11 @@
 
 /* Glassmorphism Effect */
 .glass-effect {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 /* Glass Card for Bento Grid */
@@ -239,4 +240,221 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+/* Icon Animations for Companies */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.15);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes droplet {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  50% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  }
+}
+
+@keyframes battery-charge {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+  }
+}
+
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-droplet {
+  animation: droplet 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-battery {
+  animation: battery-charge 2s ease-in-out infinite;
+}
+
+.animate-leaf {
+  animation: leaf-sway 3s ease-in-out infinite;
+}
+
+/* Yellow Highlight Animation */
+@keyframes highlight-sweep {
+  0% {
+    background-size: 0% 60%;
+  }
+  100% {
+    background-size: 100% 60%;
+  }
+}
+
+.highlight-word {
+  background: linear-gradient(to right, rgba(253, 224, 71, 0.25), rgba(250, 240, 137, 0.25));
+  background-repeat: no-repeat;
+  background-position: 0 60%;
+  background-size: 100% 60%;
+  animation: highlight-sweep 1s ease-out forwards;
+  animation-delay: 0.5s;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+/* Mountain Node Animations */
+@keyframes nodeAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mountain-node {
+  opacity: 0;
+  animation: nodeAppear 0.8s ease-out forwards;
+}
+
+/* Line Drawing Animation */
+@keyframes lineDraw {
+  0% {
+    stroke-dashoffset: 500;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.animate-line-draw {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: lineDraw 1.5s ease-out forwards;
+}
+
+/* Line pulse/fade animation - flowing along the mountain */
+@keyframes linePulse {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.animate-line-pulse {
+  animation: linePulse 2.5s ease-in-out infinite;
+}
+
+/* Node Glow Effects */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(var(--glow-color), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(var(--glow-color), 0.5);
+  }
+}
+
+.node-glow-cyan {
+  --glow-color: 34, 211, 238;
+  animation: glowPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.node-glow-purple {
+  --glow-color: 168, 85, 247;
+  animation: glowPulse 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.node-glow-amber {
+  --glow-color: 251, 191, 36;
+  animation: glowPulse 3s ease-in-out infinite;
+  animation-delay: 1s;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.node-glow-emerald {
+  --glow-color: 52, 211, 153;
+  animation: glowPulse 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+}
+
+.node-glow-rose {
+  --glow-color: 251, 113, 133;
+  animation: glowPulse 3s ease-in-out infinite;
+  animation-delay: 2s;
+  box-shadow: 0 0 20px rgba(251, 113, 133, 0.3);
 }
