@@ -138,6 +138,14 @@
   animation-play-state: paused;
 }
 
+.animate-scroll-mobile {
+  animation: scroll 15s linear infinite;
+}
+
+.animate-scroll-mobile:hover {
+  animation-play-state: paused;
+}
+
 /* Fade In Animations */
 @keyframes fadeInUp {
   from {
