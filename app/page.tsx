@@ -14,16 +14,16 @@ import { Footer } from "@/components/sections/Footer";
 export default function Home() {
 
   return (
-    <div className="min-h-screen bg-black text-gray-100">
+    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
       <Navigation />
       <Hero />
       <PortfolioCarousel />
       <WhyIndia />
-      <Separator className="bg-white/10" />
+      <Separator className="bg-gray-200 dark:bg-white/10" />
       <WhyNow />
-      <Separator className="bg-white/10" />
+      <Separator className="bg-gray-200 dark:bg-white/10" />
       <WhyUs />
-      <Separator className="bg-white/10" />
+      <Separator className="bg-gray-200 dark:bg-white/10" />
       <OurCollective />
       <CTA />
       <Footer />

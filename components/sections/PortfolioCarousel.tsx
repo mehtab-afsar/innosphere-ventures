@@ -8,9 +8,9 @@ const companies = [
 
 export function PortfolioCarousel() {
   return (
-    <section className="py-24 px-6 lg:px-12 border-y border-white/10">
+    <section className="py-24 px-6 lg:px-12 border-y border-gray-200 dark:border-white/10">
       <div className="max-w-7xl mx-auto text-center mb-16">
-        <p className="text-3xl lg:text-4xl font-extralight text-white/80 animate-in fade-in duration-1000">
+        <p className="text-3xl lg:text-4xl font-extralight text-gray-700 dark:text-white/80 animate-in fade-in duration-1000">
           Conviction sparks. Consensus amplifies.
         </p>
       </div>
@@ -23,7 +23,7 @@ export function PortfolioCarousel() {
             {companies.map((company) => (
               <span
                 key={`first-${company}`}
-                className="text-2xl font-extralight text-white/50 hover:text-white/80 transition-colors duration-300 whitespace-nowrap"
+                className="text-2xl font-extralight text-gray-500 dark:text-white/50 hover:text-gray-800 dark:hover:text-white/80 transition-colors duration-300 whitespace-nowrap"
               >
                 {company}
               </span>
@@ -35,7 +35,7 @@ export function PortfolioCarousel() {
             {companies.map((company) => (
               <span
                 key={`second-${company}`}
-                className="text-2xl font-extralight text-white/50 hover:text-white/80 transition-colors duration-300 whitespace-nowrap"
+                className="text-2xl font-extralight text-gray-500 dark:text-white/50 hover:text-gray-800 dark:hover:text-white/80 transition-colors duration-300 whitespace-nowrap"
               >
                 {company}
               </span>

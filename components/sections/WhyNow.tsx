@@ -87,9 +87,9 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
           className="flex items-center justify-center gap-4 mb-4"
           style={{ opacity: easedProgress }}
         >
-          <div className="h-px bg-white/20 w-8" />
-          <span className="text-sm font-extralight text-white/40 tracking-widest">{card.number}</span>
-          <div className="h-px bg-white/20 w-8" />
+          <div className="h-px bg-gray-200 dark:bg-white/20 w-8" />
+          <span className="text-sm font-extralight text-gray-400 dark:text-white/40 tracking-widest">{card.number}</span>
+          <div className="h-px bg-gray-200 dark:bg-white/20 w-8" />
         </div>
 
         {/* Icon */}
@@ -100,12 +100,12 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
             transform: `scale(${0.8 + easedProgress * 0.2})`,
           }}
         >
-          <Icon className="w-8 h-8 text-white/50" strokeWidth={1} />
+          <Icon className="w-8 h-8 text-gray-500 dark:text-white/50" strokeWidth={1} />
         </div>
 
         {/* Title */}
         <h3
-          className="text-2xl lg:text-3xl font-light text-white mb-3"
+          className="text-2xl lg:text-3xl font-light text-gray-900 dark:text-white mb-3"
           style={{ opacity: easedProgress }}
         >
           {card.title}
@@ -113,7 +113,7 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
 
         {/* Description */}
         <p
-          className="text-base font-extralight text-white/60 leading-relaxed"
+          className="text-base font-extralight text-gray-600 dark:text-white/60 leading-relaxed"
           style={{ opacity: easedProgress * 0.9 }}
         >
           {card.description}
@@ -129,10 +129,10 @@ export function WhyNow() {
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
-          <Badge className="mb-4 font-light bg-white text-black border-white hover:bg-white/90">
+          <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
             Why Now
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-extralight text-white">
+          <h2 className="text-4xl lg:text-5xl font-extralight text-gray-900 dark:text-white">
             A Once-in-a-Generation Opportunity
           </h2>
         </div>

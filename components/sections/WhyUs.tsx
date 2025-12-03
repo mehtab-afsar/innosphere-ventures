@@ -48,7 +48,7 @@ function AnimatedCard({ icon: Icon, title, description, points, index }: CardPro
   return (
     <div
       ref={cardRef}
-      className="glass-card p-10 group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-white/10"
+      className="glass-card p-10 group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10"
       style={{
         opacity: easedProgress,
         transform: `translateY(${(1 - easedProgress) * 30}px)`,
@@ -62,15 +62,15 @@ function AnimatedCard({ icon: Icon, title, description, points, index }: CardPro
           transform: `translateX(${(1 - easedProgress) * -20}px)`,
         }}
       >
-        <div className="p-4 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-all duration-300">
-          <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+        <div className="p-4 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-all duration-300">
+          <Icon className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={1.5} />
         </div>
-        <h3 className="text-2xl lg:text-3xl font-light text-white">{title}</h3>
+        <h3 className="text-2xl lg:text-3xl font-light text-gray-900 dark:text-white">{title}</h3>
       </div>
 
       {/* Description */}
       <p
-        className="font-extralight text-white/70 leading-relaxed mb-5 text-base lg:text-lg"
+        className="font-extralight text-gray-700 dark:text-white/70 leading-relaxed mb-5 text-base lg:text-lg"
         style={{
           opacity: easedProgress * 0.9,
           transform: `translateY(${(1 - easedProgress) * 15}px)`,
@@ -84,13 +84,13 @@ function AnimatedCard({ icon: Icon, title, description, points, index }: CardPro
         {points.map((point, i) => (
           <div
             key={i}
-            className="text-sm lg:text-base font-extralight text-white/50 flex items-center gap-2"
+            className="text-sm lg:text-base font-extralight text-gray-500 dark:text-white/50 flex items-center gap-2"
             style={{
               opacity: Math.max(0, easedProgress - i * 0.05),
               transform: `translateX(${(1 - Math.max(0, easedProgress - i * 0.05)) * -10}px)`,
             }}
           >
-            <div className="w-1.5 h-1.5 bg-white/30 rounded-full" />
+            <div className="w-1.5 h-1.5 bg-gray-300 dark:bg-white/30 rounded-full" />
             {point}
           </div>
         ))}
@@ -131,10 +131,10 @@ export function WhyUs() {
     <section id="why-us" className="py-32 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 text-center">
-          <Badge className="mb-4 font-light bg-white text-black border-white hover:bg-white/90">
+          <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
             Why Us
           </Badge>
-          <h2 className="text-5xl lg:text-6xl font-extralight mb-6 text-white">
+          <h2 className="text-5xl lg:text-6xl font-extralight mb-6 text-gray-900 dark:text-white">
             Conviction capital meets
             <br />
             <span className="font-light">Edge Alpha precision</span>

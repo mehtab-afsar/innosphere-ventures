@@ -42,7 +42,7 @@ export function CTA() {
       <div className="max-w-7xl mx-auto">
         <div
           ref={sectionRef}
-          className="rounded-2xl p-12 lg:p-20 border border-white/20 hover:border-white/40 transition-all duration-500 hover:bg-white/5 group relative overflow-hidden"
+          className="rounded-2xl p-12 lg:p-20 border border-gray-200 dark:border-white/20 hover:border-gray-300 dark:hover:border-white/40 transition-all duration-500 hover:bg-gray-50 dark:hover:bg-white/5 group relative overflow-hidden"
           style={{
             opacity: easedProgress,
             transform: `translateY(${(1 - easedProgress) * 30}px)`,
@@ -56,7 +56,7 @@ export function CTA() {
           <div className="max-w-4xl relative z-10">
             {/* Logo/Brand */}
             <div
-              className="text-3xl font-extralight mb-2 text-white"
+              className="text-3xl font-extralight mb-2 text-gray-900 dark:text-white"
               style={{
                 opacity: easedProgress,
                 transform: `translateX(${(1 - easedProgress) * -20}px)`,
@@ -67,7 +67,7 @@ export function CTA() {
 
             {/* Tagline */}
             <div
-              className="space-y-1 text-xl font-extralight text-white/70 mb-12"
+              className="space-y-1 text-xl font-extralight text-gray-700 dark:text-white/70 mb-12"
               style={{
                 opacity: easedProgress * 0.9,
                 transform: `translateX(${(1 - easedProgress) * -15}px)`,
@@ -80,7 +80,7 @@ export function CTA() {
             {/* Main Headlines */}
             <div className="space-y-4 mb-12">
               <h2
-                className="text-4xl lg:text-5xl font-extralight text-white tracking-wide"
+                className="text-4xl lg:text-5xl font-extralight text-gray-900 dark:text-white tracking-wide"
                 style={{
                   opacity: easedProgress,
                   transform: `translateY(${(1 - easedProgress) * 20}px)`,
@@ -97,9 +97,9 @@ export function CTA() {
                   transform: `translateY(${(1 - easedProgress) * 25}px)`,
                 }}
               >
-                <div className="h-px bg-white/30 w-12" />
-                <p className="text-xl lg:text-2xl font-extralight text-white/60 tracking-widest">
-                  POWERED BY <span className="font-light text-white/80">EDGE ALPHA</span>
+                <div className="h-px bg-gray-300 dark:bg-white/30 w-12" />
+                <p className="text-xl lg:text-2xl font-extralight text-gray-600 dark:text-white/60 tracking-widest">
+                  POWERED BY <span className="font-light text-gray-800 dark:text-white/80">EDGE ALPHA</span>
                 </p>
               </div>
             </div>
@@ -112,11 +112,11 @@ export function CTA() {
                 transform: `translateY(${(1 - easedProgress) * 30}px)`,
               }}
             >
-              <Button size="lg" className="bg-white text-black hover:bg-white/90 font-light text-base group transition-all duration-300 hover:scale-105">
+              <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 font-light text-base group transition-all duration-300 hover:scale-105">
                 Contact Us
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white font-light text-base hover:bg-white/10 transition-all duration-300 hover:border-white/50">
+              <Button size="lg" variant="outline" className="border-gray-300 dark:border-white/30 text-gray-900 dark:text-white font-light text-base hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 hover:border-gray-400 dark:hover:border-white/50">
                 LP Inquiries
               </Button>
             </div>

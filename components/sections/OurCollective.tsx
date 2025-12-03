@@ -55,7 +55,7 @@ function SectionCard({ icon: Icon, title, description, subDescription, index }: 
       }}
     >
       {/* Gradient border effect */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-300/50 via-gray-200/30 to-gray-300/50 dark:from-white/20 dark:via-white/10 dark:to-white/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
 
       <div className="relative glass-card p-10 h-full">
         {/* Icon with animation */}
@@ -66,14 +66,14 @@ function SectionCard({ icon: Icon, title, description, subDescription, index }: 
             transform: `scale(${0.8 + easedProgress * 0.2}) rotate(${(1 - easedProgress) * -5}deg)`,
           }}
         >
-          <div className="p-4 bg-white/5 border border-white/10 rounded-xl w-fit group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-500">
-            <Icon className="w-10 h-10 text-white" strokeWidth={1.5} />
+          <div className="p-4 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl w-fit group-hover:bg-gray-200 dark:group-hover:bg-white/10 group-hover:border-gray-300 dark:group-hover:border-white/20 transition-all duration-500">
+            <Icon className="w-10 h-10 text-gray-900 dark:text-white" strokeWidth={1.5} />
           </div>
         </div>
 
         {/* Title */}
         <h3
-          className="text-2xl lg:text-3xl font-light text-white mb-5"
+          className="text-2xl lg:text-3xl font-light text-gray-900 dark:text-white mb-5"
           style={{
             opacity: easedProgress,
             transform: `translateX(${(1 - easedProgress) * -15}px)`,
@@ -84,7 +84,7 @@ function SectionCard({ icon: Icon, title, description, subDescription, index }: 
 
         {/* Description */}
         <p
-          className="text-base lg:text-lg font-extralight text-white/70 leading-relaxed mb-4"
+          className="text-base lg:text-lg font-extralight text-gray-600 dark:text-white/70 leading-relaxed mb-4"
           style={{
             opacity: easedProgress * 0.9,
             transform: `translateY(${(1 - easedProgress) * 10}px)`,
@@ -95,7 +95,7 @@ function SectionCard({ icon: Icon, title, description, subDescription, index }: 
 
         {/* Sub Description */}
         <p
-          className="text-sm lg:text-base font-extralight text-white/50 leading-relaxed"
+          className="text-sm lg:text-base font-extralight text-gray-500 dark:text-white/50 leading-relaxed"
           style={{
             opacity: easedProgress * 0.8,
             transform: `translateY(${(1 - easedProgress) * 15}px)`,
@@ -106,7 +106,7 @@ function SectionCard({ icon: Icon, title, description, subDescription, index }: 
 
         {/* Decorative line */}
         <div
-          className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-white/20 to-transparent"
           style={{
             transform: `scaleX(${easedProgress})`,
             opacity: easedProgress * 0.5,
@@ -189,10 +189,10 @@ export function OurCollective() {
             transform: `translateY(${(1 - easedHeader) * 30}px)`,
           }}
         >
-          <Badge className="mb-4 font-light bg-white text-black border-white hover:bg-white/90">
+          <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
             Our Collective
           </Badge>
-          <h2 className="text-5xl lg:text-6xl font-extralight mb-6 text-white">
+          <h2 className="text-5xl lg:text-6xl font-extralight mb-6 text-gray-900 dark:text-white">
             InnoSphere
             <br />
             <span className="font-light">Ecosystem Council</span>
