@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Globe, Users } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
 interface CardData {
   icon: typeof TrendingUp;
   number: string;
@@ -125,7 +124,7 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
 
 export function WhyNow() {
   return (
-    <section id="why-now" className="relative py-24 px-6 lg:px-12">
+    <section id="why-now" className="relative py-24 px-6 lg:px-12 overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-8">

@@ -1,8 +1,9 @@
 "use client";
 
-import { Menu, ChevronDown, Sun, Moon } from "lucide-react";
+import { Menu, ChevronDown, Sun, Moon, Sunrise, Sunset } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "../ThemeProvider";
+import { useTimeOfDay, TimeOfDay } from "../TimeOfDayProvider";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,6 +11,14 @@ export function Navigation() {
   const [whyOpen, setWhyOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { timeOfDay, setTimeOfDay } = useTimeOfDay();
+
+  const timeOptions: { value: TimeOfDay; icon: React.ReactNode; label: string }[] = [
+    { value: "dawn", icon: <Sunrise className="w-4 h-4" />, label: "Dawn" },
+    { value: "day", icon: <Sun className="w-4 h-4" />, label: "Day" },
+    { value: "dusk", icon: <Sunset className="w-4 h-4" />, label: "Dusk" },
+    { value: "night", icon: <Moon className="w-4 h-4" />, label: "Night" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,6 +58,7 @@ export function Navigation() {
             InnoSphere <span className="font-normal">Ventures</span>
           </div>
           <div className={`hidden md:flex space-x-8 font-light ${navLinkColor}`}>
+            <a href="/" className={`${navLinkHover} transition-colors duration-200`}>Home</a>
             <div className="relative group">
               <button className={`flex items-center gap-1 ${navLinkHover} transition-colors duration-200`}>
                 Why
@@ -79,6 +89,28 @@ export function Navigation() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            {/* Time of Day Selector */}
+            <div className={`hidden sm:flex items-center rounded-full p-1 transition-all duration-300 ${
+              scrolled
+                ? "bg-gray-100 dark:bg-white/10"
+                : "bg-gray-200 dark:bg-white/10"
+            }`}>
+              {timeOptions.map((option) => (
+                <button
+                  key={option.value}
+                  onClick={() => setTimeOfDay(option.value)}
+                  className={`p-2 rounded-full transition-all duration-300 ${
+                    timeOfDay === option.value
+                      ? "bg-white dark:bg-white/20 text-gray-900 dark:text-white shadow-sm"
+                      : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                  }`}
+                  aria-label={option.label}
+                  title={option.label}
+                >
+                  {option.icon}
+                </button>
+              ))}
+            </div>
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -105,6 +137,7 @@ export function Navigation() {
         </div>
         {mobileMenuOpen && (
           <div className={`md:hidden mt-4 pb-4 space-y-4 font-light ${navLinkColor} animate-in fade-in slide-in-from-top-2 duration-200`}>
+            <a href="/" className={`block ${navLinkHover} transition-colors`}>Home</a>
             <div>
               <button
                 onClick={() => setWhyOpen(!whyOpen)}
