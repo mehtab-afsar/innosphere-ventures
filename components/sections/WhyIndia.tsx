@@ -19,18 +19,19 @@ export function WhyIndia() {
           <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
             Why India
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white leading-tight">
             India's innovation flywheel is accelerating —
-            <br />
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             <span className="font-light">a Deep Tech Nation is emerging.</span>
           </h2>
-          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl mx-auto mb-6">
+          <p className="text-base sm:text-lg md:text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl mx-auto mb-6">
             India's startup ecosystem is a fast-expanding galaxy.
           </p>
-          <p className="text-lg font-extralight text-gray-500 dark:text-white/50 max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-base md:text-lg font-extralight text-gray-500 dark:text-white/50 max-w-3xl mx-auto mb-8">
             This is the new innovation cosmos of India — distributed, diverse, and accelerating.
-            <br />
-            A nation moving from outsourcing to innovation and tech leadership:
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>A nation moving from outsourcing to innovation and tech leadership:
           </p>
           <Button size="sm" className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 font-medium text-sm">
             Be Part of Next India

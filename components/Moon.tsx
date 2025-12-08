@@ -53,12 +53,8 @@ export function Moon() {
   // Get atmosphere color - silver/grey for moon
   const getAtmosphereColor = () => {
     switch (timeOfDay) {
-      case "dawn":
-        return "#d4d4d4";
       case "day":
         return "#e0e0e0";
-      case "dusk":
-        return "#c0c0c0";
       case "night":
       default:
         return "#a0a0a0";

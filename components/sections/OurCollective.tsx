@@ -192,9 +192,10 @@ export function OurCollective() {
           <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
             Our Collective
           </Badge>
-          <h2 className="text-5xl lg:text-6xl font-extralight mb-6 text-gray-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight mb-6 text-gray-900 dark:text-white">
             InnoSphere
-            <br />
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             <span className="font-light">Ecosystem Council</span>
           </h2>
         </div>

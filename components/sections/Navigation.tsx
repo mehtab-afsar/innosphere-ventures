@@ -1,9 +1,8 @@
 "use client";
 
-import { Menu, ChevronDown, Sun, Moon, Sunrise, Sunset } from "lucide-react";
+import { Menu, ChevronDown, Sun, Moon, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "../ThemeProvider";
-import { useTimeOfDay, TimeOfDay } from "../TimeOfDayProvider";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,14 +10,6 @@ export function Navigation() {
   const [whyOpen, setWhyOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { timeOfDay, setTimeOfDay } = useTimeOfDay();
-
-  const timeOptions: { value: TimeOfDay; icon: React.ReactNode; label: string }[] = [
-    { value: "dawn", icon: <Sunrise className="w-4 h-4" />, label: "Dawn" },
-    { value: "day", icon: <Sun className="w-4 h-4" />, label: "Day" },
-    { value: "dusk", icon: <Sunset className="w-4 h-4" />, label: "Dusk" },
-    { value: "night", icon: <Moon className="w-4 h-4" />, label: "Night" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,53 +55,102 @@ export function Navigation() {
                 Why
                 <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className={`${dropdownBg} backdrop-blur-md rounded-lg shadow-xl border ${dropdownBorder} py-2 min-w-[140px]`}>
-                  <a href="/#why-india" className={`block px-4 py-2 text-sm ${dropdownLinkColor} transition-colors`}>Why India</a>
-                  <a href="/#why-now" className={`block px-4 py-2 text-sm ${dropdownLinkColor} transition-colors`}>Why Now</a>
-                  <a href="/#why-us" className={`block px-4 py-2 text-sm ${dropdownLinkColor} transition-colors`}>Why Us</a>
+              <div className="absolute top-full -left-[120px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div className={`${dropdownBg} backdrop-blur-xl rounded-2xl shadow-2xl border ${dropdownBorder} p-4 w-[620px]`}>
+                  <div className="grid grid-cols-3 gap-3">
+                    <a href="/#why-india" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Why India</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">The world's fastest growing startup ecosystem.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        Learn <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                    <a href="/#why-now" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Why Now</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">A once-in-a-generation opportunity.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        Discover <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                    <a href="/#why-us" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Why Us</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">What sets InnoSphere apart.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        Explore <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-            <a href="/signals" className={`${navLinkHover} transition-colors duration-200`}>Signals</a>
-            <a href="/thesis" className={`${navLinkHover} transition-colors duration-200`}>Thesis</a>
+            {/* Approach Mega Menu */}
+            <div className="relative group">
+              <button className={`flex items-center gap-1 ${navLinkHover} transition-colors duration-200`}>
+                Approach
+                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+              </button>
+              <div className="absolute top-full -left-[280px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div className={`${dropdownBg} backdrop-blur-xl rounded-2xl shadow-2xl border ${dropdownBorder} p-4 w-[720px]`}>
+                  <div className="grid grid-cols-3 gap-3">
+                    {/* Letter to Founders */}
+                    <a href="/letter" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Letter to Founders</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">Our commitment to India's ambitious builders.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        Read <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+
+                    {/* Thesis */}
+                    <a href="/thesis" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Investment Thesis</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">How we find category-defining companies.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        Explore <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+
+                    {/* Signals */}
+                    <a href="/signals" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Market Signals</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">Data on India's innovation ecosystem.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        View <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <a href="/#join" className={`${navLinkHover} transition-colors duration-200`}>Join</a>
             <div className="relative group">
               <button className={`flex items-center gap-1 ${navLinkHover} transition-colors duration-200`}>
                 About
                 <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className={`${dropdownBg} backdrop-blur-md rounded-lg shadow-xl border ${dropdownBorder} py-2 min-w-[140px]`}>
-                  <a href="/leadership" className={`block px-4 py-2 text-sm ${dropdownLinkColor} transition-colors`}>Leadership</a>
-                  <a href="/gallery" className={`block px-4 py-2 text-sm ${dropdownLinkColor} transition-colors`}>Gallery</a>
+              <div className="absolute top-full -left-[120px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div className={`${dropdownBg} backdrop-blur-xl rounded-2xl shadow-2xl border ${dropdownBorder} p-4 w-[480px]`}>
+                  <div className="grid grid-cols-2 gap-3">
+                    <a href="/leadership" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Leadership</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">Meet the team behind InnoSphere.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        View <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                    <a href="/gallery" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Gallery</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">Our journey in pictures.</p>
+                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                        Browse <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-4">
-            {/* Time of Day Selector */}
-            <div className={`hidden sm:flex items-center rounded-full p-1 transition-all duration-300 ${
-              scrolled
-                ? "bg-gray-100 dark:bg-white/10"
-                : "bg-gray-200 dark:bg-white/10"
-            }`}>
-              {timeOptions.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => setTimeOfDay(option.value)}
-                  className={`p-2 rounded-full transition-all duration-300 ${
-                    timeOfDay === option.value
-                      ? "bg-white dark:bg-white/20 text-gray-900 dark:text-white shadow-sm"
-                      : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                  }`}
-                  aria-label={option.label}
-                  title={option.label}
-                >
-                  {option.icon}
-                </button>
-              ))}
-            </div>
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -154,8 +194,14 @@ export function Navigation() {
                 </div>
               )}
             </div>
-            <a href="/signals" className={`block ${navLinkHover} transition-colors`}>Signals</a>
-            <a href="/thesis" className={`block ${navLinkHover} transition-colors`}>Thesis</a>
+            <div>
+              <span className={`block text-xs uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2`}>Approach</span>
+              <div className="ml-2 space-y-2">
+                <a href="/letter" className={`block ${navLinkHover} transition-colors`}>Letter to Founders</a>
+                <a href="/thesis" className={`block ${navLinkHover} transition-colors`}>Investment Thesis</a>
+                <a href="/signals" className={`block ${navLinkHover} transition-colors`}>Market Signals</a>
+              </div>
+            </div>
             <a href="/#join" className={`block ${navLinkHover} transition-colors`}>Join</a>
             <div>
               <button

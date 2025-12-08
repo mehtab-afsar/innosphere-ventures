@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-export type TimeOfDay = "dawn" | "day" | "dusk" | "night";
+export type TimeOfDay = "day" | "night";
 
 interface TimeOfDayContextType {
   timeOfDay: TimeOfDay;
@@ -10,18 +10,18 @@ interface TimeOfDayContextType {
 }
 
 const TimeOfDayContext = createContext<TimeOfDayContextType>({
-  timeOfDay: "night",
+  timeOfDay: "day",
   setTimeOfDay: () => {},
 });
 
 export function TimeOfDayProvider({ children }: { children: React.ReactNode }) {
-  const [timeOfDay, setTimeOfDayState] = useState<TimeOfDay>("night");
+  const [timeOfDay, setTimeOfDayState] = useState<TimeOfDay>("day");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const savedTime = localStorage.getItem("timeOfDay") as TimeOfDay;
-    if (savedTime && ["dawn", "day", "dusk", "night"].includes(savedTime)) {
+    if (savedTime && ["day", "night"].includes(savedTime)) {
       setTimeOfDayState(savedTime);
     }
   }, []);

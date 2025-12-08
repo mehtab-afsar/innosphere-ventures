@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { ParticleSphere } from "@/components/ParticleSphere";
 import { Heart, Battery, TestTube, Droplets, Leaf, Target, Lightbulb, Shield, Users, ArrowLeft, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -91,9 +92,9 @@ export default function SignalsPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 mb-8 group absolute left-6 lg:left-12 top-28">
+      <section className="pt-40 pb-20 px-6 lg:px-12 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 mb-8 group absolute left-0 lg:left-0 -top-12">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
@@ -105,7 +106,7 @@ export default function SignalsPage() {
             <br />
             <span className="font-light bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">Company Universe</span>
           </h1>
-          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-4xl fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
+          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
             Our portfolio begins long before we invest. Using the Edge Alpha scoring engine, we map India's frontier innovation universe, surface high-signal founders, and identify companies with systemic potential.
           </p>
         </div>
@@ -130,8 +131,13 @@ export default function SignalsPage() {
           <div className="fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "300ms" }}>
             {/* Desktop: Circle Layout */}
             <div className="hidden lg:block relative w-[850px] h-[850px] mx-auto">
+              {/* Particle Sphere inside circle */}
+              <div className="absolute inset-[120px] pointer-events-none opacity-40 dark:opacity-60">
+                <ParticleSphere />
+              </div>
+
               {/* Center text */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center justify-center">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center justify-center z-10">
                 <p className="text-3xl font-extralight text-gray-500 dark:text-white/50">Edge Alpha</p>
                 <p className="text-5xl font-light text-gray-900 dark:text-white">Signals</p>
               </div>

@@ -2,7 +2,9 @@
 
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Globe, Users } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { easeProgress } from "@/lib/animations";
+
 interface CardData {
   icon: typeof TrendingUp;
   number: string;
@@ -32,46 +34,14 @@ const cards: CardData[] = [
 ];
 
 function ScrollCard({ card, index }: { card: CardData; index: number }) {
-  const [progress, setProgress] = useState(0);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const { ref, progress } = useScrollProgress({ start: 0.95, end: 0.6 });
+  const easedProgress = easeProgress(progress);
   const Icon = card.icon;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!cardRef.current) return;
-
-      const rect = cardRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Trigger animation quickly when card enters viewport
-      const start = windowHeight * 0.95;
-      const end = windowHeight * 0.6;
-
-      if (rect.top <= start && rect.top >= end) {
-        const p = 1 - (rect.top - end) / (start - end);
-        setProgress(Math.max(0, Math.min(1, p)));
-      } else if (rect.top < end) {
-        setProgress(1);
-      } else {
-        setProgress(0);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Eased progress for smoother animations
-  const easedProgress = progress < 0.5
-    ? 2 * progress * progress
-    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-
   const isLeft = index % 2 === 0;
 
   return (
     <div
-      ref={cardRef}
+      ref={ref}
       className={`py-12 flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
       <div
@@ -81,7 +51,6 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
           transform: `translateY(${(1 - easedProgress) * 40}px)`,
         }}
       >
-        {/* Number indicator */}
         <div
           className="flex items-center justify-center gap-4 mb-4"
           style={{ opacity: easedProgress }}
@@ -91,7 +60,6 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
           <div className="h-px bg-gray-200 dark:bg-white/20 w-8" />
         </div>
 
-        {/* Icon */}
         <div
           className="mb-4 flex justify-center"
           style={{
@@ -102,17 +70,15 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
           <Icon className="w-8 h-8 text-gray-500 dark:text-white/50" strokeWidth={1} />
         </div>
 
-        {/* Title */}
         <h3
-          className="text-2xl lg:text-3xl font-light text-gray-900 dark:text-white mb-3"
+          className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 dark:text-white mb-3"
           style={{ opacity: easedProgress }}
         >
           {card.title}
         </h3>
 
-        {/* Description */}
         <p
-          className="text-base font-extralight text-gray-600 dark:text-white/60 leading-relaxed"
+          className="text-sm sm:text-base font-extralight text-gray-600 dark:text-white/60 leading-relaxed"
           style={{ opacity: easedProgress * 0.9 }}
         >
           {card.description}
@@ -131,7 +97,7 @@ export function WhyNow() {
           <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
             Why Now
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-extralight text-gray-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight text-gray-900 dark:text-white">
             A Once-in-a-Generation Opportunity
           </h2>
         </div>

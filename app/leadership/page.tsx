@@ -14,7 +14,7 @@ const leaders = [
     bio: "Roman brings decades of experience in venture capital, entrepreneurship, and ecosystem building. His work has spanned technology, design and innovation, capital markets, and corporate strategy, giving him a unique perspective on how breakthrough companies emerge from humble beginnings to global reach.",
     bio2: "His vision drives InnoSphere's mission to back India's most ambitious founders and to build the ecosystems where transformational companies can thrive.",
     image: "/InnoSphere Website VISUAL IDENTITY (1).png",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/company/innosphere-vc/",
     twitter: "#",
     email: "roman@innosphereventures.com",
   },
@@ -24,7 +24,7 @@ const leaders = [
     bio: "Jocelyn brings strategic expertise across both for-profit and non-profit enterprises, shaping leadership and strategy as a CEO and Board Member in the education sector. She has served as a Social Impact Leader in Residence at the Harvard Kennedy School and is a Fellow of Harvard's Advanced Leadership Initiative.",
     bio2: "She has led organizations from early traction to global reach, consistently building environments where innovation can take root and scale.",
     image: "/InnoSphere Website VISUAL IDENTITY.png",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/company/innosphere-vc/",
     twitter: "#",
     email: "jocelyn@innosphereventures.com",
   },
@@ -130,9 +130,11 @@ export default function LeadershipPage() {
             We're always looking to meet exceptional founders and partners who share our vision for India's innovation future.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 font-light text-base group transition-all duration-300 hover:scale-105">
-              Get in Touch
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 font-light text-base group transition-all duration-300 hover:scale-105" asChild>
+              <Link href="/join">
+                Get in Touch
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-gray-300 dark:border-white/30 text-gray-900 dark:text-white font-light text-base hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 hover:border-gray-400 dark:hover:border-white/50" asChild>
               <Link href="/thesis">Read Our Thesis</Link>

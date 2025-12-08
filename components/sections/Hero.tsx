@@ -48,21 +48,21 @@ export function Hero() {
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-gray-300 dark:border-white/30 text-gray-900 dark:text-white font-light text-sm sm:text-base hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 hover:border-gray-400 dark:hover:border-white/50">
-              Join the Movement
+            <Button size="lg" variant="outline" className="border-gray-300 dark:border-white/30 text-gray-900 dark:text-white font-light text-sm sm:text-base hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 hover:border-gray-400 dark:hover:border-white/50" asChild>
+              <Link href="/join">Join the Movement</Link>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Centered Edge Alpha Statement */}
-      <div className="relative md:absolute md:bottom-24 left-0 right-0 text-center px-4 sm:px-6 mt-12 md:mt-0 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-        <p className="text-base sm:text-lg md:text-2xl lg:text-4xl xl:text-5xl font-extralight text-gray-900 dark:text-white leading-relaxed">
+      <div className="relative md:absolute md:bottom-6 lg:bottom-8 xl:bottom-10 left-0 right-0 text-center px-4 sm:px-6 mt-12 md:mt-0 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-extralight text-gray-900 dark:text-white leading-relaxed">
           Powered by <span className="font-medium">Edge Alpha</span> —
           <br className="sm:hidden" />
           <span className="hidden sm:inline"> </span>the signal engine
-          <br className="hidden md:block" />
-          <span className="md:hidden"> </span>behind India's next innovation frontier.
+          <br className="hidden lg:block" />
+          <span className="lg:hidden"> </span>behind India's next innovation frontier.
         </p>
       </div>
     </section>

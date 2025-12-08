@@ -95,12 +95,8 @@ export function Globe() {
   // Get highlight color based on time of day
   const getHighlightColor = () => {
     switch (timeOfDay) {
-      case "dawn":
-        return "rgba(255, 150, 100, 0.6)";
       case "day":
         return "rgba(255, 107, 53, 0.5)";
-      case "dusk":
-        return "rgba(255, 120, 80, 0.6)";
       case "night":
       default:
         return "rgba(255, 180, 100, 0.7)";
@@ -112,8 +108,6 @@ export function Globe() {
     switch (timeOfDay) {
       case "night":
         return TEXTURES.night;
-      case "dusk":
-      case "dawn":
       case "day":
       default:
         return TEXTURES.day;
@@ -123,12 +117,8 @@ export function Globe() {
   // Get background color based on time of day
   const getBackgroundColor = () => {
     switch (timeOfDay) {
-      case "dawn":
-        return "rgba(255, 200, 150, 0.1)";
       case "day":
         return "rgba(135, 206, 235, 0.1)";
-      case "dusk":
-        return "rgba(255, 140, 100, 0.1)";
       case "night":
       default:
         return "rgba(0, 0, 20, 0)";
