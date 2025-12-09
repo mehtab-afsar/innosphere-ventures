@@ -11,29 +11,29 @@ export function Footer() {
           {/* Brand */}
           <div className="mb-8">
             <Link href="/" className="group">
-              <span className="text-2xl sm:text-3xl font-extralight text-gray-900 dark:text-white tracking-wide group-hover:opacity-80 transition-opacity">
+              <span className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 dark:text-white tracking-wide group-hover:opacity-80 transition-opacity">
                 InnoSphere <span className="font-normal">Ventures</span>
               </span>
             </Link>
-            <p className="mt-3 font-extralight text-gray-500 dark:text-white/50 text-sm">
+            <p className="mt-4 font-extralight text-gray-500 dark:text-white/50 text-lg lg:text-xl">
               Empowering innovators. Elevating futures.
             </p>
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
+          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 mb-10">
             <Link
               href="/join"
-              className="font-extralight text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm tracking-wide"
+              className="font-light text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-lg lg:text-xl tracking-wide"
             >
               Join
             </Link>
-            <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-white/20" />
+            <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-white/20" />
             <a
               href="https://www.linkedin.com/company/innosphere-vc/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-extralight text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm tracking-wide"
+              className="font-light text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-lg lg:text-xl tracking-wide"
             >
               LinkedIn
             </a>
@@ -47,18 +47,18 @@ export function Footer() {
           </div>
 
           {/* Bottom row */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-xs font-extralight text-gray-400 dark:text-white/30">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-base font-extralight text-gray-400 dark:text-white/40">
             <span>© 2025 InnoSphere Ventures</span>
             <div className="flex items-center gap-6">
               <Link
                 href="/privacy"
-                className="hover:text-gray-600 dark:hover:text-white/50 transition-colors duration-200"
+                className="hover:text-gray-600 dark:hover:text-white/60 transition-colors duration-200"
               >
                 Privacy
               </Link>
               <Link
                 href="/terms"
-                className="hover:text-gray-600 dark:hover:text-white/50 transition-colors duration-200"
+                className="hover:text-gray-600 dark:hover:text-white/60 transition-colors duration-200"
               >
                 Terms
               </Link>

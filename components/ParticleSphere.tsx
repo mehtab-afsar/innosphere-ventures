@@ -1,12 +1,20 @@
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-function Particles({ count = 5000, radius = 2 }: { count?: number; radius?: number }) {
+interface ParticlesProps {
+  count?: number;
+  radius?: number;
+  pulseAngle?: number | null; // Angle in radians for directional pulse
+}
+
+function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesProps) {
   const pointsRef = useRef<THREE.Points>(null);
   const lightRef = useRef<THREE.PointLight>(null);
+  const prevPulseAngleRef = useRef<number | null>(null);
+  const pulsePhaseRef = useRef(0); // 0 = idle, progresses to 1 = fully expanded
 
   // Generate particles on sphere surface
   const { positions, colors, originalPositions } = useMemo(() => {
@@ -79,6 +87,18 @@ function Particles({ count = 5000, radius = 2 }: { count?: number; radius?: numb
 
     const time = state.clock.elapsedTime;
 
+    // Detect new hover (pulseAngle changed from null or to different angle)
+    const isNewHover = pulseAngle !== null && prevPulseAngleRef.current !== pulseAngle;
+    if (isNewHover) {
+      pulsePhaseRef.current = 0; // Reset phase for new beat
+    }
+    prevPulseAngleRef.current = pulseAngle;
+
+    // Animate pulse phase: expand to 1 and hold when hovered, return to 0 when not
+    const targetPhase = pulseAngle !== null ? 1 : 0;
+    const phaseSpeed = pulseAngle !== null ? 0.08 : 0.05; // Faster expansion, slower return
+    pulsePhaseRef.current += (targetPhase - pulsePhaseRef.current) * phaseSpeed;
+
     // Rotate the sphere slowly
     pointsRef.current.rotation.y = time * 0.08;
     pointsRef.current.rotation.x = Math.sin(time * 0.03) * 0.15;
@@ -93,17 +113,24 @@ function Particles({ count = 5000, radius = 2 }: { count?: number; radius?: numb
       const oy = originalPositions[i3 + 1];
       const oz = originalPositions[i3 + 2];
 
-      // Noise-like displacement
-      const noise = Math.sin(time * 0.5 + i * 0.01) * 0.04;
-      const pulse = Math.sin(time * 1.5 + i * 0.02) * 0.02;
-
       // Normalize and apply displacement
       const len = Math.sqrt(ox * ox + oy * oy + oz * oz);
-      const factor = 1 + noise + pulse;
+      const nx = ox / len;
+      const ny = oy / len;
+      const nz = oz / len;
 
-      array[i3] = (ox / len) * len * factor;
-      array[i3 + 1] = (oy / len) * len * factor;
-      array[i3 + 2] = (oz / len) * len * factor;
+      // Base noise-like displacement
+      const noise = Math.sin(time * 0.5 + i * 0.01) * 0.04;
+      const basePulse = Math.sin(time * 1.5 + i * 0.02) * 0.02;
+
+      // Uniform sphere expansion - entire sphere expands when hovered
+      const expansion = 0.15 * pulsePhaseRef.current;
+
+      const factor = 1 + noise + basePulse + expansion;
+
+      array[i3] = nx * len * factor;
+      array[i3 + 1] = ny * len * factor;
+      array[i3 + 2] = nz * len * factor;
     }
 
     positionAttribute.needsUpdate = true;
@@ -125,9 +152,10 @@ function Particles({ count = 5000, radius = 2 }: { count?: number; radius?: numb
 
 interface ParticleSphereProps {
   className?: string;
+  pulseAngle?: number | null;
 }
 
-export function ParticleSphere({ className = "" }: ParticleSphereProps) {
+export function ParticleSphere({ className = "", pulseAngle = null }: ParticleSphereProps) {
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
@@ -136,7 +164,7 @@ export function ParticleSphere({ className = "" }: ParticleSphereProps) {
         style={{ background: "transparent" }}
       >
         <ambientLight intensity={0.2} />
-        <Particles count={3500} radius={1.8} />
+        <Particles count={3500} radius={1.8} pulseAngle={pulseAngle} />
       </Canvas>
     </div>
   );

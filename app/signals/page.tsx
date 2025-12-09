@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { ParticleSphere } from "@/components/ParticleSphere";
-import { Heart, Battery, TestTube, Droplets, Leaf, Target, Lightbulb, Shield, Users, ArrowLeft, TrendingUp } from "lucide-react";
+import { Heart, Battery, TestTube, Droplets, Leaf, Target, Lightbulb, Shield, Users, ArrowLeft, TrendingUp, X, Linkedin, Link2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -21,52 +21,53 @@ const companies = [
     icon: Heart,
     name: "Inochi Care",
     tagline: "On a mission to make advanced wound care as common as a bandage.",
-    animation: "animate-heartbeat",
-    color: "text-rose-400",
-    bgColor: "bg-rose-500/10",
-    borderColor: "border-rose-500/30",
+    sector: "Healthcare",
+    stage: "Pre-Seed",
+    status: "Active",
+    year: "2025",
   },
   {
     icon: Droplets,
     name: "Cluix",
     tagline: "Building the Stripe of water governance.",
-    animation: "animate-droplet",
-    color: "text-cyan-400",
-    bgColor: "bg-cyan-500/10",
-    borderColor: "border-cyan-500/30",
+    sector: "Climate Tech",
+    stage: "Pre-Seed",
+    status: "Active",
+    year: "2025",
   },
   {
     icon: TestTube,
     name: "Pragmatech",
     tagline: "Making cervical cancer screening as accessible as a pregnancy test.",
-    animation: "animate-pulse-glow",
-    color: "text-purple-400",
-    bgColor: "bg-purple-500/10",
-    borderColor: "border-purple-500/30",
+    sector: "Healthcare",
+    stage: "Pre-Seed",
+    status: "Active",
+    year: "2025",
   },
   {
     icon: Battery,
     name: "Meine Electric",
     tagline: "Building the Duracell of India's clean energy future.",
-    animation: "animate-battery",
-    color: "text-amber-400",
-    bgColor: "bg-amber-500/10",
-    borderColor: "border-amber-500/30",
+    sector: "Clean Energy",
+    stage: "Pre-Seed",
+    status: "Active",
+    year: "2025",
   },
   {
     icon: Leaf,
     name: "Gocarin Industries",
     tagline: "Becoming the Coca-Cola of sustainable livestock feed.",
-    animation: "animate-leaf",
-    color: "text-emerald-400",
-    bgColor: "bg-emerald-500/10",
-    borderColor: "border-emerald-500/30",
+    sector: "AgriTech",
+    stage: "Pre-Seed",
+    status: "Active",
+    year: "2025",
   },
 ];
 
 export default function SignalsPage() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [hoveredSignal, setHoveredSignal] = useState<number | null>(null);
+  const [expandedCompany, setExpandedCompany] = useState<number | null>(null);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -133,7 +134,9 @@ export default function SignalsPage() {
             <div className="hidden lg:block relative w-[850px] h-[850px] mx-auto">
               {/* Particle Sphere inside circle */}
               <div className="absolute inset-[120px] pointer-events-none opacity-40 dark:opacity-60">
-                <ParticleSphere />
+                <ParticleSphere
+                  pulseAngle={hoveredSignal !== null ? (hoveredSignal * 72 - 90) * (Math.PI / 180) : null}
+                />
               </div>
 
               {/* Center text */}
@@ -212,79 +215,216 @@ export default function SignalsPage() {
         </div>
       </section>
 
-      {/* Edge Alpha Companies */}
+      {/* Edge Alpha Companies - Table Style Portfolio */}
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-              Edge Alpha <span className="font-light">Companies</span>
+          {/* Header */}
+          <div className="mb-12">
+            <h2 className="text-4xl lg:text-5xl font-extralight text-gray-900 dark:text-white mb-4">
+              Portfolio
             </h2>
-            <p className="text-xl font-extralight text-gray-500 dark:text-white/50 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
-              The frontier innovators we back
-            </p>
+            <div className="flex items-center gap-6">
+              <p className="text-lg font-extralight text-gray-500 dark:text-white/50">
+                2025 Edge Alpha Companies
+              </p>
+              <span className="text-sm font-light text-gray-400 dark:text-white/40">
+                {companies.length} companies
+              </span>
+            </div>
           </div>
 
-          <h3 className="text-2xl lg:text-3xl font-extralight text-gray-700 dark:text-white/80 mb-8 text-center fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "150ms" }}>
-            2025 Edge Alpha Companies
-          </h3>
+          {/* Table Header - Desktop */}
+          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-gray-200 dark:border-white/10 text-base font-light text-gray-400 dark:text-white/40">
+            <div className="col-span-5">Company</div>
+            <div className="col-span-2">Sector</div>
+            <div className="col-span-2">Partnered</div>
+            <div className="col-span-2">Status</div>
+            <div className="col-span-1"></div>
+          </div>
 
-          {/* Horizontal expanding cards */}
-          <div className="fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
-            <div className="hidden lg:flex gap-2 h-[300px]">
-              {companies.map((company, index) => {
-                const Icon = company.icon;
-                return (
+          {/* Company List */}
+          <div className="divide-y divide-gray-200 dark:divide-white/10">
+            {companies.map((company, index) => {
+              const Icon = company.icon;
+              const isExpanded = expandedCompany === index;
+              return (
+                <div key={index}>
+                  {/* Row */}
                   <div
-                    key={index}
-                    className="group relative flex-1 hover:flex-[3] transition-all duration-500 ease-out cursor-pointer glass-card overflow-hidden"
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-8 py-8 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-200"
+                    onClick={() => setExpandedCompany(isExpanded ? null : index)}
                   >
-                    {/* Background gradient on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 dark:from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                    {/* Content */}
-                    <div className="relative z-10 h-full p-6 flex flex-col items-center justify-center text-center">
-                      {/* Icon */}
-                      <div className={`p-4 ${company.bgColor} rounded-full border ${company.borderColor} group-hover:border-opacity-60 transition-all duration-300 mb-4`}>
-                        <Icon className={`w-8 h-8 ${company.color} ${company.animation}`} strokeWidth={1.5} />
+                    {/* Company Info */}
+                    <div className="lg:col-span-5 flex items-center gap-5">
+                      <div className="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center shrink-0">
+                        <Icon className="w-8 h-8 text-gray-600 dark:text-white/60" strokeWidth={1.5} />
                       </div>
+                      <div>
+                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+                          {company.name}
+                        </h3>
+                        <p className="text-base font-light text-gray-500 dark:text-white/50 lg:hidden mt-1">
+                          {company.sector} • {company.stage}
+                        </p>
+                      </div>
+                    </div>
 
-                      {/* Name and tagline */}
-                      <h3 className="text-2xl font-light text-gray-900 dark:text-white mb-2">{company.name}</h3>
-                      <p className="text-base font-extralight text-gray-500 dark:text-white/50 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                        {company.tagline}
-                      </p>
+                    {/* Sector - Desktop */}
+                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-gray-600 dark:text-white/60">
+                      {company.sector}
+                    </div>
+
+                    {/* Partnered - Desktop */}
+                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-gray-600 dark:text-white/60">
+                      {company.year} • {company.stage}
+                    </div>
+
+                    {/* Status - Desktop */}
+                    <div className="hidden lg:flex lg:col-span-2 items-center">
+                      <span className="flex items-center gap-2 text-base text-gray-600 dark:text-white/60">
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        {company.status}
+                      </span>
+                    </div>
+
+                    {/* Expand Icon */}
+                    <div className="hidden lg:flex lg:col-span-1 items-center justify-end">
+                      <svg
+                        className={`w-6 h-6 text-gray-400 dark:text-white/40 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                      </svg>
                     </div>
                   </div>
-                );
-              })}
-            </div>
 
-            {/* Mobile: Stacked cards */}
-            <div className="lg:hidden space-y-4">
-              {companies.map((company, index) => {
-                const Icon = company.icon;
-                return (
-                  <div
-                    key={index}
-                    className="glass-card p-6"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className={`p-3 ${company.bgColor} rounded-full border ${company.borderColor}`}>
-                        <Icon className={`w-7 h-7 ${company.color} ${company.animation}`} strokeWidth={1.5} />
-                      </div>
-                      <span className="text-4xl font-extralight text-gray-200 dark:text-white/10">0{index + 1}</span>
-                    </div>
-                    <h3 className="text-xl font-light text-gray-900 dark:text-white mb-2">{company.name}</h3>
-                    <p className="text-base font-extralight text-gray-500 dark:text-white/50">
-                      {company.tagline}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* Company Detail Modal/Drawer */}
+      {expandedCompany !== null && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
+            onClick={() => setExpandedCompany(null)}
+          />
+
+          {/* Drawer */}
+          <div className="fixed inset-y-0 right-0 w-full max-w-4xl bg-white dark:bg-gray-950 z-50 shadow-2xl overflow-y-auto transform transition-transform duration-500 ease-out">
+            {(() => {
+              const company = companies[expandedCompany];
+              const Icon = company.icon;
+              return (
+                <div className="min-h-full">
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setExpandedCompany(null)}
+                    className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors z-10"
+                  >
+                    <X className="w-8 h-8" strokeWidth={1} />
+                  </button>
+
+                  {/* Two Column Layout */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+                    {/* Left Column - Company Info */}
+                    <div className="p-10 lg:p-16 bg-gray-50 dark:bg-white/[0.02]">
+                      {/* Logo */}
+                      <div className="w-20 h-20 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center mb-10 shadow-sm border border-gray-200 dark:border-white/10">
+                        <Icon className="w-10 h-10 text-gray-700 dark:text-white/70" strokeWidth={1.5} />
+                      </div>
+
+                      {/* Tagline */}
+                      <h2 className="text-3xl lg:text-4xl font-light text-gray-900 dark:text-white leading-tight mb-8">
+                        {company.tagline}
+                      </h2>
+
+                      {/* Social Links */}
+                      <div className="flex items-center gap-4 mb-10">
+                        <a href="#" className="text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors">
+                          <Linkedin className="w-5 h-5" />
+                        </a>
+                        <a href="#" className="text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors">
+                          <Link2 className="w-5 h-5" />
+                        </a>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-lg font-light text-gray-600 dark:text-white/60 leading-relaxed">
+                        {company.name} is building transformative solutions in the {company.sector.toLowerCase()} space.
+                        As part of the InnoSphere Edge Alpha portfolio, they represent the next wave of innovation
+                        emerging from India's frontier technology ecosystem.
+                      </p>
+                    </div>
+
+                    {/* Right Column - Details */}
+                    <div className="p-10 lg:p-16 border-l border-gray-200 dark:border-white/10">
+                      <div className="space-y-10">
+                        {/* Domain */}
+                        <div>
+                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
+                            Domain
+                          </h4>
+                          <p className="text-xl text-gray-900 dark:text-white">
+                            {company.sector}
+                          </p>
+                        </div>
+
+                        {/* First Partnered */}
+                        <div>
+                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
+                            First Partnered
+                          </h4>
+                          <p className="text-xl text-gray-900 dark:text-white">
+                            {company.stage}
+                          </p>
+                        </div>
+
+                        {/* Current Status */}
+                        <div>
+                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
+                            Current Status
+                          </h4>
+                          <p className="text-xl text-gray-900 dark:text-white flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                            {company.status}
+                          </p>
+                        </div>
+
+                        {/* Year */}
+                        <div>
+                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
+                            Year
+                          </h4>
+                          <p className="text-xl text-gray-900 dark:text-white">
+                            {company.year}
+                          </p>
+                        </div>
+
+                        {/* Partner */}
+                        <div>
+                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
+                            Partner
+                          </h4>
+                          <p className="text-xl text-gray-900 dark:text-white">
+                            InnoSphere Ventures
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+        </>
+      )}
 
       <Footer />
     </div>

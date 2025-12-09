@@ -2,8 +2,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Target, MapPin, Users, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { StartupEcosystemChart } from "@/components/StartupEcosystemChart";
 
 export function WhyIndia() {
   return (
@@ -41,83 +41,47 @@ export function WhyIndia() {
         {/* Bento Grid Layout */}
         <div className="max-w-5xl mx-auto space-y-6">
 
-          {/* Row 1: Hero Stat - Full Width */}
+          {/* Combined Stats Row */}
           <div className="glass-card group hover:scale-[1.01] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
-            <div className="p-8 md:p-12 relative">
-              <div className="absolute top-8 left-8 md:top-12 md:left-12 p-3 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-all duration-300">
-                <Users className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={1.5} />
-              </div>
-              <div className="text-center pt-6 md:pt-2">
-                <AnimatedCounter target={165000} suffix="+" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 dark:text-white mb-2" />
-                <p className="text-base md:text-lg font-light text-gray-900 dark:text-white mb-1">Startups</p>
-                <p className="text-sm md:text-base font-extralight text-gray-500 dark:text-white/50 max-w-md mx-auto">
-                  Distributed innovation across every corner of India
-                </p>
+            <div className="p-6 md:p-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                {/* Startups */}
+                <div className="text-center md:text-left">
+                  <AnimatedCounter target={165000} suffix="+" className="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-1" />
+                  <p className="text-base font-light text-gray-900 dark:text-white">Startups</p>
+                  <p className="text-sm font-extralight text-gray-500 dark:text-white/50 mt-1">
+                    Distributed innovation across India
+                  </p>
+                </div>
+
+                {/* Divider - visible on md+ */}
+                <div className="hidden md:flex items-center justify-center">
+                  <div className="w-px h-20 bg-gray-200 dark:bg-white/10"></div>
+                </div>
+                {/* Mobile divider */}
+                <div className="md:hidden w-full h-px bg-gray-200 dark:bg-white/10"></div>
+
+                {/* Deep Tech + Job Growth */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <AnimatedCounter target={1000} suffix="+" className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-1" />
+                    <p className="text-xs md:text-sm font-extralight text-gray-500 dark:text-white/50">Deep tech unicorn potential</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-1">
+                      <AnimatedCounter target={55} suffix="×" />
+                    </div>
+                    <p className="text-xs md:text-sm font-extralight text-gray-500 dark:text-white/50">Job growth in frontier sectors</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Row 2: Two Secondary Stats - Side by Side */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Stat Card - Deep Tech Unicorns */}
-            <div className="glass-card group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
-              <div className="p-6 text-center">
-                <AnimatedCounter target={1000} suffix="+" className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-2" />
-                <p className="text-sm md:text-base font-extralight text-gray-600 dark:text-white/60">Deep tech unicorn potential</p>
-              </div>
-            </div>
-
-            {/* Stat Card - Job Growth */}
-            <div className="glass-card group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
-              <div className="p-6 text-center">
-                <div className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-2">
-                  <AnimatedCounter target={55} suffix="×" />
-                </div>
-                <p className="text-sm md:text-base font-extralight text-gray-600 dark:text-white/60">Job growth in frontier sectors</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Row 3: Content Cards - Side by Side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Content Card - Systemic Impact */}
-            <div className="glass-card group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
-              <div className="h-full p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="p-1.5 bg-gray-100 dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 w-fit group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-all duration-300">
-                    <Target className="w-5 h-5 text-gray-900 dark:text-white" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-lg md:text-xl font-light text-gray-900 dark:text-white">Systemic Impact</h3>
-                </div>
-                <p className="text-sm md:text-base font-extralight text-gray-600 dark:text-white/60 leading-relaxed mb-3">
-                  Every investment creates ripples across the innovation ecosystem.
-                </p>
-                <div className="space-y-1.5 text-sm font-extralight text-gray-500 dark:text-white/50">
-                  <div>R&D + IP generation</div>
-                  <div>High-quality job creation</div>
-                  <div>Economic growth acceleration</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Content Card - Homegrown Innovation */}
-            <div className="glass-card group hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
-              <div className="h-full p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="p-1.5 bg-gray-100 dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 w-fit group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-all duration-300">
-                    <MapPin className="w-5 h-5 text-gray-900 dark:text-white" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-lg md:text-xl font-light text-gray-900 dark:text-white">Homegrown Innovation</h3>
-                </div>
-                <p className="text-sm md:text-base font-extralight text-gray-600 dark:text-white/60 leading-relaxed mb-3">
-                  India's rise won't be outsourced. Innovation from every corner.
-                </p>
-                <div className="space-y-1.5 text-sm font-extralight text-gray-500 dark:text-white/50">
-                  <div>Tier 2/3 city breakthroughs</div>
-                  <div>IITs, ISRO, DRDO ecosystem</div>
-                  <div>World-class engineering at scale</div>
-                </div>
-              </div>
+          {/* Startup Ecosystem Chart - Full Width */}
+          <div className="glass-card group hover:scale-[1.01] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
+            <div className="p-6 md:p-8">
+              <StartupEcosystemChart />
             </div>
           </div>
 
