@@ -6,7 +6,6 @@ import {
   type JoinFormData,
   type MailingListData,
 } from "@/lib/supabase";
-import { sendMailingListWelcome, sendJoinConfirmation } from "@/lib/email";
 
 interface RequestBody {
   type: FormType;
@@ -42,12 +41,6 @@ export async function POST(request: NextRequest) {
           message: joinData.message,
         });
         if (error) throw error;
-        // Send confirmation email
-        await sendJoinConfirmation({
-          name: joinData.name,
-          email: joinData.email,
-          memberType: joinData.memberType,
-        });
         break;
       }
 
@@ -57,8 +50,6 @@ export async function POST(request: NextRequest) {
           email: mailingData.email,
         });
         if (error) throw error;
-        // Send welcome email
-        await sendMailingListWelcome(mailingData.email);
         break;
       }
 
