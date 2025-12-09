@@ -1,17 +1,29 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const FROM_EMAIL = "InnoSphere Ventures <noreply@innosphereventures.com>";
 
-export async function sendMailingListWelcome(email: string) {
+// Lazy initialization to avoid build-time errors when API key is not set
+let resend: Resend | null = null;
+
+function getResend(): Resend | null {
   if (!process.env.RESEND_API_KEY) {
+    return null;
+  }
+  if (!resend) {
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resend;
+}
+
+export async function sendMailingListWelcome(email: string) {
+  const client = getResend();
+  if (!client) {
     console.log("RESEND_API_KEY not configured, skipping email");
     return;
   }
 
   try {
-    await resend.emails.send({
+    await client.emails.send({
       from: FROM_EMAIL,
       to: email,
       subject: "Welcome to InnoSphere Ventures",
@@ -105,7 +117,8 @@ export async function sendJoinConfirmation(data: {
   email: string;
   memberType: string;
 }) {
-  if (!process.env.RESEND_API_KEY) {
+  const client = getResend();
+  if (!client) {
     console.log("RESEND_API_KEY not configured, skipping email");
     return;
   }
@@ -119,7 +132,7 @@ export async function sendJoinConfirmation(data: {
   const roleLabel = roleLabels[data.memberType] || data.memberType;
 
   try {
-    await resend.emails.send({
+    await client.emails.send({
       from: FROM_EMAIL,
       to: data.email,
       subject: "Thank You for Joining InnoSphere Ventures",
