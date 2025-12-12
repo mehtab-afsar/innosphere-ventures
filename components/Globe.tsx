@@ -85,7 +85,7 @@ export function Globe() {
       // Configure controls
       const controls = globeRef.current.controls();
       if (controls) {
-        controls.autoRotate = true;
+        controls.autoRotate = false;
         controls.autoRotateSpeed = 1.5; // Faster rotation
         controls.enableZoom = false;
       }
