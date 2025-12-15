@@ -122,7 +122,7 @@ export function Navigation() {
                 </div>
               </div>
             </div>
-            <a href="/#join" className={`${navLinkHover} transition-colors duration-200`}>Join</a>
+            <a href="/join" className={`${navLinkHover} transition-colors duration-200`}>Join</a>
             <div className="relative group">
               <button className={`flex items-center gap-1 ${navLinkHover} transition-colors duration-200`}>
                 About
@@ -202,7 +202,7 @@ export function Navigation() {
                 <a href="/signals" className={`block ${navLinkHover} transition-colors`}>Market Signals</a>
               </div>
             </div>
-            <a href="/#join" className={`block ${navLinkHover} transition-colors`}>Join</a>
+            <a href="/join" className={`block ${navLinkHover} transition-colors`}>Join</a>
             <div>
               <button
                 onClick={() => setAboutOpen(!aboutOpen)}

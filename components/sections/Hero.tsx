@@ -55,16 +55,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Centered Edge Alpha Statement */}
-      <div className="relative md:absolute md:bottom-6 lg:bottom-8 xl:bottom-10 left-0 right-0 text-center px-4 sm:px-6 mt-12 md:mt-0 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-extralight text-gray-900 dark:text-white leading-relaxed">
-          Powered by <span className="font-medium">Edge Alpha</span> —
-          <br className="sm:hidden" />
-          <span className="hidden sm:inline"> </span>the signal engine
-          <br className="hidden lg:block" />
-          <span className="lg:hidden"> </span>behind India's next innovation frontier.
-        </p>
-      </div>
     </section>
   );
 }

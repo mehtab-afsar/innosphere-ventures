@@ -7,8 +7,6 @@ import { PortfolioCarousel } from "@/components/sections/PortfolioCarousel";
 import { WhyIndia } from "@/components/sections/WhyIndia";
 import { WhyNow } from "@/components/sections/WhyNow";
 import { WhyUs } from "@/components/sections/WhyUs";
-import { OurCollective } from "@/components/sections/OurCollective";
-import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
@@ -23,9 +21,6 @@ export default function Home() {
       <WhyNow />
       <Separator className="bg-gray-200 dark:bg-white/10" />
       <WhyUs />
-      <Separator className="bg-gray-200 dark:bg-white/10" />
-      <OurCollective />
-      <CTA />
       <Footer />
     </div>
   );

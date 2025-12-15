@@ -17,19 +17,19 @@ const cards: CardData[] = [
     icon: TrendingUp,
     number: "01",
     title: "Ecosystem Acceleration",
-    description: "India's innovation ecosystem is accelerating faster than any major economy: frontier job growth is expanding 55×, deep-tech capacity is surging, and more than 1,000 potential deep-tech unicorns are emerging across the country."
+    description: "India's innovation ecosystem has moved beyond experimentation. Capabilities are scaling across sectors, regions, and institutions. This is no longer emergence. It is acceleration."
   },
   {
     icon: Globe,
     number: "02",
     title: "Geopolitical Realignment",
-    description: "A global post-China realignment is underway, with international capital actively seeking trusted, democratic innovation hubs — and India is rapidly becoming the most strategic destination."
+    description: "Global capital is reallocating toward trusted, democratic innovation hubs. India is becoming a strategic center of gravity. Not by chance — by necessity."
   },
   {
     icon: Users,
     number: "03",
     title: "Demographic Supercycle",
-    description: "India now holds the world's largest young tech workforce, with Tier 2/3 founders rising at historic speed — a once-in-a-century demographic window that will not repeat."
+    description: "India's young, technical workforce is entering its most productive years. A generation of builders is rising — across Tier 1, 2, and 3 cities. This window will not repeat."
   }
 ];
 
@@ -93,13 +93,24 @@ export function WhyNow() {
     <section id="why-now" className="relative py-24 px-6 lg:px-12 overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
             Why Now
           </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight text-gray-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight text-gray-900 dark:text-white mb-6">
             A Once-in-a-Generation Opportunity
           </h2>
+          <div className="space-y-1 max-w-xl mx-auto">
+            <p className="text-base sm:text-lg font-extralight text-gray-600 dark:text-white/60">
+              The foundations are in place.
+            </p>
+            <p className="text-base sm:text-lg font-extralight text-gray-600 dark:text-white/60">
+              The system is forming.
+            </p>
+            <p className="text-base sm:text-lg font-light text-gray-900 dark:text-white">
+              What comes next will compound for decades.
+            </p>
+          </div>
         </div>
 
         {/* Scroll Cards - Zig Zag Layout */}

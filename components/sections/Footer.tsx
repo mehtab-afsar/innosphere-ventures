@@ -1,68 +1,134 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import Link from "next/link";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
+import type { MailingListData } from "@/lib/supabase";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const { isSubmitting, submitted, submit } = useFormSubmit<MailingListData>("mailing-list");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    await submit({ email });
+    setEmail("");
+  };
+
   return (
-    <footer className="relative py-16 px-6 lg:px-12 overflow-hidden border-t border-gray-200 dark:border-white/10">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-50 dark:from-white/[0.02] to-transparent pointer-events-none" />
+    <footer className="bg-gray-950 text-white">
+      {/* Main Footer Content */}
+      <div className="px-6 lg:px-12 py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left Side - Brand & Headline */}
+            <div>
+              <Link href="/" className="inline-block mb-4">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-wider">
+                  InnoSphere <span className="font-normal">Ventures</span>
+                </span>
+              </Link>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col items-center text-center">
-          {/* Brand */}
-          <div className="mb-8">
-            <Link href="/" className="group">
-              <span className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 dark:text-white tracking-wide group-hover:opacity-80 transition-opacity">
-                InnoSphere <span className="font-normal">Ventures</span>
-              </span>
-            </Link>
-            <p className="mt-4 font-extralight text-gray-500 dark:text-white/50 text-lg lg:text-xl">
-              Empowering innovators. Elevating futures.
+              <p className="text-base sm:text-lg font-extralight text-white/60 leading-relaxed mb-6 max-w-md">
+                Empowering innovators. Elevating futures.
+              </p>
+
+              <Button
+                size="sm"
+                className="bg-white text-black hover:bg-white/90 font-light text-sm rounded-full px-6"
+                asChild
+              >
+                <Link href="/join">
+                  Join Us
+                </Link>
+              </Button>
+            </div>
+
+            {/* Right Side - Mailing List */}
+            <div>
+              <h3 className="text-sm font-medium tracking-widest uppercase text-white/40 mb-3">
+                Join Our Mailing List
+              </h3>
+              <p className="text-sm font-extralight text-white/60 mb-5 max-w-md">
+                First access to insights, events, and opportunities.
+              </p>
+
+              {submitted ? (
+                <div className="flex items-center gap-2 text-green-400">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="font-light">You&apos;re on the list!</span>
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="flex gap-3 max-w-md">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                    className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-full font-extralight text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-200"
+                  />
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-white text-black hover:bg-white/90 font-light text-sm px-5 py-2.5 rounded-full"
+                  >
+                    {isSubmitting ? "..." : "Subscribe"}
+                  </Button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10 px-6 lg:px-12 py-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Left - Copyright */}
+            <p className="text-sm font-extralight text-white/40">
+              © 2025 InnoSphere Ventures
             </p>
-          </div>
 
-          {/* Navigation Links */}
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 mb-10">
-            <Link
-              href="/join"
-              className="font-light text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-lg lg:text-xl tracking-wide"
-            >
-              Join
-            </Link>
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-white/20" />
-            <a
-              href="https://www.linkedin.com/company/innosphere-vc/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-light text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-lg lg:text-xl tracking-wide"
-            >
-              LinkedIn
-            </a>
-          </div>
-
-          {/* Decorative element */}
-          <div className="flex items-center gap-4 mb-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent w-24" />
-            <div className="w-2 h-2 rounded-full bg-gray-200 dark:bg-white/10" />
-            <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent w-24" />
-          </div>
-
-          {/* Bottom row */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-base font-extralight text-gray-400 dark:text-white/40">
-            <span>© 2025 InnoSphere Ventures</span>
+            {/* Center - Links */}
             <div className="flex items-center gap-6">
               <Link
+                href="/join"
+                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
+              >
+                Join
+              </Link>
+              <a
+                href="https://www.linkedin.com/company/innosphere-vc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
+              >
+                LinkedIn
+              </a>
+              <Link
                 href="/privacy"
-                className="hover:text-gray-600 dark:hover:text-white/60 transition-colors duration-200"
+                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
               >
                 Privacy
               </Link>
               <Link
                 href="/terms"
-                className="hover:text-gray-600 dark:hover:text-white/60 transition-colors duration-200"
+                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
               >
                 Terms
               </Link>
             </div>
+
+            {/* Right - Tagline */}
+            <p className="text-sm font-extralight text-white/40 hidden lg:block">
+              Empowering innovators. Elevating futures.
+            </p>
           </div>
         </div>
       </div>

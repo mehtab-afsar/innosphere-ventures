@@ -84,9 +84,12 @@ export function StartupEcosystemChart() {
   return (
     <div ref={chartRef} className="w-full">
       {/* Main Title */}
-      <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-6">
-        USD 1tn opportunity: A thriving startup ecosystem
+      <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 text-center">
+        USD 1tn Opportunity — When Innovation Becomes GDP
       </h3>
+      <p className="text-sm md:text-base font-extralight text-gray-500 dark:text-white/50 mb-6 max-w-3xl mx-auto text-center">
+        This USD 1tn isn't paper value — it's real GDP. It's the economic output created as technology scales across manufacturing, healthcare, finance, and services. Startups are simply the vehicles that carry innovation into the real economy.
+      </p>
 
       {/* Two Charts Side by Side */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
@@ -332,42 +335,18 @@ export function StartupEcosystemChart() {
             transitionDelay: "300ms",
           }}
         >
-          <div className="p-4 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
-            <div className="flex items-start justify-between gap-4">
-              {/* Left side */}
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-6 h-6 rounded-md bg-gray-900 dark:bg-white flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white dark:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </div>
-                  <span className="text-xs font-medium tracking-wide uppercase text-gray-400 dark:text-white/40">Employment</span>
-                </div>
-                <div className="flex items-baseline gap-3">
-                  <span className="text-3xl font-extralight text-gray-900 dark:text-white">1.3mn</span>
-                  <span className="text-xs text-gray-400 dark:text-white/40">jobs created</span>
-                </div>
+          <div className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-gray-900 dark:bg-white flex items-center justify-center">
+                <svg className="w-4 h-4 text-white dark:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
               </div>
-              {/* Right side - stats */}
-              <div className="flex gap-4 text-right">
-                <div>
-                  <div className="text-lg font-light text-gray-900 dark:text-white">390k</div>
-                  <div className="text-[10px] text-gray-400 dark:text-white/40">in 2023</div>
-                </div>
-                <div>
-                  <div className="text-lg font-light text-gray-900 dark:text-white">50mn</div>
-                  <div className="text-[10px] text-gray-400 dark:text-white/40">by 2030</div>
-                </div>
-              </div>
+              <span className="text-sm font-medium tracking-wide uppercase text-gray-400 dark:text-white/40">Employment</span>
             </div>
-            {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 mt-3">
-              {["5mn direct", "10mn gig", "35mn indirect"].map((tag, i) => (
-                <span key={i} className="px-2 py-1 text-[10px] text-gray-500 dark:text-white/50 bg-white dark:bg-white/5 rounded-full border border-gray-200 dark:border-white/10">
-                  {tag}
-                </span>
-              ))}
+            <div className="flex items-baseline gap-2">
+              <span className="text-4xl font-extralight text-gray-900 dark:text-white">50mn</span>
+              <span className="text-base text-gray-500 dark:text-white/50">by 2030</span>
             </div>
           </div>
         </div>
@@ -382,42 +361,18 @@ export function StartupEcosystemChart() {
             transitionDelay: "500ms",
           }}
         >
-          <div className="p-4 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
-            <div className="flex items-start justify-between gap-4">
-              {/* Left side */}
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-6 h-6 rounded-md bg-gray-900 dark:bg-white flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white dark:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                  </div>
-                  <span className="text-xs font-medium tracking-wide uppercase text-gray-400 dark:text-white/40">GDP Impact</span>
-                </div>
-                <div className="flex items-baseline gap-3">
-                  <span className="text-3xl font-extralight text-gray-900 dark:text-white">$1tn</span>
-                  <span className="text-xs text-gray-400 dark:text-white/40">by 2030</span>
-                </div>
+          <div className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-gray-900 dark:bg-white flex items-center justify-center">
+                <svg className="w-4 h-4 text-white dark:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
               </div>
-              {/* Right side - stats */}
-              <div className="flex gap-4 text-right">
-                <div>
-                  <div className="text-lg font-light text-gray-900 dark:text-white">$140bn</div>
-                  <div className="text-[10px] text-gray-400 dark:text-white/40">FY23 value</div>
-                </div>
-                <div>
-                  <div className="text-lg font-light text-gray-900 dark:text-white">10-19%</div>
-                  <div className="text-[10px] text-gray-400 dark:text-white/40">growth</div>
-                </div>
-              </div>
+              <span className="text-sm font-medium tracking-wide uppercase text-gray-400 dark:text-white/40">GDP Impact</span>
             </div>
-            {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 mt-3">
-              {["IT", "Healthcare", "Fintech", "Retail", "Media"].map((tag, i) => (
-                <span key={i} className="px-2 py-1 text-[10px] text-gray-500 dark:text-white/50 bg-white dark:bg-white/5 rounded-full border border-gray-200 dark:border-white/10">
-                  {tag}
-                </span>
-              ))}
+            <div className="flex items-baseline gap-2">
+              <span className="text-4xl font-extralight text-gray-900 dark:text-white">USD 1tn</span>
+              <span className="text-base text-gray-500 dark:text-white/50">in economic value</span>
             </div>
           </div>
         </div>

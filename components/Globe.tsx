@@ -32,9 +32,13 @@ const INDIA_RINGS = [
   },
 ];
 
+// India point of view for snap-back
+const INDIA_POV = { lat: 20.5937, lng: 78.9629, altitude: 1.8 };
+
 export function Globe() {
   const globeRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const snapBackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { timeOfDay } = useTimeOfDay();
   const [GlobeComponent, setGlobeComponent] = useState<any>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -79,15 +83,42 @@ export function Globe() {
   // Set initial point of view to India and configure globe
   useEffect(() => {
     if (globeRef.current) {
-      // Focus on India - zoomed in more (altitude 1.8)
-      globeRef.current.pointOfView({ lat: 20.5937, lng: 78.9629, altitude: 1.8 }, 1000);
+      // Focus on India
+      globeRef.current.pointOfView(INDIA_POV, 1000);
 
       // Configure controls
       const controls = globeRef.current.controls();
       if (controls) {
         controls.autoRotate = false;
-        controls.autoRotateSpeed = 1.5; // Faster rotation
         controls.enableZoom = false;
+
+        // Snap back to India after user stops interacting
+        const handleInteractionEnd = () => {
+          if (snapBackTimeoutRef.current) {
+            clearTimeout(snapBackTimeoutRef.current);
+          }
+          snapBackTimeoutRef.current = setTimeout(() => {
+            globeRef.current?.pointOfView(INDIA_POV, 1000);
+          }, 1500);
+        };
+
+        // Cancel snap-back when user starts interacting
+        const handleInteractionStart = () => {
+          if (snapBackTimeoutRef.current) {
+            clearTimeout(snapBackTimeoutRef.current);
+          }
+        };
+
+        controls.addEventListener('end', handleInteractionEnd);
+        controls.addEventListener('start', handleInteractionStart);
+
+        return () => {
+          controls.removeEventListener('end', handleInteractionEnd);
+          controls.removeEventListener('start', handleInteractionStart);
+          if (snapBackTimeoutRef.current) {
+            clearTimeout(snapBackTimeoutRef.current);
+          }
+        };
       }
     }
   }, [GlobeComponent, dimensions]);
