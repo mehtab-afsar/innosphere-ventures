@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-// Dynamically import Globe to avoid SSR issues with Three.js
-const Globe = dynamic(() => import("@/components/Globe").then(mod => ({ default: mod.Globe })), {
+// Dynamically import ParticleSphere to avoid SSR issues with Three.js
+const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full flex items-center justify-center">
@@ -16,13 +16,15 @@ const Globe = dynamic(() => import("@/components/Globe").then(mod => ({ default:
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 overflow-hidden bg-gray-50 dark:bg-black py-24 md:py-0">
-      {/* 3D Globe Background - Hidden on mobile, visible on tablet+ */}
-      <div className="hidden md:block absolute top-0 right-0 w-[70%] md:w-[65%] lg:w-[60%] h-[60%] md:h-[75%] lg:h-[85%]">
-        <Globe />
+      {/* 3D Particle Sphere Background - Hidden on mobile, visible on tablet+ */}
+      <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 w-[60%] md:w-[55%] lg:w-[50%] h-[70%] md:h-[80%] lg:h-[90%]">
+        <ParticleSphere />
         {/* Gradient fade on left edge */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-50 dark:from-black to-transparent w-[30%] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-50 dark:from-black to-transparent w-[40%] pointer-events-none" />
         {/* Gradient fade on bottom edge */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 dark:from-black to-transparent h-[30%] top-auto bottom-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 dark:from-black to-transparent h-[25%] top-auto bottom-0 pointer-events-none" />
+        {/* Gradient fade on top edge */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 dark:from-black to-transparent h-[25%] pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">

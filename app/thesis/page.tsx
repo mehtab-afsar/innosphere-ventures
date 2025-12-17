@@ -4,14 +4,25 @@ import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Target, Globe, Users, TrendingUp, Sparkles, GraduationCap, Sprout, DollarSign, Clock } from "lucide-react";
+import { ArrowRight, ArrowLeft, Target, Globe as GlobeIcon, Users, TrendingUp, Sparkles, GraduationCap, Sprout, DollarSign, Clock } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useState } from "react";
+import dynamic from "next/dynamic";
+
+// Dynamically import Globe to avoid SSR issues with Three.js
+const Globe = dynamic(() => import("@/components/Globe").then(mod => ({ default: mod.Globe })), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-16 h-16 border-2 border-gray-300 dark:border-gray-600 border-t-transparent rounded-full animate-spin" />
+    </div>
+  ),
+});
 
 const thesisPillars = [
   {
-    icon: Globe,
+    icon: GlobeIcon,
     title: "India's Innovation Frontier",
     description: "India is transitioning from outsourcing to innovation leadership. With 165,000+ startups, a 55× growth in frontier jobs, and 1,000+ potential deep-tech unicorns, the opportunity is systemic.",
   },
@@ -52,16 +63,6 @@ const pillarColors = [
   { bg: "bg-amber-500/10", border: "border-amber-500/30", text: "text-amber-400", glow: "node-glow-amber" },
   { bg: "bg-emerald-500/10", border: "border-emerald-500/30", text: "text-emerald-400", glow: "node-glow-emerald" },
   { bg: "bg-rose-500/10", border: "border-rose-500/30", text: "text-rose-400", glow: "node-glow-rose" },
-];
-
-// Mountain positions: center at peak, descending on both sides
-// Adjusted to align icon centers with the steeper SVG lines
-const mountainPositions = [
-  { left: "2%", top: "66%", tooltipSide: "top" },      // Far left, lowest (India's Innovation Frontier) - moved up
-  { left: "24%", top: "32%", tooltipSide: "top" },     // Left mid (Deep Tech Focus) - moved up
-  { left: "37%", top: "-5%", tooltipSide: "bottom", isCenter: true },  // Center peak (Distributed Innovation) - moved up and left
-  { left: "66%", top: "30%", tooltipSide: "top" },     // Right mid (Edge Alpha Methodology) - moved up and left
-  { left: "86%", top: "66%", tooltipSide: "top" },     // Far right, lowest (True Learning Community) - moved up and left
 ];
 
 const investmentMetrics = [
@@ -198,114 +199,89 @@ function ThesisPillarsSection() {
           </p>
         </div>
 
-        {/* Mountain Design - Desktop */}
-        <div className="hidden lg:block relative h-[450px]">
-          {/* Connecting lines between nodes - lines stop at circle edges */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 450" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(34, 211, 238, 0.9)" />
-                <stop offset="100%" stopColor="rgba(168, 85, 247, 0.9)" />
-              </linearGradient>
-              <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(168, 85, 247, 0.9)" />
-                <stop offset="100%" stopColor="rgba(251, 191, 36, 0.9)" />
-              </linearGradient>
-              <linearGradient id="lineGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(251, 191, 36, 0.9)" />
-                <stop offset="100%" stopColor="rgba(52, 211, 153, 0.9)" />
-              </linearGradient>
-              <linearGradient id="lineGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(52, 211, 153, 0.9)" />
-                <stop offset="100%" stopColor="rgba(251, 113, 133, 0.9)" />
-              </linearGradient>
-            </defs>
-            {/* Line 1: Node 1 to Node 2 - adjusted to stop at circle edges (radius ~40px) */}
-            <path
-              d="M 110 318 L 252 198"
-              stroke="url(#lineGradient1)"
-              strokeWidth="3"
-              fill="none"
-            />
-            {/* Line 2: Node 2 to Node 3 - adjusted to stop at circle edges */}
-            <path
-              d="M 302 156 L 394 54"
-              stroke="url(#lineGradient2)"
-              strokeWidth="3"
-              fill="none"
-            />
-            {/* Line 3: Node 3 to Node 4 - adjusted to stop at circle edges */}
-            <path
-              d="M 448 54 L 692 158"
-              stroke="url(#lineGradient3)"
-              strokeWidth="3"
-              fill="none"
-            />
-            {/* Line 4: Node 4 to Node 5 - adjusted to stop at circle edges */}
-            <path
-              d="M 748 200 L 890 318"
-              stroke="url(#lineGradient4)"
-              strokeWidth="3"
-              fill="none"
-            />
-          </svg>
+        {/* Circular Globe Design - Desktop */}
+        <div className="hidden lg:block relative w-[850px] h-[850px] mx-auto">
+          {/* Globe in center */}
+          <div className="absolute inset-[120px] rounded-full overflow-hidden z-10">
+            <Globe />
+          </div>
 
-          {/* Mountain nodes - center at peak, descending on both sides */}
+          {/* Circle ring - matches radius of pillars */}
+          <div className="absolute inset-[45px] rounded-full border border-gray-200 dark:border-white/10 pointer-events-none"></div>
+
+          {/* Thesis pillars around the circle */}
           {thesisPillars.map((pillar, index) => {
             const Icon = pillar.icon;
-            const pos = mountainPositions[index];
+            const angle = (index * 72 - 90) * (Math.PI / 180); // 5 items, 72° apart, starting from top
+            const radius = 340;
+
+            // Position offsets for fine-tuning each pillar
+            const offsets = [
+              { x: 0, y: -20 },    // India's Innovation Frontier - move up
+              { x: 30, y: 0 },     // Deep Tech Focus - move right
+              { x: 0, y: 50 },     // Distributed Innovation - move down more
+              { x: 0, y: 50 },     // Edge Alpha Methodology - move down more
+              { x: -30, y: 0 },    // True Learning Community - move left
+            ];
+
+            const x = Math.cos(angle) * radius + offsets[index].x;
+            const y = Math.sin(angle) * radius + offsets[index].y;
             const colors = pillarColors[index];
             const isHovered = hoveredPillar === index;
+
+            // Determine tooltip side based on position
+            const isOnLeftSide = x < -50;
+            const isOnRightSide = x > 50 || index === 0; // Force India's Innovation Frontier tooltip to right
+            const isAtTop = y < -100 && index !== 0; // Don't use top positioning for index 0
 
             return (
               <div
                 key={index}
-                className="absolute mountain-node"
+                className={`absolute w-[220px] text-center transition-all duration-500 cursor-pointer mountain-node ${isHovered ? "scale-105 z-20" : "z-10"}`}
                 style={{
-                  left: pos.left,
-                  top: pos.top,
-                  transform: "translate(-50%, -50%)",
+                  left: `calc(50% + ${x}px - 110px)`,
+                  top: `calc(50% + ${y}px - 70px)`,
                   animationDelay: `${index * 0.2}s`,
                 }}
                 onMouseEnter={() => setHoveredPillar(index)}
                 onMouseLeave={() => setHoveredPillar(null)}
               >
-                <div className="flex flex-col items-center text-center cursor-pointer group">
-                  <div className={`p-5 ${colors.bg} rounded-full border ${colors.border} mb-3 transition-all duration-300 ${isHovered ? "scale-110" : ""} ${colors.glow}`}>
-                    <Icon className={`w-10 h-10 ${colors.text}`} strokeWidth={1.5} />
-                  </div>
-                  <h3 className={`text-base font-medium text-gray-900 dark:text-white leading-tight max-w-[140px] transition-all duration-300 ${isHovered ? "text-gray-900 dark:text-white" : ""}`}>
-                    {pillar.title}
-                  </h3>
+                {/* Icon circle with glow */}
+                <div className={`p-5 ${colors.bg} rounded-full border ${colors.border} w-fit mx-auto mb-4 transition-all duration-300 ${isHovered ? "scale-110" : ""} ${colors.glow}`}>
+                  <Icon className={`w-10 h-10 ${colors.text}`} strokeWidth={1.5} />
                 </div>
+                <h3 className="text-base font-medium text-gray-900 dark:text-white mb-2 leading-tight">{pillar.title}</h3>
+                <p className={`text-sm font-extralight text-gray-500 dark:text-white/50 leading-snug transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}>
+                  {pillar.description.slice(0, 60)}...
+                </p>
 
-                {/* Hover card - big designed card */}
+                {/* Hover tooltip - appears on appropriate side */}
                 <div
-                  className={`absolute left-1/2 -translate-x-1/2 w-[360px] transition-all duration-500 ease-out z-50 ${
-                    isHovered ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"
-                  } ${pos.tooltipSide === "top" ? "bottom-full mb-6" : "top-full mt-6"}`}
+                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] transition-all duration-300 ${
+                    isHovered ? "opacity-100 visible" : "opacity-0 invisible"
+                  } ${isOnLeftSide ? "right-full mr-8 text-right" : isOnRightSide ? "left-full ml-8 text-left" : isAtTop ? "top-full mt-8 left-1/2 -translate-x-1/2 text-center" : "bottom-full mb-8 left-1/2 -translate-x-1/2 text-center"}`}
                 >
                   <div className={`relative overflow-hidden rounded-2xl border ${colors.border} bg-gradient-to-br from-white/95 via-gray-50/90 to-white/95 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-black/95 backdrop-blur-xl shadow-2xl`}>
                     {/* Glow effect at top */}
                     <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${colors.text === "text-cyan-400" ? "from-cyan-500 via-cyan-400 to-cyan-500" : colors.text === "text-purple-400" ? "from-purple-500 via-purple-400 to-purple-500" : colors.text === "text-amber-400" ? "from-amber-500 via-amber-400 to-amber-500" : colors.text === "text-emerald-400" ? "from-emerald-500 via-emerald-400 to-emerald-500" : "from-rose-500 via-rose-400 to-rose-500"}`}></div>
 
-                    <div className="p-6">
+                    <div className="p-5">
                       {/* Header with icon and title */}
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className={`p-3 ${colors.bg} rounded-xl border ${colors.border}`}>
-                          <Icon className={`w-6 h-6 ${colors.text}`} strokeWidth={1.5} />
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className={`p-2 ${colors.bg} rounded-xl border ${colors.border}`}>
+                          <Icon className={`w-5 h-5 ${colors.text}`} strokeWidth={1.5} />
                         </div>
-                        <h4 className={`text-xl font-medium ${colors.text}`}>{pillar.title}</h4>
+                        <h4 className={`text-lg font-medium ${colors.text}`}>{pillar.title}</h4>
                       </div>
 
                       {/* Description */}
-                      <p className="text-base font-light text-gray-700 dark:text-white/80 leading-relaxed">
+                      <p className="text-sm font-light text-gray-700 dark:text-white/80 leading-relaxed text-left">
                         {pillar.description}
                       </p>
 
                       {/* Decorative bottom element */}
-                      <div className="mt-5 pt-4 border-t border-gray-200 dark:border-white/10 flex items-center justify-between">
-                        <span className="text-xs font-light text-gray-400 dark:text-white/40 uppercase tracking-wider">Thesis Pillar {index + 1}</span>
+                      <div className="mt-4 pt-3 border-t border-gray-200 dark:border-white/10 flex items-center justify-between">
+                        <span className="text-xs font-light text-gray-400 dark:text-white/40 uppercase tracking-wider">Pillar {index + 1}</span>
                         <div className={`w-2 h-2 rounded-full ${colors.bg} ${colors.border} border`}></div>
                       </div>
                     </div>

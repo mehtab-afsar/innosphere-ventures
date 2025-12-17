@@ -165,7 +165,7 @@ export function Globe() {
   }
 
   return (
-    <div ref={containerRef} className="w-full h-full" style={{ background: getBackgroundColor() }}>
+    <div ref={containerRef} className="w-full h-full" style={{ background: "transparent" }}>
       {dimensions.width > 0 && dimensions.height > 0 && (
         <GlobeComponent
           ref={globeRef}

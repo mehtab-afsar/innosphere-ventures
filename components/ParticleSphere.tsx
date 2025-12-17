@@ -34,23 +34,23 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Color gradient - cyan to purple to rose
+      // Color gradient - cyan to purple to rose (darker for light mode visibility)
       const t = i / count;
       if (t < 0.33) {
-        // Cyan
-        colors[i * 3] = 0.4 + Math.random() * 0.2;
-        colors[i * 3 + 1] = 0.8 + Math.random() * 0.2;
-        colors[i * 3 + 2] = 1;
+        // Cyan - darker
+        colors[i * 3] = 0.1 + Math.random() * 0.15;
+        colors[i * 3 + 1] = 0.5 + Math.random() * 0.2;
+        colors[i * 3 + 2] = 0.7 + Math.random() * 0.2;
       } else if (t < 0.66) {
-        // Purple
-        colors[i * 3] = 0.6 + Math.random() * 0.2;
-        colors[i * 3 + 1] = 0.4 + Math.random() * 0.2;
-        colors[i * 3 + 2] = 0.9 + Math.random() * 0.1;
+        // Purple - darker
+        colors[i * 3] = 0.4 + Math.random() * 0.2;
+        colors[i * 3 + 1] = 0.2 + Math.random() * 0.15;
+        colors[i * 3 + 2] = 0.6 + Math.random() * 0.2;
       } else {
-        // Rose/Amber
-        colors[i * 3] = 0.9 + Math.random() * 0.1;
-        colors[i * 3 + 1] = 0.4 + Math.random() * 0.3;
-        colors[i * 3 + 2] = 0.4 + Math.random() * 0.2;
+        // Rose/Amber - darker
+        colors[i * 3] = 0.7 + Math.random() * 0.2;
+        colors[i * 3 + 1] = 0.25 + Math.random() * 0.2;
+        colors[i * 3 + 2] = 0.3 + Math.random() * 0.15;
       }
     }
 
@@ -72,12 +72,12 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
   // Create material
   const material = useMemo(() => {
     return new THREE.PointsMaterial({
-      size: 0.035,
+      size: 0.04,
       vertexColors: true,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.9,
       sizeAttenuation: true,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending,
       depthWrite: false,
     });
   }, []);
@@ -159,12 +159,12 @@ export function ParticleSphere({ className = "", pulseAngle = null }: ParticleSp
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 60 }}
+        camera={{ position: [0, 0, 4.2], fov: 60 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
       >
         <ambientLight intensity={0.2} />
-        <Particles count={3500} radius={1.8} pulseAngle={pulseAngle} />
+        <Particles count={4000} radius={2.2} pulseAngle={pulseAngle} />
       </Canvas>
     </div>
   );
