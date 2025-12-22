@@ -10,8 +10,8 @@ import Link from "next/link";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-// Dynamically import Globe to avoid SSR issues with Three.js
-const Globe = dynamic(() => import("@/components/Globe").then(mod => ({ default: mod.Globe })), {
+// Dynamically import ParticleSphere to avoid SSR issues with Three.js
+const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full flex items-center justify-center">
@@ -199,11 +199,11 @@ function ThesisPillarsSection() {
           </p>
         </div>
 
-        {/* Circular Globe Design - Desktop */}
+        {/* Circular Particle Sphere Design - Desktop */}
         <div className="hidden lg:block relative w-[850px] h-[850px] mx-auto">
-          {/* Globe in center */}
-          <div className="absolute inset-[120px] rounded-full overflow-hidden z-10">
-            <Globe />
+          {/* Particle Sphere in center */}
+          <div className="absolute inset-[120px] pointer-events-none opacity-40 dark:opacity-60">
+            <ParticleSphere />
           </div>
 
           {/* Circle ring - matches radius of pillars */}

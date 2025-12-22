@@ -124,7 +124,7 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
       const basePulse = Math.sin(time * 1.5 + i * 0.02) * 0.02;
 
       // Uniform sphere expansion - entire sphere expands when hovered
-      const expansion = 0.15 * pulsePhaseRef.current;
+      const expansion = 0.08 * pulsePhaseRef.current;
 
       const factor = 1 + noise + basePulse + expansion;
 
@@ -153,9 +153,10 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
 interface ParticleSphereProps {
   className?: string;
   pulseAngle?: number | null;
+  scale?: number;
 }
 
-export function ParticleSphere({ className = "", pulseAngle = null }: ParticleSphereProps) {
+export function ParticleSphere({ className = "", pulseAngle = null, scale = 1.0 }: ParticleSphereProps) {
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
@@ -164,7 +165,7 @@ export function ParticleSphere({ className = "", pulseAngle = null }: ParticleSp
         style={{ background: "transparent" }}
       >
         <ambientLight intensity={0.2} />
-        <Particles count={4000} radius={2.2} pulseAngle={pulseAngle} />
+        <Particles count={6000} radius={1.76} pulseAngle={pulseAngle} />
       </Canvas>
     </div>
   );
