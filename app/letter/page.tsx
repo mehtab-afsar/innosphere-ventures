@@ -173,28 +173,6 @@ export default function LetterPage() {
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-8">
-            <Button
-              size="lg"
-              className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 font-light text-base group transition-all duration-300"
-              asChild
-            >
-              <Link href="/join">
-                Submit Your Pitch
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-gray-300 dark:border-white/30 text-gray-900 dark:text-white font-light text-base hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
-              asChild
-            >
-              <Link href="/thesis">Read Our Thesis</Link>
-            </Button>
-          </div>
-
         </div>
       </section>
 

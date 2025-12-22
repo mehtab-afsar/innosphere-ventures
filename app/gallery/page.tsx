@@ -6,37 +6,44 @@ import { Footer } from "@/components/sections/Footer";
 import { ArrowLeft, Play } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import Image from "next/image";
 
 const galleryImages = [
   {
-    title: "Startup Summit 2024",
-    description: "Our annual gathering of founders and investors",
-    category: "Events",
+    title: "Inochi Care",
+    description: "Advanced wound care innovation",
+    category: "Portfolio",
+    image: "/gallery/Inochi.JPG",
   },
   {
-    title: "Portfolio Day",
-    description: "Celebrating milestones with our portfolio companies",
-    category: "Events",
+    title: "Pragmatech",
+    description: "Making cervical cancer screening accessible",
+    category: "Portfolio",
+    image: "/gallery/Pragmatech.JPG",
   },
   {
-    title: "Office Space",
-    description: "Where innovation happens every day",
-    category: "Office",
+    title: "Cluix",
+    description: "Building the Stripe of water governance",
+    category: "Portfolio",
+    image: "/gallery/Cluix.JPG",
   },
   {
-    title: "Team Retreat",
-    description: "Building bonds beyond the boardroom",
-    category: "Team",
+    title: "Gocarin Industries",
+    description: "Becoming the Coca-Cola of sustainable livestock feed",
+    category: "Portfolio",
+    image: "/gallery/Gocarin.png",
   },
   {
-    title: "Demo Day",
+    title: "Edge Alpha Day - Demo Day",
     description: "Showcasing breakthrough technologies",
     category: "Events",
+    image: "/gallery/Group best.JPG",
   },
   {
-    title: "Founder Meetup",
+    title: "Fire Chat",
     description: "Connecting visionaries across industries",
     category: "Events",
+    image: "/gallery/00 fireside group small.JPG",
   },
 ];
 
@@ -131,25 +138,29 @@ export default function GalleryPage() {
 
           {/* Row 1: 4 smaller cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-4 md:mb-6">
-            {galleryImages.slice(0, 4).map((image, index) => (
+            {galleryImages.slice(0, 4).map((item, index) => (
               <div
                 key={index}
                 className="glass-card group hover:scale-[1.02] transition-all duration-500 hover:shadow-xl hover:shadow-gray-200 dark:hover:shadow-white/10 overflow-hidden"
               >
-                {/* Image Placeholder */}
-                <div className="aspect-square bg-gray-100 dark:bg-white/5 flex items-center justify-center">
-                  <span className="text-4xl md:text-5xl font-extralight text-gray-300 dark:text-white/20">
-                    {index + 1}
-                  </span>
+                {/* Gallery Image */}
+                <div className="aspect-square bg-gray-100 dark:bg-white/5 relative overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
                 </div>
 
                 <div className="p-4">
                   <Badge className="mb-2 font-light bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/80 border-gray-200 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/20 text-xs">
-                    {image.category}
+                    {item.category}
                   </Badge>
-                  <h3 className="text-sm md:text-base font-light text-gray-900 dark:text-white mb-1 line-clamp-1">{image.title}</h3>
+                  <h3 className="text-sm md:text-base font-light text-gray-900 dark:text-white mb-1 line-clamp-1">{item.title}</h3>
                   <p className="font-extralight text-gray-500 dark:text-white/50 text-xs line-clamp-2">
-                    {image.description}
+                    {item.description}
                   </p>
                 </div>
               </div>
@@ -158,43 +169,33 @@ export default function GalleryPage() {
 
           {/* Row 2: 2 larger cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {galleryImages.slice(4, 6).map((image, index) => (
+            {galleryImages.slice(4, 6).map((item, index) => (
               <div
                 key={index + 4}
                 className="glass-card group hover:scale-[1.01] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 overflow-hidden"
               >
-                {/* Image Placeholder */}
-                <div className="aspect-[16/9] bg-gray-100 dark:bg-white/5 flex items-center justify-center">
-                  <span className="text-6xl md:text-7xl font-extralight text-gray-300 dark:text-white/20">
-                    {index + 5}
-                  </span>
+                {/* Gallery Image */}
+                <div className="aspect-[16/9] bg-gray-100 dark:bg-white/5 relative overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
 
                 <div className="p-6">
                   <Badge className="mb-3 font-light bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/80 border-gray-200 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/20 text-xs">
-                    {image.category}
+                    {item.category}
                   </Badge>
-                  <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">{image.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">{item.title}</h3>
                   <p className="font-extralight text-gray-500 dark:text-white/50 text-sm md:text-base">
-                    {image.description}
+                    {item.description}
                   </p>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Coming Soon Section */}
-      <section className="py-12 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="glass-card p-12 lg:p-16 text-center">
-            <h2 className="text-3xl lg:text-4xl font-extralight mb-6 text-gray-900 dark:text-white">
-              More <span className="font-light">coming soon</span>
-            </h2>
-            <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-2xl mx-auto">
-              We're constantly capturing moments from our journey. Check back for updates from our latest events and milestones.
-            </p>
           </div>
         </div>
       </section>

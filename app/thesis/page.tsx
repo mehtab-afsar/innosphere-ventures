@@ -188,8 +188,8 @@ function ThesisPillarsSection() {
   const [hoveredPillar, setHoveredPillar] = useState<number | null>(null);
 
   return (
-    <section className="py-20 px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-6 lg:px-12 overflow-visible">
+      <div className="max-w-7xl mx-auto overflow-visible">
         <div className="mb-16 text-center">
           <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white">
             Thesis <span className="font-light">Pillars</span>
@@ -200,7 +200,7 @@ function ThesisPillarsSection() {
         </div>
 
         {/* Circular Particle Sphere Design - Desktop */}
-        <div className="hidden lg:block relative w-[850px] h-[850px] mx-auto">
+        <div className="hidden lg:block relative w-[850px] h-[850px] mx-auto overflow-visible">
           {/* Particle Sphere in center */}
           <div className="absolute inset-[120px] pointer-events-none opacity-40 dark:opacity-60">
             <ParticleSphere />
@@ -255,11 +255,11 @@ function ThesisPillarsSection() {
                   {pillar.description.slice(0, 60)}...
                 </p>
 
-                {/* Hover tooltip - appears on appropriate side */}
+                {/* Hover tooltip - appears on appropriate side with screen boundary protection */}
                 <div
-                  className={`absolute top-1/2 -translate-y-1/2 w-[320px] transition-all duration-300 ${
+                  className={`absolute top-1/2 -translate-y-1/2 w-[280px] max-w-[90vw] transition-all duration-300 z-50 ${
                     isHovered ? "opacity-100 visible" : "opacity-0 invisible"
-                  } ${isOnLeftSide ? "right-full mr-8 text-right" : isOnRightSide ? "left-full ml-8 text-left" : isAtTop ? "top-full mt-8 left-1/2 -translate-x-1/2 text-center" : "bottom-full mb-8 left-1/2 -translate-x-1/2 text-center"}`}
+                  } ${isOnLeftSide ? "right-full mr-4 text-right" : isOnRightSide ? "left-full ml-4 text-left" : isAtTop ? "top-full mt-8 left-1/2 -translate-x-1/2 text-center" : "bottom-full mb-8 left-1/2 -translate-x-1/2 text-center"}`}
                 >
                   <div className={`relative overflow-hidden rounded-2xl border ${colors.border} bg-gradient-to-br from-white/95 via-gray-50/90 to-white/95 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-black/95 backdrop-blur-xl shadow-2xl`}>
                     {/* Glow effect at top */}
@@ -395,27 +395,6 @@ export default function ThesisPage() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white">
-            Ready to <span className="font-light">build together?</span>
-          </h2>
-          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 mb-8 max-w-2xl mx-auto">
-            Whether you're a founder building at the frontier or an LP seeking systematic exposure to India's innovation ecosystem.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 font-light text-base group transition-all duration-300 hover:scale-105">
-              Contact Us
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-gray-300 dark:border-white/30 text-gray-900 dark:text-white font-light text-base hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 hover:border-gray-400 dark:hover:border-white/50" asChild>
-              <a href="/signals">View Portfolio</a>
-            </Button>
           </div>
         </div>
       </section>
