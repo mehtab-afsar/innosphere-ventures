@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createClient } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import { companies as staticCompanies, Company } from '@/lib/companies';
 
 /**
@@ -40,7 +40,7 @@ export function useCompanies() {
     async function fetchCompanies() {
       try {
         setLoading(true);
-        const supabase = createClient();
+        const supabase = getSupabase();
         const { data, error } = await supabase
           .from('companies')
           .select('*')
