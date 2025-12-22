@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Newspaper } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
@@ -29,6 +29,20 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000 md:-ml-8 lg:-ml-12">
+          {/* Press Release Badge */}
+          <a
+            href="/Press Release/Press Release Full Version 1- FV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mb-6 sm:mb-8 group cursor-pointer animate-in fade-in slide-in-from-bottom-4 duration-1000"
+          >
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-cyan-400/40 dark:border-cyan-400/60 shadow-lg transition-all duration-300 group-hover:border-cyan-400/60 dark:group-hover:border-cyan-400/80">
+              <Newspaper className="w-4 h-4 text-cyan-500 dark:text-cyan-400" strokeWidth={1.5} />
+              <span className="text-sm font-light text-gray-700 dark:text-gray-200">Press Release</span>
+              <ArrowRight className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 group-hover:translate-x-0.5 transition-transform duration-300" />
+            </div>
+          </a>
+
           <h1
             className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-extralight leading-[1.15] mb-4 sm:mb-6 md:mb-8 text-gray-900 dark:text-gray-100"
           >
