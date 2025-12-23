@@ -3,14 +3,53 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
-import { ArrowLeft, Linkedin, Link2, X } from "lucide-react";
+import { ArrowLeft, Linkedin, Link2, X, Search } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useCompanies } from "@/hooks/useCompanies";
 
 export default function PortfolioPage() {
   const [expandedCompany, setExpandedCompany] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sectorFilter, setSectorFilter] = useState("all");
+  const [stageFilter, setStageFilter] = useState("all");
   const { companies, loading, error } = useCompanies();
+
+  // Get unique sectors and stages for filter options
+  const { sectors, stages } = useMemo(() => {
+    const uniqueSectors = Array.from(new Set(companies.map(c => c.sector))).sort();
+    const uniqueStages = Array.from(new Set(companies.map(c => c.stage))).sort();
+    return { sectors: uniqueSectors, stages: uniqueStages };
+  }, [companies]);
+
+  // Filter companies based on search query and filters
+  const filteredCompanies = useMemo(() => {
+    return companies.filter(company => {
+      // Search filter
+      const query = searchQuery.toLowerCase();
+      const matchesSearch = !searchQuery.trim() ||
+        company.name.toLowerCase().includes(query) ||
+        company.sector.toLowerCase().includes(query) ||
+        company.tagline.toLowerCase().includes(query) ||
+        company.stage.toLowerCase().includes(query);
+
+      // Sector filter
+      const matchesSector = sectorFilter === "all" || company.sector === sectorFilter;
+
+      // Stage filter
+      const matchesStage = stageFilter === "all" || company.stage === stageFilter;
+
+      return matchesSearch && matchesSector && matchesStage;
+    });
+  }, [companies, searchQuery, sectorFilter, stageFilter]);
+
+  const hasActiveFilters = searchQuery || sectorFilter !== "all" || stageFilter !== "all";
+
+  const clearAllFilters = () => {
+    setSearchQuery("");
+    setSectorFilter("all");
+    setStageFilter("all");
+  };
 
   if (loading) {
     return (
@@ -54,8 +93,110 @@ export default function PortfolioPage() {
       {/* Edge Alpha Companies - Table Style Portfolio */}
       <section className="pt-0 pb-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
+          {/* Search Bar and Filters */}
+          <div className="mb-8 space-y-4">
+            {/* Search Bar and Filter Controls */}
+            <div className="flex flex-col lg:flex-row gap-3">
+              {/* Search Bar */}
+              <div className="relative lg:w-96">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40" />
+                <input
+                  type="text"
+                  placeholder="Search companies..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-12 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/20 transition-all font-light"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                )}
+              </div>
+
+              {/* Filter Controls */}
+              <div className="flex flex-wrap items-center gap-3">
+                {/* Sector Filter */}
+                <select
+                  value={sectorFilter}
+                  onChange={(e) => setSectorFilter(e.target.value)}
+                  className="px-4 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm font-light focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/20 transition-all cursor-pointer"
+                >
+                  <option value="all">All Sectors</option>
+                  {sectors.map(sector => (
+                    <option key={sector} value={sector}>{sector}</option>
+                  ))}
+                </select>
+
+                {/* Stage Filter */}
+                <select
+                  value={stageFilter}
+                  onChange={(e) => setStageFilter(e.target.value)}
+                  className="px-4 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm font-light focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/20 transition-all cursor-pointer"
+                >
+                  <option value="all">All Stages</option>
+                  {stages.map(stage => (
+                    <option key={stage} value={stage}>{stage}</option>
+                  ))}
+                </select>
+
+                {/* Clear All Button */}
+                {hasActiveFilters && (
+                  <button
+                    onClick={clearAllFilters}
+                    className="px-4 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-sm font-light text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20 transition-all"
+                  >
+                    Clear All
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Active Filter Pills */}
+            {hasActiveFilters && (
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-light text-gray-400 dark:text-white/40">
+                  Active filters:
+                </span>
+
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-light text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
+                  >
+                    Search: &quot;{searchQuery}&quot;
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
+
+                {sectorFilter !== 'all' && (
+                  <button
+                    onClick={() => setSectorFilter('all')}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-light text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
+                  >
+                    Sector: {sectorFilter}
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
+
+                {stageFilter !== 'all' && (
+                  <button
+                    onClick={() => setStageFilter('all')}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-light text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
+                  >
+                    Stage: {stageFilter}
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+
           {/* Table Header - Desktop */}
-          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-gray-200 dark:border-white/10 text-base font-light text-gray-400 dark:text-white/40">
+          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-gray-200 dark:border-white/10 text-base font-semibold text-gray-400 dark:text-white/40">
             <div className="col-span-5">Company</div>
             <div className="col-span-2">Sector</div>
             <div className="col-span-2">Partnered</div>
@@ -65,7 +206,14 @@ export default function PortfolioPage() {
 
           {/* Company List */}
           <div className="divide-y divide-gray-200 dark:divide-white/10">
-            {companies.map((company, index) => {
+            {filteredCompanies.length === 0 ? (
+              <div className="px-8 py-20 text-center">
+                <p className="text-lg font-light text-gray-500 dark:text-white/60">
+                  No companies found matching &quot;{searchQuery}&quot;
+                </p>
+              </div>
+            ) : (
+              filteredCompanies.map((company, index) => {
               const Icon = company.icon;
               const isExpanded = expandedCompany === index;
               return (
@@ -123,7 +271,8 @@ export default function PortfolioPage() {
 
                 </div>
               );
-            })}
+            })
+            )}
           </div>
         </div>
       </section>
@@ -140,7 +289,7 @@ export default function PortfolioPage() {
           {/* Drawer */}
           <div className="fixed inset-y-0 right-0 w-full max-w-4xl bg-white dark:bg-gray-950 z-50 shadow-2xl overflow-y-auto transform transition-transform duration-500 ease-out">
             {(() => {
-              const company = companies[expandedCompany];
+              const company = filteredCompanies[expandedCompany];
               const Icon = company.icon;
               return (
                 <div className="min-h-full">
