@@ -1,7 +1,7 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = "https://tlzmiajkuxchdthormyf.supabase.co";
-const SUPABASE_KEY = process.env.SUPABASE_KEY || "";
+const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY || "";
 
 let supabaseInstance: SupabaseClient | null = null;
 
@@ -10,7 +10,7 @@ let supabaseInstance: SupabaseClient | null = null;
  */
 export function getSupabase(): SupabaseClient {
   if (!SUPABASE_KEY) {
-    throw new Error("SUPABASE_KEY not configured");
+    throw new Error("SUPABASE_KEY not configured. Please add NEXT_PUBLIC_SUPABASE_KEY to your .env.local file.");
   }
 
   if (!supabaseInstance) {

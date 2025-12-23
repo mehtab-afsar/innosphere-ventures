@@ -1,42 +1,72 @@
 import { useState, useEffect } from 'react';
 import { getSupabase } from '@/lib/supabase';
 import { companies as staticCompanies, Company } from '@/lib/companies';
+import {
+  Heart,
+  Battery,
+  TestTube,
+  Droplets,
+  Leaf,
+  Zap,
+  Brain,
+  Rocket,
+  Globe,
+  Shield,
+  Cpu,
+  Microscope,
+  Wind,
+  Sun,
+  Sprout,
+  DollarSign,
+  GraduationCap,
+  Building,
+  Smartphone,
+  Database,
+  LucideIcon
+} from 'lucide-react';
+
+/**
+ * Helper function to map icon names to Lucide icons
+ */
+function mapIconName(iconName: string): LucideIcon {
+  const iconMap: Record<string, LucideIcon> = {
+    'Heart': Heart,
+    'Battery': Battery,
+    'TestTube': TestTube,
+    'Droplets': Droplets,
+    'Leaf': Leaf,
+    'Zap': Zap,
+    'Brain': Brain,
+    'Rocket': Rocket,
+    'Globe': Globe,
+    'Shield': Shield,
+    'Cpu': Cpu,
+    'Microscope': Microscope,
+    'Wind': Wind,
+    'Sun': Sun,
+    'Sprout': Sprout,
+    'DollarSign': DollarSign,
+    'GraduationCap': GraduationCap,
+    'Building': Building,
+    'Smartphone': Smartphone,
+    'Database': Database,
+  };
+
+  return iconMap[iconName] || Heart; // Default to Heart if not found
+}
 
 /**
  * Hook to fetch companies from Supabase
  *
- * Currently returns static data from lib/companies.ts
- *
- * To enable Supabase integration:
- * 1. Create a 'companies' table in Supabase with columns:
- *    - id (uuid, primary key)
- *    - name (text)
- *    - tagline (text)
- *    - sector (text)
- *    - stage (text)
- *    - status (text)
- *    - year (text)
- *    - description (text, optional)
- *    - website (text, optional)
- *    - linkedin (text, optional)
- *    - icon_name (text) - stores icon name like "Heart", "Battery", etc.
- *    - created_at (timestamp)
- *    - updated_at (timestamp)
- *
- * 2. Enable Row Level Security (RLS) with policy:
- *    - SELECT: Allow public read access
- *    - INSERT/UPDATE/DELETE: Require authentication
- *
- * 3. Uncomment the Supabase fetch code below and comment out the static return
+ * Fetches portfolio companies from Supabase database and maps them to the Company interface.
+ * Falls back to static data if there's an error fetching from Supabase.
  */
 export function useCompanies() {
   const [companies, setCompanies] = useState<Company[]>(staticCompanies);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    // Uncomment this section when Supabase table is ready
-    /*
     async function fetchCompanies() {
       try {
         setLoading(true);
@@ -44,15 +74,23 @@ export function useCompanies() {
         const { data, error } = await supabase
           .from('companies')
           .select('*')
-          .order('created_at', { ascending: false });
+          .order('display_order', { ascending: true });
 
         if (error) throw error;
 
         // Map Supabase data to Company interface
-        // You'll need to map icon_name to actual Lucide icons
         const mappedCompanies = data?.map((company) => ({
-          ...company,
-          icon: mapIconName(company.icon_name), // Implement this mapping function
+          id: company.id,
+          icon: mapIconName(company.icon_name),
+          name: company.name,
+          tagline: company.tagline,
+          sector: company.sector,
+          stage: company.stage,
+          status: company.status,
+          year: company.year,
+          description: company.description,
+          website: company.website,
+          linkedin: company.linkedin,
         })) || [];
 
         setCompanies(mappedCompanies);
@@ -67,31 +105,7 @@ export function useCompanies() {
     }
 
     fetchCompanies();
-    */
-
-    // Currently using static data
-    setCompanies(staticCompanies);
   }, []);
 
   return { companies, loading, error };
 }
-
-/**
- * Helper function to map icon names to Lucide icons
- * Implement this when enabling Supabase integration
- */
-/*
-import { Heart, Battery, TestTube, Droplets, Leaf } from 'lucide-react';
-
-function mapIconName(iconName: string): LucideIcon {
-  const iconMap: Record<string, LucideIcon> = {
-    'Heart': Heart,
-    'Battery': Battery,
-    'TestTube': TestTube,
-    'Droplets': Droplets,
-    'Leaf': Leaf,
-  };
-
-  return iconMap[iconName] || Heart; // Default to Heart if not found
-}
-*/

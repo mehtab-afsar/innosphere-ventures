@@ -69,6 +69,11 @@ CREATE TABLE IF NOT EXISTS companies (
     'DeepTech',
     'BioTech',
     'SpaceTech',
+    'Industry 4.0',
+    'Automobile',
+    'Defence',
+    'Drone Tech',
+    'Logistics',
     'Other'
   )),
 
@@ -76,6 +81,7 @@ CREATE TABLE IF NOT EXISTS companies (
   stage TEXT NOT NULL CHECK (stage IN (
     'Pre-Seed',
     'Seed',
+    'Pre-Series A',
     'Series A',
     'Series B',
     'Series C+',
@@ -183,6 +189,7 @@ CREATE POLICY "Allow authenticated delete"
 -- =====================================================
 
 -- Insert portfolio companies (use ON CONFLICT to avoid duplicates)
+-- Data sourced from KIIT-TBI InnoSphere Edge Alpha National Call - Short List
 INSERT INTO companies (
   name,
   tagline,
@@ -194,60 +201,221 @@ INSERT INTO companies (
   icon_name,
   display_order
 ) VALUES
+  -- Edge Alpha #1: Nexus Power
   (
-    'Inochi Care',
-    'On a mission to make advanced wound care as common as a bandage.',
-    'Inochi Care is building transformative solutions in the healthcare space. As part of the InnoSphere Edge Alpha portfolio, they represent the next wave of innovation emerging from India''s frontier technology ecosystem.',
-    'Healthcare',
-    'Pre-Seed',
-    'Active',
-    '2025',
-    'Heart',
-    1
-  ),
-  (
-    'Cluix',
-    'Building the Stripe of water governance.',
-    'Cluix is building transformative solutions in the climate tech space. As part of the InnoSphere Edge Alpha portfolio, they represent the next wave of innovation emerging from India''s frontier technology ecosystem.',
-    'Climate Tech',
-    'Pre-Seed',
-    'Active',
-    '2025',
-    'Droplets',
-    2
-  ),
-  (
-    'Pragmatech',
-    'Making cervical cancer screening as accessible as a pregnancy test.',
-    'Pragmatech is building transformative solutions in the healthcare space. As part of the InnoSphere Edge Alpha portfolio, they represent the next wave of innovation emerging from India''s frontier technology ecosystem.',
-    'Healthcare',
-    'Pre-Seed',
-    'Active',
-    '2025',
-    'TestTube',
-    3
-  ),
-  (
-    'Meine Electric',
-    'Building the Duracell of India''s clean energy future.',
-    'Meine Electric is building transformative solutions in the clean energy space. As part of the InnoSphere Edge Alpha portfolio, they represent the next wave of innovation emerging from India''s frontier technology ecosystem.',
+    'Nexus Power',
+    'Revolutionizing energy storage with biodegradable, lithium-free batteries made from crop residue.',
+    'Nexus Power is a clean-tech startup founded by sisters Nishita and Nikita Baliarsingh, turning agricultural waste into high-performance peptide-based batteries. With applications spanning electric vehicles, drones, and energy storage systems, they are pioneering innovation at the forefront of India''s clean energy transition.',
     'Clean Energy',
-    'Pre-Seed',
+    'Seed',
     'Active',
     '2025',
     'Battery',
+    1
+  ),
+  -- Edge Alpha #2: PCRA Technologies
+  (
+    'PCRA Technologies',
+    'Transforming B2B pharmaceutical credit with AI-powered scoring for distributors and retailers.',
+    'PCRA Technologies leverages real-time ERP integrations and a proprietary scoring engine to empower pharmaceutical distributors with instant, reliable credit assessments. With over 300 distributors and 3,000+ retailers onboarded, PCRA is building the digital credit backbone for the pharmaceutical supply chain.',
+    'Healthcare',
+    'Seed',
+    'Active',
+    '2025',
+    'Heart',
+    2
+  ),
+  -- Edge Alpha #3: Inochi Care
+  (
+    'Inochi Care',
+    'Revolutionizing wound care with patented, multitherapeutic wound healing technology.',
+    'Inochi Care''s portable device combines negative pressure, fluid delivery, temperature control, and infection management in a single system. Already deployed in over 100 hospitals across India, the solution significantly reduces healing time, hospital stays, and antibiotic usage.',
+    'Healthcare',
+    'Seed',
+    'Active',
+    '2025',
+    'Heart',
+    3
+  ),
+  -- Edge Alpha #4: GMetri
+  (
+    'GMetri',
+    'A no-code platform transforming industries through immersive spatial technologies and AI-powered digital twins.',
+    'GMetri''s flagship products bring AI-powered digital twins and inclusive XR learning to factories, warehouses, retail spaces, and classrooms. By replacing physical processes with browser-based 3D simulations, GMetri helps global clients reduce carbon footprints and boost operational efficiency.',
+    'Industry 4.0',
+    'Seed',
+    'Active',
+    '2025',
+    'Brain',
     4
   ),
+  -- Edge Alpha #5: Drivomate
+  (
+    'Drivomate',
+    'Pioneering AI-powered ADAS tailored for unstructured traffic in India and emerging markets.',
+    'Drivomate delivers real-time safety alerts for two-wheelers and small cars using a patented camera-based, radar-free architecture. Their indigenous technology combines Explainable AI with high-speed motion detection to prevent collisions and promote road safety at scale.',
+    'Automobile',
+    'Seed',
+    'Active',
+    '2025',
+    'Shield',
+    5
+  ),
+  -- Edge Alpha #6: DigiClinics Research And Services
+  (
+    'DigiClinics Research And Services',
+    'Pioneering AI-powered diagnostic solutions to bridge the gap in breast cancer detection and care.',
+    'DigiClinics offers a fully integrated, cloud-native platform combining AI-driven ultrasound, mammography, and digital pathology. Validated on over 1.1 million pathology tiles, the company partners with hospitals and public health systems to democratize early cancer detection.',
+    'Healthcare',
+    'Seed',
+    'Active',
+    '2025',
+    'Microscope',
+    6
+  ),
+  -- Edge Alpha #7: Meine Electric Automotives
+  (
+    'Meine Electric Automotives',
+    'Pioneering Aluminium-Air Fuel Cell technology for decentralized, emission-free energy solutions.',
+    'MEINE develops portable power systems that replace diesel generators and lithium batteries with recyclable aluminium fuel. With 8 patents and cutting-edge innovations in electrochemistry, MEINE is leading India''s transition toward clean, resilient, and locally sourced energy infrastructure.',
+    'Clean Energy',
+    'Seed',
+    'Active',
+    '2025',
+    'Battery',
+    7
+  ),
+  -- Edge Alpha #8: RNT Health Insights
+  (
+    'RNT Health Insights',
+    'Pioneering real-time AI solutions for early detection of gastrointestinal cancers.',
+    'RNT leverages proprietary video-based algorithms and edge-AI computing to transform live endoscopic procedures into high-precision diagnostic tools. With dual FDA Breakthrough Device Designations, RNT enables gastroenterologists to detect precancerous lesions with millimeter-level accuracy.',
+    'Healthcare',
+    'Seed',
+    'Active',
+    '2025',
+    'TestTube',
+    8
+  ),
+  -- Edge Alpha #9: Manentia AI
+  (
+    'Manentia AI',
+    'Revolutionizing diagnostic imaging through a full-stack, AI-powered radiology platform.',
+    'Combining PACS, multi-modal AI diagnostics (CT, X-ray, MRI), and LLM-driven structured reporting, Manentia empowers healthcare providers with faster, scalable, and more accurate diagnostics. With deployments across 45+ institutions in India, Nigeria, and the UK, Manentia is closing the radiology access gap.',
+    'Healthcare',
+    'Seed',
+    'Active',
+    '2025',
+    'Brain',
+    9
+  ),
+  -- Edge Alpha #10: Blinq Mobility
+  (
+    'Blinq Mobility',
+    'Revolutionizing urban transportation through modular electric microcars with swappable batteries.',
+    'Blinq''s platform significantly reduces carbon emissions, operating costs, and vehicle downtime, making it ideal for fleet operators and ride-hailing services. With a focus on affordability and sustainability, Blinq is transforming urban mobility across India and emerging markets.',
+    'Automobile',
+    'Seed',
+    'Active',
+    '2025',
+    'Zap',
+    10
+  ),
+  -- Edge Alpha #11: Dashagriv Aerospace Technology
+  (
+    'Dashagriv Aerospace Technology',
+    'Pioneering autonomous high-altitude platform systems (HAPS) for defense and environmental surveillance.',
+    'Dashagriv develops solar-powered, AI-enabled stratospheric airships for persistent, real-time monitoring across sensitive border, maritime, and remote zones. With in-house avionics and modular payloads, Dashagriv is advancing India''s sovereign capabilities in aerospace technology.',
+    'Defence',
+    'Seed',
+    'Active',
+    '2025',
+    'Rocket',
+    11
+  ),
+  -- Edge Alpha #12: CLUIX
+  (
+    'CLUIX',
+    'Revolutionizing water quality monitoring with AI and IoT-based portable devices.',
+    'CLUIX enables real-time, decentralized water testing, empowering communities with affordable, accurate, and cloud-integrated tools. By bridging data gaps in public health and water governance, CLUIX supports climate resilience and sustainable development across India and the Global South.',
+    'Climate Tech',
+    'Pre-Series A',
+    'Active',
+    '2025',
+    'Droplets',
+    12
+  ),
+  -- Edge Alpha #13: Gocarin Industries
   (
     'Gocarin Industries',
-    'Becoming the Coca-Cola of sustainable livestock feed.',
-    'Gocarin Industries is building transformative solutions in the agritech space. As part of the InnoSphere Edge Alpha portfolio, they represent the next wave of innovation emerging from India''s frontier technology ecosystem.',
+    'Pioneering climate-smart livestock solutions with nano-formulated red algae-based cattle feed.',
+    'Gocarin''s patent-pending feed significantly reduces methane emissions while boosting milk yield and digestion in ruminants. Their integrated digital platform offers advisory, milk tracking, and veterinary support, reaching over 8,000 farmers across Odisha, West Bengal, and Assam.',
     'AgriTech',
-    'Pre-Seed',
+    'Seed',
     'Active',
     '2025',
     'Leaf',
-    5
+    13
+  ),
+  -- Edge Alpha #14: WDUWG India LLP
+  (
+    'WDUWG India LLP',
+    'Pioneering AI-powered, integrated surveillance solutions for defense and border security.',
+    'Built over two years of co-development with the Indian Army, WDUWG''s Census Counters platform automates multi-sensor surveillance across border zones and remote locations. With 6 active Army deployments and a ₹8 Cr+ sales pipeline, WDUWG is redefining national security infrastructure.',
+    'Defence',
+    'Pre-Series A',
+    'Active',
+    '2025',
+    'Shield',
+    14
+  ),
+  -- Edge Alpha #15: Gudlyf Mobility
+  (
+    'Gudlyf Mobility',
+    'Pioneering indigenous Type IV high-pressure hydrogen storage cylinders for clean mobility and industry.',
+    'Gudlyf combines material innovation with advanced filament winding techniques to deliver lightweight, high-performance hydrogen solutions. Backed by multiple patent filings and ARAI validation, the company is playing a key role in India''s National Green Hydrogen Mission.',
+    'Clean Energy',
+    'Seed',
+    'Active',
+    '2025',
+    'Sun',
+    15
+  ),
+  -- Edge Alpha #16: Vyorius Drones
+  (
+    'Vyorius Drones',
+    'Offering an AI-powered, hardware-agnostic drone operations platform for scalable autonomous missions.',
+    'Supporting major autopilot stacks like PX4 and Ardupilot, Vyorius enables offline, swarm-based drone control across agriculture, logistics, and public safety. With 17 paying customers and active pilots across India, Japan, Southeast Asia, and the U.S., Vyorius is driving sustainable productivity gains.',
+    'Drone Tech',
+    'Seed',
+    'Active',
+    '2025',
+    'Rocket',
+    16
+  ),
+  -- Edge Alpha #17: Logistos Technology
+  (
+    'Logistos Technology',
+    'An AI-powered logistics platform unifying Road, Rail, Air, and Ocean freight into a single digital ecosystem.',
+    'Logistos enables shipment booking, dynamic route optimization, load consolidation, and paperless documentation. Built for enterprises and regional transporters alike, Logistos improves efficiency, reduces carbon emissions, and empowers MSMEs through a mobile-first, low-cost SaaS model.',
+    'Logistics',
+    'Seed',
+    'Active',
+    '2025',
+    'Globe',
+    17
+  ),
+  -- Edge Alpha #18: Pragmatech Healthcare Solutions
+  (
+    'Pragmatech Healthcare Solutions',
+    'Pioneering accessible cervical cancer screening with India''s first CDSCO-approved at-home self-sampling kit.',
+    'Pragmatech''s CERVICHECK™ enables dignified, stigma-free HPV testing without clinical infrastructure. Backed by 4 Indian patents and clinical validation from AIIMS and Cancer Institute Adyar, Pragmatech aims to scale its affordable innovations across LMICs to help eliminate cervical cancer.',
+    'Healthcare',
+    'Seed',
+    'Active',
+    '2025',
+    'TestTube',
+    18
   )
 ON CONFLICT (name) DO UPDATE SET
   tagline = EXCLUDED.tagline,
