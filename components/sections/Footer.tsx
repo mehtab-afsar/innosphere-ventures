@@ -1,14 +1,42 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import type { MailingListData } from "@/lib/supabase";
+import dynamic from "next/dynamic";
+import { Linkedin, Twitter } from "lucide-react";
+
+// Dynamically import ParticleSphere to avoid SSR issues
+const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
+  ssr: false,
+});
 
 export function Footer() {
   const [email, setEmail] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const footerRef = useRef<HTMLElement>(null);
   const { isSubmitting, submitted, submit } = useFormSubmit<MailingListData>("mailing-list");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,66 +46,117 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gray-950 text-white">
+    <footer ref={footerRef} className="relative bg-black text-white overflow-hidden">
+      {/* Particle Sphere Background - Right Side */}
+      <div className="absolute right-0 top-0 w-[50%] h-full opacity-50 pointer-events-none hidden lg:block">
+        <ParticleSphere scale={0.7} />
+        {/* Gradient fade overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+      </div>
+
       {/* Main Footer Content */}
-      <div className="px-6 lg:px-12 py-12 lg:py-16">
+      <div className="relative z-10 px-6 lg:px-12 py-12 lg:py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left Side - Brand & Headline */}
-            <div>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12">
+            {/* Left Side - Brand & CTA */}
+            <div
+              className={`transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+              }`}
+              style={{ transitionDelay: '0ms' }}
+            >
               <Link href="/" className="inline-block mb-4">
                 <span className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-wider">
-                  InnoSphere <span className="font-normal">Ventures</span>
+                  InnoSphere
+                  <br />
+                  <span className="font-light">Ventures</span>
                 </span>
               </Link>
 
-              <p className="text-base sm:text-lg font-extralight text-white/60 leading-relaxed mb-6 max-w-md">
-                Empowering innovators. Elevating futures.
+              <p className="text-base font-extralight text-white/70 leading-relaxed mb-6 max-w-md">
+                Building the future of India&apos;s innovation ecosystem, one frontier company at a time.
               </p>
 
-              <Button
-                size="sm"
-                className="bg-white text-black hover:bg-white/90 font-light text-sm rounded-full px-6"
-                asChild
-              >
-                <Link href="/join">
-                  Join Us
-                </Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                <Button
+                  size="lg"
+                  className="bg-white text-black hover:bg-white/90 font-light rounded-full px-8 transition-all duration-300 hover:scale-105"
+                  asChild
+                >
+                  <Link href="/join">
+                    Join the Movement
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/30 text-white hover:bg-white/10 font-light rounded-full px-8 transition-all duration-300"
+                  asChild
+                >
+                  <Link href="/portfolio">
+                    View Portfolio
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://www.linkedin.com/company/innosphere-vc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                >
+                  <Linkedin className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" strokeWidth={1.5} />
+                </a>
+                <a
+                  href="https://twitter.com/innosphere"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                >
+                  <Twitter className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" strokeWidth={1.5} />
+                </a>
+              </div>
             </div>
 
-            {/* Right Side - Mailing List */}
-            <div>
-              <h3 className="text-sm font-medium tracking-widest uppercase text-white/40 mb-3">
-                Join Our Mailing List
+            {/* Right Side - Newsletter */}
+            <div
+              className={`transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+              }`}
+              style={{ transitionDelay: '200ms' }}
+            >
+              <h3 className="text-xs font-medium tracking-widest uppercase text-white/40 mb-6">
+                Stay Updated
               </h3>
-              <p className="text-sm font-extralight text-white/60 mb-5 max-w-md">
-                First access to insights, events, and opportunities.
+              <p className="text-base font-extralight text-white/70 mb-6 leading-relaxed">
+                First access to insights, portfolio updates, and exclusive opportunities from India&apos;s innovation frontier.
               </p>
 
               {submitted ? (
-                <div className="flex items-center gap-2 text-green-400">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-3 text-green-400 p-4 rounded-xl bg-green-400/10 border border-green-400/20">
+                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="font-light">You&apos;re on the list!</span>
+                  <span className="font-light">You&apos;re on the list! Check your inbox.</span>
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-3 max-w-md">
+                <form onSubmit={handleSubscribe} className="space-y-3">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
+                    placeholder="your@email.com"
                     required
-                    className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-full font-extralight text-sm text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-200"
+                    className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl font-light text-base text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-200"
                   />
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-white text-black hover:bg-white/90 font-light text-sm px-5 py-2.5 rounded-full"
+                    className="w-full bg-white text-black hover:bg-white/90 font-light rounded-xl px-6 py-3.5 transition-all duration-300 hover:scale-[1.02]"
                   >
-                    {isSubmitting ? "..." : "Subscribe"}
+                    {isSubmitting ? "Subscribing..." : "Subscribe to Updates"}
                   </Button>
                 </form>
               )}
@@ -87,46 +166,37 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 px-6 lg:px-12 py-4">
+      <div
+        className={`relative z-10 border-t border-white/10 px-6 lg:px-12 py-6 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+        }`}
+        style={{ transitionDelay: '400ms' }}
+      >
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
             {/* Left - Copyright */}
-            <p className="text-sm font-extralight text-white/40">
-              © 2025 InnoSphere Ventures
+            <p className="font-extralight text-white/40">
+              © {new Date().getFullYear()} InnoSphere Ventures. All rights reserved.
             </p>
 
-            {/* Center - Links */}
+            {/* Center - Legal Links */}
             <div className="flex items-center gap-6">
               <Link
-                href="/join"
-                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
-              >
-                Join
-              </Link>
-              <a
-                href="https://www.linkedin.com/company/innosphere-vc/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
-              >
-                LinkedIn
-              </a>
-              <Link
                 href="/privacy"
-                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
+                className="font-light text-white/60 hover:text-white transition-colors duration-200"
               >
-                Privacy
+                Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-sm font-light text-white/60 hover:text-white transition-colors duration-200"
+                className="font-light text-white/60 hover:text-white transition-colors duration-200"
               >
-                Terms
+                Terms of Service
               </Link>
             </div>
 
             {/* Right - Tagline */}
-            <p className="text-sm font-extralight text-white/40 hidden lg:block">
+            <p className="font-extralight text-white/40 hidden lg:block">
               Empowering innovators. Elevating futures.
             </p>
           </div>

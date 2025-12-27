@@ -18,7 +18,40 @@ export function Hero() {
     <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 overflow-hidden bg-gray-50 dark:bg-black py-24 md:py-0">
       {/* 3D Particle Sphere Background - Hidden on mobile, visible on tablet+ */}
       <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 w-[60%] md:w-[55%] lg:w-[50%] h-[70%] md:h-[80%] lg:h-[90%]">
+        {/* Glowing Ring Effects Container */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Outer Ring - Slow Pulse */}
+          <div className="absolute w-[85%] h-[85%] rounded-full border border-cyan-400/20 dark:border-cyan-400/30 animate-pulse-glow"
+               style={{
+                 boxShadow: '0 0 80px rgba(34, 211, 238, 0.3), inset 0 0 80px rgba(34, 211, 238, 0.1)',
+                 animation: 'pulse-glow 4s ease-in-out infinite, rotate-slow 20s linear infinite'
+               }} />
+
+          {/* Middle Ring - Medium Pulse with Rotation */}
+          <div className="absolute w-[70%] h-[70%] rounded-full border border-purple-400/20 dark:border-purple-400/30"
+               style={{
+                 boxShadow: '0 0 60px rgba(192, 132, 252, 0.4), inset 0 0 60px rgba(192, 132, 252, 0.15)',
+                 animation: 'pulse-glow 3s ease-in-out infinite 0.5s, rotate-medium 15s linear infinite reverse'
+               }} />
+
+          {/* Inner Ring - Fast Shimmer */}
+          <div className="absolute w-[55%] h-[55%] rounded-full border border-rose-400/20 dark:border-rose-400/30"
+               style={{
+                 boxShadow: '0 0 40px rgba(251, 113, 133, 0.5), inset 0 0 40px rgba(251, 113, 133, 0.2)',
+                 animation: 'pulse-glow 2s ease-in-out infinite 1s, rotate-fast 10s linear infinite'
+               }} />
+
+          {/* Core Glow - Breathing Effect */}
+          <div className="absolute w-[40%] h-[40%] rounded-full"
+               style={{
+                 background: 'radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, rgba(192, 132, 252, 0.1) 50%, transparent 70%)',
+                 filter: 'blur(20px)',
+                 animation: 'breathe 6s ease-in-out infinite'
+               }} />
+        </div>
+
         <ParticleSphere />
+
         {/* Gradient fade on left edge */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-50 dark:from-black to-transparent w-[40%] pointer-events-none" />
         {/* Gradient fade on bottom edge */}
@@ -26,6 +59,46 @@ export function Hero() {
         {/* Gradient fade on top edge */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 dark:from-black to-transparent h-[25%] pointer-events-none" />
       </div>
+
+      {/* CSS Keyframe Animations */}
+      <style jsx>{`
+        @keyframes pulse-glow {
+          0%, 100% {
+            opacity: 0.4;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+        }
+
+        @keyframes rotate-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotate-medium {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotate-fast {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes breathe {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.7;
+            transform: scale(1.15);
+          }
+        }
+      `}</style>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000 md:-ml-8 lg:-ml-12">
