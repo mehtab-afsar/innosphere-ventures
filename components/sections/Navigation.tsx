@@ -40,9 +40,7 @@ export function Navigation() {
     : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white";
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? "glass-effect py-4" : "bg-transparent py-6"
-    }`}>
+    <nav className="fixed top-0 w-full z-50 transition-all duration-300 glass-effect py-4">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center">
           <div className={`text-2xl font-extralight tracking-wider ${logoColor}`}>

@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Globe, Users } from "lucide-react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { easeProgress } from "@/lib/animations";
+import dynamic from "next/dynamic";
+
+// Dynamically import ParticleSphere to avoid SSR issues
+const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
+  ssr: false,
+});
 
 interface CardData {
   icon: typeof TrendingUp;
@@ -91,6 +97,13 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
 export function WhyNow() {
   return (
     <section id="why-now" className="relative py-24 px-6 lg:px-12 overflow-hidden">
+      {/* Blurred Particle Sphere Background - Enlarged and liquid-like */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-60">
+        <div className="w-[100%] h-[100%]" style={{ filter: 'blur(25px)' }}>
+          <ParticleSphere scale={1.5} />
+        </div>
+      </div>
+
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
@@ -113,8 +126,8 @@ export function WhyNow() {
           </div>
         </div>
 
-        {/* Scroll Cards - Zig Zag Layout */}
-        <div className="relative">
+        {/* Scroll Cards - Stacked Layout */}
+        <div className="relative space-y-8">
           {cards.map((card, index) => (
             <ScrollCard key={index} card={card} index={index} />
           ))}
