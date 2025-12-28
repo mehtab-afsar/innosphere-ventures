@@ -40,7 +40,7 @@ const cards: CardData[] = [
 ];
 
 function ScrollCard({ card, index }: { card: CardData; index: number }) {
-  const { ref, progress } = useScrollProgress({ start: 0.95, end: 0.6 });
+  const { ref, progress } = useScrollProgress({ start: 0.9, end: 0.5 });
   const easedProgress = easeProgress(progress);
   const Icon = card.icon;
   const isLeft = index % 2 === 0;
@@ -51,10 +51,10 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
       className={`py-12 flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
       <div
-        className="max-w-xl w-full text-center"
+        className="max-w-xl w-full text-center min-h-[300px] flex flex-col justify-center transition-all duration-700 ease-out"
         style={{
           opacity: easedProgress,
-          transform: `translateY(${(1 - easedProgress) * 40}px)`,
+          transform: `translateY(${(1 - easedProgress) * 30}px)`,
         }}
       >
         <div
@@ -96,7 +96,7 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
 
 export function WhyNow() {
   return (
-    <section id="why-now" className="relative py-24 px-6 lg:px-12 overflow-hidden">
+    <section id="why-now" className="relative min-h-screen flex items-center py-24 px-6 lg:px-12 overflow-hidden">
       {/* Blurred Particle Sphere Background - Enlarged and liquid-like */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-60">
         <div className="w-[100%] h-[100%]" style={{ filter: 'blur(25px)' }}>
