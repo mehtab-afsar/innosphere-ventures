@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { ChevronDown } from "lucide-react";
 
 // Dynamically import ParticleSphere to avoid SSR issues
 const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
@@ -28,7 +27,6 @@ const cards = [
 export function WhyUs() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [sphereRotation, setSphereRotation] = useState(0);
   const [slideProgress, setSlideProgress] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -75,10 +73,6 @@ export function WhyUs() {
       }
 
       setCurrentIndex(index);
-
-      // Sphere rotation: 0° -> 45° -> 90° based on currentIndex
-      // Index 0: 0°, Index 1: 45°, Index 2: 90°
-      setSphereRotation(Math.max(0, index) * 45);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

@@ -7,8 +7,6 @@ import { useTheme } from "../ThemeProvider";
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [whyOpen, setWhyOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
