@@ -102,35 +102,37 @@ export function Hero() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mb-6 sm:mb-8 group cursor-pointer animate-in fade-in slide-in-from-bottom-4 duration-1000"
           >
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-cyan-400/40 dark:border-cyan-400/60 shadow-lg transition-all duration-300 group-hover:border-cyan-400/60 dark:group-hover:border-cyan-400/80">
-              <Newspaper className="w-4 h-4 text-cyan-500 dark:text-cyan-400" strokeWidth={1.5} />
-              <span className="text-sm font-light text-gray-700 dark:text-gray-200">Press Release</span>
-              <ArrowRight className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 group-hover:translate-x-0.5 transition-transform duration-300" />
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#7affd4]/10 backdrop-blur-sm border border-[#7affd4]/40 shadow-lg transition-all duration-300 group-hover:border-[#7affd4]/60 group-hover:bg-[#7affd4]/15">
+              <Newspaper className="w-4 h-4 text-[#7affd4]" strokeWidth={1.5} />
+              <span className="text-sm font-light text-[#f5f5f0]">Press Release</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#7affd4] group-hover:translate-x-0.5 transition-transform duration-300" />
             </div>
           </a>
 
           <h1
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-extralight leading-[1.15] mb-4 sm:mb-6 md:mb-8 text-gray-900 dark:text-gray-100"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-extralight leading-[1.15] mb-4 sm:mb-6 md:mb-8 text-[#f5f5f0]"
+            style={{ letterSpacing: '-0.02em' }}
           >
             Empowering
             <br />
             Innovators.
             <br />
-            <span className="font-light">Elevating Futures.</span>
+            <span className="font-light text-[#7affd4]">Elevating Futures.</span>
           </h1>
           <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-extralight text-gray-600 dark:text-gray-400 max-w-2xl mb-6 sm:mb-8 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-[#f5f5f0]/80 max-w-2xl mb-6 sm:mb-8 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150"
+            style={{ letterSpacing: '0.01em' }}
           >
             A new venture force for India's innovation frontier.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-            <Button size="lg" className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90 font-light text-sm sm:text-base group transition-all duration-300 hover:scale-105" asChild>
+            <Button size="lg" className="bg-[#7affd4] text-[#0a1128] hover:bg-[#7affd4]/90 font-medium text-sm sm:text-base group transition-all duration-300 hover:scale-105" asChild>
               <Link href="/thesis">
                 Discover Our Thesis
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-gray-300 dark:border-white/30 text-gray-900 dark:text-white font-light text-sm sm:text-base hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300 hover:border-gray-400 dark:hover:border-white/50" asChild>
+            <Button size="lg" variant="outline" className="border-[#ff6b6b]/40 text-[#f5f5f0] font-light text-sm sm:text-base hover:bg-[#ff6b6b]/10 transition-all duration-300 hover:border-[#ff6b6b]/60" asChild>
               <Link href="/join">Join the Movement</Link>
             </Button>
           </div>

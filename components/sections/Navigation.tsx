@@ -44,24 +44,24 @@ export function Navigation() {
               <div className="absolute top-full -left-[120px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 <div className={`${dropdownBg} backdrop-blur-xl rounded-2xl shadow-2xl border ${dropdownBorder} p-4 w-[620px]`}>
                   <div className="grid grid-cols-3 gap-3">
-                    <a href="/#why-india" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Why India</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">The world's fastest growing startup ecosystem.</p>
-                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                    <a href="/#why-india" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-white mb-2">Why India</h4>
+                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">The world's fastest growing startup ecosystem.</p>
+                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
                         Learn <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
                       </span>
                     </a>
-                    <a href="/#why-now" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Why Now</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">A once-in-a-generation opportunity.</p>
-                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                    <a href="/#why-now" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-white mb-2">Why Now</h4>
+                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">A once-in-a-generation opportunity.</p>
+                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
                         Discover <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
                       </span>
                     </a>
-                    <a href="/#why-us" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Why Us</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">What sets InnoSphere apart.</p>
-                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                    <a href="/#why-us" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-white mb-2">Why Us</h4>
+                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">What sets InnoSphere apart.</p>
+                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
                         Explore <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
                       </span>
                     </a>
@@ -79,28 +79,28 @@ export function Navigation() {
                 <div className={`${dropdownBg} backdrop-blur-xl rounded-2xl shadow-2xl border ${dropdownBorder} p-4 w-[720px]`}>
                   <div className="grid grid-cols-3 gap-3">
                     {/* Letter to Founders */}
-                    <a href="/letter" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Letter to Founders</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">Our commitment to India's ambitious builders.</p>
-                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                    <a href="/letter" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-white mb-2">Letter to Founders</h4>
+                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">Our commitment to India's ambitious builders.</p>
+                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
                         Read <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
                       </span>
                     </a>
 
                     {/* Thesis */}
-                    <a href="/thesis" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Investment Thesis</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">How we find category-defining companies.</p>
-                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                    <a href="/thesis" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-white mb-2">Investment Thesis</h4>
+                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">How we find category-defining companies.</p>
+                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
                         Explore <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
                       </span>
                     </a>
 
                     {/* Signals */}
-                    <a href="/signals" className="group/card p-5 rounded-xl border border-transparent hover:border-gray-200 dark:hover:border-white/10 hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-gray-900 dark:text-white mb-2">Market Signals</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed mb-4">Data on India's innovation ecosystem.</p>
-                      <span className="text-sm text-gray-400 dark:text-gray-500 flex items-center gap-2 group-hover/card:text-gray-900 dark:group-hover/card:text-white transition-colors">
+                    <a href="/signals" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
+                      <h4 className="text-base font-medium text-white mb-2">Market Signals</h4>
+                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">Data on India's innovation ecosystem.</p>
+                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
                         View <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
                       </span>
                     </a>

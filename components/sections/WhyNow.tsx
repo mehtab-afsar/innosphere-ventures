@@ -45,7 +45,7 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
       className={`py-12 flex ${isLeft ? 'justify-start' : 'justify-end'}`}
     >
       <div
-        className="max-w-xl w-full text-center min-h-[300px] flex flex-col justify-center transition-all duration-700 ease-out"
+        className="max-w-xl w-full text-center flex flex-col justify-center transition-all duration-700 ease-out"
         style={{
           opacity: easedProgress,
           transform: `translateY(${(1 - easedProgress) * 30}px)`,
@@ -55,9 +55,9 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
           className="flex items-center justify-center gap-4 mb-4"
           style={{ opacity: easedProgress }}
         >
-          <div className="h-px bg-white/20 w-8" />
-          <span className="text-sm font-extralight text-white/40 tracking-widest">{card.number}</span>
-          <div className="h-px bg-white/20 w-8" />
+          <div className="h-px bg-[#7affd4]/20 w-8" />
+          <span className="text-sm font-light text-[#f5f5f0]/40 tracking-widest">{card.number}</span>
+          <div className="h-px bg-[#7affd4]/20 w-8" />
         </div>
 
         <div
@@ -67,18 +67,18 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
             transform: `scale(${0.8 + easedProgress * 0.2})`,
           }}
         >
-          <Icon className="w-8 h-8 text-white/50" strokeWidth={1} />
+          <Icon className="w-8 h-8 text-[#7affd4]/50" strokeWidth={1} />
         </div>
 
         <h3
-          className="text-xl sm:text-2xl lg:text-3xl font-light text-white mb-3"
+          className="text-xl sm:text-2xl lg:text-3xl font-medium text-[#f5f5f0] mb-3"
           style={{ opacity: easedProgress }}
         >
           {card.title}
         </h3>
 
         <p
-          className="text-sm sm:text-base font-extralight text-white/60 leading-relaxed"
+          className="text-sm sm:text-base font-light text-[#f5f5f0]/60 leading-relaxed"
           style={{ opacity: easedProgress * 0.9 }}
         >
           {card.description}
@@ -94,20 +94,20 @@ export function WhyNow() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <Badge className="mb-4 font-light bg-white/10 text-white border-white/30 hover:bg-white/20">
+          <Badge className="mb-4 font-light bg-[#7affd4]/10 text-[#f5f5f0] border-[#7affd4]/30 hover:bg-[#7affd4]/20">
             Why Now
           </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#f5f5f0] mb-6" style={{ letterSpacing: '-0.01em' }}>
             A Once-in-a-Generation Opportunity
           </h2>
           <div className="space-y-1 max-w-xl mx-auto">
-            <p className="text-base sm:text-lg font-extralight text-white/60">
+            <p className="text-base sm:text-lg font-light text-[#f5f5f0]/60">
               The foundations are in place.
             </p>
-            <p className="text-base sm:text-lg font-extralight text-white/60">
+            <p className="text-base sm:text-lg font-light text-[#f5f5f0]/60">
               The system is forming.
             </p>
-            <p className="text-base sm:text-lg font-light text-white">
+            <p className="text-base sm:text-lg font-medium text-[#f5f5f0]">
               What comes next will compound for decades.
             </p>
           </div>

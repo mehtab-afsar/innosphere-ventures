@@ -64,14 +64,14 @@ export function WhyUs() {
       <div className="max-w-7xl mx-auto w-full">
         {/* Header and Navigation */}
         <div className="mb-12 text-center">
-          <Badge className="mb-4 font-light bg-white/10 text-white border-white/30 hover:bg-white/20">
+          <Badge className="mb-4 font-light bg-[#7affd4]/10 text-[#f5f5f0] border-[#7affd4]/30 hover:bg-[#7affd4]/20">
             Why Us
           </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight text-white mb-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#f5f5f0] mb-2" style={{ letterSpacing: '-0.01em' }}>
             Conviction capital meets
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
-            <span className="font-light">Edge Alpha precision</span>
+            <span className="font-semibold text-[#7affd4]">Edge Alpha precision</span>
           </h2>
         </div>
 
@@ -82,8 +82,8 @@ export function WhyUs() {
               key={index}
               className={`transition-all duration-300 ${
                 currentIndex === index
-                  ? 'text-white font-medium'
-                  : 'text-white/60 font-light'
+                  ? 'text-[#7affd4] font-medium'
+                  : 'text-[#f5f5f0]/60 font-light'
               }`}
             >
               {card.title}
@@ -107,14 +107,14 @@ export function WhyUs() {
                   ? 'p-10'
                   : 'p-8'
               }`}>
-                <h3 className={`font-light text-white mb-4 transition-all duration-[1200ms] ease-in-out ${
+                <h3 className={`font-medium text-[#f5f5f0] mb-4 transition-all duration-[1200ms] ease-in-out ${
                   currentIndex === index
                     ? 'text-2xl lg:text-3xl'
                     : 'text-xl lg:text-2xl'
                 }`}>
                   {card.title}
                 </h3>
-                <p className="font-extralight text-white/80 leading-relaxed text-base lg:text-lg">
+                <p className="font-light text-[#f5f5f0]/70 leading-relaxed text-base lg:text-lg">
                   {card.description}
                 </p>
               </div>

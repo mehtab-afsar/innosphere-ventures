@@ -46,12 +46,12 @@ export function Footer() {
   };
 
   return (
-    <footer ref={footerRef} className="relative bg-black text-white overflow-hidden">
+    <footer ref={footerRef} className="relative text-white overflow-hidden" style={{ backgroundColor: '#021a28' }}>
       {/* Particle Sphere Background - Right Side */}
       <div className="absolute right-0 top-0 w-[50%] h-full opacity-50 pointer-events-none hidden lg:block">
         <ParticleSphere scale={0.7} />
         {/* Gradient fade overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#021a28] via-[#021a28]/70 to-transparent" />
       </div>
 
       {/* Main Footer Content */}

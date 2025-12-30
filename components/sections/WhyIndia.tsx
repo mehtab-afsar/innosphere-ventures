@@ -6,34 +6,28 @@ import { StartupEcosystemChart } from "@/components/StartupEcosystemChart";
 
 export function WhyIndia() {
   return (
-    <section id="why-india" className="py-32 px-6 lg:px-12 relative overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
-
+    <section id="why-india" className="py-32 px-6 lg:px-12 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16 text-center">
-          <Badge className="mb-4 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
+          <Badge className="mb-4 font-light bg-[#7affd4]/10 text-[#f5f5f0] border-[#7affd4]/30 hover:bg-[#7affd4]/20">
             Why India
           </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-[#f5f5f0] leading-tight" style={{ letterSpacing: '-0.01em' }}>
             India's innovation story is accelerating.
             <br />
-            <span className="font-light">A deep tech nation is emerging.</span>
+            <span className="font-semibold text-[#7affd4]">A deep tech nation is emerging.</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl mx-auto mb-4">
+          <p className="text-base sm:text-lg md:text-xl font-light text-[#f5f5f0]/70 max-w-3xl mx-auto mb-4" style={{ letterSpacing: '0.01em' }}>
             The country is transitioning from services-led growth to systems-led growth — powered by digital infrastructure, deep tech capabilities, industrial policy, and distributed talent.
           </p>
-          <p className="text-sm sm:text-base md:text-lg font-extralight text-gray-500 dark:text-white/50 max-w-3xl mx-auto mb-6">
+          <p className="text-sm sm:text-base md:text-lg font-light text-[#f5f5f0]/60 max-w-3xl mx-auto mb-6">
             This is not the familiar "startup surge" narrative. This is structural transformation.
           </p>
-          <div className="max-w-2xl mx-auto mb-8 py-6 border-t border-b border-gray-200 dark:border-white/10">
-            <p className="text-lg sm:text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-4">
+          <div className="max-w-2xl mx-auto mb-8 py-6 border-t border-b border-[#7affd4]/20">
+            <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#f5f5f0] mb-4" style={{ letterSpacing: '0.01em' }}>
               Conviction comes before consensus.
             </p>
-            <p className="text-sm sm:text-base font-extralight text-gray-500 dark:text-white/50">
+            <p className="text-sm sm:text-base font-light text-[#f5f5f0]/60">
               India's innovation economy has reached a transition point. It is no longer defined by isolated success stories, but by reinforcing systems — infrastructure, talent, policy, and demand compounding together. This is the phase where conviction matters most: before consensus is obvious, but after fundamentals are in place.
             </p>
           </div>
@@ -43,36 +37,36 @@ export function WhyIndia() {
         <div className="max-w-5xl mx-auto space-y-6">
 
           {/* Combined Stats Row */}
-          <div className="glass-card group hover:scale-[1.01] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
+          <div className="glass-card group hover:scale-[1.01] transition-all duration-500 hover:shadow-2xl hover:shadow-[#7affd4]/5 scroll-reveal">
             <div className="p-6 md:p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
                 {/* Startups */}
                 <div className="text-center md:pl-16">
-                  <AnimatedCounter target={165000} suffix="+" className="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-1" />
-                  <p className="text-base font-light text-gray-900 dark:text-white">Startups</p>
-                  <p className="text-sm font-extralight text-gray-500 dark:text-white/50 mt-1">
+                  <AnimatedCounter target={165000} suffix="+" className="text-4xl md:text-5xl font-medium text-[#f5f5f0] mb-1" />
+                  <p className="text-base font-light text-[#f5f5f0]">Startups</p>
+                  <p className="text-sm font-light text-[#f5f5f0]/60 mt-1">
                     Distributed innovation across India
                   </p>
                 </div>
 
                 {/* Divider - visible on md+ */}
                 <div className="hidden md:flex items-center justify-center">
-                  <div className="w-px h-20 bg-gray-200 dark:bg-white/10"></div>
+                  <div className="w-px h-20 bg-[#7affd4]/20"></div>
                 </div>
                 {/* Mobile divider */}
-                <div className="md:hidden w-full h-px bg-gray-200 dark:bg-white/10"></div>
+                <div className="md:hidden w-full h-px bg-[#7affd4]/20"></div>
 
                 {/* Deep Tech */}
                 <div className="text-center">
-                  <AnimatedCounter target={1000} suffix="+" className="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-1" />
-                  <p className="text-base font-light text-gray-900 dark:text-white">Deep Tech Unicorn Potential</p>
+                  <AnimatedCounter target={1000} suffix="+" className="text-4xl md:text-5xl font-medium text-[#f5f5f0] mb-1" />
+                  <p className="text-base font-light text-[#f5f5f0]">Deep Tech Unicorn Potential</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Startup Ecosystem Chart - Full Width */}
-          <div className="glass-card group hover:scale-[1.01] transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200 dark:hover:shadow-white/10 scroll-reveal">
+          <div className="glass-card group hover:scale-[1.01] transition-all duration-500 hover:shadow-2xl hover:shadow-[#7affd4]/5 scroll-reveal">
             <div className="p-6 md:p-8">
               <StartupEcosystemChart />
             </div>
