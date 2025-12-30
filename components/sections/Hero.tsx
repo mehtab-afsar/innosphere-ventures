@@ -15,7 +15,7 @@ const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 overflow-hidden bg-gray-50 dark:bg-black py-24 md:py-0">
+    <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 overflow-hidden py-24 md:py-0">
       {/* 3D Particle Sphere Background - Hidden on mobile, visible on tablet+ */}
       <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 w-[60%] md:w-[55%] lg:w-[50%] h-[70%] md:h-[80%] lg:h-[90%]">
         {/* Glowing Ring Effects Container */}
@@ -51,13 +51,6 @@ export function Hero() {
         </div>
 
         <ParticleSphere />
-
-        {/* Gradient fade on left edge */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-50 dark:from-black to-transparent w-[40%] pointer-events-none" />
-        {/* Gradient fade on bottom edge */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 dark:from-black to-transparent h-[25%] top-auto bottom-0 pointer-events-none" />
-        {/* Gradient fade on top edge */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 dark:from-black to-transparent h-[25%] pointer-events-none" />
       </div>
 
       {/* CSS Keyframe Animations */}

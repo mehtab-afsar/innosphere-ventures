@@ -7,6 +7,8 @@ import { useTheme } from "../ThemeProvider";
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [whyOpen, setWhyOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -17,28 +19,16 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Determine text colors based on scroll and theme
-  const logoColor = scrolled
-    ? "text-gray-900 dark:text-white"
-    : "text-gray-900 dark:text-gray-100";
-  const navLinkColor = scrolled
-    ? "text-gray-700 dark:text-gray-200"
-    : "text-gray-700 dark:text-gray-300";
-  const navLinkHover = scrolled
-    ? "hover:text-gray-900 dark:hover:text-white"
-    : "hover:text-gray-900 dark:hover:text-white";
-  const dropdownBg = scrolled
-    ? "bg-white dark:bg-gray-900"
-    : "bg-white dark:bg-gray-900";
-  const dropdownBorder = scrolled
-    ? "border-gray-200 dark:border-gray-700"
-    : "border-gray-200 dark:border-gray-700";
-  const dropdownLinkColor = scrolled
-    ? "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
-    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white";
+  // Determine text colors - always use white/light colors for ocean gradient
+  const logoColor = "text-white";
+  const navLinkColor = "text-white/90";
+  const navLinkHover = "hover:text-white";
+  const dropdownBg = "bg-black/90 backdrop-blur-xl";
+  const dropdownBorder = "border-white/10";
+  const dropdownLinkColor = "text-white/80 hover:bg-white/10 hover:text-white";
 
   return (
-    <nav className="fixed top-0 w-full z-50 transition-all duration-300 glass-effect py-4">
+    <nav className="fixed top-0 w-full z-50 transition-all duration-300 py-4">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center">
           <div className={`text-2xl font-extralight tracking-wider ${logoColor}`}>

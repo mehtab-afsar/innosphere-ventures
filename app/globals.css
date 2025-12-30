@@ -179,61 +179,47 @@
   animation-delay: 0.4s;
 }
 
-/* Deep Tech Grid Background */
+/* Deep Tech Grid Background - REMOVED */
 .grid-background {
-  background-color: #f8fafc;
-  background-image:
-    radial-gradient(circle at center, #cbd5e1 1px, transparent 1px),
-    radial-gradient(circle at center, #cbd5e1 1px, transparent 1px);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
+  background-color: transparent;
+  background-image: none;
 }
 
 .dark .grid-background {
-  background-color: #0f172a;
-  background-image:
-    radial-gradient(circle at center, #334155 1px, transparent 1px),
-    radial-gradient(circle at center, #334155 1px, transparent 1px);
+  background-color: transparent;
+  background-image: none;
 }
 
-/* Glassmorphism Effect */
+/* Glassmorphism Effect - REMOVED */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.05);
+  background: transparent;
 }
 
 .dark .glass-effect {
-  background: rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.4);
+  background: transparent;
 }
 
-/* Glass Card for Bento Grid */
+/* Glass Card for Bento Grid - REMOVED */
 .glass-card {
-  background: rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.2);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .dark .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dark .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Glow Effects */
