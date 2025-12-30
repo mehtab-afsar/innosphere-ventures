@@ -115,8 +115,8 @@ export function StartupEcosystemChart() {
                   <g key={i}>
                     <defs>
                       <linearGradient id={`barGrad-${i}`} x1="0%" y1="100%" x2="0%" y2="0%">
-                        <stop offset="0%" stopColor={isHovered ? "#1e3a8a" : "#1e40af"} />
-                        <stop offset="100%" stopColor={isHovered ? "#2563eb" : "#3b82f6"} />
+                        <stop offset="0%" stopColor={isHovered ? "#0d5f7f" : "#1a6f8f"} />
+                        <stop offset="100%" stopColor={isHovered ? "#5ba4c9" : "#7affd4"} />
                       </linearGradient>
                     </defs>
                     {/* Hover area */}
@@ -187,11 +187,11 @@ export function StartupEcosystemChart() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-4 text-xs">
               <div className="flex items-center gap-1.5">
-                <div className="w-4 h-0.5 bg-orange-500"></div>
+                <div className="w-4 h-0.5 bg-[#5ba4c9]"></div>
                 <span className="text-gray-600 dark:text-white/60">Funding (USD bn)</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-[#7affd4] rounded-full"></div>
                 <span className="text-gray-600 dark:text-white/60">Deals</span>
               </div>
             </div>
@@ -220,7 +220,7 @@ export function StartupEcosystemChart() {
               <path
                 d={fundingPath}
                 fill="none"
-                stroke="#f97316"
+                stroke="#5ba4c9"
                 strokeWidth="0.6"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -249,7 +249,7 @@ export function StartupEcosystemChart() {
                       cx={point.x}
                       cy={point.y}
                       r={isHovered ? 1.5 : (animationProgress > 0.3 ? 1 : 0)}
-                      fill="#f97316"
+                      fill="#7affd4"
                       className="transition-all duration-200"
                     />
                     {/* Hover ring */}
@@ -259,7 +259,7 @@ export function StartupEcosystemChart() {
                         cy={point.y}
                         r={2.5}
                         fill="none"
-                        stroke="#f97316"
+                        stroke="#7affd4"
                         strokeWidth="0.3"
                         opacity={0.5}
                       />
@@ -297,13 +297,13 @@ export function StartupEcosystemChart() {
                 }}
               >
                 <div className="font-medium">{chartData[hoveredPoint].year}</div>
-                <div className="text-orange-400">${chartData[hoveredPoint].funding}bn funding</div>
+                <div className="text-[#5ba4c9]">${chartData[hoveredPoint].funding}bn funding</div>
                 <div className="text-white/70 dark:text-gray-600">{chartData[hoveredPoint].deals.toLocaleString()} deals</div>
               </div>
             )}
 
             {/* Left Y-axis labels */}
-            <div className="absolute left-1 top-2 bottom-6 flex flex-col justify-between text-[9px] text-orange-500 font-light">
+            <div className="absolute left-1 top-2 bottom-6 flex flex-col justify-between text-[9px] text-[#5ba4c9] font-light">
               <span>200</span>
               <span>150</span>
               <span>100</span>
@@ -312,7 +312,7 @@ export function StartupEcosystemChart() {
             </div>
 
             {/* Right Y-axis labels */}
-            <div className="absolute right-1 top-2 bottom-6 flex flex-col justify-between text-[9px] text-orange-400 font-light">
+            <div className="absolute right-1 top-2 bottom-6 flex flex-col justify-between text-[9px] text-[#7affd4] font-light">
               <span>12k</span>
               <span>9k</span>
               <span>6k</span>

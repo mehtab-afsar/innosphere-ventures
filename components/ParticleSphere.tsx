@@ -34,23 +34,23 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Color gradient - cyan to purple to rose (darker for light mode visibility)
+      // Ocean gradient colors - deep ocean blue to mint green
       const t = i / count;
       if (t < 0.33) {
-        // Cyan - darker
-        colors[i * 3] = 0.1 + Math.random() * 0.15;
-        colors[i * 3 + 1] = 0.5 + Math.random() * 0.2;
-        colors[i * 3 + 2] = 0.7 + Math.random() * 0.2;
+        // Deep ocean blue (#1a6f8f to #0d5f7f)
+        colors[i * 3] = 0.05 + Math.random() * 0.15; // R: 5-20%
+        colors[i * 3 + 1] = 0.35 + Math.random() * 0.2; // G: 35-55%
+        colors[i * 3 + 2] = 0.5 + Math.random() * 0.2; // B: 50-70%
       } else if (t < 0.66) {
-        // Purple - darker
-        colors[i * 3] = 0.4 + Math.random() * 0.2;
-        colors[i * 3 + 1] = 0.2 + Math.random() * 0.15;
-        colors[i * 3 + 2] = 0.6 + Math.random() * 0.2;
+        // Mid ocean blue (#2a7fa6 to #5ba4c9)
+        colors[i * 3] = 0.15 + Math.random() * 0.25; // R: 15-40%
+        colors[i * 3 + 1] = 0.5 + Math.random() * 0.15; // G: 50-65%
+        colors[i * 3 + 2] = 0.6 + Math.random() * 0.2; // B: 60-80%
       } else {
-        // Rose/Amber - darker
-        colors[i * 3] = 0.7 + Math.random() * 0.2;
-        colors[i * 3 + 1] = 0.25 + Math.random() * 0.2;
-        colors[i * 3 + 2] = 0.3 + Math.random() * 0.15;
+        // Mint green (#7affd4)
+        colors[i * 3] = 0.45 + Math.random() * 0.15; // R: 45-60%
+        colors[i * 3 + 1] = 0.85 + Math.random() * 0.15; // G: 85-100%
+        colors[i * 3 + 2] = 0.75 + Math.random() * 0.15; // B: 75-90%
       }
     }
 
