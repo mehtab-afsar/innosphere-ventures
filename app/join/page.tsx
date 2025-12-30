@@ -10,18 +10,25 @@ import { useState } from "react";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import type { JoinFormData } from "@/lib/supabase";
 
-type MemberType = "founder" | "lp" | "partner" | "";
-
 export default function JoinPage() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    company: "",
-    memberType: "" as MemberType,
-    stage: "",
-    sector: "",
-    investmentInterest: "",
-    message: "",
+    linkedinUrl: "",
+    companyName: "",
+    companyWebsite: "",
+    companyLocation: "",
+    problemSolving: "",
+    companyVision: "",
+    tractionProgress: "",
+    teamInfo: "",
+    foundingTeamMakeup: "",
+    ceoGender: "",
+    howDidYouHear: "",
+    joinNewsletter: false,
+    additionalMaterials: "",
+    privacyAcknowledged: false,
   });
 
   const { isSubmitting, submitted, submit } = useFormSubmit<JoinFormData>("join");
@@ -108,40 +115,55 @@ export default function JoinPage() {
             ) : (
               <>
                 <h2 className="text-2xl lg:text-3xl font-light text-gray-900 dark:text-white mb-2">
-                  Apply to Join
+                  Investment Form
                 </h2>
-                <p className="font-extralight text-gray-600 dark:text-white/60 mb-8">
-                  Tell us about yourself and how you'd like to be part of
-                  India's innovation frontier.
+                <p className="font-extralight text-gray-600 dark:text-white/60 mb-4">
+                  Thanks for your interest in InnoSphere Ventures!
+                </p>
+                <p className="font-extralight text-gray-600 dark:text-white/60 mb-8 text-sm">
+                  Please fill out this form to let us know a little more about you and your company. We will reach out if there might be a good fit.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                    >
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
-                      placeholder="Enter your full name"
-                    />
+                  {/* Personal Information */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                        What's your first name? *
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        required
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                        placeholder="First name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                        And your last name? *
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        required
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                        placeholder="Last name"
+                      />
+                    </div>
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                    >
-                      Email Address *
+                    <label htmlFor="email" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      What is your email address? *
                     </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">So we can get in touch with you</p>
                     <input
                       type="email"
                       id="email"
@@ -154,174 +176,254 @@ export default function JoinPage() {
                     />
                   </div>
 
+                  {/* Company Information */}
                   <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                    >
-                      Company / Organization
+                    <label htmlFor="companyName" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      What's your company's name? *
+                    </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">If you don't have one, write TBC</p>
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      required
+                      value={formData.companyName}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                      placeholder="Company name"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="companyWebsite" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      If you have a website, share the link here:
+                    </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">Leave blank if you do not have a website. Please only enter links.</p>
+                    <input
+                      type="url"
+                      id="companyWebsite"
+                      name="companyWebsite"
+                      value={formData.companyWebsite}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                      placeholder="https://yourcompany.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="companyLocation" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      Where is your company located? *
                     </label>
                     <input
                       type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
+                      id="companyLocation"
+                      name="companyLocation"
+                      required
+                      value={formData.companyLocation}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
-                      placeholder="Your company name"
+                      placeholder="e.g., Bangalore, India"
+                    />
+                  </div>
+
+                  {/* Problem & Vision */}
+                  <div>
+                    <label htmlFor="problemSolving" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      Let's talk about your idea. What problem is your company solving? *
+                    </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">In less than 100 words</p>
+                    <textarea
+                      id="problemSolving"
+                      name="problemSolving"
+                      required
+                      rows={3}
+                      maxLength={500}
+                      value={formData.problemSolving}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200 resize-none"
+                      placeholder="Describe the problem you're solving..."
                     />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="memberType"
-                      className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                    >
-                      I am a... *
+                    <label htmlFor="companyVision" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      What's the vision you have for this company? *
                     </label>
-                    <select
-                      id="memberType"
-                      name="memberType"
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">In less than 100 words</p>
+                    <textarea
+                      id="companyVision"
+                      name="companyVision"
                       required
-                      value={formData.memberType}
+                      rows={3}
+                      maxLength={500}
+                      value={formData.companyVision}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200 resize-none"
+                      placeholder="Share your vision..."
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="tractionProgress" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      What traction / progress have you made so far towards this vision? *
+                    </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">Eg: product, customers, revenue, funds raised</p>
+                    <textarea
+                      id="tractionProgress"
+                      name="tractionProgress"
+                      required
+                      rows={3}
+                      value={formData.tractionProgress}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200 resize-none"
+                      placeholder="Describe your traction..."
+                    />
+                  </div>
+
+                  {/* Team Information */}
+                  <div>
+                    <label htmlFor="teamInfo" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      What should we know about you and your team? *
+                    </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">Again, in less than 100 words</p>
+                    <textarea
+                      id="teamInfo"
+                      name="teamInfo"
+                      required
+                      rows={3}
+                      maxLength={500}
+                      value={formData.teamInfo}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200 resize-none"
+                      placeholder="Tell us about your team..."
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="linkedinUrl" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      What is your LinkedIn Profile URL? *
+                    </label>
+                    <input
+                      type="url"
+                      id="linkedinUrl"
+                      name="linkedinUrl"
+                      required
+                      value={formData.linkedinUrl}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                      placeholder="https://linkedin.com/in/yourprofile"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="additionalMaterials" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      If you have additional materials to help us make a better decision, share the link here:
+                    </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">This could include a pitch deck or other supporting documents (Google Drive, Dropbox, etc.)</p>
+                    <input
+                      type="url"
+                      id="additionalMaterials"
+                      name="additionalMaterials"
+                      value={formData.additionalMaterials}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                      placeholder="https://drive.google.com/..."
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="foundingTeamMakeup" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      Founding team makeup *
+                    </label>
+                    <p className="text-xs font-extralight text-gray-500 dark:text-white/40 mb-2">Which of the following most accurately describes the founding team gender(s)?</p>
+                    <select
+                      id="foundingTeamMakeup"
+                      name="foundingTeamMakeup"
+                      required
+                      value={formData.foundingTeamMakeup}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
                     >
-                      <option value="" className="bg-white dark:bg-gray-900">
-                        Select your role
-                      </option>
-                      <option value="founder" className="bg-white dark:bg-gray-900">
-                        Founder / Entrepreneur
-                      </option>
-                      <option value="lp" className="bg-white dark:bg-gray-900">
-                        Limited Partner (LP) / Investor
-                      </option>
-                      <option value="partner" className="bg-white dark:bg-gray-900">
-                        Potential Partner / Advisor
-                      </option>
+                      <option value="">Select an option</option>
+                      <option value="all-male">All male</option>
+                      <option value="all-female">All female</option>
+                      <option value="mixed-gender">Mixed gender</option>
+                      <option value="prefer-not-to-say">Prefer not to say</option>
                     </select>
                   </div>
 
-                  {/* Conditional Fields for Founders */}
-                  {formData.memberType === "founder" && (
-                    <>
-                      <div>
-                        <label
-                          htmlFor="stage"
-                          className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                        >
-                          Stage
-                        </label>
-                        <select
-                          id="stage"
-                          name="stage"
-                          value={formData.stage}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
-                        >
-                          <option value="" className="bg-white dark:bg-gray-900">
-                            Select stage
-                          </option>
-                          <option value="pre-seed" className="bg-white dark:bg-gray-900">
-                            Pre-seed
-                          </option>
-                          <option value="seed" className="bg-white dark:bg-gray-900">
-                            Seed
-                          </option>
-                          <option value="series-a" className="bg-white dark:bg-gray-900">
-                            Series A+
-                          </option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label
-                          htmlFor="sector"
-                          className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                        >
-                          Sector
-                        </label>
-                        <select
-                          id="sector"
-                          name="sector"
-                          value={formData.sector}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
-                        >
-                          <option value="" className="bg-white dark:bg-gray-900">
-                            Select sector
-                          </option>
-                          <option value="deep-tech" className="bg-white dark:bg-gray-900">
-                            Deep Tech
-                          </option>
-                          <option value="fintech" className="bg-white dark:bg-gray-900">
-                            Fintech
-                          </option>
-                          <option value="consumer" className="bg-white dark:bg-gray-900">
-                            Consumer
-                          </option>
-                          <option value="climate" className="bg-white dark:bg-gray-900">
-                            Climate
-                          </option>
-                          <option value="healthcare" className="bg-white dark:bg-gray-900">
-                            Healthcare
-                          </option>
-                          <option value="other" className="bg-white dark:bg-gray-900">
-                            Other
-                          </option>
-                        </select>
-                      </div>
-                    </>
-                  )}
-
-                  {/* Conditional Fields for LPs */}
-                  {formData.memberType === "lp" && (
-                    <div>
-                      <label
-                        htmlFor="investmentInterest"
-                        className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                      >
-                        Investment Interest
-                      </label>
-                      <select
-                        id="investmentInterest"
-                        name="investmentInterest"
-                        value={formData.investmentInterest}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
-                      >
-                        <option value="" className="bg-white dark:bg-gray-900">
-                          Select range
-                        </option>
-                        <option value="under-50k" className="bg-white dark:bg-gray-900">
-                          Under $50K
-                        </option>
-                        <option value="50k-250k" className="bg-white dark:bg-gray-900">
-                          $50K - $250K
-                        </option>
-                        <option value="250k-plus" className="bg-white dark:bg-gray-900">
-                          $250K+
-                        </option>
-                      </select>
-                    </div>
-                  )}
+                  <div>
+                    <label htmlFor="ceoGender" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      CEO Gender *
+                    </label>
+                    <select
+                      id="ceoGender"
+                      name="ceoGender"
+                      required
+                      value={formData.ceoGender}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="non-binary">Non-binary</option>
+                      <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                  </div>
 
                   <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2"
-                    >
-                      Tell us about yourself
+                    <label htmlFor="howDidYouHear" className="block text-sm font-light text-gray-700 dark:text-white/80 mb-2">
+                      How did you hear about InnoSphere Ventures? *
                     </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      value={formData.message}
+                    <select
+                      id="howDidYouHear"
+                      name="howDidYouHear"
+                      required
+                      value={formData.howDidYouHear}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200 resize-none"
-                      placeholder="Share a bit about your background and interest in InnoSphere..."
-                    />
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl font-extralight text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/50 focus:border-transparent transition-all duration-200"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="social-media">Social Media</option>
+                      <option value="referral">Referral from friend/colleague</option>
+                      <option value="news-article">News Article</option>
+                      <option value="event">Event/Conference</option>
+                      <option value="search-engine">Search Engine</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  {/* Newsletter & Privacy */}
+                  <div className="space-y-4">
+                    <div className="flex items-start">
+                      <input
+                        type="checkbox"
+                        id="joinNewsletter"
+                        name="joinNewsletter"
+                        checked={formData.joinNewsletter}
+                        onChange={(e) => setFormData(prev => ({ ...prev, joinNewsletter: e.target.checked }))}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+                      />
+                      <label htmlFor="joinNewsletter" className="ml-3 text-sm font-light text-gray-700 dark:text-white/80">
+                        Would you like to join our Community newsletter?
+                      </label>
+                    </div>
+
+                    <div className="flex items-start">
+                      <input
+                        type="checkbox"
+                        id="privacyAcknowledged"
+                        name="privacyAcknowledged"
+                        required
+                        checked={formData.privacyAcknowledged}
+                        onChange={(e) => setFormData(prev => ({ ...prev, privacyAcknowledged: e.target.checked }))}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+                      />
+                      <label htmlFor="privacyAcknowledged" className="ml-3 text-sm font-light text-gray-700 dark:text-white/80">
+                        By submitting the above information, you are acknowledging that you have read and agreed to our privacy collection statement *
+                      </label>
+                    </div>
                   </div>
 
                   <Button

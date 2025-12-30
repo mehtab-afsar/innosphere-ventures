@@ -31,14 +31,23 @@ export async function POST(request: NextRequest) {
       case "join": {
         const joinData = data as JoinFormData;
         const { error } = await supabase.from("join_submissions").insert({
-          name: joinData.name,
+          first_name: joinData.firstName,
+          last_name: joinData.lastName,
           email: joinData.email,
-          company: joinData.company,
-          member_type: joinData.memberType,
-          stage: joinData.stage || null,
-          sector: joinData.sector || null,
-          investment_interest: joinData.investmentInterest || null,
-          message: joinData.message,
+          linkedin_url: joinData.linkedinUrl,
+          company_name: joinData.companyName,
+          company_website: joinData.companyWebsite || null,
+          company_location: joinData.companyLocation,
+          problem_solving: joinData.problemSolving,
+          company_vision: joinData.companyVision,
+          traction_progress: joinData.tractionProgress,
+          team_info: joinData.teamInfo,
+          founding_team_makeup: joinData.foundingTeamMakeup,
+          ceo_gender: joinData.ceoGender,
+          how_did_you_hear: joinData.howDidYouHear,
+          join_newsletter: joinData.joinNewsletter,
+          additional_materials: joinData.additionalMaterials || null,
+          privacy_acknowledged: joinData.privacyAcknowledged,
         });
         if (error) throw error;
         break;

@@ -32,14 +32,34 @@ export type FormType = "join" | "mailing-list";
 
 // Form data interfaces
 export interface JoinFormData {
-  name: string;
+  // Personal Information
+  firstName: string;
+  lastName: string;
   email: string;
-  company: string;
-  memberType: string;
-  stage?: string;
-  sector?: string;
-  investmentInterest?: string;
-  message: string;
+  linkedinUrl: string;
+
+  // Company Information
+  companyName: string;
+  companyWebsite?: string;
+  companyLocation: string;
+
+  // Problem & Vision
+  problemSolving: string;
+  companyVision: string;
+  tractionProgress: string;
+
+  // Team Information
+  teamInfo: string;
+  foundingTeamMakeup: string;
+  ceoGender: string;
+
+  // Additional Information
+  howDidYouHear: string;
+  joinNewsletter: boolean;
+  additionalMaterials?: string; // URL to uploaded materials
+
+  // Privacy acknowledgment
+  privacyAcknowledged: boolean;
 }
 
 export interface MailingListData {
