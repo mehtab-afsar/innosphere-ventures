@@ -6,6 +6,7 @@ import { useTheme } from "../ThemeProvider";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [whyOpen, setWhyOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -14,30 +15,82 @@ export function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      // Calculate scroll progress (0 to 1)
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      const maxScroll = documentHeight - windowHeight;
+      const progress = Math.min(scrollTop / maxScroll, 1);
+      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Determine text colors - always use white/light colors for ocean gradient
-  const logoColor = "text-white";
-  const navLinkColor = "text-white/90";
-  const navLinkHover = "hover:text-white";
+  // Calculate smooth text color transition based on scroll
+  const getTextColor = () => {
+    // Transition range: 0.2 to 0.5
+    if (scrollProgress < 0.2) {
+      return { color: "rgb(10, 17, 40)", opacity: 1 }; // Dark navy
+    } else if (scrollProgress > 0.5) {
+      return { color: "rgb(255, 255, 255)", opacity: 1 }; // White
+    } else {
+      // Smooth interpolation between dark and white
+      const progress = (scrollProgress - 0.2) / 0.3; // 0 to 1 in transition zone
+      const r = Math.round(10 + (255 - 10) * progress);
+      const g = Math.round(17 + (255 - 17) * progress);
+      const b = Math.round(40 + (255 - 40) * progress);
+      return { color: `rgb(${r}, ${g}, ${b})`, opacity: 1 };
+    }
+  };
+
+  const textColorStyle = getTextColor();
+
+  // Use the same color as logo for nav links (no separate calculation)
+  const navLinkColorStyle = textColorStyle;
+
+  // Apply same smooth interpolation to theme toggle button
+  const getThemeToggleStyle = () => {
+    if (scrollProgress < 0.2) {
+      return {
+        backgroundColor: "rgba(10, 17, 40, 0.1)",
+        color: "rgb(10, 17, 40)"
+      };
+    } else if (scrollProgress > 0.5) {
+      return {
+        backgroundColor: "rgba(255, 255, 255, 0.1)",
+        color: "rgb(255, 255, 255)"
+      };
+    } else {
+      // Smooth interpolation
+      const progress = (scrollProgress - 0.2) / 0.3;
+      const r = Math.round(10 + (255 - 10) * progress);
+      const g = Math.round(17 + (255 - 17) * progress);
+      const b = Math.round(40 + (255 - 40) * progress);
+      return {
+        backgroundColor: `rgba(${r}, ${g}, ${b}, 0.1)`,
+        color: `rgb(${r}, ${g}, ${b})`
+      };
+    }
+  };
+
+  const themeToggleStyle = getThemeToggleStyle();
   const dropdownBg = "bg-black/90 backdrop-blur-xl";
   const dropdownBorder = "border-white/10";
   const dropdownLinkColor = "text-white/80 hover:bg-white/10 hover:text-white";
 
   return (
-    <nav className="fixed top-0 w-full z-50 transition-all duration-300 py-4">
+    <nav className="fixed top-0 w-full z-50 py-4">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center">
-          <div className={`text-2xl font-extralight tracking-wider ${logoColor}`}>
+          <div className="text-2xl font-extralight tracking-wider transition-colors duration-500" style={textColorStyle}>
             InnoSphere <span className="font-normal">Ventures</span>
           </div>
-          <div className={`hidden md:flex space-x-8 font-light ${navLinkColor}`}>
-            <a href="/" className={`${navLinkHover} transition-colors duration-200`}>Home</a>
+          <div className="hidden md:flex space-x-8 font-light" style={{ ...navLinkColorStyle, transition: "color 0.5s ease" }}>
+            <a href="/" className="hover:brightness-125 transition-all duration-300">Home</a>
             <div className="relative group">
-              <button className={`flex items-center gap-1 ${navLinkHover} transition-colors duration-200`}>
+              <button className="flex items-center gap-1 hover:brightness-125 transition-all duration-300">
                 Why
                 <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
@@ -71,7 +124,7 @@ export function Navigation() {
             </div>
             {/* Approach Mega Menu */}
             <div className="relative group">
-              <button className={`flex items-center gap-1 ${navLinkHover} transition-colors duration-200`}>
+              <button className="flex items-center gap-1 hover:brightness-125 transition-all duration-300">
                 Approach
                 <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
@@ -108,10 +161,10 @@ export function Navigation() {
                 </div>
               </div>
             </div>
-            <a href="/portfolio" className={`${navLinkHover} transition-colors duration-200`}>Portfolio</a>
-            <a href="/join" className={`${navLinkHover} transition-colors duration-200`}>Join</a>
+            <a href="/portfolio" className="hover:brightness-125 transition-all duration-300">Portfolio</a>
+            <a href="/join" className="hover:brightness-125 transition-all duration-300">Join</a>
             <div className="relative group">
-              <button className={`flex items-center gap-1 ${navLinkHover} transition-colors duration-200`}>
+              <button className="flex items-center gap-1 hover:brightness-125 transition-all duration-300">
                 About
                 <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
@@ -141,11 +194,8 @@ export function Navigation() {
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-full transition-all duration-300 ${
-                scrolled
-                  ? "bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-700 dark:text-white"
-                  : "bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 text-gray-700 dark:text-white"
-              }`}
+              className="p-2 rounded-full transition-all duration-500"
+              style={themeToggleStyle}
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -155,7 +205,8 @@ export function Navigation() {
               )}
             </button>
             <button
-              className={`md:hidden ${logoColor}`}
+              className="md:hidden transition-colors duration-500"
+              style={textColorStyle}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <Menu className="w-6 h-6" />
