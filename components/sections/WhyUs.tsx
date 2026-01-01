@@ -82,7 +82,7 @@ export function WhyUs() {
               key={index}
               className={`transition-all duration-300 ${
                 currentIndex === index
-                  ? 'text-[#7affd4] font-medium'
+                  ? 'text-[#ff6b5a] font-medium'
                   : 'text-[#f5f5f0]/60 font-light'
               }`}
             >
@@ -107,7 +107,7 @@ export function WhyUs() {
                   ? 'p-10'
                   : 'p-8'
               }`}>
-                <h3 className={`font-medium text-[#f5f5f0] mb-4 transition-all duration-[1200ms] ease-in-out ${
+                <h3 className={`font-medium text-[#7affd4] mb-4 transition-all duration-[1200ms] ease-in-out ${
                   currentIndex === index
                     ? 'text-2xl lg:text-3xl'
                     : 'text-xl lg:text-2xl'

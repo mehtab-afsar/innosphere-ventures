@@ -97,7 +97,7 @@ export function WhyNow() {
           <Badge className="mb-4 font-light bg-[#7affd4]/10 text-[#f5f5f0] border-[#7affd4]/30 hover:bg-[#7affd4]/20">
             Why Now
           </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#f5f5f0] mb-6" style={{ letterSpacing: '-0.01em' }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#7affd4] mb-6" style={{ letterSpacing: '-0.01em' }}>
             A Once-in-a-Generation Opportunity
           </h2>
           <div className="space-y-1 max-w-xl mx-auto">

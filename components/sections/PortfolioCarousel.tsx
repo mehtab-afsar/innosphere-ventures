@@ -12,7 +12,7 @@ export function PortfolioCarousel() {
       {/* Edge Alpha tagline */}
       <div className="max-w-7xl mx-auto mb-6 sm:mb-8 text-center">
         <p className="text-lg sm:text-xl md:text-2xl font-light text-[#0a1128]/80" style={{ letterSpacing: '0.02em' }}>
-          Powered by <span className="font-semibold text-[#1a6f8f]">Edge Alpha</span>
+          Powered by <span className="font-semibold text-[#7affd4]">Edge Alpha</span>
         </p>
         <p className="text-sm sm:text-base text-[#0a1128]/60 font-light mt-1" style={{ letterSpacing: '0.03em' }}>
           the signal engine behind India's next innovation frontier.
