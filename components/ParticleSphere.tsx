@@ -34,18 +34,18 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Dark ocean colors - very dark blue to black (#021a28, #000508)
+      // Dark coral colors with subtle variation
       const t = i / count;
       if (t < 0.5) {
-        // Very dark blue (#021a28 - rgb(2, 26, 40))
-        colors[i * 3] = 0.005 + Math.random() * 0.005; // R: 0.5-1% (~2/255)
-        colors[i * 3 + 1] = 0.08 + Math.random() * 0.04; // G: 8-12% (~26/255)
-        colors[i * 3 + 2] = 0.14 + Math.random() * 0.04; // B: 14-18% (~40/255)
+        // Darker coral tones
+        colors[i * 3] = 0.15 + Math.random() * 0.05; // R: 15-20%
+        colors[i * 3 + 1] = 0.25 + Math.random() * 0.05; // G: 25-30%
+        colors[i * 3 + 2] = 0.22 + Math.random() * 0.05; // B: 22-27%
       } else {
-        // Near black (#000508 - rgb(0, 5, 8))
-        colors[i * 3] = 0 + Math.random() * 0.002; // R: 0-0.2% (~0/255)
-        colors[i * 3 + 1] = 0.015 + Math.random() * 0.01; // G: 1.5-2.5% (~5/255)
-        colors[i * 3 + 2] = 0.025 + Math.random() * 0.01; // B: 2.5-3.5% (~8/255)
+        // Very dark, almost black with hint of coral
+        colors[i * 3] = 0.08 + Math.random() * 0.04; // R: 8-12%
+        colors[i * 3 + 1] = 0.12 + Math.random() * 0.04; // G: 12-16%
+        colors[i * 3 + 2] = 0.10 + Math.random() * 0.04; // B: 10-14%
       }
     }
 

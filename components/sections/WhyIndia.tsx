@@ -15,7 +15,7 @@ export function WhyIndia() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-[#f5f5f0] leading-tight" style={{ letterSpacing: '-0.01em' }}>
             India's innovation story is accelerating.
             <br />
-            <span className="font-semibold text-[#7affd4]">A deep tech nation is emerging.</span>
+            <span className="font-semibold text-[#2a9a8e]">A deep tech nation is emerging.</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl font-light text-[#f5f5f0]/70 max-w-3xl mx-auto mb-4" style={{ letterSpacing: '0.01em' }}>
             The country is transitioning from services-led growth to systems-led growth — powered by digital infrastructure, deep tech capabilities, industrial policy, and distributed talent.
@@ -24,7 +24,7 @@ export function WhyIndia() {
             This is not the familiar "startup surge" narrative. This is structural transformation.
           </p>
           <div className="max-w-2xl mx-auto mb-8 py-6 border-t border-b border-[#7affd4]/20">
-            <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#f5f5f0] mb-4" style={{ letterSpacing: '0.01em' }}>
+            <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#2a9a8e] mb-4" style={{ letterSpacing: '0.01em' }}>
               Conviction comes before consensus.
             </p>
             <p className="text-sm sm:text-base font-light text-[#f5f5f0]/60">
@@ -42,7 +42,7 @@ export function WhyIndia() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
                 {/* Startups */}
                 <div className="text-center md:pl-16">
-                  <AnimatedCounter target={165000} suffix="+" className="text-4xl md:text-5xl font-medium text-[#f5f5f0] mb-1" />
+                  <AnimatedCounter target={165000} suffix="+" className="text-4xl md:text-5xl font-medium text-[#ff6b5a] mb-1" />
                   <p className="text-base font-light text-[#f5f5f0]">Startups</p>
                   <p className="text-sm font-light text-[#f5f5f0]/60 mt-1">
                     Distributed innovation across India
@@ -58,7 +58,7 @@ export function WhyIndia() {
 
                 {/* Deep Tech */}
                 <div className="text-center">
-                  <AnimatedCounter target={1000} suffix="+" className="text-4xl md:text-5xl font-medium text-[#f5f5f0] mb-1" />
+                  <AnimatedCounter target={1000} suffix="+" className="text-4xl md:text-5xl font-medium text-[#ff6b5a] mb-1" />
                   <p className="text-base font-light text-[#f5f5f0]">Deep Tech Unicorn Potential</p>
                 </div>
               </div>
