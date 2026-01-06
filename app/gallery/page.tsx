@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { ArrowLeft, Play } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -63,7 +64,7 @@ export default function GalleryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="portfolio">
       <Navigation />
 
       {/* Hero Section with Portrait Video on Right */}
@@ -75,14 +76,14 @@ export default function GalleryPage() {
           </Link>
 
           <div className="mb-8">
-            <Badge className="mb-6 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
+            <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
               Gallery
             </Badge>
-            <h1 className="text-5xl lg:text-7xl font-extralight mb-4 text-gray-900 dark:text-white">
+            <h1 className="text-5xl lg:text-7xl font-extralight mb-4 text-[#0a1128]">
               Moments that
               <span className="font-light"> define us</span>
             </h1>
-            <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-2xl">
+            <p className="text-xl font-extralight text-[#0a1128]/80 max-w-2xl">
               A visual journey through our events, partnerships, and the community we're building together.
             </p>
           </div>
@@ -131,7 +132,7 @@ export default function GalleryPage() {
         <div className="max-w-7xl mx-auto">
           {/* Section Title */}
           <div className="mb-6">
-            <h2 className="text-3xl lg:text-4xl font-extralight text-gray-900 dark:text-white">
+            <h2 className="text-3xl lg:text-4xl font-extralight text-[#f5f5f0]">
               More <span className="font-light">Moments</span>
             </h2>
           </div>
@@ -155,11 +156,11 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="p-4">
-                  <Badge className="mb-2 font-light bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/80 border-gray-200 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/20 text-xs">
+                  <Badge className="mb-2 font-light bg-white/10 text-[#f5f5f0]/80 border-white/20 hover:bg-white/20 text-xs">
                     {item.category}
                   </Badge>
-                  <h3 className="text-sm md:text-base font-light text-gray-900 dark:text-white mb-1 line-clamp-1">{item.title}</h3>
-                  <p className="font-extralight text-gray-500 dark:text-white/50 text-xs line-clamp-2">
+                  <h3 className="text-sm md:text-base font-light text-[#f5f5f0] mb-1 line-clamp-1">{item.title}</h3>
+                  <p className="font-extralight text-[#f5f5f0]/60 text-xs line-clamp-2">
                     {item.description}
                   </p>
                 </div>
@@ -186,11 +187,11 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="p-6">
-                  <Badge className="mb-3 font-light bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/80 border-gray-200 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/20 text-xs">
+                  <Badge className="mb-3 font-light bg-white/10 text-[#f5f5f0]/80 border-white/20 hover:bg-white/20 text-xs">
                     {item.category}
                   </Badge>
-                  <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                  <p className="font-extralight text-gray-500 dark:text-white/50 text-sm md:text-base">
+                  <h3 className="text-xl md:text-2xl font-light text-[#f5f5f0] mb-2">{item.title}</h3>
+                  <p className="font-extralight text-[#f5f5f0]/60 text-sm md:text-base">
                     {item.description}
                   </p>
                 </div>
@@ -201,6 +202,6 @@ export default function GalleryPage() {
       </section>
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }

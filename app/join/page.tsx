@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -48,7 +49,7 @@ export default function JoinPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="application">
       <Navigation />
 
       {/* Hero Section */}
@@ -452,6 +453,6 @@ export default function JoinPage() {
       </section>
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }

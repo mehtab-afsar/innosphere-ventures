@@ -39,13 +39,14 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Simple color switch - no interpolation
-  const textColor = scrollProgress < 0.35 ? "rgb(10, 17, 40)" : "rgb(255, 255, 255)";
+  // Simple color switch - transitions from dark text (top) to light text (bottom)
+  // Switch happens earlier to ensure readability as gradient darkens
+  const textColor = scrollProgress < 0.25 ? "rgb(10, 17, 40)" : "rgb(255, 255, 255)";
   const textColorStyle = { color: textColor };
   const navLinkColorStyle = textColorStyle;
 
   const themeToggleStyle = {
-    backgroundColor: scrollProgress < 0.35 ? "rgba(10, 17, 40, 0.1)" : "rgba(255, 255, 255, 0.1)",
+    backgroundColor: scrollProgress < 0.25 ? "rgba(10, 17, 40, 0.1)" : "rgba(255, 255, 255, 0.1)",
     color: textColor
   };
   const dropdownBg = "bg-black/90 backdrop-blur-xl";

@@ -1,12 +1,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="legal">
       <Navigation />
 
       <section className="pt-40 pb-20 px-6 lg:px-12">
@@ -133,6 +134,6 @@ export default function TermsPage() {
       </section>
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }

@@ -3,13 +3,14 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function LetterPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="philosophy">
       <Navigation />
 
       {/* Hero Section */}
@@ -177,6 +178,6 @@ export default function LetterPage() {
       </section>
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }

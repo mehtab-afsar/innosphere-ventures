@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { ArrowLeft, Linkedin, Link2, X, Search } from "lucide-react";
 import Link from "next/link";
 import { useState, useMemo } from "react";
@@ -53,7 +54,7 @@ export default function PortfolioPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+      <OceanGradient variant="portfolio">
         <Navigation />
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
@@ -61,12 +62,12 @@ export default function PortfolioPage() {
             <p className="text-gray-500 dark:text-white/60">Loading portfolio companies...</p>
           </div>
         </div>
-      </div>
+      </OceanGradient>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="portfolio">
       <Navigation />
 
       {/* Hero Section */}
@@ -76,15 +77,15 @@ export default function PortfolioPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
+          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
             Portfolio
           </Badge>
-          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 text-gray-900 dark:text-white">
+          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 text-[#0a1128]">
             <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-rose-400 bg-clip-text text-transparent">Edge Alpha</span>
             <br />
             <span className="font-light bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">Companies</span>
           </h1>
-          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl">
+          <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl">
             Our portfolio of frontier innovation companies building category-defining solutions across India.
           </p>
         </div>
@@ -99,13 +100,13 @@ export default function PortfolioPage() {
             <div className="flex flex-col lg:flex-row gap-3">
               {/* Search Bar */}
               <div className="relative lg:w-96">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#f5f5f0]/40" />
                 <input
                   type="text"
                   placeholder="Search companies..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-12 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/20 transition-all font-light"
+                  className="w-full pl-12 pr-12 py-4 rounded-xl border border-white/10 bg-white/5 text-[#f5f5f0] placeholder:text-[#f5f5f0]/40 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-light"
                 />
                 {searchQuery && (
                   <button
@@ -196,7 +197,7 @@ export default function PortfolioPage() {
           </div>
 
           {/* Table Header - Desktop */}
-          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-gray-200 dark:border-white/10 text-base font-semibold text-gray-400 dark:text-white/40">
+          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-white/10 text-base font-semibold text-[#f5f5f0]/50">
             <div className="col-span-5">Company</div>
             <div className="col-span-2">Sector</div>
             <div className="col-span-2">Partnered</div>
@@ -205,10 +206,10 @@ export default function PortfolioPage() {
           </div>
 
           {/* Company List */}
-          <div className="divide-y divide-gray-200 dark:divide-white/10">
+          <div className="divide-y divide-white/10">
             {filteredCompanies.length === 0 ? (
               <div className="px-8 py-20 text-center">
-                <p className="text-lg font-light text-gray-500 dark:text-white/60">
+                <p className="text-lg font-light text-[#f5f5f0]/70">
                   No companies found matching &quot;{searchQuery}&quot;
                 </p>
               </div>
@@ -220,37 +221,37 @@ export default function PortfolioPage() {
                 <div key={index}>
                   {/* Row */}
                   <div
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-8 py-8 cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-200"
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-8 py-8 cursor-pointer hover:bg-white/5 transition-colors duration-200"
                     onClick={() => setExpandedCompany(isExpanded ? null : index)}
                   >
                     {/* Company Info */}
                     <div className="lg:col-span-5 flex items-center gap-5">
-                      <div className="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center shrink-0">
-                        <Icon className="w-8 h-8 text-gray-600 dark:text-white/60" strokeWidth={1.5} />
+                      <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center shrink-0">
+                        <Icon className="w-8 h-8 text-[#f5f5f0]/60" strokeWidth={1.5} />
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+                        <h3 className="text-xl font-medium text-[#f5f5f0]">
                           {company.name}
                         </h3>
-                        <p className="text-base font-light text-gray-500 dark:text-white/50 lg:hidden mt-1">
+                        <p className="text-base font-light text-[#f5f5f0]/60 lg:hidden mt-1">
                           {company.sector} • {company.stage}
                         </p>
                       </div>
                     </div>
 
                     {/* Sector - Desktop */}
-                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-gray-600 dark:text-white/60">
+                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#f5f5f0]/70">
                       {company.sector}
                     </div>
 
                     {/* Partnered - Desktop */}
-                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-gray-600 dark:text-white/60">
+                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#f5f5f0]/70">
                       {company.year} • {company.stage}
                     </div>
 
                     {/* Status - Desktop */}
                     <div className="hidden lg:flex lg:col-span-2 items-center">
-                      <span className="flex items-center gap-2 text-base text-gray-600 dark:text-white/60">
+                      <span className="flex items-center gap-2 text-base text-[#f5f5f0]/70">
                         <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
                         {company.status}
                       </span>
@@ -259,7 +260,7 @@ export default function PortfolioPage() {
                     {/* Expand Icon */}
                     <div className="hidden lg:flex lg:col-span-1 items-center justify-end">
                       <svg
-                        className={`w-6 h-6 text-gray-400 dark:text-white/40 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                        className={`w-6 h-6 text-[#f5f5f0]/50 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -395,6 +396,6 @@ export default function PortfolioPage() {
       )}
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }

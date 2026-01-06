@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Linkedin, Twitter, Mail } from "lucide-react";
 import Link from "next/link";
@@ -32,7 +33,7 @@ const leaders = [
 
 export default function LeadershipPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="culture">
       <Navigation />
 
       {/* Hero Section */}
@@ -144,6 +145,6 @@ export default function LeadershipPage() {
       </section>
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }

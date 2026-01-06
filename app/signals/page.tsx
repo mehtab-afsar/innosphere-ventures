@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { ParticleSphere } from "@/components/ParticleSphere";
 import { Heart, Battery, TestTube, Droplets, Leaf, Target, Lightbulb, Shield, Users, ArrowLeft, TrendingUp, X, Linkedin, Link2 } from "lucide-react";
 import Link from "next/link";
@@ -89,7 +90,7 @@ export default function SignalsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="technical">
       <Navigation />
 
       {/* Hero Section */}
@@ -216,6 +217,6 @@ export default function SignalsPage() {
       </section>
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }

@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { OceanGradient } from "@/components/OceanGradient";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Target, Globe as GlobeIcon, Users, TrendingUp, Sparkles, GraduationCap, Sprout, DollarSign, Clock } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -319,17 +320,17 @@ function ThesisPillarsSection() {
 
 export default function ThesisPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+    <OceanGradient variant="philosophy">
       <Navigation />
 
       {/* Hero Section */}
       <section className="pt-40 pb-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 mb-8 group absolute left-6 lg:left-12 top-28">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#0a1128]/60 hover:text-[#0a1128] transition-colors duration-200 mb-8 group absolute left-6 lg:left-12 top-28">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
+          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
             Our Thesis
           </Badge>
           <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
@@ -337,7 +338,7 @@ export default function ThesisPage() {
             <br />
             <span className="font-light bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">frontier</span>
           </h1>
-          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-4xl">
+          <p className="text-xl font-extralight text-[#0a1128]/80 max-w-4xl">
             We believe India is at an inflection point. A new generation of founders is building deep-tech companies that will define the next decade of global innovation.
           </p>
         </div>
@@ -400,6 +401,6 @@ export default function ThesisPage() {
       </section>
 
       <Footer />
-    </div>
+    </OceanGradient>
   );
 }
