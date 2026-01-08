@@ -96,19 +96,19 @@ export default function SignalsPage() {
       {/* Hero Section */}
       <section className="pt-40 pb-20 px-6 lg:px-12 relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 mb-8 group absolute left-0 lg:left-0 -top-12">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#0a1128]/60 hover:text-[#0a1128] transition-colors duration-200 mb-8 group absolute left-0 lg:left-0 -top-12">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
             Signals
           </Badge>
-          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 text-gray-900 dark:text-white fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
-            The <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-rose-400 bg-clip-text text-transparent">Edge Alpha</span>
+          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
+            <span className="text-[#0a1128]">The</span> <span className="text-[#ff6b5a]">Edge Alpha</span>
             <br />
-            <span className="font-light bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">Company Universe</span>
+            <span className="font-light text-[#2a9a8e]">Company Universe</span>
           </h1>
-          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
+          <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
             Our portfolio begins long before we invest. Using the Edge Alpha scoring engine, we map India's frontier innovation universe, surface high-signal founders, and identify companies with systemic potential.
           </p>
         </div>
@@ -118,13 +118,13 @@ export default function SignalsPage() {
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-              Edge Alpha <span className="font-light">Signals</span>
+            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+              <span className="text-[#ff6b5a]">Edge Alpha</span> <span className="font-light text-[#2a9a8e]">Signals</span>
             </h2>
-            <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl mx-auto mb-4 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
+            <p className="text-xl font-extralight text-[#f5f5f0]/80 max-w-3xl mx-auto mb-4 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
               The Edge Alpha scoring model separates signal from noise.
             </p>
-            <p className="text-lg font-extralight text-gray-500 dark:text-white/50 max-w-3xl mx-auto fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
+            <p className="text-lg font-extralight text-[#f5f5f0]/60 max-w-3xl mx-auto fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
               We evaluate every company across five systemic signal dimensions.
             </p>
           </div>
@@ -142,8 +142,8 @@ export default function SignalsPage() {
 
               {/* Center text */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center justify-center z-10">
-                <p className="text-3xl font-extralight text-gray-500 dark:text-white/50">Edge Alpha</p>
-                <p className="text-5xl font-light text-gray-900 dark:text-white">Signals</p>
+                <p className="text-3xl font-extralight text-[#ff6b5a]/80">Edge Alpha</p>
+                <p className="text-5xl font-light text-[#2a9a8e]">Signals</p>
               </div>
 
               {/* Circle ring - matches radius of 340px from center */}
@@ -174,11 +174,11 @@ export default function SignalsPage() {
                     onMouseEnter={() => setHoveredSignal(index)}
                     onMouseLeave={() => setHoveredSignal(null)}
                   >
-                    <div className={`p-5 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-300 dark:border-white/20 w-fit mx-auto mb-4 transition-all duration-300 ${hoveredSignal === index ? "bg-gray-200 dark:bg-white/10 border-gray-400 dark:border-white/40" : ""}`}>
-                      <Icon className="w-10 h-10 text-gray-900 dark:text-white" strokeWidth={1.5} />
+                    <div className={`p-5 bg-white/5 rounded-full border border-white/20 w-fit mx-auto mb-4 transition-all duration-300 ${hoveredSignal === index ? "bg-white/10 border-white/40" : ""}`}>
+                      <Icon className="w-10 h-10 text-[#f5f5f0]" strokeWidth={1.5} />
                     </div>
-                    <h3 className="text-base font-medium text-gray-900 dark:text-white mb-2 leading-tight">{dimension.label}</h3>
-                    <p className={`text-sm font-extralight text-gray-500 dark:text-white/50 leading-snug transition-opacity duration-300 ${hoveredSignal === index ? "opacity-0" : "opacity-100"}`}>{dimension.description}</p>
+                    <h3 className="text-base font-medium text-[#f5f5f0] mb-2 leading-tight">{dimension.label}</h3>
+                    <p className={`text-sm font-extralight text-[#f5f5f0]/60 leading-snug transition-opacity duration-300 ${hoveredSignal === index ? "opacity-0" : "opacity-100"}`}>{dimension.description}</p>
 
                     {/* Hover tooltip - appears on same side */}
                     <div
@@ -186,7 +186,7 @@ export default function SignalsPage() {
                         hoveredSignal === index ? "opacity-100 visible" : "opacity-0 invisible"
                       } ${isOnLeftSide ? "right-full mr-8 text-right" : "left-full ml-8 text-left"}`}
                     >
-                      <p className="text-xl font-light text-gray-900 dark:text-white leading-relaxed">
+                      <p className="text-xl font-light text-[#f5f5f0] leading-relaxed">
                         {dimension.description}
                       </p>
                     </div>
@@ -201,12 +201,12 @@ export default function SignalsPage() {
                 const Icon = dimension.icon;
                 return (
                   <div key={index} className="flex items-start gap-5 group">
-                    <div className="p-4 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-300 dark:border-white/20 shrink-0 group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-all duration-300">
-                      <Icon className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={1.5} />
+                    <div className="p-4 bg-white/5 rounded-full border border-white/20 shrink-0 group-hover:bg-white/10 transition-all duration-300">
+                      <Icon className="w-8 h-8 text-[#f5f5f0]" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">{dimension.label}</h3>
-                      <p className="text-base font-extralight text-gray-500 dark:text-white/50">{dimension.description}</p>
+                      <h3 className="text-lg font-medium text-[#f5f5f0] mb-1">{dimension.label}</h3>
+                      <p className="text-base font-extralight text-[#f5f5f0]/70">{dimension.description}</p>
                     </div>
                   </div>
                 );

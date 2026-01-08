@@ -163,7 +163,7 @@ function MetricCard({ metric, index }: { metric: typeof investmentMetrics[0]; in
 
       {/* Value */}
       <div
-        className={`text-3xl lg:text-4xl font-light text-gray-900 dark:text-white mb-2 transition-all duration-500 ${
+        className={`text-3xl lg:text-4xl font-light text-[#f5f5f0] mb-2 transition-all duration-500 ${
           isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
         }`}
         style={{ transitionDelay: isVisible ? `${index * 150 + 200}ms` : "0ms" }}
@@ -178,8 +178,8 @@ function MetricCard({ metric, index }: { metric: typeof investmentMetrics[0]; in
         }`}
         style={{ transitionDelay: isVisible ? `${index * 150 + 300}ms` : "0ms" }}
       >
-        <div className="text-sm font-light text-gray-700 dark:text-white/70">{metric.label}</div>
-        <div className="text-xs font-extralight text-gray-500 dark:text-white/50">{metric.sublabel}</div>
+        <div className="text-sm font-light text-[#f5f5f0]/80">{metric.label}</div>
+        <div className="text-xs font-extralight text-[#f5f5f0]/60">{metric.sublabel}</div>
       </div>
     </div>
   );
@@ -192,10 +192,10 @@ function ThesisPillarsSection() {
     <section className="py-20 px-6 lg:px-12 overflow-visible">
       <div className="max-w-7xl mx-auto overflow-visible">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white">
-            Thesis <span className="font-light">Pillars</span>
+          <h2 className="text-4xl lg:text-5xl font-extralight mb-6">
+            <span className="text-[#ff6b5a]">Thesis</span> <span className="font-light text-[#2a9a8e]">Pillars</span>
           </h2>
-          <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl mx-auto">
+          <p className="text-xl font-extralight text-[#f5f5f0]/70 max-w-3xl mx-auto">
             Five core beliefs that guide every investment decision.
           </p>
         </div>
@@ -251,8 +251,8 @@ function ThesisPillarsSection() {
                 <div className={`p-5 ${colors.bg} rounded-full border ${colors.border} w-fit mx-auto mb-4 transition-all duration-300 ${isHovered ? "scale-110" : ""} ${colors.glow}`}>
                   <Icon className={`w-10 h-10 ${colors.text}`} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-base font-medium text-gray-900 dark:text-white mb-2 leading-tight">{pillar.title}</h3>
-                <p className={`text-sm font-extralight text-gray-500 dark:text-white/50 leading-snug transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}>
+                <h3 className="text-base font-medium text-[#f5f5f0] mb-2 leading-tight">{pillar.title}</h3>
+                <p className={`text-sm font-extralight text-[#f5f5f0]/60 leading-snug transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}>
                   {pillar.description.slice(0, 60)}...
                 </p>
 
@@ -304,9 +304,9 @@ function ThesisPillarsSection() {
                   <div className={`p-3 ${colors.bg} rounded-full border ${colors.border}`}>
                     <Icon className={`w-7 h-7 ${colors.text}`} strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-light text-gray-900 dark:text-white">{pillar.title}</h3>
+                  <h3 className="text-xl font-light text-[#f5f5f0]">{pillar.title}</h3>
                 </div>
-                <p className="font-extralight text-gray-600 dark:text-white/60 leading-relaxed">
+                <p className="font-extralight text-[#f5f5f0]/70 leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
@@ -334,9 +334,9 @@ export default function ThesisPage() {
             Our Thesis
           </Badge>
           <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-rose-400 bg-clip-text text-transparent">Conviction</span> <span className="bg-gradient-to-r from-rose-400 to-purple-400 bg-clip-text text-transparent">at the</span>
+            <span className="text-[#ff6b5a]">Conviction</span> <span className="text-[#0a1128]">at the</span>
             <br />
-            <span className="font-light bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">frontier</span>
+            <span className="font-light text-[#2a9a8e]">frontier</span>
           </h1>
           <p className="text-xl font-extralight text-[#0a1128]/80 max-w-4xl">
             We believe India is at an inflection point. A new generation of founders is building deep-tech companies that will define the next decade of global innovation.
@@ -348,13 +348,13 @@ export default function ThesisPage() {
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center gap-4 mb-8 justify-center">
-            <div className="p-3 bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10">
-              <Target className="w-8 h-8 text-gray-900 dark:text-white" strokeWidth={1.5} />
+            <div className="p-3 bg-[#f5f5f0]/10 rounded-xl border border-[#f5f5f0]/20">
+              <Target className="w-8 h-8 text-[#f5f5f0]" strokeWidth={1.5} />
             </div>
-            <h2 className="text-3xl font-light text-gray-900 dark:text-white">Core Belief</h2>
+            <h2 className="text-3xl font-light text-[#f5f5f0]">Core Belief</h2>
           </div>
-          <p className="text-2xl lg:text-3xl font-extralight text-gray-700 dark:text-white/80 leading-relaxed italic max-w-4xl mx-auto">
-            "The best returns come from backing <span className="highlight-word">exceptional founders</span> solving <span className="highlight-word">hard problems</span> at the right moment in time."
+          <p className="text-2xl lg:text-3xl font-extralight leading-relaxed italic max-w-4xl mx-auto">
+            "The best returns come from backing <span className="text-[#ff6b5a] font-medium">exceptional founders</span> solving <span className="text-[#2a9a8e] font-medium">hard problems</span> at the <span className="text-[#f5f5f0]">right moment in time.</span>"
           </p>
         </div>
       </section>
@@ -368,10 +368,10 @@ export default function ThesisPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 text-gray-900 dark:text-white">
-              Investment <span className="font-light">Approach</span>
+            <h2 className="text-4xl lg:text-5xl font-extralight mb-6">
+              <span className="text-[#ff6b5a]">Investment</span> <span className="font-light text-[#2a9a8e]">Approach</span>
             </h2>
-            <p className="text-xl font-extralight text-gray-600 dark:text-white/60 max-w-3xl mx-auto">
+            <p className="text-xl font-extralight text-[#f5f5f0]/70 max-w-3xl mx-auto">
               We deploy conviction capital — going early where others hesitate, backed by systematic signal analysis.
             </p>
           </div>
@@ -386,12 +386,12 @@ export default function ThesisPage() {
           {/* What We Look For Card */}
           <div className="max-w-2xl mx-auto">
             <div className="glass-card p-8">
-              <h3 className="text-xl font-light text-gray-900 dark:text-white mb-6 text-center">What We Look For</h3>
+              <h3 className="text-xl font-light text-[#f5f5f0] mb-6 text-center">What We Look For</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {investmentCriteria.map((criteria, index) => (
                   <div key={index} className="flex items-center gap-3 group">
                     <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 via-cyan-500 to-purple-500 rounded-full group-hover:scale-125 transition-transform duration-300" />
-                    <span className="font-extralight text-gray-600 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">{criteria}</span>
+                    <span className="font-extralight text-[#f5f5f0]/80 group-hover:text-[#f5f5f0] transition-colors duration-300">{criteria}</span>
                   </div>
                 ))}
               </div>

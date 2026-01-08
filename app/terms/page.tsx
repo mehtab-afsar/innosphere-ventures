@@ -14,26 +14,26 @@ export default function TermsPage() {
         <div className="max-w-4xl mx-auto">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 mb-8 group absolute left-6 lg:left-12 top-28"
+            className="inline-flex items-center gap-2 text-[#f5f5f0]/70 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 mb-8 group absolute left-6 lg:left-12 top-28"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
 
-          <Badge className="mb-6 font-light bg-black dark:bg-white text-white dark:text-black border-black dark:border-white hover:bg-black/90 dark:hover:bg-white/90">
+          <Badge className="mb-6 font-light bg-[#f5f5f0]/10 text-[#f5f5f0] border-[#f5f5f0]/20 hover:bg-[#f5f5f0]/20">
             Legal
           </Badge>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extralight mb-8 text-gray-900 dark:text-white">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extralight mb-8 text-[#f5f5f0]">
             Terms of Use
           </h1>
-          <p className="text-lg font-extralight text-gray-600 dark:text-white/60 mb-12">
+          <p className="text-lg font-extralight text-[#f5f5f0]/70 mb-12">
             Last updated: December 2024
           </p>
 
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <div className="space-y-8 font-extralight text-gray-700 dark:text-white/70 leading-relaxed">
+            <div className="space-y-8 font-extralight text-[#f5f5f0]/80 leading-relaxed">
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   1. Acceptance of Terms
                 </h2>
                 <p>
@@ -42,7 +42,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   2. Use of Website
                 </h2>
                 <p>
@@ -51,7 +51,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   3. No Investment Advice
                 </h2>
                 <p>
@@ -60,7 +60,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   4. Intellectual Property
                 </h2>
                 <p>
@@ -69,7 +69,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   5. Disclaimer of Warranties
                 </h2>
                 <p>
@@ -78,7 +78,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   6. Limitation of Liability
                 </h2>
                 <p>
@@ -87,7 +87,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   7. External Links
                 </h2>
                 <p>
@@ -96,7 +96,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   8. Governing Law
                 </h2>
                 <p>
@@ -105,7 +105,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   9. Changes to Terms
                 </h2>
                 <p>
@@ -114,14 +114,14 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4">
+                <h2 className="text-2xl font-light text-[#f5f5f0] mb-4">
                   10. Contact Us
                 </h2>
                 <p>
                   If you have any questions about these Terms of Use, please contact us at{" "}
                   <a
                     href="mailto:legal@innosphereventures.com"
-                    className="text-gray-900 dark:text-white hover:underline"
+                    className="text-[#f5f5f0] hover:underline"
                   >
                     legal@innosphereventures.com
                   </a>

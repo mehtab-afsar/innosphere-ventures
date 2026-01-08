@@ -80,10 +80,10 @@ export default function PortfolioPage() {
           <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
             Portfolio
           </Badge>
-          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 text-[#0a1128]">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-rose-400 bg-clip-text text-transparent">Edge Alpha</span>
+          <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
+            <span className="text-[#ff6b5a]">Edge Alpha</span>
             <br />
-            <span className="font-light bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">Companies</span>
+            <span className="font-light text-[#2a9a8e]">Companies</span>
           </h1>
           <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl">
             Our portfolio of frontier innovation companies building category-defining solutions across India.
