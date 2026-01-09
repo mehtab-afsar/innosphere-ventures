@@ -100,13 +100,13 @@ export default function PortfolioPage() {
             <div className="flex flex-col lg:flex-row gap-3">
               {/* Search Bar */}
               <div className="relative lg:w-96">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#f5f5f0]/40" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#0a1128]/40" />
                 <input
                   type="text"
                   placeholder="Search companies..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-12 py-4 rounded-xl border border-white/10 bg-white/5 text-[#f5f5f0] placeholder:text-[#f5f5f0]/40 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-light"
+                  className="w-full pl-12 pr-12 py-4 rounded-xl border border-white/10 bg-white/5 text-[#0a1128] placeholder:text-[#0a1128]/40 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-light"
                 />
                 {searchQuery && (
                   <button
@@ -197,7 +197,7 @@ export default function PortfolioPage() {
           </div>
 
           {/* Table Header - Desktop */}
-          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-white/10 text-base font-semibold text-[#f5f5f0]/50">
+          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-white/10 text-base font-semibold text-[#0a1128]/50">
             <div className="col-span-5">Company</div>
             <div className="col-span-2">Sector</div>
             <div className="col-span-2">Partnered</div>
@@ -209,7 +209,7 @@ export default function PortfolioPage() {
           <div className="divide-y divide-white/10">
             {filteredCompanies.length === 0 ? (
               <div className="px-8 py-20 text-center">
-                <p className="text-lg font-light text-[#f5f5f0]/70">
+                <p className="text-lg font-light text-[#0a1128]/70">
                   No companies found matching &quot;{searchQuery}&quot;
                 </p>
               </div>
@@ -227,31 +227,31 @@ export default function PortfolioPage() {
                     {/* Company Info */}
                     <div className="lg:col-span-5 flex items-center gap-5">
                       <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center shrink-0">
-                        <Icon className="w-8 h-8 text-[#f5f5f0]/60" strokeWidth={1.5} />
+                        <Icon className="w-8 h-8 text-[#0a1128]/60" strokeWidth={1.5} />
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium text-[#f5f5f0]">
+                        <h3 className="text-xl font-medium text-[#0a1128]">
                           {company.name}
                         </h3>
-                        <p className="text-base font-light text-[#f5f5f0]/60 lg:hidden mt-1">
+                        <p className="text-base font-light text-[#0a1128]/60 lg:hidden mt-1">
                           {company.sector} • {company.stage}
                         </p>
                       </div>
                     </div>
 
                     {/* Sector - Desktop */}
-                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#f5f5f0]/70">
+                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#0a1128]/70">
                       {company.sector}
                     </div>
 
                     {/* Partnered - Desktop */}
-                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#f5f5f0]/70">
+                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#0a1128]/70">
                       {company.year} • {company.stage}
                     </div>
 
                     {/* Status - Desktop */}
                     <div className="hidden lg:flex lg:col-span-2 items-center">
-                      <span className="flex items-center gap-2 text-base text-[#f5f5f0]/70">
+                      <span className="flex items-center gap-2 text-base text-[#0a1128]/70">
                         <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
                         {company.status}
                       </span>
@@ -260,7 +260,7 @@ export default function PortfolioPage() {
                     {/* Expand Icon */}
                     <div className="hidden lg:flex lg:col-span-1 items-center justify-end">
                       <svg
-                        className={`w-6 h-6 text-[#f5f5f0]/50 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                        className={`w-6 h-6 text-[#0a1128]/50 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"

@@ -43,7 +43,7 @@ export default function LetterPage() {
 
           {/* Opening */}
           <div className="mb-16">
-            <p className="text-base sm:text-lg font-extralight text-[#f5f5f0]/70 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg font-extralight text-[#0a1128]/70 leading-relaxed max-w-3xl">
               We enter early, at a fair, disciplined valuation, and then we engineer the valuation step-up together.
               Most early-stage investors chase momentum. We build fundamentals, clarity, and long-term value.
             </p>
@@ -58,7 +58,7 @@ export default function LetterPage() {
                 <br />
                 <span className="font-light text-[#2a9a8e]">We build them.</span>"
               </p>
-              <cite className="text-sm font-extralight text-[#f5f5f0]/60 not-italic">
+              <cite className="text-sm font-extralight text-[#0a1128]/60 not-italic">
                 — Roman Gaus, Founding Partner
               </cite>
             </blockquote>
@@ -73,33 +73,33 @@ export default function LetterPage() {
             <div className="space-y-12">
               {/* Model Item 1 */}
               <div className="pl-4 lg:pl-6 border-l-2 border-gray-300 dark:border-white/20">
-                <span className="text-sm font-extralight text-[#f5f5f0]/50 tracking-widest">01</span>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#2a9a8e] mt-2 mb-3">
+                <span className="text-sm font-extralight text-[#0a1128]/50 tracking-widest">01</span>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#7affd4] mt-2 mb-3">
                   A fair entry valuation
                 </h3>
-                <p className="text-base sm:text-lg font-extralight text-[#f5f5f0]/70 leading-relaxed max-w-2xl">
+                <p className="text-base sm:text-lg font-extralight text-[#0a1128]/70 leading-relaxed max-w-2xl">
                   We don't negotiate for the sake of negotiating. We price early rounds with discipline so your Series A — the dilution that truly matters — grows from a stronger base.
                 </p>
               </div>
 
               {/* Model Item 2 */}
               <div className="pl-4 lg:pl-6 border-l-2 border-gray-300 dark:border-white/20">
-                <span className="text-sm font-extralight text-[#f5f5f0]/50 tracking-widest">02</span>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#2a9a8e] mt-2 mb-3">
+                <span className="text-sm font-extralight text-[#0a1128]/50 tracking-widest">02</span>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#7affd4] mt-2 mb-3">
                   We help create the next valuation step
                 </h3>
-                <p className="text-base sm:text-lg font-extralight text-[#f5f5f0]/70 leading-relaxed max-w-2xl">
+                <p className="text-base sm:text-lg font-extralight text-[#0a1128]/70 leading-relaxed max-w-2xl">
                   We shape the round architecture, strengthen the narrative, and prepare you for strategic or institutional follow-on investors. Your valuation should rise because the business strengthens — not because the market overheats.
                 </p>
               </div>
 
               {/* Model Item 3 */}
               <div className="pl-4 lg:pl-6 border-l-2 border-gray-300 dark:border-white/20">
-                <span className="text-sm font-extralight text-[#f5f5f0]/50 tracking-widest">03</span>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#2a9a8e] mt-2 mb-3">
+                <span className="text-sm font-extralight text-[#0a1128]/50 tracking-widest">03</span>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#7affd4] mt-2 mb-3">
                   Aligned upside through a capped warrant
                 </h3>
-                <p className="text-base sm:text-lg font-extralight text-[#f5f5f0]/70 leading-relaxed max-w-2xl">
+                <p className="text-base sm:text-lg font-extralight text-[#0a1128]/70 leading-relaxed max-w-2xl">
                   Every deal includes a small, 2% capped performance-based warrant. If we help you unlock the next valuation milestone, we earn it. If we don't deliver — we shouldn't.
                 </p>
               </div>
@@ -107,7 +107,7 @@ export default function LetterPage() {
 
             {/* Highlight Statement */}
             <div className="mt-12 pt-8 border-t border-white/10">
-              <p className="text-lg sm:text-xl md:text-2xl font-extralight text-[#f5f5f0]">
+              <p className="text-lg sm:text-xl md:text-2xl font-extralight text-[#0a1128]">
                 We don't extract value — <span className="font-light">we help compound it.</span>
               </p>
             </div>

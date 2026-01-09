@@ -84,10 +84,10 @@ export function StartupEcosystemChart() {
   return (
     <div ref={chartRef} className="w-full">
       {/* Main Title */}
-      <h3 className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-3 text-center">
+      <h3 className="text-xl md:text-2xl font-light text-[#0a1128] mb-3 text-center">
         USD 1tn Opportunity — When Innovation Becomes GDP
       </h3>
-      <p className="text-sm md:text-base font-extralight text-gray-500 dark:text-white/50 mb-6 max-w-3xl mx-auto text-center">
+      <p className="text-sm md:text-base font-extralight text-[#0a1128]/60 mb-6 max-w-3xl mx-auto text-center">
         This USD 1tn isn't paper value — it's real GDP. It's the economic output created as technology scales across manufacturing, healthcare, finance, and services. Startups are simply the vehicles that carry innovation into the real economy.
       </p>
 

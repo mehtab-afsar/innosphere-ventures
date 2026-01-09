@@ -56,7 +56,7 @@ export default function LeadershipPage() {
       <section className="py-8 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-2xl lg:text-3xl font-extralight leading-relaxed italic max-w-4xl mx-auto">
-            "To be the catalyst for India's most ambitious founders — providing not just <span className="text-[#ff6b5a] font-medium">capital</span>, but <span className="text-[#2a9a8e] font-medium">conviction</span>, <span className="text-[#7affd4] font-medium">connection</span>, and the <span className="text-[#f5f5f0] font-medium">courage</span> to build at the frontier."
+            "To be the catalyst for India's most ambitious founders — providing not just <span className="text-[#ff6b5a] font-medium">capital</span>, but <span className="text-[#2a9a8e] font-medium">conviction</span>, <span className="text-[#7affd4] font-medium">connection</span>, and the <span className="text-[#0a1128] font-medium">courage</span> to build at the frontier."
           </p>
         </div>
       </section>

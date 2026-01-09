@@ -39,6 +39,9 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
   const Icon = card.icon;
   const isLeft = index % 2 === 0;
 
+  // Color mapping for each card - all neon teal
+  const titleColor = '#7affd4'; // bright neon teal/cyan
+
   return (
     <div
       ref={ref}
@@ -71,8 +74,8 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
         </div>
 
         <h3
-          className="text-xl sm:text-2xl lg:text-3xl font-medium text-[#f5f5f0] mb-3"
-          style={{ opacity: easedProgress }}
+          className="text-xl sm:text-2xl lg:text-3xl font-medium mb-3"
+          style={{ opacity: easedProgress, color: titleColor }}
         >
           {card.title}
         </h3>

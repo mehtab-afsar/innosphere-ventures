@@ -34,19 +34,44 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Dark coral colors with subtle variation
-      const t = i / count;
-      if (t < 0.5) {
-        // Darker coral tones
-        colors[i * 3] = 0.15 + Math.random() * 0.05; // R: 15-20%
-        colors[i * 3 + 1] = 0.25 + Math.random() * 0.05; // G: 25-30%
-        colors[i * 3 + 2] = 0.22 + Math.random() * 0.05; // B: 22-27%
+      // Sophisticated vertical gradient layering - Y-axis based
+      // Normalize Y position to 0-1 range
+      const normalizedY = (y / radius + 1) / 2; // Map from [-radius, radius] to [0, 1]
+
+      // Premium darker color gradient: Deep teal → Muted coral → Subdued cyan → Warm gold
+      let r, g, b;
+
+      if (normalizedY < 0.25) {
+        // Bottom layer: Very deep ocean teal (#0d3d4f) to darker teal (#1a5f6f)
+        const t = normalizedY / 0.25;
+        r = 0.051 + t * (0.102 - 0.051);  // 13 → 26
+        g = 0.239 + t * (0.373 - 0.239);  // 61 → 95
+        b = 0.310 + t * (0.435 - 0.310);  // 79 → 111
+      } else if (normalizedY < 0.5) {
+        // Mid-lower: Darker teal (#1a5f6f) to muted coral (#cc5647)
+        const t = (normalizedY - 0.25) / 0.25;
+        r = 0.102 + t * (0.800 - 0.102);  // 26 → 204
+        g = 0.373 + t * (0.337 - 0.373);  // 95 → 86
+        b = 0.435 + t * (0.278 - 0.435);  // 111 → 71
+      } else if (normalizedY < 0.75) {
+        // Mid-upper: Muted coral (#cc5647) to subdued cyan (#5fccb3)
+        const t = (normalizedY - 0.5) / 0.25;
+        r = 0.800 + t * (0.373 - 0.800);  // 204 → 95
+        g = 0.337 + t * (0.800 - 0.337);  // 86 → 204
+        b = 0.278 + t * (0.702 - 0.278);  // 71 → 179
       } else {
-        // Very dark, almost black with hint of coral
-        colors[i * 3] = 0.08 + Math.random() * 0.04; // R: 8-12%
-        colors[i * 3 + 1] = 0.12 + Math.random() * 0.04; // G: 12-16%
-        colors[i * 3 + 2] = 0.10 + Math.random() * 0.04; // B: 10-14%
+        // Top layer: Subdued cyan (#5fccb3) to warm gold (#ccaa00)
+        const t = (normalizedY - 0.75) / 0.25;
+        r = 0.373 + t * (0.800 - 0.373);  // 95 → 204
+        g = 0.800 + t * (0.667 - 0.800);  // 204 → 170
+        b = 0.702 + t * (0.0 - 0.702);    // 179 → 0
       }
+
+      // Add subtle variation for depth (±3%)
+      const variation = (Math.random() - 0.5) * 0.06;
+      colors[i * 3] = Math.max(0, Math.min(1, r + variation));
+      colors[i * 3 + 1] = Math.max(0, Math.min(1, g + variation));
+      colors[i * 3 + 2] = Math.max(0, Math.min(1, b + variation));
     }
 
     return {
@@ -64,15 +89,15 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
     return geo;
   }, [positions, colors]);
 
-  // Create material
+  // Create material with premium aesthetics
   const material = useMemo(() => {
     return new THREE.PointsMaterial({
-      size: 0.04,
+      size: 0.035,
       vertexColors: true,
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.85,
       sizeAttenuation: true,
-      blending: THREE.NormalBlending,
+      blending: THREE.AdditiveBlending, // Additive blending for glow effect
       depthWrite: false,
     });
   }, []);

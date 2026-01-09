@@ -121,10 +121,10 @@ export default function SignalsPage() {
             <h2 className="text-4xl lg:text-5xl font-extralight mb-6 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
               <span className="text-[#ff6b5a]">Edge Alpha</span> <span className="font-light text-[#2a9a8e]">Signals</span>
             </h2>
-            <p className="text-xl font-extralight text-[#f5f5f0]/80 max-w-3xl mx-auto mb-4 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
+            <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl mx-auto mb-4 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
               The Edge Alpha scoring model separates signal from noise.
             </p>
-            <p className="text-lg font-extralight text-[#f5f5f0]/60 max-w-3xl mx-auto fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
+            <p className="text-lg font-extralight text-[#0a1128]/60 max-w-3xl mx-auto fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
               We evaluate every company across five systemic signal dimensions.
             </p>
           </div>
@@ -175,10 +175,10 @@ export default function SignalsPage() {
                     onMouseLeave={() => setHoveredSignal(null)}
                   >
                     <div className={`p-5 bg-white/5 rounded-full border border-white/20 w-fit mx-auto mb-4 transition-all duration-300 ${hoveredSignal === index ? "bg-white/10 border-white/40" : ""}`}>
-                      <Icon className="w-10 h-10 text-[#f5f5f0]" strokeWidth={1.5} />
+                      <Icon className="w-10 h-10 text-[#0a1128]" strokeWidth={1.5} />
                     </div>
-                    <h3 className="text-base font-medium text-[#f5f5f0] mb-2 leading-tight">{dimension.label}</h3>
-                    <p className={`text-sm font-extralight text-[#f5f5f0]/60 leading-snug transition-opacity duration-300 ${hoveredSignal === index ? "opacity-0" : "opacity-100"}`}>{dimension.description}</p>
+                    <h3 className="text-base font-medium text-[#0a1128] mb-2 leading-tight">{dimension.label}</h3>
+                    <p className={`text-sm font-extralight text-[#0a1128]/60 leading-snug transition-opacity duration-300 ${hoveredSignal === index ? "opacity-0" : "opacity-100"}`}>{dimension.description}</p>
 
                     {/* Hover tooltip - appears on same side */}
                     <div
@@ -186,7 +186,7 @@ export default function SignalsPage() {
                         hoveredSignal === index ? "opacity-100 visible" : "opacity-0 invisible"
                       } ${isOnLeftSide ? "right-full mr-8 text-right" : "left-full ml-8 text-left"}`}
                     >
-                      <p className="text-xl font-light text-[#f5f5f0] leading-relaxed">
+                      <p className="text-xl font-light text-[#0a1128] leading-relaxed">
                         {dimension.description}
                       </p>
                     </div>
@@ -202,11 +202,11 @@ export default function SignalsPage() {
                 return (
                   <div key={index} className="flex items-start gap-5 group">
                     <div className="p-4 bg-white/5 rounded-full border border-white/20 shrink-0 group-hover:bg-white/10 transition-all duration-300">
-                      <Icon className="w-8 h-8 text-[#f5f5f0]" strokeWidth={1.5} />
+                      <Icon className="w-8 h-8 text-[#0a1128]" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-[#f5f5f0] mb-1">{dimension.label}</h3>
-                      <p className="text-base font-extralight text-[#f5f5f0]/70">{dimension.description}</p>
+                      <h3 className="text-lg font-medium text-[#0a1128] mb-1">{dimension.label}</h3>
+                      <p className="text-base font-extralight text-[#0a1128]/70">{dimension.description}</p>
                     </div>
                   </div>
                 );

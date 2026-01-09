@@ -195,7 +195,7 @@ function ThesisPillarsSection() {
           <h2 className="text-4xl lg:text-5xl font-extralight mb-6">
             <span className="text-[#ff6b5a]">Thesis</span> <span className="font-light text-[#2a9a8e]">Pillars</span>
           </h2>
-          <p className="text-xl font-extralight text-[#f5f5f0]/70 max-w-3xl mx-auto">
+          <p className="text-xl font-extralight text-[#0a1128]/70 max-w-3xl mx-auto">
             Five core beliefs that guide every investment decision.
           </p>
         </div>
@@ -251,8 +251,8 @@ function ThesisPillarsSection() {
                 <div className={`p-5 ${colors.bg} rounded-full border ${colors.border} w-fit mx-auto mb-4 transition-all duration-300 ${isHovered ? "scale-110" : ""} ${colors.glow}`}>
                   <Icon className={`w-10 h-10 ${colors.text}`} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-base font-medium text-[#f5f5f0] mb-2 leading-tight">{pillar.title}</h3>
-                <p className={`text-sm font-extralight text-[#f5f5f0]/60 leading-snug transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}>
+                <h3 className="text-base font-medium text-[#0a1128] mb-2 leading-tight">{pillar.title}</h3>
+                <p className={`text-sm font-extralight text-[#0a1128]/60 leading-snug transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}>
                   {pillar.description.slice(0, 60)}...
                 </p>
 
@@ -304,9 +304,9 @@ function ThesisPillarsSection() {
                   <div className={`p-3 ${colors.bg} rounded-full border ${colors.border}`}>
                     <Icon className={`w-7 h-7 ${colors.text}`} strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-light text-[#f5f5f0]">{pillar.title}</h3>
+                  <h3 className="text-xl font-light text-[#0a1128]">{pillar.title}</h3>
                 </div>
-                <p className="font-extralight text-[#f5f5f0]/70 leading-relaxed">
+                <p className="font-extralight text-[#0a1128]/70 leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
@@ -349,12 +349,12 @@ export default function ThesisPage() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center gap-4 mb-8 justify-center">
             <div className="p-3 bg-[#f5f5f0]/10 rounded-xl border border-[#f5f5f0]/20">
-              <Target className="w-8 h-8 text-[#f5f5f0]" strokeWidth={1.5} />
+              <Target className="w-8 h-8 text-[#0a1128]" strokeWidth={1.5} />
             </div>
-            <h2 className="text-3xl font-light text-[#f5f5f0]">Core Belief</h2>
+            <h2 className="text-3xl font-light text-[#0a1128]">Core Belief</h2>
           </div>
           <p className="text-2xl lg:text-3xl font-extralight leading-relaxed italic max-w-4xl mx-auto">
-            "The best returns come from backing <span className="text-[#ff6b5a] font-medium">exceptional founders</span> solving <span className="text-[#2a9a8e] font-medium">hard problems</span> at the <span className="text-[#f5f5f0]">right moment in time.</span>"
+            "The best returns come from backing <span className="text-[#ff6b5a] font-medium">exceptional founders</span> solving <span className="text-[#2a9a8e] font-medium">hard problems</span> at the <span className="text-[#0a1128]">right moment in time.</span>"
           </p>
         </div>
       </section>
