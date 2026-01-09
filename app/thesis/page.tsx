@@ -59,11 +59,11 @@ const investmentCriteria = [
 ];
 
 const pillarColors = [
-  { bg: "bg-cyan-500/10", border: "border-cyan-500/30", text: "text-cyan-400", glow: "node-glow-cyan" },
-  { bg: "bg-purple-500/10", border: "border-purple-500/30", text: "text-purple-400", glow: "node-glow-purple" },
-  { bg: "bg-amber-500/10", border: "border-amber-500/30", text: "text-amber-400", glow: "node-glow-amber" },
-  { bg: "bg-emerald-500/10", border: "border-emerald-500/30", text: "text-emerald-400", glow: "node-glow-emerald" },
-  { bg: "bg-rose-500/10", border: "border-rose-500/30", text: "text-rose-400", glow: "node-glow-rose" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
 ];
 
 const investmentMetrics = [
@@ -251,7 +251,7 @@ function ThesisPillarsSection() {
                 <div className={`p-5 ${colors.bg} rounded-full border ${colors.border} w-fit mx-auto mb-4 transition-all duration-300 ${isHovered ? "scale-110" : ""} ${colors.glow}`}>
                   <Icon className={`w-10 h-10 ${colors.text}`} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-base font-medium text-[#0a1128] mb-2 leading-tight">{pillar.title}</h3>
+                <h3 className={`text-base font-medium ${colors.text} mb-2 leading-tight`}>{pillar.title}</h3>
                 <p className={`text-sm font-extralight text-[#0a1128]/60 leading-snug transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}>
                   {pillar.description.slice(0, 60)}...
                 </p>
@@ -304,7 +304,7 @@ function ThesisPillarsSection() {
                   <div className={`p-3 ${colors.bg} rounded-full border ${colors.border}`}>
                     <Icon className={`w-7 h-7 ${colors.text}`} strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-light text-[#0a1128]">{pillar.title}</h3>
+                  <h3 className={`text-xl font-light ${colors.text}`}>{pillar.title}</h3>
                 </div>
                 <p className="font-extralight text-[#0a1128]/70 leading-relaxed">
                   {pillar.description}
@@ -369,7 +369,7 @@ export default function ThesisPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-extralight mb-6">
-              <span className="text-[#ff6b5a]">Investment</span> <span className="font-light text-[#2a9a8e]">Approach</span>
+              <span className="text-[#7affd4]">Investment</span> <span className="font-light text-[#7affd4]">Approach</span>
             </h2>
             <p className="text-xl font-extralight text-[#f5f5f0]/70 max-w-3xl mx-auto">
               We deploy conviction capital — going early where others hesitate, backed by systematic signal analysis.

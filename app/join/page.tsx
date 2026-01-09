@@ -67,7 +67,7 @@ export default function JoinPage() {
           </Badge>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extralight mb-6">
             <span className="text-[#0a1128]">Become Part of the</span>{" "}
-            <span className="font-light text-[#ff6b5a]">InnoSphere</span> <span className="font-light text-[#2a9a8e]">Collective</span>
+            <span className="font-light text-[#7affd4]">InnoSphere</span> <span className="font-light text-[#7affd4]">Collective</span>
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl font-extralight text-[#0a1128]/80 max-w-3xl">
             Join a network of visionary founders, investors, and partners shaping

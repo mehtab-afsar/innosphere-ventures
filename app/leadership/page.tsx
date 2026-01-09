@@ -47,7 +47,7 @@ export default function LeadershipPage() {
             Leadership
           </Badge>
           <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
-            <span className="text-[#0a1128]">The</span> <span className="font-light text-[#ff6b5a]">Visionaries</span> <span className="text-[#0a1128]">and Their</span> <span className="font-light text-[#2a9a8e]">Vision</span>
+            <span className="text-[#0a1128]">The</span> <span className="font-light text-[#7affd4]">Visionaries</span> <span className="text-[#0a1128]">and Their</span> <span className="font-light text-[#7affd4]">Vision</span>
           </h1>
         </div>
       </section>
@@ -55,7 +55,7 @@ export default function LeadershipPage() {
       {/* Vision Quote */}
       <section className="py-8 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-2xl lg:text-3xl font-extralight leading-relaxed italic max-w-4xl mx-auto">
+          <p className="text-2xl lg:text-3xl font-extralight leading-relaxed italic max-w-4xl mx-auto text-[#0a1128]/80">
             "To be the catalyst for India's most ambitious founders — providing not just <span className="text-[#ff6b5a] font-medium">capital</span>, but <span className="text-[#2a9a8e] font-medium">conviction</span>, <span className="text-[#7affd4] font-medium">connection</span>, and the <span className="text-[#0a1128] font-medium">courage</span> to build at the frontier."
           </p>
         </div>

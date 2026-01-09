@@ -27,9 +27,9 @@ export default function LetterPage() {
             Founder Letter
           </Badge>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight mb-6 leading-tight">
-            <span className="font-light text-[#ff6b5a]">Conviction sparks.</span>
+            <span className="font-light text-[#7affd4]">Conviction sparks.</span>
             <br />
-            <span className="font-light text-[#2a9a8e]">Consensus amplifies.</span>
+            <span className="font-light text-[#7affd4]">Consensus amplifies.</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-2xl leading-relaxed">
             We follow a value-investing approach — more Warren Buffett than Silicon Valley.
@@ -54,9 +54,9 @@ export default function LetterPage() {
             <div className="absolute -left-4 lg:-left-6 top-0 bottom-0 w-[2px] bg-white/20 rounded-full" />
             <blockquote className="pl-6 lg:pl-8">
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extralight leading-tight mb-4">
-                "<span className="text-[#ff6b5a]">We don't chase valuations.</span>
+                "<span className="text-[#7affd4]">We don't chase valuations.</span>
                 <br />
-                <span className="font-light text-[#2a9a8e]">We build them.</span>"
+                <span className="font-light text-[#7affd4]">We build them.</span>"
               </p>
               <cite className="text-sm font-extralight text-[#0a1128]/60 not-italic">
                 — Roman Gaus, Founding Partner
