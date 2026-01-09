@@ -59,11 +59,11 @@ const investmentCriteria = [
 ];
 
 const pillarColors = [
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]", glow: "" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]", glow: "" },
 ];
 
 const investmentMetrics = [
@@ -249,7 +249,7 @@ function ThesisPillarsSection() {
               >
                 {/* Icon circle with glow */}
                 <div className={`p-5 ${colors.bg} rounded-full border ${colors.border} w-fit mx-auto mb-4 transition-all duration-300 ${isHovered ? "scale-110" : ""} ${colors.glow}`}>
-                  <Icon className={`w-10 h-10 ${colors.text}`} strokeWidth={1.5} />
+                  <Icon className={`w-10 h-10 ${colors.icon}`} strokeWidth={1.5} />
                 </div>
                 <h3 className={`text-base font-medium ${colors.text} mb-2 leading-tight`}>{pillar.title}</h3>
                 <p className={`text-sm font-extralight text-[#0a1128]/60 leading-snug transition-opacity duration-300 ${isHovered ? "opacity-0" : "opacity-100"}`}>
@@ -270,7 +270,7 @@ function ThesisPillarsSection() {
                       {/* Header with icon and title */}
                       <div className="flex items-center gap-3 mb-3">
                         <div className={`p-2 ${colors.bg} rounded-xl border ${colors.border}`}>
-                          <Icon className={`w-5 h-5 ${colors.text}`} strokeWidth={1.5} />
+                          <Icon className={`w-5 h-5 ${colors.icon}`} strokeWidth={1.5} />
                         </div>
                         <h4 className={`text-lg font-medium ${colors.text}`}>{pillar.title}</h4>
                       </div>
@@ -302,7 +302,7 @@ function ThesisPillarsSection() {
               <div key={index} className="glass-card p-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className={`p-3 ${colors.bg} rounded-full border ${colors.border}`}>
-                    <Icon className={`w-7 h-7 ${colors.text}`} strokeWidth={1.5} />
+                    <Icon className={`w-7 h-7 ${colors.icon}`} strokeWidth={1.5} />
                   </div>
                   <h3 className={`text-xl font-light ${colors.text}`}>{pillar.title}</h3>
                 </div>
@@ -369,7 +369,7 @@ export default function ThesisPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-extralight mb-6">
-              <span className="text-[#7affd4]">Investment</span> <span className="font-light text-[#7affd4]">Approach</span>
+              <span className="text-[#ff6b5a]">Investment</span> <span className="font-light text-[#2a9a8e]">Approach</span>
             </h2>
             <p className="text-xl font-extralight text-[#f5f5f0]/70 max-w-3xl mx-auto">
               We deploy conviction capital — going early where others hesitate, backed by systematic signal analysis.

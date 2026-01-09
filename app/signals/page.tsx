@@ -18,11 +18,11 @@ const signalDimensions = [
 ];
 
 const signalColors = [
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#7affd4]" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#7affd4]" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#7affd4]" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#7affd4]" },
-  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#7affd4]" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]" },
+  { bg: "bg-[#7affd4]/10", border: "border-[#7affd4]/30", text: "text-[#7affd4]", icon: "text-[#0a1128]" },
 ];
 
 const companies = [
@@ -112,9 +112,9 @@ export default function SignalsPage() {
             Signals
           </Badge>
           <h1 className="text-5xl lg:text-7xl font-extralight mb-8 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
-            <span className="text-[#0a1128]">The</span> <span className="text-[#7affd4]">Edge Alpha</span>
+            <span className="text-[#0a1128]">The</span> <span className="text-[#ff6b5a]">Edge Alpha</span>
             <br />
-            <span className="font-light text-[#7affd4]">Company Universe</span>
+            <span className="font-light text-[#2a9a8e]">Company Universe</span>
           </h1>
           <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
             Our portfolio begins long before we invest. Using the Edge Alpha scoring engine, we map India's frontier innovation universe, surface high-signal founders, and identify companies with systemic potential.
@@ -127,7 +127,7 @@ export default function SignalsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-extralight mb-6 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-              <span className="text-[#7affd4]">Edge Alpha</span> <span className="font-light text-[#7affd4]">Signals</span>
+              <span className="text-[#ff6b5a]">Edge Alpha</span> <span className="font-light text-[#2a9a8e]">Signals</span>
             </h2>
             <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl mx-auto mb-4 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
               The Edge Alpha scoring model separates signal from noise.
