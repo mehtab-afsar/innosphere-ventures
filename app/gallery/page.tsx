@@ -94,7 +94,7 @@ export default function GalleryPage() {
             <div className="relative rounded-xl overflow-hidden bg-black">
               <video
                 ref={videoRef}
-                src="/00 Everybody Dance Now Video.MOV"
+                src="/assets/videos/00 Everybody Dance Now Video.MOV"
                 autoPlay
                 muted
                 loop
