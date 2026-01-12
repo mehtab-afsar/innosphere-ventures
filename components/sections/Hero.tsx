@@ -25,7 +25,7 @@ export function Hero() {
         <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-1000 md:-ml-8 lg:-ml-12">
           {/* Press Release Badge */}
           <a
-            href="/Press Release/Press Release Full Version 1- FV.pdf"
+            href="/assets/documents/Press Release/Press Release Full Version 1- FV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mb-6 sm:mb-8 group cursor-pointer animate-in fade-in slide-in-from-bottom-4 duration-1000"

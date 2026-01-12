@@ -81,9 +81,9 @@ export default function PortfolioPage() {
             Portfolio
           </Badge>
           <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
-            <span className="text-[#7affd4]">Edge Alpha</span>
+            <span className="text-[#2a9a8e]">Edge Alpha</span>
             <br />
-            <span className="font-light text-[#7affd4]">Companies</span>
+            <span className="font-light text-[#2a9a8e]">Companies</span>
           </h1>
           <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl">
             Our portfolio of frontier innovation companies building category-defining solutions across India.

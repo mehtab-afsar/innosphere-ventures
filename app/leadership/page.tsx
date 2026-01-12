@@ -47,7 +47,7 @@ export default function LeadershipPage() {
             Leadership
           </Badge>
           <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
-            <span className="text-[#0a1128]">The</span> <span className="font-light text-[#7affd4]">Visionaries</span> <span className="text-[#0a1128]">and Their</span> <span className="font-light text-[#7affd4]">Vision</span>
+            <span className="text-[#0a1128]">The</span> <span className="font-light text-[#ff6b5a]">Visionaries</span> <span className="text-[#0a1128]">and Their</span> <span className="font-light text-[#ff6b5a]">Vision</span>
           </h1>
         </div>
       </section>

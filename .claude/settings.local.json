@@ -18,7 +18,8 @@
       "Bash(grep:*)",
       "Bash(xargs ls:*)",
       "Bash(lsof:*)",
-      "Bash(xargs kill:*)"
+      "Bash(xargs kill:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []

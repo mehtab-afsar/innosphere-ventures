@@ -81,7 +81,7 @@ export default function GalleryPage() {
             </Badge>
             <h1 className="text-5xl lg:text-7xl font-extralight mb-4">
               <span className="text-[#0a1128]">Moments that</span>
-              <span className="font-light text-[#7affd4]"> define us</span>
+              <span className="font-light text-[#2a9a8e]"> define us</span>
             </h1>
             <p className="text-xl font-extralight text-[#0a1128]/80 max-w-2xl">
               A visual journey through our events, partnerships, and the community we're building together.
