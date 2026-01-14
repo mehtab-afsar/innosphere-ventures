@@ -60,7 +60,7 @@ export function Hero() {
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-[#0a1128]/40 text-[#0a1128] font-light text-sm sm:text-base hover:bg-[#0a1128]/10 transition-all duration-300 hover:border-[#0a1128]/60" asChild>
+            <Button size="lg" variant="outline" className="border-2 border-[#2a9a8e] text-[#2a9a8e] font-light text-sm sm:text-base hover:bg-[#2a9a8e]/10 hover:border-[#2a9a8e] transition-all duration-300" asChild>
               <Link href="/join">Join the Movement</Link>
             </Button>
           </div>

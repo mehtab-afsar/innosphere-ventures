@@ -34,37 +34,32 @@ function Particles({ count = 5000, radius = 2, pulseAngle = null }: ParticlesPro
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
 
-      // Sophisticated vertical gradient layering - Y-axis based
+      // Indian Flag inspired vertical gradient layering - Y-axis based
       // Normalize Y position to 0-1 range
       const normalizedY = (y / radius + 1) / 2; // Map from [-radius, radius] to [0, 1]
 
-      // Premium darker color gradient: Deep teal → Muted coral → Subdued cyan → Warm gold
+      // Indian Flag colors: Dark Green (bottom) → Off-White (middle) → Coral/Saffron (top)
       let r, g, b;
 
-      if (normalizedY < 0.25) {
-        // Bottom layer: Very deep ocean teal (#0d3d4f) to darker teal (#1a5f6f)
-        const t = normalizedY / 0.25;
-        r = 0.051 + t * (0.102 - 0.051);  // 13 → 26
-        g = 0.239 + t * (0.373 - 0.239);  // 61 → 95
-        b = 0.310 + t * (0.435 - 0.310);  // 79 → 111
-      } else if (normalizedY < 0.5) {
-        // Mid-lower: Darker teal (#1a5f6f) to muted coral (#cc5647)
-        const t = (normalizedY - 0.25) / 0.25;
-        r = 0.102 + t * (0.800 - 0.102);  // 26 → 204
-        g = 0.373 + t * (0.337 - 0.373);  // 95 → 86
-        b = 0.435 + t * (0.278 - 0.435);  // 111 → 71
-      } else if (normalizedY < 0.75) {
-        // Mid-upper: Muted coral (#cc5647) to subdued cyan (#5fccb3)
-        const t = (normalizedY - 0.5) / 0.25;
-        r = 0.800 + t * (0.373 - 0.800);  // 204 → 95
-        g = 0.337 + t * (0.800 - 0.337);  // 86 → 204
-        b = 0.278 + t * (0.702 - 0.278);  // 71 → 179
+      if (normalizedY < 0.33) {
+        // Bottom layer: Dark Green (#138808) - India Green
+        const t = normalizedY / 0.33;
+        // Transition within green zone for depth
+        r = 0.075 + t * (0.075 - 0.05);   // Deep green to green
+        g = 0.533 + t * (0.600 - 0.533);  // 136 → 153
+        b = 0.031 + t * (0.050 - 0.031);  // 8 → 13
+      } else if (normalizedY < 0.66) {
+        // Middle layer: Transition from Green to Off-White (#f5f5f0)
+        const t = (normalizedY - 0.33) / 0.33;
+        r = 0.075 + t * (0.961 - 0.075);  // Green → Off-white
+        g = 0.600 + t * (0.961 - 0.600);  // Green → Off-white
+        b = 0.050 + t * (0.941 - 0.050);  // Green → Off-white
       } else {
-        // Top layer: Subdued cyan (#5fccb3) to warm gold (#ccaa00)
-        const t = (normalizedY - 0.75) / 0.25;
-        r = 0.373 + t * (0.800 - 0.373);  // 95 → 204
-        g = 0.800 + t * (0.667 - 0.800);  // 204 → 170
-        b = 0.702 + t * (0.0 - 0.702);    // 179 → 0
+        // Top layer: Transition from Off-White to Deep Burnt Orange (#b34700)
+        const t = (normalizedY - 0.66) / 0.34;
+        r = 0.961 + t * (0.702 - 0.961);    // Off-white → Deep burnt orange
+        g = 0.961 + t * (0.278 - 0.961);    // Off-white → Deep burnt orange
+        b = 0.941 + t * (0.0 - 0.941);      // Off-white → Deep burnt orange
       }
 
       // Add subtle variation for depth (±3%)

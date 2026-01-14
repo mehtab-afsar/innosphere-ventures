@@ -5,13 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import type { MailingListData } from "@/lib/supabase";
-import dynamic from "next/dynamic";
 import { Linkedin, Twitter } from "lucide-react";
-
-// Dynamically import ParticleSphere to avoid SSR issues
-const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
-  ssr: false,
-});
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -50,11 +44,6 @@ export function Footer() {
       background: 'transparent',
       color: '#f5f5f0'
     }}>
-      {/* Particle Sphere Background - Right Side */}
-      <div className="absolute right-0 top-0 w-[50%] h-full opacity-40 pointer-events-none hidden lg:block">
-        <ParticleSphere scale={0.7} />
-      </div>
-
       {/* Main Footer Content */}
       <div className="relative z-10 px-6 lg:px-12 py-12 lg:py-16">
         <div className="max-w-7xl mx-auto">
@@ -81,7 +70,8 @@ export function Footer() {
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
                 <Button
                   size="lg"
-                  className="bg-[#ff6b5a] text-white hover:bg-[#ff6b5a]/90 font-medium rounded-full px-8 transition-all duration-300 hover:scale-105 shadow-lg shadow-[#ff6b5a]/30"
+                  variant="outline"
+                  className="border-2 border-[#ff6b5a] text-[#ff6b5a] hover:bg-[#ff6b5a] hover:text-white font-medium rounded-none px-8 transition-all duration-300 hover:scale-105"
                   asChild
                 >
                   <Link href="/join">
@@ -91,8 +81,7 @@ export function Footer() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-[#ff6b5a]/40 hover:bg-[#ff6b5a]/10 font-light rounded-full px-8 transition-all duration-300 hover:border-[#ff6b5a]/60"
-                  style={{ color: '#f5f5f0' }}
+                  className="border-2 border-[#2a9a8e] text-[#2a9a8e] hover:bg-[#2a9a8e] hover:text-white font-medium rounded-none px-8 transition-all duration-300 hover:scale-105"
                   asChild
                 >
                   <Link href="/portfolio">

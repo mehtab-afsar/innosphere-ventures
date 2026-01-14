@@ -84,10 +84,10 @@ export function StartupEcosystemChart() {
   return (
     <div ref={chartRef} className="w-full">
       {/* Main Title */}
-      <h3 className="text-xl md:text-2xl font-light text-[#0a1128] mb-3 text-center">
-        USD 1tn Opportunity — When Innovation Becomes GDP
+      <h3 className="text-2xl md:text-3xl font-medium text-[#0a1128] mb-4 text-center">
+        <span className="text-[#ff6b5a]">USD 1tn Opportunity</span> — <span className="text-[#2a9a8e]">When Innovation Becomes GDP</span>
       </h3>
-      <p className="text-sm md:text-base font-extralight text-[#0a1128]/60 mb-6 max-w-3xl mx-auto text-center">
+      <p className="text-base md:text-lg font-light text-[#0a1128]/60 mb-8 max-w-3xl mx-auto text-center">
         This USD 1tn isn't paper value — it's real GDP. It's the economic output created as technology scales across manufacturing, healthcare, finance, and services. Startups are simply the vehicles that carry innovation into the real economy.
       </p>
 
@@ -324,7 +324,7 @@ export function StartupEcosystemChart() {
       </div>
 
       {/* Impact Stats - Compact */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Employment */}
         <div
           className="group relative"
@@ -335,18 +335,18 @@ export function StartupEcosystemChart() {
             transitionDelay: "300ms",
           }}
         >
-          <div className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
+          <div className="p-8 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gray-900 dark:bg-white flex items-center justify-center">
-                <svg className="w-4 h-4 text-white dark:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="w-10 h-10 rounded-lg bg-[#ff6b5a] flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <span className="text-sm font-medium tracking-wide uppercase text-gray-400 dark:text-white/40">Employment</span>
+              <span className="text-base font-semibold tracking-wide uppercase text-white">Employment</span>
             </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-4xl font-extralight text-gray-900 dark:text-white">50mn</span>
-              <span className="text-base text-gray-500 dark:text-white/50">by 2030</span>
+            <div className="flex items-baseline gap-3">
+              <span className="text-5xl font-bold text-[#ff6b5a]">50mn</span>
+              <span className="text-lg font-semibold text-gray-700 dark:text-white/70">by 2030</span>
             </div>
           </div>
         </div>
@@ -361,18 +361,18 @@ export function StartupEcosystemChart() {
             transitionDelay: "500ms",
           }}
         >
-          <div className="p-6 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
+          <div className="p-8 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50/50 dark:bg-white/[0.02] hover:bg-gray-100/50 dark:hover:bg-white/[0.04] transition-colors duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gray-900 dark:bg-white flex items-center justify-center">
-                <svg className="w-4 h-4 text-white dark:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="w-10 h-10 rounded-lg bg-[#ff6b5a] flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
-              <span className="text-sm font-medium tracking-wide uppercase text-gray-400 dark:text-white/40">GDP Impact</span>
+              <span className="text-base font-semibold tracking-wide uppercase text-white">GDP Impact</span>
             </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-4xl font-extralight text-gray-900 dark:text-white">USD 1tn</span>
-              <span className="text-base text-gray-500 dark:text-white/50">in economic value</span>
+            <div className="flex items-baseline gap-3">
+              <span className="text-5xl font-bold text-[#ff6b5a]">USD 1tn</span>
+              <span className="text-lg font-semibold text-gray-700 dark:text-white/70">in economic value</span>
             </div>
           </div>
         </div>

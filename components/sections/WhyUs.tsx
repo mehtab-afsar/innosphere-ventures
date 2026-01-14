@@ -64,19 +64,19 @@ export function WhyUs() {
       <div className="max-w-7xl mx-auto w-full">
         {/* Header and Navigation */}
         <div className="mb-12 text-center">
-          <Badge className="mb-4 font-light bg-[#7affd4]/10 text-[#f5f5f0] border-[#7affd4]/30 hover:bg-[#7affd4]/20">
-            Why Us
-          </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#f5f5f0] mb-2" style={{ letterSpacing: '-0.01em' }}>
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
+            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Why Us</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-[#ff6b5a] mb-4" style={{ letterSpacing: '-0.01em' }}>
             Conviction capital meets
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
-            <span className="font-semibold text-[#7affd4]">Edge Alpha precision</span>
+            <span className="font-semibold text-[#2a9a8e]">Edge Alpha precision</span>
           </h2>
         </div>
 
         {/* Navigation Pills */}
-        <div className="hidden lg:flex justify-center gap-6 text-sm mb-8">
+        <div className="hidden lg:flex justify-center gap-6 text-base mb-8">
           {cards.map((card, index) => (
             <div
               key={index}
@@ -107,14 +107,14 @@ export function WhyUs() {
                   ? 'p-10'
                   : 'p-8'
               }`}>
-                <h3 className={`font-medium text-[#7affd4] mb-4 transition-all duration-[1200ms] ease-in-out ${
+                <h3 className={`font-medium text-[#2a9a8e] mb-4 transition-all duration-[1200ms] ease-in-out ${
                   currentIndex === index
-                    ? 'text-2xl lg:text-3xl'
-                    : 'text-xl lg:text-2xl'
+                    ? 'text-2xl lg:text-4xl'
+                    : 'text-xl lg:text-3xl'
                 }`}>
                   {card.title}
                 </h3>
-                <p className="font-light text-[#f5f5f0]/70 leading-relaxed text-base lg:text-lg">
+                <p className="font-light text-[#f5f5f0]/70 leading-relaxed text-lg lg:text-xl">
                   {card.description}
                 </p>
               </div>

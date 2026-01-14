@@ -39,8 +39,8 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
   const Icon = card.icon;
   const isLeft = index % 2 === 0;
 
-  // Color mapping for each card - all neon teal
-  const titleColor = '#7affd4'; // bright neon teal/cyan
+  // Color mapping for each card - teal for titles
+  const titleColor = '#2a9a8e';
 
   return (
     <div
@@ -58,9 +58,9 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
           className="flex items-center justify-center gap-4 mb-4"
           style={{ opacity: easedProgress }}
         >
-          <div className="h-px bg-[#7affd4]/20 w-8" />
-          <span className="text-sm font-light text-[#f5f5f0]/40 tracking-widest">{card.number}</span>
-          <div className="h-px bg-[#7affd4]/20 w-8" />
+          <div className="h-px bg-[#2a9a8e]/30 w-8" />
+          <span className="text-base font-light text-[#f5f5f0]/50 tracking-widest">{card.number}</span>
+          <div className="h-px bg-[#2a9a8e]/30 w-8" />
         </div>
 
         <div
@@ -70,18 +70,18 @@ function ScrollCard({ card, index }: { card: CardData; index: number }) {
             transform: `scale(${0.8 + easedProgress * 0.2})`,
           }}
         >
-          <Icon className="w-8 h-8 text-[#7affd4]/50" strokeWidth={1} />
+          <Icon className="w-10 h-10 text-[#2a9a8e]/60" strokeWidth={1} />
         </div>
 
         <h3
-          className="text-xl sm:text-2xl lg:text-3xl font-medium mb-3"
+          className="text-2xl sm:text-3xl lg:text-4xl font-medium mb-4"
           style={{ opacity: easedProgress, color: titleColor }}
         >
           {card.title}
         </h3>
 
         <p
-          className="text-sm sm:text-base font-light text-[#f5f5f0]/60 leading-relaxed"
+          className="text-base sm:text-lg font-light text-[#f5f5f0]/70 leading-relaxed"
           style={{ opacity: easedProgress * 0.9 }}
         >
           {card.description}
@@ -97,20 +97,20 @@ export function WhyNow() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <Badge className="mb-4 font-light bg-[#7affd4]/10 text-[#f5f5f0] border-[#7affd4]/30 hover:bg-[#7affd4]/20">
-            Why Now
-          </Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#7affd4] mb-6" style={{ letterSpacing: '-0.01em' }}>
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#7affd4] rounded-none">
+            <span className="text-lg font-medium text-[#7affd4] tracking-wide">Why Now</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-[#7affd4] mb-8" style={{ letterSpacing: '-0.01em' }}>
             A Once-in-a-Generation Opportunity
           </h2>
-          <div className="space-y-1 max-w-xl mx-auto">
-            <p className="text-base sm:text-lg font-light text-[#f5f5f0]/60">
+          <div className="space-y-2 max-w-xl mx-auto">
+            <p className="text-lg sm:text-xl font-light text-[#f5f5f0]/60">
               The foundations are in place.
             </p>
-            <p className="text-base sm:text-lg font-light text-[#f5f5f0]/60">
+            <p className="text-lg sm:text-xl font-light text-[#f5f5f0]/60">
               The system is forming.
             </p>
-            <p className="text-base sm:text-lg font-medium text-[#f5f5f0]">
+            <p className="text-lg sm:text-xl font-semibold text-[#f5f5f0]">
               What comes next will compound for decades.
             </p>
           </div>
