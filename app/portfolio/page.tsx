@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { OceanGradient } from "@/components/OceanGradient";
@@ -77,15 +76,15 @@ export default function PortfolioPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
-            Portfolio
-          </Badge>
-          <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
-            <span className="text-[#2a9a8e]">Edge Alpha</span>
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
+            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Portfolio</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight mb-8">
+            <span className="text-[#ff6b5a]">Edge Alpha</span>
             <br />
             <span className="font-light text-[#2a9a8e]">Companies</span>
           </h1>
-          <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl">
+          <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-3xl leading-relaxed">
             Our portfolio of frontier innovation companies building category-defining solutions across India.
           </p>
         </div>
@@ -106,7 +105,7 @@ export default function PortfolioPage() {
                   placeholder="Search companies..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-12 py-4 rounded-xl border border-white/10 bg-white/5 text-[#0a1128] placeholder:text-[#0a1128]/40 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all font-light"
+                  className="w-full pl-12 pr-12 py-4 rounded-xl border-2 border-[#ff6b5a]/50 bg-white/5 text-[#0a1128] placeholder:text-[#ff6b5a]/60 focus:outline-none focus:ring-2 focus:ring-[#ff6b5a]/30 focus:border-[#ff6b5a] transition-all font-light"
                 />
                 {searchQuery && (
                   <button
@@ -124,7 +123,7 @@ export default function PortfolioPage() {
                 <select
                   value={sectorFilter}
                   onChange={(e) => setSectorFilter(e.target.value)}
-                  className="px-4 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm font-light focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/20 transition-all cursor-pointer"
+                  className="px-4 py-4 rounded-xl border-2 border-[#ff6b5a]/50 bg-white/5 text-[#ff6b5a] text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#ff6b5a]/30 focus:border-[#ff6b5a] transition-all cursor-pointer"
                 >
                   <option value="all">All Sectors</option>
                   {sectors.map(sector => (
@@ -136,7 +135,7 @@ export default function PortfolioPage() {
                 <select
                   value={stageFilter}
                   onChange={(e) => setStageFilter(e.target.value)}
-                  className="px-4 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm font-light focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white/20 transition-all cursor-pointer"
+                  className="px-4 py-4 rounded-xl border-2 border-[#ff6b5a]/50 bg-white/5 text-[#ff6b5a] text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#ff6b5a]/30 focus:border-[#ff6b5a] transition-all cursor-pointer"
                 >
                   <option value="all">All Stages</option>
                   {stages.map(stage => (
@@ -288,7 +287,7 @@ export default function PortfolioPage() {
           />
 
           {/* Drawer */}
-          <div className="fixed inset-y-0 right-0 w-full max-w-4xl bg-white dark:bg-gray-950 z-50 shadow-2xl overflow-y-auto transform transition-transform duration-500 ease-out">
+          <div className="fixed inset-y-0 right-0 w-full max-w-4xl bg-white dark:bg-[#052827] z-50 shadow-2xl overflow-y-auto transform transition-transform duration-500 ease-out">
             {(() => {
               const company = filteredCompanies[expandedCompany];
               const Icon = company.icon;
@@ -361,8 +360,8 @@ export default function PortfolioPage() {
                             Current Status
                           </h4>
                           <p className="text-xl text-gray-900 dark:text-white flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                            {company.status}
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#ff6b5a]"></span>
+                            <span className="text-[#ff6b5a]">{company.status}</span>
                           </p>
                         </div>
 

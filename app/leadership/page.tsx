@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { OceanGradient } from "@/components/OceanGradient";
@@ -43,10 +42,10 @@ export default function LeadershipPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
-            Leadership
-          </Badge>
-          <h1 className="text-5xl lg:text-7xl font-extralight mb-8">
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
+            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Leadership</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight mb-8">
             <span className="text-[#0a1128]">The</span> <span className="font-light text-[#ff6b5a]">Visionaries</span> <span className="text-[#0a1128]">and Their</span> <span className="font-light text-[#ff6b5a]">Vision</span>
           </h1>
         </div>
@@ -55,7 +54,7 @@ export default function LeadershipPage() {
       {/* Vision Quote */}
       <section className="py-8 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-2xl lg:text-3xl font-extralight leading-relaxed italic max-w-4xl mx-auto text-[#0a1128]/80">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extralight leading-relaxed italic max-w-4xl mx-auto text-[#0a1128]/80">
             "To be the catalyst for India's most ambitious founders — providing not just <span className="text-[#ff6b5a] font-medium">capital</span>, but <span className="text-[#2a9a8e] font-medium">conviction</span>, <span className="text-[#7affd4] font-medium">connection</span>, and the <span className="text-[#0a1128] font-medium">courage</span> to build at the frontier."
           </p>
         </div>
@@ -78,12 +77,12 @@ export default function LeadershipPage() {
                   </div>
 
                   <div className="flex-1">
-                    <h2 className="text-3xl font-light text-[#ff6b5a] mb-2">{leader.name}</h2>
-                    <p className="text-lg font-extralight text-[#2a9a8e]/90 mb-4">{leader.role}</p>
-                    <p className="font-extralight text-[#f5f5f0]/60 leading-relaxed mb-3">
+                    <h2 className="text-2xl sm:text-3xl font-light text-[#ff6b5a] mb-2">{leader.name}</h2>
+                    <p className="text-base sm:text-lg font-extralight text-[#2a9a8e]/90 mb-4">{leader.role}</p>
+                    <p className="text-base sm:text-lg font-extralight text-[#0a1128] leading-relaxed mb-3">
                       {leader.bio}
                     </p>
-                    <p className="font-extralight text-[#f5f5f0]/60 leading-relaxed mb-6">
+                    <p className="text-base sm:text-lg font-extralight text-[#0a1128] leading-relaxed mb-6">
                       {leader.bio2}
                     </p>
 
@@ -114,7 +113,7 @@ export default function LeadershipPage() {
             {/* Decorative gradient accent */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-rose-500"></div>
 
-            <p className="text-xl lg:text-2xl font-extralight text-[#f5f5f0]/90 leading-relaxed text-center">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-extralight text-[#f5f5f0]/90 leading-relaxed text-center">
               Roman and Jocelyn first connected while collaborating on innovation and leadership studies at <span className="font-medium text-[#ff6b5a]">Harvard</span>. They shared a conviction that the future of venture would be built through <span className="font-medium text-[#2a9a8e]">ecosystems</span>, not unicorn-chasing — a belief that led to the creation of <span className="font-medium text-[#7affd4]">InnoSphere</span> and its mission to back founders shaping India's next frontier.
             </p>
           </div>
@@ -124,10 +123,10 @@ export default function LeadershipPage() {
       {/* CTA */}
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-extralight mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight mb-6">
             <span className="text-[#f5f5f0]">Want to</span> <span className="font-light text-[#ff6b5a]">connect?</span>
           </h2>
-          <p className="text-xl font-extralight text-[#f5f5f0]/70 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl font-extralight text-[#f5f5f0]/70 mb-8 max-w-2xl mx-auto">
             We're always looking to meet exceptional founders and partners who share our vision for India's innovation future.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

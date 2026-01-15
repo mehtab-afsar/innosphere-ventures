@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { OceanGradient } from "@/components/OceanGradient";
@@ -76,14 +75,14 @@ export default function GalleryPage() {
           </Link>
 
           <div className="mb-8">
-            <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
-              Gallery
-            </Badge>
-            <h1 className="text-5xl lg:text-7xl font-extralight mb-4">
+            <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
+              <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Gallery</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight mb-4">
               <span className="text-[#0a1128]">Moments that</span>
               <span className="font-light text-[#2a9a8e]"> define us</span>
             </h1>
-            <p className="text-xl font-extralight text-[#0a1128]/80 max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-2xl">
               A visual journey through our events, partnerships, and the community we're building together.
             </p>
           </div>
@@ -132,7 +131,7 @@ export default function GalleryPage() {
         <div className="max-w-7xl mx-auto">
           {/* Section Title */}
           <div className="mb-6">
-            <h2 className="text-3xl lg:text-4xl font-extralight text-[#f5f5f0]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extralight text-[#f5f5f0]">
               More <span className="font-light">Moments</span>
             </h2>
           </div>
@@ -156,9 +155,9 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="p-4">
-                  <Badge className="mb-2 font-light bg-white/10 text-[#f5f5f0]/80 border-white/20 hover:bg-white/20 text-xs">
+                  <span className="inline-block mb-2 px-2 py-1 font-light bg-white/10 text-[#f5f5f0]/80 border border-white/20 rounded text-xs">
                     {item.category}
-                  </Badge>
+                  </span>
                   <h3 className="text-sm md:text-base font-light text-[#f5f5f0] mb-1 line-clamp-1">{item.title}</h3>
                   <p className="font-extralight text-[#f5f5f0]/60 text-xs line-clamp-2">
                     {item.description}
@@ -187,9 +186,9 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="p-6">
-                  <Badge className="mb-3 font-light bg-white/10 text-[#f5f5f0]/80 border-white/20 hover:bg-white/20 text-xs">
+                  <span className="inline-block mb-3 px-2 py-1 font-light bg-white/10 text-[#f5f5f0]/80 border border-white/20 rounded text-xs">
                     {item.category}
-                  </Badge>
+                  </span>
                   <h3 className="text-xl md:text-2xl font-light text-[#f5f5f0] mb-2">{item.title}</h3>
                   <p className="font-extralight text-[#f5f5f0]/60 text-sm md:text-base">
                     {item.description}

@@ -1,16 +1,14 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { OceanGradient } from "@/components/OceanGradient";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function LetterPage() {
   return (
-    <OceanGradient variant="philosophy">
+    <OceanGradient variant="landing">
       <Navigation />
 
       {/* Hero Section */}
@@ -23,13 +21,13 @@ export default function LetterPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
-            Founder Letter
-          </Badge>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight mb-6 leading-tight">
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
+            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Founder Letter</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight mb-6 leading-tight">
             <span className="font-light text-[#2a9a8e]">Conviction sparks.</span>
             <br />
-            <span className="font-light text-[#2a9a8e]">Consensus amplifies.</span>
+            <span className="font-light text-[#ff6b5a]">Consensus amplifies.</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-2xl leading-relaxed">
             We follow a value-investing approach — more Warren Buffett than Silicon Valley.
@@ -53,10 +51,10 @@ export default function LetterPage() {
           <div className="mb-20 relative">
             <div className="absolute -left-4 lg:-left-6 top-0 bottom-0 w-[2px] bg-white/20 rounded-full" />
             <blockquote className="pl-6 lg:pl-8">
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extralight leading-tight mb-4">
-                "<span className="text-[#7affd4]">We don't chase valuations.</span>
+              <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extralight leading-tight mb-4">
+                "<span className="text-[#d4a017]">We don't chase valuations.</span>
                 <br />
-                <span className="font-light text-[#7affd4]">We build them.</span>"
+                <span className="font-light text-[#d4a017]">We build them.</span>"
               </p>
               <cite className="text-sm font-extralight text-[#0a1128]/60 not-italic">
                 — Roman Gaus, Founding Partner
@@ -66,7 +64,7 @@ export default function LetterPage() {
 
           {/* Our Model Section */}
           <div className="mb-20">
-            <h2 className="text-xl sm:text-2xl font-semibold text-[#ff6b5a] mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#2a9a8e] mb-10">
               Our Model
             </h2>
 
@@ -74,7 +72,7 @@ export default function LetterPage() {
               {/* Model Item 1 */}
               <div className="pl-4 lg:pl-6 border-l-2 border-gray-300 dark:border-white/20">
                 <span className="text-sm font-extralight text-[#0a1128]/50 tracking-widest">01</span>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#7affd4] mt-2 mb-3">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-[#ff6b5a] mt-2 mb-3">
                   A fair entry valuation
                 </h3>
                 <p className="text-base sm:text-lg font-extralight text-[#0a1128]/70 leading-relaxed max-w-2xl">
@@ -85,7 +83,7 @@ export default function LetterPage() {
               {/* Model Item 2 */}
               <div className="pl-4 lg:pl-6 border-l-2 border-gray-300 dark:border-white/20">
                 <span className="text-sm font-extralight text-[#0a1128]/50 tracking-widest">02</span>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#7affd4] mt-2 mb-3">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-[#ff6b5a] mt-2 mb-3">
                   We help create the next valuation step
                 </h3>
                 <p className="text-base sm:text-lg font-extralight text-[#0a1128]/70 leading-relaxed max-w-2xl">
@@ -96,7 +94,7 @@ export default function LetterPage() {
               {/* Model Item 3 */}
               <div className="pl-4 lg:pl-6 border-l-2 border-gray-300 dark:border-white/20">
                 <span className="text-sm font-extralight text-[#0a1128]/50 tracking-widest">03</span>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-light text-[#7affd4] mt-2 mb-3">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-[#ff6b5a] mt-2 mb-3">
                   Aligned upside through a capped warrant
                 </h3>
                 <p className="text-base sm:text-lg font-extralight text-[#0a1128]/70 leading-relaxed max-w-2xl">
@@ -107,7 +105,7 @@ export default function LetterPage() {
 
             {/* Highlight Statement */}
             <div className="mt-12 pt-8 border-t border-white/10">
-              <p className="text-lg sm:text-xl md:text-2xl font-extralight text-[#0a1128]">
+              <p className="text-xl sm:text-2xl md:text-3xl font-extralight text-[#0a1128]">
                 We don't extract value — <span className="font-light">we help compound it.</span>
               </p>
             </div>
@@ -115,7 +113,7 @@ export default function LetterPage() {
 
           {/* Why Founders Work With Us */}
           <div className="mb-20">
-            <h2 className="text-xl sm:text-2xl font-semibold text-[#ff6b5a] mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#7affd4] mb-10">
               Why Founders Work With Us
             </h2>
             <div className="space-y-4">
@@ -133,7 +131,7 @@ export default function LetterPage() {
 
           {/* Our Promise */}
           <div className="mb-20">
-            <h2 className="text-xl sm:text-2xl font-semibold text-[#ff6b5a] mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#ff6b5a] mb-10">
               Our Promise
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6">

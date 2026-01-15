@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { OceanGradient } from "@/components/OceanGradient";
@@ -98,7 +97,7 @@ export default function SignalsPage() {
   }, []);
 
   return (
-    <OceanGradient variant="technical">
+    <OceanGradient variant="landing">
       <Navigation />
 
       {/* Hero Section */}
@@ -108,15 +107,15 @@ export default function SignalsPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-            Signals
-          </Badge>
-          <h1 className="text-5xl lg:text-7xl font-extralight mb-8 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Signals</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight mb-8 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
             <span className="text-[#0a1128]">The</span> <span className="text-[#ff6b5a]">Edge Alpha</span>
             <br />
             <span className="font-light text-[#2a9a8e]">Company Universe</span>
           </h1>
-          <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
+          <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-3xl leading-relaxed fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
             Our portfolio begins long before we invest. Using the Edge Alpha scoring engine, we map India's frontier innovation universe, surface high-signal founders, and identify companies with systemic potential.
           </p>
         </div>
@@ -125,14 +124,11 @@ export default function SignalsPage() {
       {/* Edge Alpha Signals Explanation */}
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-extralight mb-6 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-              <span className="text-[#ff6b5a]">Edge Alpha</span> <span className="font-light text-[#2a9a8e]">Signals</span>
-            </h2>
-            <p className="text-xl font-extralight text-[#0a1128]/80 max-w-3xl mx-auto mb-4 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
+          <div className="text-center mb-8">
+            <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-3xl mx-auto mb-4 fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "100ms" }}>
               The Edge Alpha scoring model separates signal from noise.
             </p>
-            <p className="text-lg font-extralight text-[#0a1128]/60 max-w-3xl mx-auto fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
+            <p className="text-base sm:text-lg font-extralight text-[#0a1128]/60 max-w-3xl mx-auto fade-on-scroll opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: "200ms" }}>
               We evaluate every company across five systemic signal dimensions.
             </p>
           </div>
@@ -181,7 +177,7 @@ export default function SignalsPage() {
                     <div className={`p-5 ${colors.bg} rounded-full border ${colors.border} w-fit mx-auto mb-4 transition-all duration-300 ${hoveredSignal === index ? "scale-110" : ""}`}>
                       <Icon className={`w-10 h-10 ${colors.icon}`} strokeWidth={1.5} />
                     </div>
-                    <h3 className={`text-base font-medium ${colors.text} mb-2 leading-tight`}>{dimension.label}</h3>
+                    <h3 className={`text-base font-medium mb-2 leading-tight transition-colors duration-300 ${hoveredSignal === index ? "text-[#ff6b5a]" : colors.text}`}>{dimension.label}</h3>
                     <p className={`text-sm font-extralight text-[#0a1128]/60 leading-snug transition-opacity duration-300 ${hoveredSignal === index ? "opacity-0" : "opacity-100"}`}>{dimension.description}</p>
 
                     {/* Hover tooltip - appears on same side */}
@@ -190,7 +186,7 @@ export default function SignalsPage() {
                         hoveredSignal === index ? "opacity-100 visible" : "opacity-0 invisible"
                       } ${isOnLeftSide ? "right-full mr-8 text-right" : "left-full ml-8 text-left"}`}
                     >
-                      <p className="text-xl font-light text-[#0a1128] leading-relaxed">
+                      <p className="text-xl font-light text-[#ff6b5a] leading-relaxed">
                         {dimension.description}
                       </p>
                     </div>

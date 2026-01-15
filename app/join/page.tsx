@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
@@ -62,14 +61,14 @@ export default function JoinPage() {
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
             <span className="font-extralight text-sm">Back</span>
           </Link>
-          <Badge className="mb-6 font-light bg-[#0a1128]/10 text-[#0a1128] border-[#0a1128]/20 hover:bg-[#0a1128]/20">
-            Join the Movement
-          </Badge>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extralight mb-6">
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
+            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Join the Movement</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight mb-6">
             <span className="text-[#0a1128]">Become Part of the</span>{" "}
             <span className="font-light text-[#2a9a8e]">InnoSphere</span> <span className="font-light text-[#2a9a8e]">Collective</span>
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl font-extralight text-[#0a1128]/80 max-w-3xl">
+          <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-3xl">
             Join a network of visionary founders, investors, and partners shaping
             India's innovation frontier.
           </p>
@@ -115,7 +114,7 @@ export default function JoinPage() {
               </div>
             ) : (
               <>
-                <h2 className="text-2xl lg:text-3xl font-light text-[#ff6b5a] mb-2">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-[#ff6b5a] mb-2">
                   Investment Form
                 </h2>
                 <p className="font-extralight text-[#0a1128]/70 mb-4">
