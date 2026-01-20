@@ -5,16 +5,16 @@ import { useEffect, useRef, useState } from "react";
 
 const cards = [
   {
-    title: "Conviction Capital",
-    description: "We go early, where conviction comes before consensus. Our first checks are priced with discipline and backed by the patience to compound — not by momentum, hype, or narrative-driven investing."
+    title: "The Old Paradigm",
+    description: "Early-stage investing has long been treated as an exclusive art — shaped by intuition, experience, and personal networks. VC has been a highly concentrated domain — historically male-dominated, closed circles, and defined by restricted access to information and opportunities."
   },
   {
-    title: "Ecosystem Power",
-    description: "Our access is built through deep partnerships with incubators, universities, and local ecosystem players — far beyond the major metros. This embedded position gives us early visibility into frontier innovation across Tier 2 and Tier 3 hubs, university deep-tech labs, and local founder networks, allowing us to reach talent where it rises, not where it is already priced."
+    title: "The Radical Shift",
+    description: "Today, AI and large language models make it possible to identify winning patterns across teams, technologies, company trajectories and valuations, and track entire innovation ecosystems — at a scale and consistency that was previously impossible."
   },
   {
-    title: "Edge Alpha Approach",
-    description: "Conviction alone is not enough. We pair it with signal-driven discovery, disciplined scoring, and repeatable portfolio construction — turning early insight into precision and compounding outcomes."
+    title: "Edge Alpha is Built on This",
+    description: "Our investment platform allows us to detect investment readiness earlier, compare signals more systematically, and allocate conviction with greater precision — particularly in frontier and under-mapped markets such as India."
   }
 ];
 
@@ -58,21 +58,24 @@ export function WhyUs() {
   return (
     <section
       ref={sectionRef}
-      id="why-us"
+      id="edge-alpha"
       className="relative py-24 px-6 lg:px-12"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Header and Navigation */}
         <div className="mb-12 text-center">
           <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
-            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Why Us</span>
+            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Edge Alpha</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-[#ff6b5a] mb-4" style={{ letterSpacing: '-0.01em' }}>
-            Conviction capital meets
+            A New Paradigm for
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
-            <span className="font-semibold text-[#2a9a8e]">Edge Alpha precision</span>
+            <span className="font-semibold text-[#2a9a8e]">Venture Investing</span>
           </h2>
+          <p className="text-base sm:text-lg font-light text-[#f5f5f0]/80 max-w-2xl mx-auto mt-6">
+            Judgment mattered, and it still does. But the game has changed.
+          </p>
         </div>
 
         {/* Navigation Pills */}

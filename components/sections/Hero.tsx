@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Newspaper } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 // Dynamically import ParticleSphere to avoid SSR issues with Three.js
 const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
@@ -38,30 +39,66 @@ export function Hero() {
           </a>
 
           <h1
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-extralight leading-[1.15] mb-4 sm:mb-6 md:mb-8"
-            style={{ letterSpacing: '-0.02em' }}
+            className="leading-[1.15] mb-4 sm:mb-6 md:mb-8"
+            style={{
+              fontSize: 'clamp(2rem, 5vw + 1rem, 8rem)',
+              letterSpacing: '-0.02em',
+              fontWeight: 200
+            }}
           >
-            <span className="text-[#ff6b5a]">Empowering
+            <span className="text-[#ff6b5a]">Conviction Capital
             <br />
-            Innovators.</span>
+            for India's</span>
             <br />
-            <span className="font-light text-[#2a9a8e]">Elevating Futures.</span>
+            <span style={{ fontWeight: 400 }} className="text-[#2a9a8e]">Edge Founders</span>
           </h1>
           <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-[#0a1128]/80 max-w-2xl mb-6 sm:mb-8 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-[#0a1128]/80 max-w-3xl mb-6 sm:mb-8 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150"
             style={{ letterSpacing: '0.01em' }}
           >
-            A new venture force for India's innovation frontier.
+            If you've ever wondered how real technological progress actually happens — not headlines, not hype, but the slow and difficult work of building something that matters — you're in the right place.
           </p>
+          <p
+            className="text-sm sm:text-base md:text-lg font-light text-[#0a1128]/70 max-w-2xl mb-8 sm:mb-10 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200"
+          >
+            InnoSphere Ventures exists to support deep-tech entrepreneurs across India who are building foundational technologies, often far from the spotlight.
+          </p>
+
+          {/* Stats Row - With Animated Counters inspired by YC/BVP */}
+          <div className="flex flex-wrap gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-250">
+            <div>
+              <AnimatedCounter
+                end={18}
+                suffix="+"
+                className="text-2xl sm:text-3xl font-mono font-medium text-[#2a9a8e] mb-1"
+              />
+              <div className="text-xs sm:text-sm font-light text-[#0a1128]/60">Companies Tracked</div>
+            </div>
+            <div>
+              <AnimatedCounter
+                end={5}
+                className="text-2xl sm:text-3xl font-mono font-medium text-[#2a9a8e] mb-1"
+              />
+              <div className="text-xs sm:text-sm font-light text-[#0a1128]/60">Initial Investments</div>
+            </div>
+            <div>
+              <div className="text-2xl sm:text-3xl font-mono font-medium text-[#2a9a8e] mb-1 flex items-center gap-0">
+                <span>$</span>
+                <AnimatedCounter end={20} className="inline" />
+                <span>K</span>
+              </div>
+              <div className="text-xs sm:text-sm font-light text-[#0a1128]/60">Min LP Ticket</div>
+            </div>
+          </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
             <Button size="lg" className="bg-[#ff6b5a] text-white hover:bg-[#ff6b5a]/90 font-medium text-sm sm:text-base group transition-all duration-300 hover:scale-105" asChild>
-              <Link href="/thesis">
-                Discover Our Thesis
+              <Link href="/approach">
+                Our Approach
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-2 border-[#2a9a8e] text-[#2a9a8e] font-light text-sm sm:text-base hover:bg-[#2a9a8e]/10 hover:border-[#2a9a8e] transition-all duration-300" asChild>
-              <Link href="/join">Join the Movement</Link>
+              <Link href="/join">Join LP Collective</Link>
             </Button>
           </div>
         </div>

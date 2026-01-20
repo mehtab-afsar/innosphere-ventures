@@ -94,45 +94,7 @@ export function Navigation() {
                 </div>
               </div>
             </div>
-            {/* Approach Mega Menu */}
-            <div className="relative group">
-              <button className="flex items-center gap-1 hover:brightness-125 transition-all duration-300">
-                Approach
-                <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
-              </button>
-              <div className="absolute top-full -left-[280px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                <div className={`${dropdownBg} backdrop-blur-xl rounded-2xl shadow-2xl border ${dropdownBorder} p-4 w-[720px]`}>
-                  <div className="grid grid-cols-3 gap-3">
-                    {/* Letter to Founders */}
-                    <a href="/letter" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-white mb-2">Letter to Founders</h4>
-                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">Our commitment to India's ambitious builders.</p>
-                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
-                        Read <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
-                      </span>
-                    </a>
-
-                    {/* Thesis */}
-                    <a href="/thesis" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-white mb-2">Investment Thesis</h4>
-                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">How we find category-defining companies.</p>
-                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
-                        Explore <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
-                      </span>
-                    </a>
-
-                    {/* Signals */}
-                    <a href="/signals" className="group/card p-5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/[0.03] transition-all duration-200">
-                      <h4 className="text-base font-medium text-white mb-2">Market Signals</h4>
-                      <p className="text-sm text-gray-400 font-light leading-relaxed mb-4">Data on India's innovation ecosystem.</p>
-                      <span className="text-sm text-gray-500 flex items-center gap-2 group-hover/card:text-white transition-colors">
-                        View <ArrowRight className="w-4 h-4 group-hover/card:translate-x-0.5 transition-transform" />
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <a href="/approach" className="hover:brightness-125 transition-all duration-300">Approach</a>
             <a href="/portfolio" className="hover:brightness-125 transition-all duration-300">Portfolio</a>
             <a href="/join" className="hover:brightness-125 transition-all duration-300">Join</a>
             <div className="relative group">
@@ -204,14 +166,7 @@ export function Navigation() {
                 </div>
               )}
             </div>
-            <div>
-              <span className="block text-xs uppercase tracking-wider opacity-60 mb-2">Approach</span>
-              <div className="ml-2 space-y-2">
-                <a href="/letter" className="block hover:brightness-125 transition-colors">Letter to Founders</a>
-                <a href="/thesis" className="block hover:brightness-125 transition-colors">Investment Thesis</a>
-                <a href="/signals" className="block hover:brightness-125 transition-colors">Market Signals</a>
-              </div>
-            </div>
+            <a href="/approach" className="block hover:brightness-125 transition-colors">Approach</a>
             <a href="/portfolio" className="block hover:brightness-125 transition-colors">Portfolio</a>
             <a href="/join" className="block hover:brightness-125 transition-colors">Join</a>
             <div>
