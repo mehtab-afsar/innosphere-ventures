@@ -47,52 +47,52 @@ export default function JoinPage() {
       <section className="py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#0a1128] mb-6" style={{ letterSpacing: '-0.01em' }}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#f5f5f0] mb-6" style={{ letterSpacing: '-0.01em' }}>
               What You Get
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Early Access */}
-            <div className="p-8 border border-[#0a1128]/10 hover:border-[#2a9a8e]/30 transition-all duration-300">
+            <div className="p-8 border border-white/10 hover:border-[#ff6b5a]/40 transition-all duration-300 bg-white/[0.02]">
               <div className="mb-4">
-                <Users className="w-10 h-10 text-[#2a9a8e]/60" strokeWidth={1} />
+                <Users className="w-10 h-10 text-[#ff6b5a]/60" strokeWidth={1} />
               </div>
-              <h3 className="text-2xl font-medium text-[#2a9a8e] mb-4">Early Access to Deals</h3>
-              <p className="font-light text-[#0a1128]/80 leading-relaxed">
+              <h3 className="text-2xl font-medium text-[#ff6b5a] mb-4">Early Access to Deals</h3>
+              <p className="font-light text-[#f5f5f0]/80 leading-relaxed">
                 See opportunities before they're widely circulated. Co-invest alongside us in companies tracked through the Edge Alpha platform.
               </p>
             </div>
 
             {/* Learning Community */}
-            <div className="p-8 border border-[#0a1128]/10 hover:border-[#2a9a8e]/30 transition-all duration-300">
+            <div className="p-8 border border-white/10 hover:border-[#ff6b5a]/40 transition-all duration-300 bg-white/[0.02]">
               <div className="mb-4">
-                <Lightbulb className="w-10 h-10 text-[#2a9a8e]/60" strokeWidth={1} />
+                <Lightbulb className="w-10 h-10 text-[#ff6b5a]/60" strokeWidth={1} />
               </div>
-              <h3 className="text-2xl font-medium text-[#2a9a8e] mb-4">A Learning Community</h3>
-              <p className="font-light text-[#0a1128]/80 leading-relaxed">
+              <h3 className="text-2xl font-medium text-[#ff6b5a] mb-4">A Learning Community</h3>
+              <p className="font-light text-[#f5f5f0]/80 leading-relaxed">
                 Quarterly calls with portfolio founders, insights from the Edge Alpha research process, and access to a network of like-minded investors.
               </p>
             </div>
 
             {/* Portfolio Impact */}
-            <div className="p-8 border border-[#0a1128]/10 hover:border-[#2a9a8e]/30 transition-all duration-300">
+            <div className="p-8 border border-white/10 hover:border-[#ff6b5a]/40 transition-all duration-300 bg-white/[0.02]">
               <div className="mb-4">
-                <TrendingUp className="w-10 h-10 text-[#2a9a8e]/60" strokeWidth={1} />
+                <TrendingUp className="w-10 h-10 text-[#ff6b5a]/60" strokeWidth={1} />
               </div>
-              <h3 className="text-2xl font-medium text-[#2a9a8e] mb-4">Portfolio Impact</h3>
-              <p className="font-light text-[#0a1128]/80 leading-relaxed">
+              <h3 className="text-2xl font-medium text-[#ff6b5a] mb-4">Portfolio Impact</h3>
+              <p className="font-light text-[#f5f5f0]/80 leading-relaxed">
                 Your capital goes directly into companies solving hard problems in agriculture, water, healthcare, energy, and frontier technologies.
               </p>
             </div>
 
             {/* Transparent Operations */}
-            <div className="p-8 border border-[#0a1128]/10 hover:border-[#2a9a8e]/30 transition-all duration-300">
+            <div className="p-8 border border-white/10 hover:border-[#ff6b5a]/40 transition-all duration-300 bg-white/[0.02]">
               <div className="mb-4">
-                <Heart className="w-10 h-10 text-[#2a9a8e]/60" strokeWidth={1} />
+                <Heart className="w-10 h-10 text-[#ff6b5a]/60" strokeWidth={1} />
               </div>
-              <h3 className="text-2xl font-medium text-[#2a9a8e] mb-4">Transparent Operations</h3>
-              <p className="font-light text-[#0a1128]/80 leading-relaxed">
+              <h3 className="text-2xl font-medium text-[#ff6b5a] mb-4">Transparent Operations</h3>
+              <p className="font-light text-[#f5f5f0]/80 leading-relaxed">
                 Regular updates, clear reporting, and direct access to the team. No black boxes, no lengthy term sheets.
               </p>
             </div>
@@ -101,26 +101,26 @@ export default function JoinPage() {
       </section>
 
       {/* Who This Is For */}
-      <section className="py-24 px-6 lg:px-12 bg-[#2a9a8e]/5">
+      <section className="py-24 px-6 lg:px-12 bg-white/5">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#0a1128] mb-6" style={{ letterSpacing: '-0.01em' }}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#f5f5f0] mb-6" style={{ letterSpacing: '-0.01em' }}>
               Who This Is For
             </h2>
           </div>
 
-          <div className="space-y-6 text-lg font-light text-[#0a1128]/80 leading-relaxed">
+          <div className="space-y-6 text-lg font-light text-[#f5f5f0]/80 leading-relaxed">
             <p>
-              <span className="font-medium text-[#2a9a8e]">•</span> Individuals who want exposure to early-stage Indian innovation without committing to a full fund cycle
+              <span className="font-medium text-[#7affd4]">•</span> Individuals who want exposure to early-stage Indian innovation without committing to a full fund cycle
             </p>
             <p>
-              <span className="font-medium text-[#2a9a8e]">•</span> Entrepreneurs and operators who understand the risk and reward dynamics of seed investing
+              <span className="font-medium text-[#7affd4]">•</span> Entrepreneurs and operators who understand the risk and reward dynamics of seed investing
             </p>
             <p>
-              <span className="font-medium text-[#2a9a8e]">•</span> Family offices and institutions looking for differentiated access to India's deep tech ecosystem
+              <span className="font-medium text-[#7affd4]">•</span> Family offices and institutions looking for differentiated access to India's deep tech ecosystem
             </p>
             <p>
-              <span className="font-medium text-[#2a9a8e]">•</span> Anyone curious about how conviction capital and Edge Alpha work in practice
+              <span className="font-medium text-[#7affd4]">•</span> Anyone curious about how conviction capital and Edge Alpha work in practice
             </p>
           </div>
         </div>
@@ -129,13 +129,13 @@ export default function JoinPage() {
       {/* Personal Sign-off & CTA */}
       <section className="py-32 px-6 lg:px-12">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xl sm:text-2xl font-light text-[#0a1128]/90 mb-8 leading-relaxed">
+          <p className="text-xl sm:text-2xl font-light text-[#f5f5f0]/90 mb-8 leading-relaxed">
             If this resonates, we'd love to hear from you.
           </p>
 
           <div className="mb-12">
-            <p className="text-lg font-light text-[#0a1128]/70 mb-2">Upwards & Onwards,</p>
-            <p className="text-xl font-medium text-[#2a9a8e]">Jocelyn & Roman</p>
+            <p className="text-lg font-light text-[#f5f5f0]/70 mb-2">Upwards & Onwards,</p>
+            <p className="text-xl font-medium text-[#7affd4]">Jocelyn & Roman</p>
           </div>
 
           <a

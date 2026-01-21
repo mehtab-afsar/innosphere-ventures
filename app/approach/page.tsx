@@ -138,11 +138,11 @@ function EdgeAlphaSection() {
           <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
             <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Edge Alpha</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-[#0a1128] mb-4 leading-tight" style={{ letterSpacing: '-0.01em' }}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-[#f5f5f0] mb-4 leading-tight" style={{ letterSpacing: '-0.01em' }}>
             A New Paradigm for{" "}
-            <span className="font-semibold text-[#2a9a8e]">Venture Investing</span>
+            <span className="font-semibold text-[#7affd4]">Venture Investing</span>
           </h2>
-          <p className="text-base sm:text-lg font-light text-[#0a1128]/70 max-w-2xl mx-auto mt-6">
+          <p className="text-base sm:text-lg font-light text-[#f5f5f0]/80 max-w-2xl mx-auto mt-6">
             Judgment mattered, and it still does. But the game has changed.
           </p>
         </div>
@@ -155,7 +155,7 @@ function EdgeAlphaSection() {
               className={`transition-all duration-300 ${
                 currentIndex === index
                   ? 'text-[#ff6b5a] font-medium'
-                  : 'text-[#0a1128]/40 font-light'
+                  : 'text-[#f5f5f0]/50 font-light'
               }`}
             >
               {card.title}
@@ -173,18 +173,18 @@ function EdgeAlphaSection() {
               }`}
             >
               <div
-                className={`border border-[#0a1128]/10 transition-all duration-[1200ms] ease-in-out ${
-                  currentIndex === index ? 'p-10 border-[#2a9a8e]/30' : 'p-8'
+                className={`border transition-all duration-[1200ms] ease-in-out ${
+                  currentIndex === index ? 'p-10 border-[#7affd4]/40 bg-white/5' : 'p-8 border-white/10 bg-white/[0.02]'
                 }`}
               >
                 <h3
-                  className={`font-medium text-[#2a9a8e] mb-4 transition-all duration-[1200ms] ease-in-out ${
+                  className={`font-medium text-[#7affd4] mb-4 transition-all duration-[1200ms] ease-in-out ${
                     currentIndex === index ? 'text-2xl lg:text-4xl' : 'text-xl lg:text-3xl'
                   }`}
                 >
                   {card.title}
                 </h3>
-                <p className="font-light text-[#0a1128]/80 leading-relaxed text-lg lg:text-xl">
+                <p className="font-light text-[#f5f5f0]/80 leading-relaxed text-lg lg:text-xl">
                   {card.description}
                 </p>
               </div>
@@ -204,8 +204,8 @@ export default function ApproachPage() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex flex-col justify-center px-6 lg:px-12 py-32">
         <div className="max-w-7xl mx-auto w-full text-center">
-          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#7affd4] rounded-none">
-            <span className="text-lg font-medium text-[#7affd4] tracking-wide">Our Approach</span>
+          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#2a9a8e] rounded-none">
+            <span className="text-lg font-medium text-[#2a9a8e] tracking-wide">Our Approach</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-[#0a1128] mb-8 leading-tight" style={{ letterSpacing: '-0.02em' }}>
             <span className="font-semibold text-[#ff6b5a]">Our approach is</span>
@@ -229,12 +229,12 @@ export default function ApproachPage() {
 
           {/* Closing Statement */}
           <div className="max-w-2xl mx-auto text-center mt-16">
-            <div className="py-8 px-6 border-t border-b border-[#2a9a8e]/30 bg-[#2a9a8e]/5">
-              <p className="text-lg sm:text-xl font-light text-[#0a1128]/90 leading-relaxed mb-4">
+            <div className="py-8 px-6 border-t border-b border-[#7affd4]/30 bg-white/5">
+              <p className="text-lg sm:text-xl font-light text-[#f5f5f0]/90 leading-relaxed mb-4">
                 But most importantly:{" "}
-                <span className="font-semibold text-[#2a9a8e]">We don't just invest in companies.</span>
+                <span className="font-semibold text-[#7affd4]">We don't just invest in companies.</span>
               </p>
-              <p className="text-base sm:text-lg font-light text-[#0a1128]/70 leading-relaxed">
+              <p className="text-base sm:text-lg font-light text-[#f5f5f0]/70 leading-relaxed">
                 We help position them for follow-on capital, strategic partnerships, and international market access — so that capital follows performance, and our risks get compensated.
               </p>
             </div>
