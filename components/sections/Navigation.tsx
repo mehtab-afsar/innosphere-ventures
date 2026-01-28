@@ -57,7 +57,7 @@ export function Navigation() {
           </div>
           <div className="hidden md:flex space-x-10 font-light" style={navLinkColorStyle}>
             <a href="/" className="hover:brightness-125 transition-all duration-300">Home</a>
-            <a href="/#why-india" className="hover:brightness-125 transition-all duration-300">India</a>
+            <a href="/india" className="hover:brightness-125 transition-all duration-300">India</a>
             <a href="/approach" className="hover:brightness-125 transition-all duration-300">Approach</a>
             <a href="/portfolio" className="hover:brightness-125 transition-all duration-300">Portfolio</a>
             <a href="/join" className="hover:brightness-125 transition-all duration-300">Join</a>
@@ -89,7 +89,7 @@ export function Navigation() {
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 font-light animate-in fade-in slide-in-from-top-2 duration-200" style={navLinkColorStyle}>
             <a href="/" className="block hover:brightness-125 transition-colors">Home</a>
-            <a href="/#why-india" className="block hover:brightness-125 transition-colors">India</a>
+            <a href="/india" className="block hover:brightness-125 transition-colors">India</a>
             <a href="/approach" className="block hover:brightness-125 transition-colors">Approach</a>
             <a href="/portfolio" className="block hover:brightness-125 transition-colors">Portfolio</a>
             <a href="/join" className="block hover:brightness-125 transition-colors">Join</a>

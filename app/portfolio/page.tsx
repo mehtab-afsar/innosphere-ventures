@@ -70,23 +70,61 @@ export default function PortfolioPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-40 pb-8 px-6 lg:px-12 relative overflow-hidden">
+      <section className="pt-40 pb-16 px-6 lg:px-12 relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 mb-8 group absolute left-0 lg:left-0 -top-12">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
-            <span className="font-extralight text-sm">Back</span>
-          </Link>
-          <div className="inline-block mb-6 px-6 py-3 border-2 border-[#ff6b5a] rounded-none">
-            <span className="text-lg font-medium text-[#ff6b5a] tracking-wide">Portfolio</span>
+          <div className="text-center mb-16">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-4 leading-tight">
+              Our Portfolio
+            </h1>
+            <p className="text-xl sm:text-2xl font-light text-white/80">
+              Building the future, one founder at a time
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight mb-8">
-            <span className="text-[#ff6b5a]">Edge Alpha</span>
-            <br />
-            <span className="font-light text-[#2a9a8e]">Companies</span>
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl font-extralight text-[#0a1128]/80 max-w-3xl leading-relaxed">
-            Our portfolio of frontier innovation companies building category-defining solutions across India.
-          </p>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
+            <div className="text-center p-8 border border-white/20 bg-white/5">
+              <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#7affd4] mb-2">18+</div>
+              <div className="text-sm sm:text-base font-light text-white/70">Edge Alpha Companies Tracked</div>
+            </div>
+            <div className="text-center p-8 border border-white/20 bg-white/5">
+              <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#7affd4] mb-2">5</div>
+              <div className="text-sm sm:text-base font-light text-white/70">Initial Investments Made</div>
+            </div>
+            <div className="text-center p-8 border border-white/20 bg-white/5">
+              <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#7affd4] mb-2">4+</div>
+              <div className="text-sm sm:text-base font-light text-white/70">Sectors Covered</div>
+            </div>
+          </div>
+
+          {/* Company Carousel */}
+          <div className="relative overflow-hidden mb-16">
+            <div className="flex animate-scroll gap-8">
+              {[
+                { name: "Company 1", sector: "AgTech" },
+                { name: "Company 2", sector: "WaterTech" },
+                { name: "Company 3", sector: "HealthTech" },
+                { name: "Company 4", sector: "SpaceTech" },
+                { name: "Company 5", sector: "CleanTech" },
+                { name: "Company 6", sector: "AI/ML" },
+                { name: "Company 7", sector: "BioTech" },
+                { name: "Company 8", sector: "FinTech" },
+                { name: "Company 1", sector: "AgTech" },
+                { name: "Company 2", sector: "WaterTech" },
+                { name: "Company 3", sector: "HealthTech" },
+                { name: "Company 4", sector: "SpaceTech" },
+                { name: "Company 5", sector: "CleanTech" },
+                { name: "Company 6", sector: "AI/ML" },
+                { name: "Company 7", sector: "BioTech" },
+                { name: "Company 8", sector: "FinTech" },
+              ].map((company, index) => (
+                <div key={index} className="flex-none w-64 p-6 border border-white/10 bg-white/5">
+                  <div className="text-lg font-medium text-[#7affd4] mb-1">{company.name}</div>
+                  <div className="text-sm font-light text-white/60">{company.sector}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

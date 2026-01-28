@@ -1,25 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Newspaper } from "lucide-react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-
-// Dynamically import ParticleSphere to avoid SSR issues with Three.js
-const ParticleSphere = dynamic(() => import("@/components/ParticleSphere").then(mod => ({ default: mod.ParticleSphere })), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-16 h-16 border-2 border-gray-300 dark:border-gray-600 border-t-transparent rounded-full animate-spin" />
-    </div>
-  ),
-});
+import { IndiaMap } from "@/components/IndiaMap";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-12 overflow-hidden py-24 md:py-0">
-      {/* 3D Particle Sphere Background - Hidden on mobile, visible on tablet+ */}
+      {/* India Map Background - Hidden on mobile, visible on tablet+ */}
       <div className="hidden md:block absolute top-1/2 right-0 -translate-y-1/2 w-[60%] md:w-[55%] lg:w-[50%] h-[70%] md:h-[80%] lg:h-[90%]">
-        <ParticleSphere />
+        <IndiaMap />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -46,20 +36,14 @@ export function Hero() {
               fontWeight: 200
             }}
           >
-            <span className="text-[#ff6b5a]">Conviction Capital
+            <span className="text-[#0a1128]">Conviction Capital
             <br />
             for India's</span>
             <br />
-            <span style={{ fontWeight: 400 }} className="text-[#2a9a8e]">Edge Founders</span>
+            <span style={{ fontWeight: 400 }} className="text-[#ff6b5a]">Edge Founders</span>
           </h1>
           <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-[#0a1128]/80 max-w-3xl mb-6 sm:mb-8 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150"
-            style={{ letterSpacing: '0.01em' }}
-          >
-            If you've ever wondered how real technological progress actually happens — not headlines, not hype, but the slow and difficult work of building something that matters — you're in the right place.
-          </p>
-          <p
-            className="text-sm sm:text-base md:text-lg font-light text-[#0a1128]/70 max-w-2xl mb-8 sm:mb-10 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200"
+            className="text-base sm:text-lg md:text-xl font-light text-[#0a1128]/80 max-w-2xl mb-8 sm:mb-10 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150"
           >
             InnoSphere Ventures exists to support deep-tech entrepreneurs across India who are building foundational technologies, often far from the spotlight.
           </p>
@@ -70,24 +54,24 @@ export function Hero() {
               <AnimatedCounter
                 end={18}
                 suffix="+"
-                className="text-2xl sm:text-3xl font-mono font-medium text-[#2a9a8e] mb-1"
+                className="text-2xl sm:text-3xl font-mono font-medium text-[#0a1128] mb-1"
               />
-              <div className="text-xs sm:text-sm font-light text-[#0a1128]/60">Companies Tracked</div>
+              <div className="text-xs sm:text-sm font-light text-[#0a1128]/70">Companies Tracked</div>
             </div>
             <div>
               <AnimatedCounter
                 end={5}
-                className="text-2xl sm:text-3xl font-mono font-medium text-[#2a9a8e] mb-1"
+                className="text-2xl sm:text-3xl font-mono font-medium text-[#0a1128] mb-1"
               />
-              <div className="text-xs sm:text-sm font-light text-[#0a1128]/60">Initial Investments</div>
+              <div className="text-xs sm:text-sm font-light text-[#0a1128]/70">Initial Investments</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-mono font-medium text-[#2a9a8e] mb-1 flex items-center gap-0">
+              <div className="text-2xl sm:text-3xl font-mono font-medium text-[#0a1128] mb-1 flex items-center gap-0">
                 <span>$</span>
                 <AnimatedCounter end={20} className="inline" />
                 <span>K</span>
               </div>
-              <div className="text-xs sm:text-sm font-light text-[#0a1128]/60">Min LP Ticket</div>
+              <div className="text-xs sm:text-sm font-light text-[#0a1128]/70">Min LP Ticket</div>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
@@ -97,7 +81,7 @@ export function Hero() {
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-[#2a9a8e] text-[#2a9a8e] font-light text-sm sm:text-base hover:bg-[#2a9a8e]/10 hover:border-[#2a9a8e] transition-all duration-300" asChild>
+            <Button size="lg" variant="outline" className="border-2 border-[#0a1128] text-[#0a1128] font-light text-sm sm:text-base hover:bg-[#0a1128]/10 hover:border-[#0a1128] transition-all duration-300" asChild>
               <Link href="/join">Join LP Collective</Link>
             </Button>
           </div>

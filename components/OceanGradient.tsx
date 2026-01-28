@@ -19,26 +19,17 @@ interface OceanGradientProps {
 const gradientConfigs: Record<GradientVariant, string> = {
   landing: `linear-gradient(
     to bottom,
-    #f5f5f0 0%,
-    #f0f4f2 5%,
-    #e8f2f0 10%,
-    #d8ede8 15%,
-    #c0e5dd 20%,
-    #a8ddd2 25%,
-    #8ed5c7 30%,
-    #7acdc0 35%,
-    #5fc0b5 40%,
-    #45b3a8 45%,
-    #2a9a8e 50%,
-    #1e7a70 55%,
-    #145f59 60%,
-    #0d4a47 65%,
-    #083635 70%,
-    #052827 75%,
-    #031d1f 80%,
-    #021419 85%,
-    #010d11 90%,
-    #000508 100%
+    #7dd3c0 0%,
+    #6bc9b8 10%,
+    #58bfb0 20%,
+    #46b5a8 30%,
+    #3aa9a0 40%,
+    #2e9898 50%,
+    #248790 60%,
+    #1b7688 70%,
+    #14627d 80%,
+    #0f4e6e 90%,
+    #0a3a5f 100%
   )`,
 
   portfolio: `linear-gradient(
