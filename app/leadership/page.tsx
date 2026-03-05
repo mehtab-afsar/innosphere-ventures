@@ -4,6 +4,7 @@ import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { ArrowRight, Linkedin, Twitter, Mail } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const leaders = [
   {
@@ -66,11 +67,12 @@ export default function LeadershipPage() {
             {leaders.map((leader) => (
               <div key={leader.name} className="bg-white p-10 lg:p-14">
                 {/* Photo */}
-                <div className="w-48 h-48 bg-gray-100 overflow-hidden mb-8 border border-gray-100">
-                  <img
+                <div className="w-48 h-48 bg-gray-100 overflow-hidden mb-8 border border-gray-100 relative">
+                  <Image
                     src={leader.image}
                     alt={leader.name}
-                    className="w-full h-full object-cover object-center"
+                    fill
+                    className="object-cover object-center"
                   />
                 </div>
 
@@ -129,11 +131,10 @@ export default function LeadershipPage() {
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               >
-                <source src="/assets/videos/00 Everybody Dance Now Video.MOV" type="video/quicktime" />
-                <source src="/assets/videos/00 Everybody Dance Now Video.MOV" type="video/mp4" />
+                <source src="/assets/videos/dance.mp4" type="video/mp4" />
               </video>
             </div>
 
@@ -146,12 +147,12 @@ export default function LeadershipPage() {
                 { src: "/gallery/Cluix.JPG", alt: "Cluix" },
               ].map(({ src, alt }) => (
                 <div key={src} className="relative overflow-hidden border border-gray-100 bg-gray-100">
-                  <img
+                  <Image
                     src={src}
                     alt={alt}
-                    loading="lazy"
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-                    className="grayscale hover:grayscale-0 transition-[filter] duration-700"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover grayscale hover:grayscale-0 transition-[filter] duration-700"
                   />
                 </div>
               ))}
@@ -166,12 +167,12 @@ export default function LeadershipPage() {
               { src: "/gallery/Gocarin.png", alt: "Gocarin" },
             ].map(({ src, alt }) => (
               <div key={src} className="relative overflow-hidden border border-gray-100 bg-gray-100">
-                <img
+                <Image
                   src={src}
                   alt={alt}
-                  loading="lazy"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-                  className="grayscale hover:grayscale-0 transition-[filter] duration-700"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover grayscale hover:grayscale-0 transition-[filter] duration-700"
                 />
               </div>
             ))}
