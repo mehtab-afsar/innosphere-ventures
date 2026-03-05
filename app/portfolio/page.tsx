@@ -2,125 +2,222 @@
 
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
-import { OceanGradient } from "@/components/OceanGradient";
-import { ArrowLeft, Linkedin, Link2, X, Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useState, useMemo } from "react";
-import { useCompanies } from "@/hooks/useCompanies";
+import { useState } from "react";
+
+const companies = [
+  {
+    id: "cluix",
+    name: "Cluix",
+    sector: "Water & Smart Cities",
+    stage: "Seed",
+    location: "India",
+    tagline: "Digital Water Governance Infrastructure",
+    thesis: "\"The Stripe of Water Governance\"",
+    thesisColor: "#0d9488",
+    description: "Cluix is building the digital infrastructure layer for municipal water governance — enabling smart monitoring, data-driven management, and scalable public-sector deployment.",
+    rationale: [
+      "Only ~30% of municipal wastewater is treated",
+      "Urban drinking water access remains inconsistent",
+      "Limited digitization of public water infrastructure",
+      "Public procurement ecosystem seeking scalable smart-infrastructure solutions"
+    ],
+    tags: ["CleanTech", "SaaS", "B2G"]
+  },
+  {
+    id: "gocarin",
+    name: "Gocarin",
+    sector: "Agricultural Productivity",
+    stage: "Seed",
+    location: "India",
+    tagline: "Sustainable Livestock Feed Systems",
+    thesis: "\"The Coca-Cola of Ag-Tech\"",
+    thesisColor: "#84cc16",
+    description: "Gocarin is digitizing and transforming India's livestock feed supply chain, delivering sustainable, productivity-enhancing feed solutions directly to 70M+ dairy farmers.",
+    rationale: [
+      "Dairy productivity ~20% of international benchmarks",
+      "High import dependency for quality feed inputs",
+      "Strong policy incentives for domestic feed production",
+      "Direct digital distribution to 70M+ dairy farmers"
+    ],
+    tags: ["AgriTech", "Supply Chain", "D2F"]
+  },
+  {
+    id: "dashagriv",
+    name: "Dashagriv",
+    sector: "Aerospace & Logistics",
+    stage: "Pre-Seed",
+    location: "India",
+    tagline: "Airship-Based Logistics Platforms",
+    thesis: "\"The SpaceX for the Stratosphere\"",
+    thesisColor: "#6366f1",
+    description: "Dashagriv is building India's first High-Altitude Platform System (HAPS) — stratospheric payload services for telecom, defense, and space infrastructure.",
+    rationale: [
+      "India's first High-Altitude Platform System (HAPS)",
+      "Stratospheric payload services for telecom, defense, and space",
+      "Dual-use capability aligned with sovereign communications",
+      "Monitoring and ISR applications at the stratospheric layer"
+    ],
+    tags: ["DeepTech", "Aerospace", "Defense"]
+  }
+];
 
 export default function PortfolioPage() {
-  const [expandedCompany, setExpandedCompany] = useState<number | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sectorFilter, setSectorFilter] = useState("all");
-  const [stageFilter, setStageFilter] = useState("all");
-  const { companies, loading, error } = useCompanies();
-
-  // Get unique sectors and stages for filter options
-  const { sectors, stages } = useMemo(() => {
-    const uniqueSectors = Array.from(new Set(companies.map(c => c.sector))).sort();
-    const uniqueStages = Array.from(new Set(companies.map(c => c.stage))).sort();
-    return { sectors: uniqueSectors, stages: uniqueStages };
-  }, [companies]);
-
-  // Filter companies based on search query and filters
-  const filteredCompanies = useMemo(() => {
-    return companies.filter(company => {
-      // Search filter
-      const query = searchQuery.toLowerCase();
-      const matchesSearch = !searchQuery.trim() ||
-        company.name.toLowerCase().includes(query) ||
-        company.sector.toLowerCase().includes(query) ||
-        company.tagline.toLowerCase().includes(query) ||
-        company.stage.toLowerCase().includes(query);
-
-      // Sector filter
-      const matchesSector = sectorFilter === "all" || company.sector === sectorFilter;
-
-      // Stage filter
-      const matchesStage = stageFilter === "all" || company.stage === stageFilter;
-
-      return matchesSearch && matchesSector && matchesStage;
-    });
-  }, [companies, searchQuery, sectorFilter, stageFilter]);
-
-  const hasActiveFilters = searchQuery || sectorFilter !== "all" || stageFilter !== "all";
-
-  const clearAllFilters = () => {
-    setSearchQuery("");
-    setSectorFilter("all");
-    setStageFilter("all");
-  };
-
-  if (loading) {
-    return (
-      <OceanGradient variant="portfolio">
-        <Navigation />
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white mx-auto mb-4"></div>
-            <p className="text-gray-500 dark:text-white/60">Loading portfolio companies...</p>
-          </div>
-        </div>
-      </OceanGradient>
-    );
-  }
+  const [activeCompany, setActiveCompany] = useState<string | null>(null);
 
   return (
-    <OceanGradient variant="portfolio">
+    <div className="bg-white">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-40 pb-16 px-6 lg:px-12 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-4 leading-tight">
-              Our Portfolio
-            </h1>
-            <p className="text-xl sm:text-2xl font-light text-white/80">
-              Building the future, one founder at a time
-            </p>
+      {/* Hero - Full Page */}
+      <section className="min-h-screen flex flex-col justify-center px-6 lg:px-12 border-b border-gray-100 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+          style={{ backgroundImage: 'linear-gradient(#0a1128 1px, transparent 1px), linear-gradient(90deg, #0a1128 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+
+        <div className="max-w-7xl mx-auto w-full pt-24 pb-16">
+          <div className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest">
+            Portfolio
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
-            <div className="text-center p-8 border border-white/20 bg-white/5">
-              <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#7affd4] mb-2">18+</div>
-              <div className="text-sm sm:text-base font-light text-white/70">Edge Alpha Companies Tracked</div>
+          <div className="grid lg:grid-cols-2 gap-16 items-end mb-16">
+            <div>
+              <h1
+                className="text-[#0a1128] mb-8 leading-[1.05]"
+                style={{ fontSize: 'clamp(3rem, 7vw + 1rem, 9rem)', fontWeight: 200, letterSpacing: '-0.03em' }}
+              >
+                Select investment<br />
+                <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">cases</span>
+              </h1>
+              <p className="text-xl font-light text-gray-500 max-w-xl leading-relaxed">
+                Our thesis is aligned with India's structural capability expansion — investing at the intersection of deep tech, industrial transformation, and long-term demand.
+              </p>
             </div>
-            <div className="text-center p-8 border border-white/20 bg-white/5">
-              <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#7affd4] mb-2">5</div>
-              <div className="text-sm sm:text-base font-light text-white/70">Initial Investments Made</div>
-            </div>
-            <div className="text-center p-8 border border-white/20 bg-white/5">
-              <div className="text-4xl sm:text-5xl font-mono font-semibold text-[#7affd4] mb-2">4+</div>
-              <div className="text-sm sm:text-base font-light text-white/70">Sectors Covered</div>
-            </div>
-          </div>
 
-          {/* Company Carousel */}
-          <div className="relative overflow-hidden mb-16">
-            <div className="flex animate-scroll gap-8">
+            {/* Company previews on the right */}
+            <div className="space-y-3">
               {[
-                { name: "Company 1", sector: "AgTech" },
-                { name: "Company 2", sector: "WaterTech" },
-                { name: "Company 3", sector: "HealthTech" },
-                { name: "Company 4", sector: "SpaceTech" },
-                { name: "Company 5", sector: "CleanTech" },
-                { name: "Company 6", sector: "AI/ML" },
-                { name: "Company 7", sector: "BioTech" },
-                { name: "Company 8", sector: "FinTech" },
-                { name: "Company 1", sector: "AgTech" },
-                { name: "Company 2", sector: "WaterTech" },
-                { name: "Company 3", sector: "HealthTech" },
-                { name: "Company 4", sector: "SpaceTech" },
-                { name: "Company 5", sector: "CleanTech" },
-                { name: "Company 6", sector: "AI/ML" },
-                { name: "Company 7", sector: "BioTech" },
-                { name: "Company 8", sector: "FinTech" },
-              ].map((company, index) => (
-                <div key={index} className="flex-none w-64 p-6 border border-white/10 bg-white/5">
-                  <div className="text-lg font-medium text-[#7affd4] mb-1">{company.name}</div>
-                  <div className="text-sm font-light text-white/60">{company.sector}</div>
+                { name: "Cluix", sector: "Water & Smart Cities", color: "#0d9488" },
+                { name: "Gocarin", sector: "Agricultural Productivity", color: "#84cc16" },
+                { name: "Dashagriv", sector: "Aerospace & Logistics", color: "#6366f1" },
+              ].map((c, i) => (
+                <div key={c.name} className="flex items-center justify-between p-5 border border-gray-100 bg-[#f9fafb]">
+                  <div className="flex items-center gap-4">
+                    <span className="text-xs font-mono text-gray-300">0{i + 1}</span>
+                    <span className="text-base font-medium text-[#0a1128]">{c.name}</span>
+                  </div>
+                  <span className="text-xs font-medium uppercase tracking-wide" style={{ color: c.color }}>{c.sector}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300">
+            <div className="w-px h-8 bg-gray-200" />
+            Scroll to explore
+          </div>
+        </div>
+      </section>
+
+      {/* Companies */}
+      <section className="py-0 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto divide-y divide-gray-100">
+          {companies.map((company, i) => (
+            <div
+              key={company.id}
+              className="py-12 cursor-pointer group"
+              onClick={() => setActiveCompany(activeCompany === company.id ? null : company.id)}
+            >
+              <div className="grid lg:grid-cols-12 gap-6 items-start">
+                <div className="hidden lg:block col-span-1">
+                  <span className="text-xs font-mono text-gray-300">0{i + 1}</span>
+                </div>
+                <div className="lg:col-span-4">
+                  <h2 className="text-2xl font-medium text-[#0a1128] mb-2 group-hover:text-[#ff6b5a] transition-colors duration-200">
+                    {company.name}
+                  </h2>
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {company.tags.map((tag) => (
+                      <span key={tag} className="text-xs font-light text-gray-400 border border-gray-200 px-2 py-0.5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="text-xs font-light text-gray-400">{company.stage} · {company.location}</div>
+                </div>
+                <div className="lg:col-span-4">
+                  <div className="text-xs font-medium uppercase tracking-widest mb-2" style={{ color: company.thesisColor }}>
+                    {company.sector}
+                  </div>
+                  <p className="text-base font-light text-[#0a1128] leading-snug">{company.tagline}</p>
+                  <p className="text-sm font-light text-gray-400 mt-2 italic">{company.thesis}</p>
+                </div>
+                <div className="lg:col-span-3 flex items-center justify-end">
+                  <span className={`text-xs font-medium flex items-center gap-1 transition-colors ${activeCompany === company.id ? 'text-[#ff6b5a]' : 'text-gray-400 group-hover:text-[#0a1128]'}`}>
+                    {activeCompany === company.id ? 'Close' : 'View thesis'}
+                    <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-300 ${activeCompany === company.id ? 'rotate-90' : 'group-hover:translate-x-1'}`} />
+                  </span>
+                </div>
+              </div>
+
+              {activeCompany === company.id && (
+                <div className="mt-8 pt-8 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="grid lg:grid-cols-2 gap-10">
+                    <div>
+                      <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Overview</p>
+                      <p className="text-base font-light text-gray-600 leading-relaxed">{company.description}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Investment Rationale</p>
+                      <ul className="space-y-3">
+                        {company.rationale.map((point, j) => (
+                          <li key={j} className="flex items-start gap-3">
+                            <span className="text-[#ff6b5a] mt-0.5 flex-shrink-0">•</span>
+                            <span className="text-sm font-light text-gray-600">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-gray-100">
+                    <span className="text-sm font-medium text-[#0a1128] italic">{company.thesis}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Pipeline */}
+      <section className="py-20 px-6 lg:px-12 bg-[#f9fafb] border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Pipeline</p>
+              <h2
+                className="text-[#0a1128] mb-6 leading-[1.15]"
+                style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
+              >
+                18+ companies<br />
+                <span style={{ fontWeight: 500 }}>actively tracked</span>
+              </h2>
+              <p className="text-base font-light text-gray-500 leading-relaxed mb-8">
+                Beyond our initial investments, we actively track deep tech founders across water, agriculture, energy, health, and aerospace verticals.
+              </p>
+              <Link
+                href="/join"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[#0a1128] hover:text-[#ff6b5a] transition-colors group"
+              >
+                Join as an LP and access deal flow
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {["Water & Smart Cities", "Agricultural Productivity", "Aerospace & Defense", "Healthcare & BioTech", "Clean Energy", "Industrial Tech"].map((sector) => (
+                <div key={sector} className="bg-white border border-gray-100 p-5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b5a] mb-3" />
+                  <div className="text-xs font-medium text-[#0a1128]">{sector}</div>
                 </div>
               ))}
             </div>
@@ -128,311 +225,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Edge Alpha Companies - Table Style Portfolio */}
-      <section className="pt-0 pb-20 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          {/* Search Bar and Filters */}
-          <div className="mb-8 space-y-4">
-            {/* Search Bar and Filter Controls */}
-            <div className="flex flex-col lg:flex-row gap-3">
-              {/* Search Bar */}
-              <div className="relative lg:w-96">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#0a1128]/40" />
-                <input
-                  type="text"
-                  placeholder="Search companies..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-12 py-4 rounded-xl border-2 border-[#ff6b5a]/50 bg-white/5 text-[#0a1128] placeholder:text-[#ff6b5a]/60 focus:outline-none focus:ring-2 focus:ring-[#ff6b5a]/30 focus:border-[#ff6b5a] transition-all font-light"
-                />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                )}
-              </div>
-
-              {/* Filter Controls */}
-              <div className="flex flex-wrap items-center gap-3">
-                {/* Sector Filter */}
-                <select
-                  value={sectorFilter}
-                  onChange={(e) => setSectorFilter(e.target.value)}
-                  className="px-4 py-4 rounded-xl border-2 border-[#ff6b5a]/50 bg-white/5 text-[#ff6b5a] text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#ff6b5a]/30 focus:border-[#ff6b5a] transition-all cursor-pointer"
-                >
-                  <option value="all">All Sectors</option>
-                  {sectors.map(sector => (
-                    <option key={sector} value={sector}>{sector}</option>
-                  ))}
-                </select>
-
-                {/* Stage Filter */}
-                <select
-                  value={stageFilter}
-                  onChange={(e) => setStageFilter(e.target.value)}
-                  className="px-4 py-4 rounded-xl border-2 border-[#ff6b5a]/50 bg-white/5 text-[#ff6b5a] text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#ff6b5a]/30 focus:border-[#ff6b5a] transition-all cursor-pointer"
-                >
-                  <option value="all">All Stages</option>
-                  {stages.map(stage => (
-                    <option key={stage} value={stage}>{stage}</option>
-                  ))}
-                </select>
-
-                {/* Clear All Button */}
-                {hasActiveFilters && (
-                  <button
-                    onClick={clearAllFilters}
-                    className="px-4 py-4 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-sm font-light text-gray-500 dark:text-white/60 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20 transition-all"
-                  >
-                    Clear All
-                  </button>
-                )}
-              </div>
-            </div>
-
-            {/* Active Filter Pills */}
-            {hasActiveFilters && (
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs font-light text-gray-400 dark:text-white/40">
-                  Active filters:
-                </span>
-
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-light text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
-                  >
-                    Search: &quot;{searchQuery}&quot;
-                    <X className="w-3 h-3" />
-                  </button>
-                )}
-
-                {sectorFilter !== 'all' && (
-                  <button
-                    onClick={() => setSectorFilter('all')}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-light text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
-                  >
-                    Sector: {sectorFilter}
-                    <X className="w-3 h-3" />
-                  </button>
-                )}
-
-                {stageFilter !== 'all' && (
-                  <button
-                    onClick={() => setStageFilter('all')}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 text-xs font-light text-gray-700 dark:text-white/70 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors"
-                  >
-                    Stage: {stageFilter}
-                    <X className="w-3 h-3" />
-                  </button>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* Table Header - Desktop */}
-          <div className="hidden lg:grid grid-cols-12 gap-6 px-8 py-5 border-b border-white/10 text-base font-semibold text-[#0a1128]/50">
-            <div className="col-span-5">Company</div>
-            <div className="col-span-2">Sector</div>
-            <div className="col-span-2">Partnered</div>
-            <div className="col-span-2">Status</div>
-            <div className="col-span-1"></div>
-          </div>
-
-          {/* Company List */}
-          <div className="divide-y divide-white/10">
-            {filteredCompanies.length === 0 ? (
-              <div className="px-8 py-20 text-center">
-                <p className="text-lg font-light text-[#0a1128]/70">
-                  No companies found matching &quot;{searchQuery}&quot;
-                </p>
-              </div>
-            ) : (
-              filteredCompanies.map((company, index) => {
-              const Icon = company.icon;
-              const isExpanded = expandedCompany === index;
-              return (
-                <div key={index}>
-                  {/* Row */}
-                  <div
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-8 py-8 cursor-pointer hover:bg-white/5 transition-colors duration-200"
-                    onClick={() => setExpandedCompany(isExpanded ? null : index)}
-                  >
-                    {/* Company Info */}
-                    <div className="lg:col-span-5 flex items-center gap-5">
-                      <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center shrink-0">
-                        <Icon className="w-8 h-8 text-[#0a1128]/60" strokeWidth={1.5} />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-medium text-[#0a1128]">
-                          {company.name}
-                        </h3>
-                        <p className="text-base font-light text-[#0a1128]/60 lg:hidden mt-1">
-                          {company.sector} • {company.stage}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Sector - Desktop */}
-                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#0a1128]/70">
-                      {company.sector}
-                    </div>
-
-                    {/* Partnered - Desktop */}
-                    <div className="hidden lg:flex lg:col-span-2 items-center text-base text-[#0a1128]/70">
-                      {company.year} • {company.stage}
-                    </div>
-
-                    {/* Status - Desktop */}
-                    <div className="hidden lg:flex lg:col-span-2 items-center">
-                      <span className="flex items-center gap-2 text-base text-[#0a1128]/70">
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                        {company.status}
-                      </span>
-                    </div>
-
-                    {/* Expand Icon */}
-                    <div className="hidden lg:flex lg:col-span-1 items-center justify-end">
-                      <svg
-                        className={`w-6 h-6 text-[#0a1128]/50 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </div>
-
-                </div>
-              );
-            })
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Company Detail Modal/Drawer */}
-      {expandedCompany !== null && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
-            onClick={() => setExpandedCompany(null)}
-          />
-
-          {/* Drawer */}
-          <div className="fixed inset-y-0 right-0 w-full max-w-4xl bg-white dark:bg-[#052827] z-50 shadow-2xl overflow-y-auto transform transition-transform duration-500 ease-out">
-            {(() => {
-              const company = filteredCompanies[expandedCompany];
-              const Icon = company.icon;
-              return (
-                <div className="min-h-full">
-                  {/* Close Button */}
-                  <button
-                    onClick={() => setExpandedCompany(null)}
-                    className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors z-10"
-                  >
-                    <X className="w-8 h-8" strokeWidth={1} />
-                  </button>
-
-                  {/* Two Column Layout */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-                    {/* Left Column - Company Info */}
-                    <div className="p-10 lg:p-16 bg-gray-50 dark:bg-white/[0.02]">
-                      {/* Logo */}
-                      <div className="w-20 h-20 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center mb-10 shadow-sm border border-gray-200 dark:border-white/10">
-                        <Icon className="w-10 h-10 text-gray-700 dark:text-white/70" strokeWidth={1.5} />
-                      </div>
-
-                      {/* Tagline */}
-                      <h2 className="text-3xl lg:text-4xl font-light text-gray-900 dark:text-white leading-tight mb-8">
-                        {company.tagline}
-                      </h2>
-
-                      {/* Social Links */}
-                      <div className="flex items-center gap-4 mb-10">
-                        <a href="#" className="text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors">
-                          <Linkedin className="w-5 h-5" />
-                        </a>
-                        <a href="#" className="text-gray-400 hover:text-gray-600 dark:text-white/40 dark:hover:text-white/70 transition-colors">
-                          <Link2 className="w-5 h-5" />
-                        </a>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-lg font-light text-gray-600 dark:text-white/60 leading-relaxed">
-                        {company.description || `${company.name} is building transformative solutions in the ${company.sector.toLowerCase()} space. As part of the InnoSphere Edge Alpha portfolio, they represent the next wave of innovation emerging from India's frontier technology ecosystem.`}
-                      </p>
-                    </div>
-
-                    {/* Right Column - Details */}
-                    <div className="p-10 lg:p-16 border-l border-gray-200 dark:border-white/10">
-                      <div className="space-y-10">
-                        {/* Domain */}
-                        <div>
-                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
-                            Domain
-                          </h4>
-                          <p className="text-xl text-gray-900 dark:text-white">
-                            {company.sector}
-                          </p>
-                        </div>
-
-                        {/* First Partnered */}
-                        <div>
-                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
-                            First Partnered
-                          </h4>
-                          <p className="text-xl text-gray-900 dark:text-white">
-                            {company.stage}
-                          </p>
-                        </div>
-
-                        {/* Current Status */}
-                        <div>
-                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
-                            Current Status
-                          </h4>
-                          <p className="text-xl text-gray-900 dark:text-white flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#ff6b5a]"></span>
-                            <span className="text-[#ff6b5a]">{company.status}</span>
-                          </p>
-                        </div>
-
-                        {/* Year */}
-                        <div>
-                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
-                            Year
-                          </h4>
-                          <p className="text-xl text-gray-900 dark:text-white">
-                            {company.year}
-                          </p>
-                        </div>
-
-                        {/* Partner */}
-                        <div>
-                          <h4 className="text-sm font-medium text-gray-400 dark:text-white/40 uppercase tracking-[0.2em] mb-3">
-                            Partner
-                          </h4>
-                          <p className="text-xl text-gray-900 dark:text-white">
-                            InnoSphere Ventures
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-          </div>
-        </>
-      )}
-
       <Footer />
-    </OceanGradient>
+    </div>
   );
 }

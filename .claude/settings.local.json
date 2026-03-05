@@ -19,7 +19,21 @@
       "Bash(xargs ls:*)",
       "Bash(lsof:*)",
       "Bash(xargs kill:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(brew install poppler)",
+      "Bash(pdftotext \"/Users/mohammedmehtabafsar/Desktop/innosphere-ventures/InnoSphere_Ventures_v4_FULL VERSION.pdf\" -)",
+      "Bash(pip3 install pdfminer.six)",
+      "Bash(python3 -c \":*)",
+      "Bash(rm -f /Users/mohammedmehtabafsar/Desktop/innosphere-ventures/components/IndiaMap.tsx)",
+      "Bash(rm -f /Users/mohammedmehtabafsar/Desktop/innosphere-ventures/public/raphael.min.js)",
+      "Bash(rm -f /Users/mohammedmehtabafsar/Desktop/innosphere-ventures/public/settings.js)",
+      "Bash(rm -f /Users/mohammedmehtabafsar/Desktop/innosphere-ventures/public/paths.js)",
+      "Bash(rm -f /Users/mohammedmehtabafsar/Desktop/innosphere-ventures/public/map.js)",
+      "Bash(PORT=3003 npm run dev)",
+      "Bash(PORT=3003 npm run dev -- -p 3003)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/approach)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/india)"
     ],
     "deny": [],
     "ask": []

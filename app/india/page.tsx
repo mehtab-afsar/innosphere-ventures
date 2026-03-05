@@ -2,106 +2,248 @@
 
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
-import { OceanGradient } from "@/components/OceanGradient";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+
+const stats = [
+  {
+    value: "200K+",
+    label: "Registered Startups",
+    sub: "20–30% CAGR (2010–2025)",
+    source: "DPIIT, Government of India"
+  },
+  {
+    value: "2.5M",
+    label: "STEM Graduates / Year",
+    sub: "3× US output annually",
+    source: "Ministry of Education, India"
+  },
+  {
+    value: "₹8T+",
+    label: "State Industrial Capex",
+    sub: "PLI, industrial programs",
+    source: "Ministry of Commerce & Industry"
+  }
+];
+
+const foundationPoints = [
+  {
+    title: "Homegrown Technological Capability",
+    description: "With defensible technology and IP, creating competitive products and services in sectors that matter."
+  },
+  {
+    title: "Strong Job Creation",
+    description: "Where startups create high-value employment and spillovers into entire value chains."
+  },
+  {
+    title: "Economic Sovereignty",
+    description: "Through national innovation capacity, industrial networks, and reduced import dependency."
+  },
+  {
+    title: "Domestic & Export-Led Growth",
+    description: "Which results in strong, durable investor returns over a multi-decade horizon."
+  }
+];
+
+const capitalData = [
+  { label: "Growth & Late Stage", pct: 55, color: "#e5e7eb" },
+  { label: "Seed & Series A", pct: 23, color: "#ff6b5a" },
+  { label: "Other stages", pct: 22, color: "#e5e7eb" }
+];
 
 export default function IndiaPage() {
   return (
-    <OceanGradient variant="landing">
+    <div className="bg-white">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex flex-col justify-center px-6 lg:px-12 py-32">
-        <div className="max-w-7xl mx-auto w-full text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white mb-8 leading-tight" style={{ letterSpacing: '-0.02em' }}>
-            <span className="font-semibold text-white">India as a</span>
-            <br />
-            <span className="font-light text-[#7affd4]">Deep Tech Nation</span>
+      {/* Hero - Full Page */}
+      <section className="min-h-screen flex flex-col justify-center px-6 lg:px-12 border-b border-gray-100 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+          style={{ backgroundImage: 'linear-gradient(#0a1128 1px, transparent 1px), linear-gradient(90deg, #0a1128 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+
+        <div className="max-w-7xl mx-auto w-full pt-24 pb-16">
+          <div className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest">
+            Market Context
+          </div>
+          <h1
+            className="text-[#0a1128] mb-8 leading-[1.05]"
+            style={{ fontSize: 'clamp(3rem, 7vw + 1rem, 9rem)', fontWeight: 200, letterSpacing: '-0.03em' }}
+          >
+            India as a<br />
+            <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">Deep Tech Nation</span>
           </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl font-light text-white/90 max-w-4xl mx-auto leading-relaxed">
-            We think of this ecosystem as a forest,
-            <br />
-            not a race.
+          <p className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed mb-16">
+            India's founder density and industrial expansion create a multi-decade deep tech growth opportunity — one that remains structurally undercapitalised at the early stage.
           </p>
+
+          {/* Key stats inline */}
+          <div className="grid grid-cols-3 gap-px bg-gray-200 max-w-2xl">
+            {[
+              { v: "200K+", l: "Registered Startups" },
+              { v: "2.5M", l: "STEM Grads / Year" },
+              { v: "₹8T+", l: "Industrial Capex" },
+            ].map(({ v, l }) => (
+              <div key={l} className="bg-white px-6 py-5">
+                <div className="text-2xl font-mono font-medium text-[#0a1128]">{v}</div>
+                <div className="text-xs font-light text-gray-400 mt-1">{l}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Scroll hint */}
+          <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300">
+            <div className="w-px h-8 bg-gray-200" />
+            Scroll to explore
+          </div>
         </div>
       </section>
 
-      {/* Ecosystem Foundation */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-lg sm:text-xl md:text-2xl font-light text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed text-center">
-            India's startup ecosystem has grown quietly and steadily over the last decade. More than 200,000 startups have emerged — not as a bubble, but as infrastructure.
-          </p>
+      {/* Key Stats */}
+      <section className="py-20 px-6 lg:px-12 bg-[#f9fafb]">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-10">Structural Context</p>
+          <div className="grid md:grid-cols-3 gap-px bg-gray-200">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-white p-10">
+                <div className="text-4xl sm:text-5xl font-mono font-medium text-[#0a1128] mb-3">{stat.value}</div>
+                <div className="text-base font-medium text-[#0a1128] mb-1">{stat.label}</div>
+                <div className="text-sm font-light text-[#ff6b5a] mb-3">{stat.sub}</div>
+                <div className="text-xs font-light text-gray-400">Source: {stat.source}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <p className="text-base sm:text-lg font-light text-white/80 max-w-3xl mx-auto mb-16 text-center">
-            What we see forming is a long-term foundation for:
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Foundation Points */}
-            <div className="p-8 border border-white/10 bg-white/5">
-              <h3 className="text-xl font-medium text-[#7affd4] mb-4">Homegrown Technological Capability</h3>
-              <p className="font-light text-white/80 leading-relaxed">
-                With defensible technology and IP, creating competitive products and services
+      {/* Capital Inefficiency */}
+      <section className="py-20 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Capital Allocation</p>
+              <h2
+                className="text-[#0a1128] mb-6 leading-[1.15]"
+                style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3.5rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
+              >
+                Capital is skewed toward<br />
+                <span style={{ fontWeight: 500 }} className="text-[#0a1128]">late-stage deployment</span>
+              </h2>
+              <p className="text-base font-light text-gray-500 leading-relaxed mb-8">
+                Early-stage deployment has not scaled proportionally to founder supply. 55% of Indian VC capital is absorbed by growth and late-stage rounds — leaving a structural gap at seed and Series A.
               </p>
+              <div className="space-y-3">
+                {capitalData.map((item) => (
+                  <div key={item.label}>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <span className="text-sm font-light text-gray-600">{item.label}</span>
+                      <span className="text-sm font-mono font-medium text-[#0a1128]">{item.pct}%</span>
+                    </div>
+                    <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full transition-all duration-1000"
+                        style={{ width: `${item.pct}%`, backgroundColor: item.color }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs font-light text-gray-400 mt-4">Source: Bain & Company, India Venture Capital Report (2023–2024)</p>
             </div>
 
-            <div className="p-8 border border-white/10 bg-white/5">
-              <h3 className="text-xl font-medium text-[#7affd4] mb-4">Strong Job Creation</h3>
-              <p className="font-light text-white/80 leading-relaxed">
-                Where startups create high-value jobs and employment spillovers into entire value chains
-              </p>
+            <div className="bg-[#f9fafb] p-10 border border-gray-100">
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-6">Allocation Breakdown</p>
+              <ResponsiveContainer width="100%" height={220}>
+                <PieChart>
+                  <Pie data={capitalData} cx="50%" cy="50%" innerRadius={65} outerRadius={100} paddingAngle={3} dataKey="pct" startAngle={90} endAngle={-270}>
+                    {capitalData.map((entry, index) => (
+                      <Cell key={index} fill={entry.color} strokeWidth={0} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value: number) => [`${value}%`]} />
+                </PieChart>
+              </ResponsiveContainer>
+              <div className="space-y-3 mt-6">
+                {capitalData.map((item) => (
+                  <div key={item.label} className="flex items-center gap-3">
+                    <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.color, border: item.color === "#e5e7eb" ? "1px solid #d1d5db" : "none" }} />
+                    <span className="text-xs font-light text-gray-500 flex-1">{item.label}</span>
+                    <span className="text-sm font-mono font-medium text-[#0a1128]">{item.pct}%</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <p className="text-sm font-light text-gray-600 leading-relaxed">
+                  <span className="font-medium text-[#0a1128]">The gap:</span> Founder pipeline expansion exceeds early-stage investment growth — the structural asymmetry InnoSphere exploits.
+                </p>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="p-8 border border-white/10 bg-white/5">
-              <h3 className="text-xl font-medium text-[#7affd4] mb-4">Economic Sovereignty</h3>
-              <p className="font-light text-white/80 leading-relaxed">
-                Through national innovation capacity and industrial networks
+      {/* Foundation Points */}
+      <section className="py-20 px-6 lg:px-12 bg-[#f9fafb] border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-xl mb-12">
+            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Why We're Here</p>
+            <h2
+              className="text-[#0a1128] leading-[1.15]"
+              style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem', fontWeight: 200, letterSpacing: '-0.02em' }}
+            >
+              We think of this ecosystem<br />
+              <span style={{ fontWeight: 500 }}>as a forest, not a race</span>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {foundationPoints.map((point, i) => (
+              <div key={point.title} className="bg-white p-6 border border-gray-100">
+                <div className="text-xs font-mono text-gray-300 mb-4">0{i + 1}</div>
+                <h3 className="text-sm font-medium text-[#0a1128] mb-3 leading-snug">{point.title}</h3>
+                <p className="text-sm font-light text-gray-500 leading-relaxed">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Impact & Returns */}
+      <section className="py-20 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-6">Our Lens</p>
+            <h2
+              className="text-[#0a1128] mb-8 leading-[1.2]"
+              style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
+            >
+              We invest in areas such as <span className="font-medium text-[#ff6b5a]">agriculture, water, healthcare, energy,</span> and frontier technologies.
+            </h2>
+            <p className="text-base font-light text-gray-500 leading-relaxed mb-8">
+              Not because it sounds virtuous — but because these are structural markets with real demand, long time horizons, and defensible value creation.
+            </p>
+            <div className="border-l-4 border-[#0d9488] pl-6 text-left">
+              <p className="text-lg font-light text-[#0a1128] leading-relaxed mb-2">
+                Impact, for us, is not a constraint on returns.
               </p>
-            </div>
-
-            <div className="p-8 border border-white/10 bg-white/5">
-              <h3 className="text-xl font-medium text-[#7affd4] mb-4">Domestic and Export-Led Growth</h3>
-              <p className="font-light text-white/80 leading-relaxed">
-                Which results in strong investor returns
+              <p className="text-base font-light text-gray-500">
+                It is a filter against fragility, hype, and group think. This is where true alpha is born.
               </p>
             </div>
           </div>
-
-          <p className="text-base sm:text-lg font-light text-white/80 max-w-3xl mx-auto mt-16 text-center leading-relaxed">
-            Our role as early stage investors is not to chase unicorns — but to help strong systems take root and scale.
-          </p>
-        </div>
-      </section>
-
-      {/* Impact and Returns */}
-      <section className="py-24 px-6 lg:px-12 bg-white/5">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-8 text-center leading-tight">
-            Impact and Returns
-          </h2>
-
-          <p className="text-lg sm:text-xl font-light text-white/90 mb-12 leading-relaxed text-center max-w-4xl mx-auto">
-            Long-term financial returns increasingly depend on solving persistently hard to solve problems
-          </p>
-
-          <div className="space-y-8">
-            <p className="text-base sm:text-lg font-light text-white/80 leading-relaxed">
-              We invest in areas such as <span className="font-medium text-[#ff6b5a]">agriculture, water, healthcare, energy, and frontier technologies</span> — not because it sounds virtuous, but because these are structural markets with real demand, long time horizons, and defensible value creation.
-            </p>
-
-            <div className="py-8 px-8 bg-white/5 border-l-4 border-[#7affd4]">
-              <p className="text-xl sm:text-2xl font-light text-white/95 mb-4">
-                Impact, for us, is not a constraint on returns.
-              </p>
-              <p className="text-lg font-light text-white/80">
-                It is a filter against fragility, hype, and group think. <span className="font-semibold text-[#7affd4]">This is where true alpha is born.</span>
-              </p>
-            </div>
+          <div className="mt-12 text-center">
+            <Link
+              href="/approach"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#0a1128] hover:text-[#ff6b5a] transition-colors duration-200 group"
+            >
+              See our investment approach
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+            </Link>
           </div>
         </div>
       </section>
 
       <Footer />
-    </OceanGradient>
+    </div>
   );
 }

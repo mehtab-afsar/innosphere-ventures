@@ -1,36 +1,22 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import type { MailingListData } from "@/lib/supabase";
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Twitter, ArrowRight } from "lucide-react";
+
+const navLinks = [
+  { label: "India", href: "/india" },
+  { label: "Approach", href: "/approach" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Join", href: "/join" },
+  { label: "Team", href: "/leadership" },
+];
 
 export function Footer() {
   const [email, setEmail] = useState("");
-  const [isVisible, setIsVisible] = useState(false);
-  const footerRef = useRef<HTMLElement>(null);
   const { isSubmitting, submitted, submit } = useFormSubmit<MailingListData>("mailing-list");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,116 +26,65 @@ export function Footer() {
   };
 
   return (
-    <footer ref={footerRef} className="relative overflow-hidden" style={{
-      background: 'transparent',
-      color: '#f5f5f0'
-    }}>
-      {/* Main Footer Content */}
-      <div className="relative z-10 px-6 lg:px-12 py-12 lg:py-16">
+    <footer className="bg-[#0c0f1a] text-white border-t-2 border-[#ff6b5a]/40">
+      <div className="px-6 lg:px-12 py-10 lg:py-12">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12">
-            {/* Left Side - Brand & CTA */}
-            <div
-              className={`transition-all duration-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
-              }`}
-              style={{ transitionDelay: '0ms' }}
-            >
-              <Link href="/" className="inline-block mb-4">
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-extralight tracking-wider">
-                  InnoSphere
-                  <br />
-                  <span className="font-light">Ventures</span>
+          <div className="grid lg:grid-cols-3 gap-12">
+            <div>
+              <Link href="/" className="inline-block mb-6">
+                <span className="text-2xl font-light tracking-wide text-white">
+                  InnoSphere <span className="font-medium">Ventures</span>
                 </span>
               </Link>
-
-              <p className="text-base font-extralight leading-relaxed mb-6 max-w-md" style={{ color: '#f5f5f0', opacity: 0.7 }}>
-                Building the future of India&apos;s innovation ecosystem, one frontier company at a time.
+              <p className="text-sm font-light text-white/50 leading-relaxed mb-6 max-w-xs">
+                Scaling early-stage venture for India's deep tech expansion. Powered by Edge Alpha.
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-[#ff6b5a] text-[#ff6b5a] hover:bg-[#ff6b5a] hover:text-white font-medium rounded-none px-8 transition-all duration-300 hover:scale-105"
-                  asChild
-                >
-                  <Link href="/join">
-                    Join the Movement
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-[#2a9a8e] text-[#2a9a8e] hover:bg-[#2a9a8e] hover:text-white font-medium rounded-none px-8 transition-all duration-300 hover:scale-105"
-                  asChild
-                >
-                  <Link href="/portfolio">
-                    View Portfolio
-                  </Link>
-                </Button>
-              </div>
-
-              {/* Social Links */}
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://www.linkedin.com/company/innosphere-vc/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-[#ff6b5a]/10 border border-[#ff6b5a]/30 hover:bg-[#ff6b5a]/20 hover:border-[#ff6b5a]/50 transition-all duration-300 group"
-                >
-                  <Linkedin className="w-5 h-5 group-hover:text-[#ff6b5a] transition-colors" strokeWidth={1.5} style={{ color: '#f5f5f0', opacity: 0.7 }} />
+              <div className="flex items-center gap-3">
+                <a href="https://www.linkedin.com/company/innosphere-vc/" target="_blank" rel="noopener noreferrer"
+                  className="p-2 border border-white/10 hover:border-white/30 hover:text-white text-white/40 transition-all duration-200">
+                  <Linkedin className="w-4 h-4" strokeWidth={1.5} />
                 </a>
-                <a
-                  href="https://twitter.com/innosphere"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-[#ff6b5a]/10 border border-[#ff6b5a]/30 hover:bg-[#ff6b5a]/20 hover:border-[#ff6b5a]/50 transition-all duration-300 group"
-                >
-                  <Twitter className="w-5 h-5 group-hover:text-[#ff6b5a] transition-colors" strokeWidth={1.5} style={{ color: '#f5f5f0', opacity: 0.7 }} />
+                <a href="https://twitter.com/innosphere" target="_blank" rel="noopener noreferrer"
+                  className="p-2 border border-white/10 hover:border-white/30 hover:text-white text-white/40 transition-all duration-200">
+                  <Twitter className="w-4 h-4" strokeWidth={1.5} />
                 </a>
               </div>
             </div>
 
-            {/* Right Side - Newsletter */}
-            <div
-              className={`transition-all duration-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
-              }`}
-              style={{ transitionDelay: '200ms' }}
-            >
-              <h3 className="text-xs font-medium tracking-widest uppercase mb-6" style={{ color: '#ff6b5a', opacity: 0.8 }}>
-                Stay Updated
-              </h3>
-              <p className="text-base font-extralight mb-6 leading-relaxed" style={{ color: '#f5f5f0', opacity: 0.7 }}>
-                First access to insights, portfolio updates, and exclusive opportunities from India&apos;s innovation frontier.
-              </p>
+            <div>
+              <p className="text-xs font-medium text-white/30 uppercase tracking-widest mb-6">Navigate</p>
+              <ul className="space-y-3">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm font-light text-white/50 hover:text-white transition-colors duration-200">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
+            <div>
+              <p className="text-xs font-medium text-white/30 uppercase tracking-widest mb-6">Stay Updated</p>
+              <p className="text-sm font-light text-white/50 leading-relaxed mb-5">
+                Portfolio updates, insights, and exclusive opportunities from India's innovation frontier.
+              </p>
               {submitted ? (
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-[#ff6b5a]/10 border border-[#ff6b5a]/40" style={{ color: '#ff6b5a' }}>
-                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-2 text-sm text-[#7affd4] font-light">
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="font-light">You&apos;re on the list! Check your inbox.</span>
+                  You're on the list!
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="space-y-3">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                    className="w-full px-5 py-3.5 bg-[#f5f5f0]/5 border border-[#ff6b5a]/30 rounded-xl font-light text-base focus:outline-none focus:ring-2 focus:ring-[#ff6b5a]/60 focus:border-transparent transition-all duration-200"
-                    style={{ color: '#f5f5f0' }}
-                  />
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-[#ff6b5a] text-white hover:bg-[#ff6b5a]/90 font-medium rounded-xl px-6 py-3.5 transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#ff6b5a]/30"
-                  >
-                    {isSubmitting ? "Subscribing..." : "Subscribe to Updates"}
-                  </Button>
+                <form onSubmit={handleSubscribe} className="flex gap-2">
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com" required
+                    className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 text-sm font-light text-white placeholder-white/20 focus:outline-none focus:border-white/30 transition-colors" />
+                  <button type="submit" disabled={isSubmitting}
+                    className="px-4 py-2.5 bg-[#ff6b5a] text-white text-sm font-medium hover:bg-[#ff6b5a]/90 transition-colors flex-shrink-0">
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </form>
               )}
             </div>
@@ -157,41 +92,14 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div
-        className={`relative z-10 border-t border-white/10 px-6 lg:px-12 py-6 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
-        }`}
-        style={{ transitionDelay: '400ms' }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-            {/* Left - Copyright */}
-            <p className="font-extralight text-white/40">
-              © {new Date().getFullYear()} InnoSphere Ventures. All rights reserved.
-            </p>
-
-            {/* Center - Legal Links */}
-            <div className="flex items-center gap-6">
-              <Link
-                href="/privacy"
-                className="font-light text-white/60 hover:text-white transition-colors duration-200"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="font-light text-white/60 hover:text-white transition-colors duration-200"
-              >
-                Terms of Service
-              </Link>
-            </div>
-
-            {/* Right - Tagline */}
-            <p className="font-extralight text-white/40 hidden lg:block">
-              Empowering innovators. Elevating futures.
-            </p>
+      <div className="border-t border-white/10 px-6 lg:px-12 py-5">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-light text-white/30">
+          <p>© {new Date().getFullYear()} InnoSphere Ventures. All rights reserved.</p>
+          <div className="flex items-center gap-5">
+            <Link href="/privacy" className="hover:text-white/60 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white/60 transition-colors">Terms of Service</Link>
           </div>
+          <p className="hidden lg:block">Conviction sparks. Consensus amplifies.</p>
         </div>
       </div>
     </footer>
