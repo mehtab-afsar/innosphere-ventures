@@ -42,7 +42,7 @@ export function Hero() {
             <span className="text-[#0a1128]">Conviction Capital</span>
             <br />
             <span className="text-[#0a1128]">for India's </span>
-            <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">Edge Founders</span>
+            <span style={{ fontWeight: 400, fontStyle: 'italic', letterSpacing: '-0.01em' }} className="text-[#ff6b5a]">Edge Founders</span>
           </h1>
 
           <p className="text-base sm:text-lg font-light text-gray-400 max-w-xl mx-auto mb-12 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">

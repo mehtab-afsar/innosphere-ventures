@@ -34,7 +34,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/approach)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/india)",
-      "Bash(ffmpeg -version)"
+      "Bash(ffmpeg -version)",
+      "Bash(pkill -f \"next dev\")"
     ],
     "deny": [],
     "ask": []

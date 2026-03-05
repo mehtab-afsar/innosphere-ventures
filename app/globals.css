@@ -451,6 +451,12 @@
   }
 }
 
+@keyframes liquidBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .node-glow-cyan {
   --glow-color: 34, 211, 238;
   animation: glowPulse 3s ease-in-out infinite;

@@ -6,14 +6,6 @@ import { useFormSubmit } from "@/hooks/useFormSubmit";
 import type { MailingListData } from "@/lib/supabase";
 import { Linkedin, Twitter, ArrowRight } from "lucide-react";
 
-const navLinks = [
-  { label: "India", href: "/india" },
-  { label: "Approach", href: "/approach" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Join", href: "/join" },
-  { label: "Team", href: "/leadership" },
-];
-
 export function Footer() {
   const [email, setEmail] = useState("");
   const { isSubmitting, submitted, submit } = useFormSubmit<MailingListData>("mailing-list");
@@ -29,7 +21,7 @@ export function Footer() {
     <footer className="bg-[#0c0f1a] text-white border-t-2 border-[#ff6b5a]/40">
       <div className="px-6 lg:px-12 py-10 lg:py-12">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <Link href="/" className="inline-block mb-6">
                 <span className="text-2xl font-light tracking-wide text-white">
@@ -49,19 +41,6 @@ export function Footer() {
                   <Twitter className="w-4 h-4" strokeWidth={1.5} />
                 </a>
               </div>
-            </div>
-
-            <div>
-              <p className="text-xs font-medium text-white/30 uppercase tracking-widest mb-6">Navigate</p>
-              <ul className="space-y-3">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-sm font-light text-white/50 hover:text-white transition-colors duration-200">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div>
