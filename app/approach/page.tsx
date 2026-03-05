@@ -168,12 +168,12 @@ export default function ApproachPage() {
                   <BarChart data={concentrationData} layout="vertical" margin={{ left: 0, right: 40, top: 0, bottom: 0 }}>
                     <XAxis type="number" domain={[0, 100]} tick={false} axisLine={false} tickLine={false} />
                     <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11, fill: "#6b7280", fontWeight: 300 }} axisLine={false} tickLine={false} />
-                    <Tooltip formatter={(v: number) => [`${v}%`]} cursor={{ fill: "transparent" }} />
+                    <Tooltip formatter={(v) => [`${v}%`]} cursor={{ fill: "transparent" }} />
                     <Bar dataKey="value" radius={[0, 2, 2, 0]} barSize={28}>
                       {concentrationData.map((entry, index) => (
                         <Cell key={index} fill={entry.color} />
                       ))}
-                      <LabelList dataKey="value" position="right" formatter={(v: number) => `${v}%`} style={{ fontSize: 12, fontWeight: 500, fontFamily: "monospace", fill: "#0a1128" }} />
+                      <LabelList dataKey="value" position="right" formatter={(v: unknown) => `${v}%`} style={{ fontSize: 12, fontWeight: 500, fontFamily: "monospace", fill: "#0a1128" }} />
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>

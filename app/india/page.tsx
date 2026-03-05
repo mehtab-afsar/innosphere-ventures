@@ -161,7 +161,7 @@ export default function IndiaPage() {
                       <Cell key={index} fill={entry.color} strokeWidth={0} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(value: number) => [`${value}%`]} />
+                  <Tooltip formatter={(value) => [`${value}%`]} />
                 </PieChart>
               </ResponsiveContainer>
               <div className="space-y-3 mt-6">
