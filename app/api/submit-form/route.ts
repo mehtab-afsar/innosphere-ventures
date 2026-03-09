@@ -59,8 +59,8 @@ export async function POST(request: NextRequest) {
     <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
 
       <!-- Header -->
-      <tr><td style="padding-bottom:40px;border-bottom:1px solid #f3f4f6;">
-        <p style="margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#9ca3af;">InnoSphere Ventures</p>
+      <tr><td style="padding-bottom:32px;border-bottom:1px solid #f3f4f6;">
+        <img src="https://innosphere.ventures/assets/images/branding/InnoSphere%20Website%20VISUAL%20IDENTITY.png" alt="InnoSphere Ventures" height="40" style="display:block;height:40px;width:auto;max-width:200px;" />
       </td></tr>
 
       <!-- Greeting -->
