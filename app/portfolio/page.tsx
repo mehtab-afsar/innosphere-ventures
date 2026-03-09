@@ -5,6 +5,7 @@ import { Footer } from "@/components/sections/Footer";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const companies = [
   {
@@ -76,22 +77,35 @@ export default function PortfolioPage() {
           style={{ backgroundImage: 'linear-gradient(#0a1128 1px, transparent 1px), linear-gradient(90deg, #0a1128 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="max-w-7xl mx-auto w-full pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest"
+          >
             Portfolio
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-end mb-16">
             <div>
-              <h1
+              <motion.h1
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                 className="text-[#0a1128] mb-8 leading-[1.05]"
                 style={{ fontSize: 'clamp(3rem, 7vw + 1rem, 9rem)', fontWeight: 200, letterSpacing: '-0.03em' }}
               >
                 Select investment<br />
                 <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">cases</span>
-              </h1>
-              <p className="text-xl font-light text-gray-500 max-w-xl leading-relaxed">
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+                className="text-xl font-light text-gray-500 max-w-xl leading-relaxed"
+              >
                 Our thesis is aligned with India's structural capability expansion — investing at the intersection of deep tech, industrial transformation, and long-term demand.
-              </p>
+              </motion.p>
             </div>
 
             {/* Company previews on the right */}
@@ -101,21 +115,32 @@ export default function PortfolioPage() {
                 { name: "Gocarin", sector: "Agricultural Productivity", color: "#84cc16" },
                 { name: "Dashagriv", sector: "Aerospace & Logistics", color: "#6366f1" },
               ].map((c, i) => (
-                <div key={c.name} className="flex items-center justify-between p-5 border border-gray-100 bg-[#f9fafb]">
+                <motion.div
+                  key={c.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.3 + i * 0.1 }}
+                  className="flex items-center justify-between p-5 border border-gray-100 bg-[#f9fafb]"
+                >
                   <div className="flex items-center gap-4">
                     <span className="text-xs font-mono text-gray-300">0{i + 1}</span>
                     <span className="text-base font-medium text-[#0a1128]">{c.name}</span>
                   </div>
                   <span className="text-xs font-medium uppercase tracking-wide" style={{ color: c.color }}>{c.sector}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300"
+          >
             <div className="w-px h-8 bg-gray-200" />
             Scroll to explore
-          </div>
+          </motion.div>
         </div>
       </section>
 

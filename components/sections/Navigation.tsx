@@ -1,13 +1,43 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const scrolledDown = useRef(0);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+
+      if (currentY < 60) {
+        setVisible(true);
+        scrolledDown.current = 0;
+      } else if (delta > 0) {
+        scrolledDown.current += delta;
+        if (scrolledDown.current > 80) {
+          setVisible(false);
+          setMobileMenuOpen(false);
+        }
+      } else {
+        scrolledDown.current = 0;
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -19,7 +49,12 @@ export function Navigation() {
   ];
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+    <motion.div
+      className="fixed top-4 left-0 right-0 z-50 flex flex-col items-center px-4 gap-2"
+      animate={{ y: visible ? 0 : -80, opacity: visible ? 1 : 0 }}
+      transition={{ duration: visible ? 0.35 : 0.5, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {/* Pill navbar */}
       <nav className="w-full max-w-3xl rounded-full border border-white/40 shadow-lg shadow-black/5"
         style={{
           background: 'linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(240,244,255,0.6) 50%, rgba(255,255,255,0.75) 100%)',
@@ -60,13 +95,13 @@ export function Navigation() {
             {/* CTA + Mobile Toggle */}
             <div className="flex items-center gap-3">
               <Link
-                href="/join"
+                href="/join#interest"
                 className="hidden md:inline-flex items-center px-4 py-1.5 text-xs font-medium text-white bg-[#0a1128] hover:bg-[#0a1128]/80 rounded-full transition-colors duration-200"
               >
                 Get in Touch
               </Link>
               <button
-                className="md:hidden text-[#0a1128]"
+                className="md:hidden text-[#0a1128] p-1"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -74,32 +109,43 @@ export function Navigation() {
             </div>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
+      {/* Mobile Menu */}
+      <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 mx-4 py-3 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden w-full max-w-3xl rounded-2xl border border-white/40 shadow-lg shadow-black/5 px-4 py-3 space-y-1"
+            style={{
+              background: 'rgba(255,255,255,0.92)',
+              backdropFilter: 'blur(20px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+            }}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-2 py-2 text-sm font-light text-gray-600 hover:text-[#0a1128] transition-colors"
+                className="block px-2 py-2.5 text-sm font-light text-gray-600 hover:text-[#0a1128] transition-colors border-b border-gray-100 last:border-0"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-2 border-t border-gray-100 mt-2">
-              <Link
-                href="/join"
-                className="block px-2 py-2 text-sm font-medium text-[#ff6b5a]"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Get in Touch →
-              </Link>
-            </div>
-          </div>
+            <Link
+              href="/join#interest"
+              className="block px-2 py-2.5 text-sm font-medium text-[#ff6b5a]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get in Touch →
+            </Link>
+          </motion.div>
         )}
-      </nav>
-    </div>
+      </AnimatePresence>
+    </motion.div>
   );
 }

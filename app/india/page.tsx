@@ -5,6 +5,7 @@ import { Footer } from "@/components/sections/Footer";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import { motion } from "framer-motion";
 
 const stats = [
   {
@@ -64,19 +65,34 @@ export default function IndiaPage() {
           style={{ backgroundImage: 'linear-gradient(#0a1128 1px, transparent 1px), linear-gradient(90deg, #0a1128 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="max-w-7xl mx-auto w-full pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest"
+          >
             Market Context
-          </div>
-          <h1
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="text-[#0a1128] mb-8 leading-[1.05]"
             style={{ fontSize: 'clamp(3rem, 7vw + 1rem, 9rem)', fontWeight: 200, letterSpacing: '-0.03em' }}
           >
             India as a<br />
             <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">Deep Tech Nation</span>
-          </h1>
-          <p className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed mb-16">
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+            className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed mb-16"
+          >
             India's founder density and industrial expansion create a multi-decade deep tech growth opportunity — one that remains structurally undercapitalised at the early stage.
-          </p>
+          </motion.p>
 
           {/* Key stats inline */}
           <div className="grid grid-cols-3 gap-px bg-gray-200 max-w-2xl">
@@ -84,19 +100,30 @@ export default function IndiaPage() {
               { v: "200K+", l: "Registered Startups" },
               { v: "2.5M", l: "STEM Grads / Year" },
               { v: "₹8T+", l: "Industrial Capex" },
-            ].map(({ v, l }) => (
-              <div key={l} className="bg-white px-6 py-5">
+            ].map(({ v, l }, i) => (
+              <motion.div
+                key={l}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.34 + i * 0.08 }}
+                className="bg-white px-6 py-5"
+              >
                 <div className="text-2xl font-mono font-medium text-[#0a1128]">{v}</div>
                 <div className="text-xs font-light text-gray-400 mt-1">{l}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Scroll hint */}
-          <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300"
+          >
             <div className="w-px h-8 bg-gray-200" />
             Scroll to explore
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -186,7 +213,13 @@ export default function IndiaPage() {
       {/* Foundation Points */}
       <section className="py-20 px-6 lg:px-12 bg-[#f9fafb] border-t border-gray-100">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-xl mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-xl mb-12"
+          >
             <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Why We're Here</p>
             <h2
               className="text-[#0a1128] leading-[1.15]"
@@ -195,14 +228,21 @@ export default function IndiaPage() {
               We think of this ecosystem<br />
               <span style={{ fontWeight: 500 }}>as a forest, not a race</span>
             </h2>
-          </div>
+          </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {foundationPoints.map((point, i) => (
-              <div key={point.title} className="bg-white p-6 border border-gray-100">
+              <motion.div
+                key={point.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+                className="bg-white p-6 border border-gray-100"
+              >
                 <div className="text-xs font-mono text-gray-300 mb-4">0{i + 1}</div>
                 <h3 className="text-sm font-medium text-[#0a1128] mb-3 leading-snug">{point.title}</h3>
                 <p className="text-sm font-light text-gray-500 leading-relaxed">{point.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -212,26 +252,56 @@ export default function IndiaPage() {
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-6">Our Lens</p>
-            <h2
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-6"
+            >
+              Our Lens
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
               className="text-[#0a1128] mb-8 leading-[1.2]"
               style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
             >
               We invest in areas such as <span className="font-medium text-[#ff6b5a]">agriculture, water, healthcare, energy,</span> and frontier technologies.
-            </h2>
-            <p className="text-base font-light text-gray-500 leading-relaxed mb-8">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              className="text-base font-light text-gray-500 leading-relaxed mb-8"
+            >
               Not because it sounds virtuous — but because these are structural markets with real demand, long time horizons, and defensible value creation.
-            </p>
-            <div className="border-l-4 border-[#0d9488] pl-6 text-left">
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.32 }}
+              className="border-l-4 border-[#0d9488] pl-6 text-left"
+            >
               <p className="text-lg font-light text-[#0a1128] leading-relaxed mb-2">
                 Impact, for us, is not a constraint on returns.
               </p>
               <p className="text-base font-light text-gray-500">
                 It is a filter against fragility, hype, and group think. This is where true alpha is born.
               </p>
-            </div>
+            </motion.div>
           </div>
-          <div className="mt-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.42 }}
+            className="mt-12 text-center"
+          >
             <Link
               href="/approach"
               className="inline-flex items-center gap-2 text-sm font-medium text-[#0a1128] hover:text-[#ff6b5a] transition-colors duration-200 group"
@@ -239,7 +309,7 @@ export default function IndiaPage() {
               See our investment approach
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 

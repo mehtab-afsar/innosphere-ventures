@@ -2,9 +2,11 @@
 
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
-import { ArrowRight, Check } from "lucide-react";
+import { FadeIn } from "@/components/ui/fade-in";
+import { ArrowRight, Check, Mail, Clock, Calendar } from "lucide-react";
 import { useState } from "react";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
+import { motion } from "framer-motion";
 
 const benefits = [
   { title: "Early Access to Deals", description: "See opportunities before they're widely circulated. Co-invest alongside us in companies tracked through the Edge Alpha platform." },
@@ -20,12 +22,46 @@ const stats = [
   { value: "100", label: "Portfolio Target", note: "Diversified by design" },
 ];
 
+type FormErrors = { name?: string; email?: string; message?: string };
+
+function validateEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+}
+
 export default function JoinPage() {
   const [formData, setFormData] = useState({ name: "", email: "", organization: "", message: "" });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const { isSubmitting, submitted, submit } = useFormSubmit("join");
+
+  const validate = (data: typeof formData): FormErrors => {
+    const e: FormErrors = {};
+    if (!data.name.trim()) e.name = "Name is required";
+    if (!data.email.trim()) e.email = "Email is required";
+    else if (!validateEmail(data.email)) e.email = "Enter a valid email address";
+    return e;
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched((t) => ({ ...t, [field]: true }));
+    setErrors(validate(formData));
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    // Clear error while typing — only re-validate when they leave the field
+    if (errors[field as keyof FormErrors]) {
+      setErrors((e) => ({ ...e, [field]: undefined }));
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const allTouched = { name: true, email: true, message: true };
+    setTouched(allTouched);
+    const errs = validate(formData);
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) return;
     await submit(formData);
   };
 
@@ -39,78 +75,111 @@ export default function JoinPage() {
           style={{ backgroundImage: 'linear-gradient(#0a1128 1px, transparent 1px), linear-gradient(90deg, #0a1128 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="max-w-7xl mx-auto w-full pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest"
+          >
             LP Collective
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
             <div>
-              <h1
+              <motion.h1
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                 className="text-[#0a1128] mb-8 leading-[1.05]"
                 style={{ fontSize: 'clamp(3rem, 7vw + 1rem, 9rem)', fontWeight: 200, letterSpacing: '-0.03em' }}
               >
                 Join the<br />
                 <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">LP Collective</span>
-              </h1>
-              <p className="text-xl font-light text-gray-500 max-w-lg leading-relaxed">
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+                className="text-xl font-light text-gray-500 max-w-lg leading-relaxed"
+              >
                 A small, thoughtful community of investors backing India's edge founders — with full transparency, no management fees on initial deployment, and direct access to our deal flow.
-              </p>
+              </motion.p>
             </div>
 
             <div className="grid grid-cols-2 gap-px bg-gray-200">
-              {stats.map((s) => (
-                <div key={s.label} className="bg-white p-8">
+              {stats.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.3 + i * 0.08 }}
+                  className="bg-white p-8"
+                >
                   <div className="text-3xl font-mono font-medium text-[#0a1128] mb-1">{s.value}</div>
                   <div className="text-xs font-medium text-gray-600 mb-0.5">{s.label}</div>
                   <div className="text-xs font-light text-gray-400">{s.note}</div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300"
+          >
             <div className="w-px h-8 bg-gray-200" />
             Scroll to explore
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Benefits */}
       <section className="py-20 px-6 lg:px-12 bg-[#f9fafb]">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-xl mb-12">
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">What You Get</p>
-            <h2
-              className="text-[#0a1128] leading-[1.15]"
-              style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
-            >
-              More than capital.<br />
-              <span style={{ fontWeight: 500 }}>A front row seat.</span>
-            </h2>
-          </div>
+          <FadeIn>
+            <div className="max-w-xl mb-12">
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">What You Get</p>
+              <h2
+                className="text-[#0a1128] leading-[1.15]"
+                style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
+              >
+                More than capital.<br />
+                <span style={{ fontWeight: 500 }}>A front row seat.</span>
+              </h2>
+            </div>
+          </FadeIn>
           <div className="grid sm:grid-cols-2 gap-6">
             {benefits.map((benefit, i) => (
-              <div key={benefit.title} className="bg-white p-8 border border-gray-100">
-                <div className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-[#ff6b5a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3.5 h-3.5 text-[#ff6b5a]" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-medium text-[#0a1128] mb-2">{benefit.title}</h3>
-                    <p className="text-sm font-light text-gray-500 leading-relaxed">{benefit.description}</p>
+              <FadeIn key={benefit.title} delay={i * 0.12}>
+                <div className="bg-white p-8 border border-gray-100 h-full">
+                  <div className="flex items-start gap-4">
+                    <div className="w-6 h-6 rounded-full bg-[#ff6b5a]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 text-[#ff6b5a]" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-medium text-[#0a1128] mb-2">{benefit.title}</h3>
+                      <p className="text-sm font-light text-gray-500 leading-relaxed">{benefit.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* Form */}
-      <section className="py-20 px-6 lg:px-12">
+      <section id="interest" className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
               <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Get Started</p>
               <h2
                 className="text-[#0a1128] mb-6 leading-[1.15]"
@@ -127,17 +196,72 @@ export default function JoinPage() {
                   InnoSphere targets <span className="font-medium text-[#0a1128]">3x DPI</span> — the institutional benchmark for top-decile venture returns. Our 100-company portfolio model is engineered to maximize the probability of capturing power-law outliers.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            >
               {submitted ? (
-                <div className="bg-[#f9fafb] border border-gray-100 p-12 text-center">
-                  <div className="w-12 h-12 rounded-full bg-[#0d9488]/10 flex items-center justify-center mx-auto mb-4">
-                    <Check className="w-6 h-6 text-[#0d9488]" />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="bg-[#f9fafb] border border-gray-100 p-12"
+                >
+                  <div className="flex flex-col items-center text-center mb-10">
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                      className="w-16 h-16 rounded-full bg-[#0d9488]/10 flex items-center justify-center mb-6"
+                    >
+                      <Check className="w-7 h-7 text-[#0d9488]" />
+                    </motion.div>
+                    <motion.h3
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="text-2xl font-light text-[#0a1128] mb-2"
+                    >
+                      We'll be in touch
+                    </motion.h3>
+                    <motion.p
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.28 }}
+                      className="text-sm font-light text-gray-500 max-w-xs leading-relaxed"
+                    >
+                      Your interest has been received. A member of our team will reach out shortly.
+                    </motion.p>
                   </div>
-                  <h3 className="text-xl font-medium text-[#0a1128] mb-2">We'll be in touch</h3>
-                  <p className="text-sm font-light text-gray-500">Thank you for your interest. Expect to hear from us within 48 hours.</p>
-                </div>
+
+                  <div className="space-y-px bg-gray-200">
+                    {[
+                      { icon: Mail, label: "Confirmation", text: "Check your inbox for a confirmation email" },
+                      { icon: Clock, label: "Response time", text: "We respond within 48 business hours" },
+                      { icon: Calendar, label: "Next step", text: "A short call to discuss your participation" },
+                    ].map(({ icon: Icon, label, text }, i) => (
+                      <motion.div
+                        key={label}
+                        initial={{ opacity: 0, x: -12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.45, delay: 0.35 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                        className="bg-white px-6 py-4 flex items-center gap-4"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-[#0a1128]/5 flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-3.5 h-3.5 text-[#0a1128]" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-0.5">{label}</div>
+                          <div className="text-sm font-light text-[#0a1128]">{text}</div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
@@ -145,23 +269,29 @@ export default function JoinPage() {
                       <label className="block text-xs font-medium text-gray-500 uppercase tracking-widest mb-2">Name *</label>
                       <input
                         type="text"
-                        required
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 border border-gray-200 text-sm font-light text-[#0a1128] placeholder-gray-300 focus:outline-none focus:border-[#0a1128] transition-colors"
+                        onChange={(e) => handleChange("name", e.target.value)}
+                        onBlur={() => handleBlur("name")}
+                        className={`w-full px-4 py-3 border text-sm font-light text-[#0a1128] placeholder-gray-300 focus:outline-none transition-colors ${touched.name && errors.name ? "border-red-400 focus:border-red-500" : "border-gray-200 focus:border-[#0a1128]"}`}
                         placeholder="Your name"
                       />
+                      {touched.name && errors.name && (
+                        <p className="mt-1.5 text-xs text-red-500 font-light">{errors.name}</p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-xs font-medium text-gray-500 uppercase tracking-widest mb-2">Email *</label>
                       <input
-                        type="email"
-                        required
+                        type="text"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 border border-gray-200 text-sm font-light text-[#0a1128] placeholder-gray-300 focus:outline-none focus:border-[#0a1128] transition-colors"
+                        onChange={(e) => handleChange("email", e.target.value)}
+                        onBlur={() => handleBlur("email")}
+                        className={`w-full px-4 py-3 border text-sm font-light text-[#0a1128] placeholder-gray-300 focus:outline-none transition-colors ${touched.email && errors.email ? "border-red-400 focus:border-red-500" : "border-gray-200 focus:border-[#0a1128]"}`}
                         placeholder="your@email.com"
                       />
+                      {touched.email && errors.email && (
+                        <p className="mt-1.5 text-xs text-red-500 font-light">{errors.email}</p>
+                      )}
                     </div>
                   </div>
                   <div>
@@ -169,7 +299,7 @@ export default function JoinPage() {
                     <input
                       type="text"
                       value={formData.organization}
-                      onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                      onChange={(e) => handleChange("organization", e.target.value)}
                       className="w-full px-4 py-3 border border-gray-200 text-sm font-light text-[#0a1128] placeholder-gray-300 focus:outline-none focus:border-[#0a1128] transition-colors"
                       placeholder="Company or fund (optional)"
                     />
@@ -179,7 +309,7 @@ export default function JoinPage() {
                     <textarea
                       rows={4}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => handleChange("message", e.target.value)}
                       className="w-full px-4 py-3 border border-gray-200 text-sm font-light text-[#0a1128] placeholder-gray-300 focus:outline-none focus:border-[#0a1128] transition-colors resize-none"
                       placeholder="Tell us about your investment interest and background..."
                     />
@@ -197,7 +327,7 @@ export default function JoinPage() {
                   </p>
                 </form>
               )}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

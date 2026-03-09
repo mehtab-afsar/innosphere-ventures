@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import type { MailingListData } from "@/lib/supabase";
-import { Linkedin, Twitter, ArrowRight } from "lucide-react";
+import { Linkedin, ArrowRight } from "lucide-react";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -35,10 +35,6 @@ export function Footer() {
                 <a href="https://www.linkedin.com/company/innosphere-vc/" target="_blank" rel="noopener noreferrer"
                   className="p-2 border border-white/10 hover:border-white/30 hover:text-white text-white/40 transition-all duration-200">
                   <Linkedin className="w-4 h-4" strokeWidth={1.5} />
-                </a>
-                <a href="https://twitter.com/innosphere" target="_blank" rel="noopener noreferrer"
-                  className="p-2 border border-white/10 hover:border-white/30 hover:text-white text-white/40 transition-all duration-200">
-                  <Twitter className="w-4 h-4" strokeWidth={1.5} />
                 </a>
               </div>
             </div>

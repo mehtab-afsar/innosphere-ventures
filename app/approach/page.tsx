@@ -2,9 +2,12 @@
 
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
+import { FadeIn } from "@/components/ui/fade-in";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useRef, useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Cell, ResponsiveContainer, Tooltip, LabelList } from "recharts";
+import { motion } from "framer-motion";
 
 const concentrationData = [
   { name: "Top 20 Funds", value: 62, color: "#ff6b5a" },
@@ -85,6 +88,57 @@ const investmentPrinciples = [
   }
 ];
 
+function ChartSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref}>
+      <FadeIn delay={0.1}>
+        <div className="flex gap-6">
+          <div className="bg-[#f9fafb] p-6 border border-gray-100 flex-1">
+            <div className="text-3xl font-mono font-light text-[#0a1128] mb-1">9.2×</div>
+            <div className="text-xs font-light text-gray-400">AUM Growth 2009–2023</div>
+          </div>
+          <div className="bg-[#f9fafb] p-6 border border-gray-100 flex-1">
+            <div className="text-3xl font-mono font-light text-[#ff6b5a] mb-1">62%</div>
+            <div className="text-xs font-light text-gray-400">In Top 20 Firms</div>
+          </div>
+        </div>
+      </FadeIn>
+      <FadeIn delay={0.25}>
+        <div className="bg-[#f9fafb] p-6 border border-gray-100 mt-6">
+          <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Capital Concentration</p>
+          {visible && (
+            <ResponsiveContainer width="100%" height={160}>
+              <BarChart data={concentrationData} layout="vertical" margin={{ left: 0, right: 40, top: 0, bottom: 0 }}>
+                <XAxis type="number" domain={[0, 100]} tick={false} axisLine={false} tickLine={false} />
+                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11, fill: "#6b7280", fontWeight: 300 }} axisLine={false} tickLine={false} />
+                <Tooltip formatter={(v) => [`${v}%`]} cursor={{ fill: "transparent" }} />
+                <Bar dataKey="value" radius={[0, 2, 2, 0]} barSize={28} isAnimationActive animationDuration={1200} animationEasing="ease-out">
+                  {concentrationData.map((entry, index) => (
+                    <Cell key={index} fill={entry.color} />
+                  ))}
+                  <LabelList dataKey="value" position="right" formatter={(v: unknown) => `${v}%`} style={{ fontSize: 12, fontWeight: 500, fontFamily: "monospace", fill: "#0a1128" }} />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+          <p className="text-xs font-light text-gray-400 mt-3">Creating pricing inefficiencies at seed and Series A — the gap InnoSphere is built to exploit.</p>
+        </div>
+      </FadeIn>
+    </div>
+  );
+}
+
 export default function ApproachPage() {
   return (
     <div className="bg-white">
@@ -96,19 +150,34 @@ export default function ApproachPage() {
           style={{ backgroundImage: 'linear-gradient(#0a1128 1px, transparent 1px), linear-gradient(90deg, #0a1128 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="max-w-7xl mx-auto w-full pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest"
+          >
             Investment Framework
-          </div>
-          <h1
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="text-[#0a1128] mb-8 leading-[1.05] max-w-5xl"
             style={{ fontSize: 'clamp(3rem, 7vw + 1rem, 9rem)', fontWeight: 200, letterSpacing: '-0.03em' }}
           >
             Our approach is<br />
             <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">deliberately systematic</span>
-          </h1>
-          <p className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed mb-16">
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+            className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed mb-16"
+          >
             Powered by Edge Alpha — a proprietary operating layer that brings institutional capital discipline to early-stage venture investing in India.
-          </p>
+          </motion.p>
 
           {/* Key metrics inline */}
           <div className="grid grid-cols-3 gap-px bg-gray-200 max-w-2xl">
@@ -116,18 +185,29 @@ export default function ApproachPage() {
               { v: "3x+", l: "Target Net TVPI" },
               { v: "100", l: "Portfolio Target" },
               { v: "4", l: "Edge Alpha Pillars" },
-            ].map(({ v, l }) => (
-              <div key={l} className="bg-white px-6 py-5">
+            ].map(({ v, l }, i) => (
+              <motion.div
+                key={l}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.34 + i * 0.08 }}
+                className="bg-white px-6 py-5"
+              >
                 <div className="text-2xl font-mono font-medium text-[#0a1128]">{v}</div>
                 <div className="text-xs font-light text-gray-400 mt-1">{l}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300"
+          >
             <div className="w-px h-8 bg-gray-200" />
             Scroll to explore
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -135,7 +215,7 @@ export default function ApproachPage() {
       <section className="py-20 px-6 lg:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
+            <FadeIn direction="left">
               <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Market Structure</p>
               <h2
                 className="text-[#0a1128] mb-6 leading-[1.15]"
@@ -150,36 +230,10 @@ export default function ApproachPage() {
               <p className="text-sm font-light text-gray-400 leading-relaxed">
                 Source: Preqin 2025 Global Report — VC AUM reached ~$3.1T by early 2024.
               </p>
-            </div>
-            <div className="space-y-6">
-              <div className="flex gap-6">
-                <div className="bg-[#f9fafb] p-6 border border-gray-100 flex-1">
-                  <div className="text-3xl font-mono font-light text-[#0a1128] mb-1">9.2×</div>
-                  <div className="text-xs font-light text-gray-400">AUM Growth 2009–2023</div>
-                </div>
-                <div className="bg-[#f9fafb] p-6 border border-gray-100 flex-1">
-                  <div className="text-3xl font-mono font-light text-[#ff6b5a] mb-1">62%</div>
-                  <div className="text-xs font-light text-gray-400">In Top 20 Firms</div>
-                </div>
-              </div>
-              <div className="bg-[#f9fafb] p-6 border border-gray-100">
-                <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Capital Concentration</p>
-                <ResponsiveContainer width="100%" height={160}>
-                  <BarChart data={concentrationData} layout="vertical" margin={{ left: 0, right: 40, top: 0, bottom: 0 }}>
-                    <XAxis type="number" domain={[0, 100]} tick={false} axisLine={false} tickLine={false} />
-                    <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11, fill: "#6b7280", fontWeight: 300 }} axisLine={false} tickLine={false} />
-                    <Tooltip formatter={(v) => [`${v}%`]} cursor={{ fill: "transparent" }} />
-                    <Bar dataKey="value" radius={[0, 2, 2, 0]} barSize={28}>
-                      {concentrationData.map((entry, index) => (
-                        <Cell key={index} fill={entry.color} />
-                      ))}
-                      <LabelList dataKey="value" position="right" formatter={(v: unknown) => `${v}%`} style={{ fontSize: 12, fontWeight: 500, fontFamily: "monospace", fill: "#0a1128" }} />
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-                <p className="text-xs font-light text-gray-400 mt-3">Creating pricing inefficiencies at seed and Series A — the gap InnoSphere is built to exploit.</p>
-              </div>
-            </div>
+            </FadeIn>
+            <FadeIn direction="right" delay={0.1}>
+              <ChartSection />
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -188,7 +242,7 @@ export default function ApproachPage() {
       <section className="py-20 px-6 lg:px-12 bg-[#f9fafb]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
+            <FadeIn direction="left">
               <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Return Reality</p>
               <h2
                 className="text-[#0a1128] mb-6 leading-[1.15]"
@@ -204,15 +258,17 @@ export default function ApproachPage() {
                 <span className="text-3xl font-mono font-light text-[#0d9488]">3x</span>
                 <span className="text-gray-500 font-light">DPI — our institutional benchmark</span>
               </div>
-            </div>
+            </FadeIn>
             <div className="space-y-3">
-              {returnTiers.map((tier) => (
-                <div key={tier.label} className="p-5 border border-gray-100" style={{ backgroundColor: tier.bg }}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-light text-gray-600 max-w-xs">{tier.label}</span>
-                    <span className="text-2xl font-mono font-medium ml-4 flex-shrink-0" style={{ color: tier.color }}>{tier.value}</span>
+              {returnTiers.map((tier, i) => (
+                <FadeIn key={tier.label} delay={i * 0.12} direction="right">
+                  <div className="p-5 border border-gray-100" style={{ backgroundColor: tier.bg }}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-light text-gray-600 max-w-xs">{tier.label}</span>
+                      <span className="text-2xl font-mono font-medium ml-4 flex-shrink-0" style={{ color: tier.color }}>{tier.value}</span>
+                    </div>
                   </div>
-                </div>
+                </FadeIn>
               ))}
             </div>
           </div>
@@ -222,28 +278,34 @@ export default function ApproachPage() {
       {/* Portfolio Construction */}
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-xl mb-12">
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Portfolio Construction</p>
-            <h2
-              className="text-[#0a1128] leading-[1.15]"
-              style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
-            >
-              Discipline is key to<br />
-              <span style={{ fontWeight: 500 }}>capturing outliers</span>
-            </h2>
-          </div>
+          <FadeIn>
+            <div className="max-w-xl mb-12">
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Portfolio Construction</p>
+              <h2
+                className="text-[#0a1128] leading-[1.15]"
+                style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
+              >
+                Discipline is key to<br />
+                <span style={{ fontWeight: 500 }}>capturing outliers</span>
+              </h2>
+            </div>
+          </FadeIn>
           <div className="grid md:grid-cols-3 gap-6">
-            {portfolioPoints.map((point) => (
-              <div key={point.number} className="bg-[#f9fafb] p-8 border border-gray-100">
-                <div className="text-xs font-mono text-gray-300 mb-4">{point.number}</div>
-                <h3 className="text-base font-medium text-[#0a1128] mb-3">{point.title}</h3>
-                <p className="text-sm font-light text-gray-500 leading-relaxed">{point.description}</p>
-              </div>
+            {portfolioPoints.map((point, i) => (
+              <FadeIn key={point.number} delay={i * 0.12}>
+                <div className="bg-[#f9fafb] p-8 border border-gray-100 h-full">
+                  <div className="text-xs font-mono text-gray-300 mb-4">{point.number}</div>
+                  <h3 className="text-base font-medium text-[#0a1128] mb-3">{point.title}</h3>
+                  <p className="text-sm font-light text-gray-500 leading-relaxed">{point.description}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
-          <p className="text-xs font-light text-gray-400 mt-6 max-w-2xl">
-            Model informed by widely documented venture power-law dynamics (Cambridge Associates; Kauffman Foundation; EUVC fund modelling cohort 2025).
-          </p>
+          <FadeIn delay={0.3}>
+            <p className="text-xs font-light text-gray-400 mt-6 max-w-2xl">
+              Model informed by widely documented venture power-law dynamics (Cambridge Associates; Kauffman Foundation; EUVC fund modelling cohort 2025).
+            </p>
+          </FadeIn>
         </div>
       </section>
 
@@ -299,23 +361,25 @@ export default function ApproachPage() {
             </div>
 
             <div className="flex-1 space-y-4">
-              {edgeAlphaOS.map((item) => (
-                <div key={item.number} className="p-8 bg-[#f9fafb] border border-gray-100 hover:border-gray-200 transition-colors">
-                  <div className="flex items-start gap-6">
-                    <span className="text-xs font-mono text-gray-300 mt-1 flex-shrink-0">{item.number}</span>
-                    <div className="flex-1">
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
-                        <h3 className="text-base font-medium text-[#0a1128]">{item.title}</h3>
-                        <span className="text-xs font-light text-[#0d9488] sm:ml-2">— {item.subtitle}</span>
-                      </div>
-                      <p className="text-sm font-light text-gray-500 leading-relaxed mb-3">{item.description}</p>
-                      <div className="flex items-center gap-2 text-xs font-medium text-gray-400">
-                        <span className="text-[#ff6b5a]">→</span>
-                        {item.output}
+              {edgeAlphaOS.map((item, i) => (
+                <FadeIn key={item.number} delay={i * 0.1} direction="right">
+                  <div className="p-8 bg-[#f9fafb] border border-gray-100 hover:border-gray-200 transition-colors">
+                    <div className="flex items-start gap-6">
+                      <span className="text-xs font-mono text-gray-300 mt-1 flex-shrink-0">{item.number}</span>
+                      <div className="flex-1">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
+                          <h3 className="text-base font-medium text-[#0a1128]">{item.title}</h3>
+                          <span className="text-xs font-light text-[#0d9488] sm:ml-2">— {item.subtitle}</span>
+                        </div>
+                        <p className="text-sm font-light text-gray-500 leading-relaxed mb-3">{item.description}</p>
+                        <div className="flex items-center gap-2 text-xs font-medium text-gray-400">
+                          <span className="text-[#ff6b5a]">→</span>
+                          {item.output}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </FadeIn>
               ))}
             </div>
           </div>
@@ -325,14 +389,26 @@ export default function ApproachPage() {
       {/* Investment Proposition */}
       <section className="py-20 px-6 lg:px-12 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Investment Proposition</p>
-          <h2
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4"
+          >
+            Investment Proposition
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="text-[#0a1128] mb-14 leading-[1.15]"
             style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
           >
             Top-decile returns in India's industrial transformation —<br />
             <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">powered by Edge Alpha</span>
-          </h2>
+          </motion.h2>
           <div className="grid md:grid-cols-3 gap-px bg-gray-200">
             {[
               {
@@ -350,12 +426,19 @@ export default function ApproachPage() {
                 title: "Institutional Capital Discipline",
                 description: "Our proprietary platform brings structured evaluation, portfolio construction, and capital allocation discipline to early-stage investing."
               }
-            ].map((item) => (
-              <div key={item.number} className="bg-white p-10">
+            ].map((item, i) => (
+              <motion.div
+                key={item.number}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 + i * 0.1 }}
+                className="bg-white p-10"
+              >
                 <div className="text-xs font-mono text-gray-300 mb-6">{item.number}</div>
                 <h3 className="text-base font-medium text-[#0a1128] mb-4">{item.title}</h3>
                 <p className="text-sm font-light text-gray-500 leading-relaxed">{item.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

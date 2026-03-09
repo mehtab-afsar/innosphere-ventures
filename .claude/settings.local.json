@@ -35,7 +35,9 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/approach)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3003/india)",
       "Bash(ffmpeg -version)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s -X POST http://localhost:3000/api/submit-form -H \"Content-Type: application/json\" -d '{\"\"type\"\":\"\"mailing-list\"\",\"\"data\"\":{\"\"email\"\":\"\"test@test.com\"\"}}')",
+      "Bash(xargs rm -f)"
     ],
     "deny": [],
     "ask": []

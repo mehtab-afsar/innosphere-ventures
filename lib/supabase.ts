@@ -1,6 +1,6 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-const SUPABASE_URL = "https://tlzmiajkuxchdthormyf.supabase.co";
+const SUPABASE_URL = "https://ljojehapptsmevygpgwl.supabase.co";
 const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_KEY || "";
 
 let supabaseInstance: SupabaseClient | null = null;
@@ -32,34 +32,10 @@ export type FormType = "join" | "mailing-list";
 
 // Form data interfaces
 export interface JoinFormData {
-  // Personal Information
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
-  linkedinUrl: string;
-
-  // Company Information
-  companyName: string;
-  companyWebsite?: string;
-  companyLocation: string;
-
-  // Problem & Vision
-  problemSolving: string;
-  companyVision: string;
-  tractionProgress: string;
-
-  // Team Information
-  teamInfo: string;
-  foundingTeamMakeup: string;
-  ceoGender: string;
-
-  // Additional Information
-  howDidYouHear: string;
-  joinNewsletter: boolean;
-  additionalMaterials?: string; // URL to uploaded materials
-
-  // Privacy acknowledgment
-  privacyAcknowledged: boolean;
+  organization?: string;
+  message?: string;
 }
 
 export interface MailingListData {

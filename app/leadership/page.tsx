@@ -2,7 +2,9 @@
 
 import { Navigation } from "@/components/sections/Navigation";
 import { Footer } from "@/components/sections/Footer";
-import { ArrowRight, Linkedin, Twitter, Mail } from "lucide-react";
+import { FadeIn } from "@/components/ui/fade-in";
+import { Linkedin, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,8 +15,7 @@ const leaders = [
     bio: "Roman brings decades of experience in venture capital, entrepreneurship, and ecosystem building. His work has spanned technology, design and innovation, capital markets, and corporate strategy, giving him a unique perspective on how breakthrough companies emerge from humble beginnings to global reach.",
     bio2: "His vision drives InnoSphere's mission to back India's most ambitious founders and to build the ecosystems where transformational companies can thrive.",
     image: "/assets/images/branding/InnoSphere Website VISUAL IDENTITY (1).png",
-    linkedin: "https://www.linkedin.com/company/innosphere-vc/",
-    twitter: "#",
+    linkedin: "https://www.linkedin.com/in/roman-gaus/",
     email: "roman@innosphereventures.com",
   },
   {
@@ -23,8 +24,7 @@ const leaders = [
     bio: "Jocelyn brings strategic expertise across both for-profit and non-profit enterprises, shaping leadership and strategy as a CEO and Board Member in the education sector. She has served as a Social Impact Leader in Residence at the Harvard Kennedy School and is a Fellow of Harvard's Advanced Leadership Initiative.",
     bio2: "She has led organizations from early traction to global reach, consistently building environments where innovation can take root and scale.",
     image: "/assets/images/branding/InnoSphere Website VISUAL IDENTITY.png",
-    linkedin: "https://www.linkedin.com/company/innosphere-vc/",
-    twitter: "#",
+    linkedin: "https://www.linkedin.com/in/jocelynswisher/",
     email: "jocelyn@innosphereventures.com",
   },
 ];
@@ -40,23 +40,41 @@ export default function LeadershipPage() {
           style={{ backgroundImage: 'linear-gradient(#0a1128 1px, transparent 1px), linear-gradient(90deg, #0a1128 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="max-w-7xl mx-auto w-full pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 mb-10 px-3 py-1 border border-gray-200 text-xs font-medium text-gray-500 uppercase tracking-widest"
+          >
             Leadership
-          </div>
-          <h1
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="text-[#0a1128] mb-8 leading-[1.05]"
             style={{ fontSize: 'clamp(3rem, 7vw + 1rem, 9rem)', fontWeight: 200, letterSpacing: '-0.03em' }}
           >
             The team<br />
             <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">behind the thesis</span>
-          </h1>
-          <p className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+            className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed"
+          >
             "To be the catalyst for India's most ambitious founders — providing not just capital, but conviction, connection, and the courage to build at the frontier."
-          </p>
-          <div className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            className="absolute bottom-10 left-6 lg:left-12 flex items-center gap-2 text-xs font-light text-gray-300"
+          >
             <div className="w-px h-8 bg-gray-200" />
             Scroll to explore
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -64,39 +82,33 @@ export default function LeadershipPage() {
       <section className="py-20 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-px bg-gray-200">
-            {leaders.map((leader) => (
-              <div key={leader.name} className="bg-white p-10 lg:p-14">
-                {/* Photo */}
-                <div className="w-48 h-48 bg-gray-100 overflow-hidden mb-8 border border-gray-100 relative">
-                  <Image
-                    src={leader.image}
-                    alt={leader.name}
-                    fill
-                    className="object-cover object-center"
-                  />
+            {leaders.map((leader, i) => (
+              <FadeIn key={leader.name} delay={i * 0.15}>
+                <div className="bg-white p-10 lg:p-14 h-full">
+                  {/* Photo */}
+                  <div className="w-48 h-48 bg-gray-100 overflow-hidden mb-8 border border-gray-100 relative">
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className="object-cover object-center"
+                    />
+                  </div>
+
+                  <div className="mb-1 text-xs font-medium text-[#ff6b5a] uppercase tracking-widest">{leader.role}</div>
+                  <h2 className="text-2xl font-medium text-[#0a1128] mb-6">{leader.name}</h2>
+
+                  <p className="text-base font-light text-gray-500 leading-relaxed mb-4">{leader.bio}</p>
+                  <p className="text-base font-light text-gray-500 leading-relaxed mb-8">{leader.bio2}</p>
+
+                  <div className="flex items-center gap-3">
+                    <a href={leader.linkedin} target="_blank" rel="noopener noreferrer"
+                      className="p-2 border border-gray-200 text-gray-400 hover:text-[#0a1128] hover:border-gray-400 transition-all duration-200">
+                      <Linkedin className="w-4 h-4" strokeWidth={1.5} />
+                    </a>
+                  </div>
                 </div>
-
-                <div className="mb-1 text-xs font-medium text-[#ff6b5a] uppercase tracking-widest">{leader.role}</div>
-                <h2 className="text-2xl font-medium text-[#0a1128] mb-6">{leader.name}</h2>
-
-                <p className="text-base font-light text-gray-500 leading-relaxed mb-4">{leader.bio}</p>
-                <p className="text-base font-light text-gray-500 leading-relaxed mb-8">{leader.bio2}</p>
-
-                <div className="flex items-center gap-3">
-                  <a href={leader.linkedin} target="_blank" rel="noopener noreferrer"
-                    className="p-2 border border-gray-200 text-gray-400 hover:text-[#0a1128] hover:border-gray-400 transition-all duration-200">
-                    <Linkedin className="w-4 h-4" strokeWidth={1.5} />
-                  </a>
-                  <a href={leader.twitter} target="_blank" rel="noopener noreferrer"
-                    className="p-2 border border-gray-200 text-gray-400 hover:text-[#0a1128] hover:border-gray-400 transition-all duration-200">
-                    <Twitter className="w-4 h-4" strokeWidth={1.5} />
-                  </a>
-                  <a href={`mailto:${leader.email}`}
-                    className="p-2 border border-gray-200 text-gray-400 hover:text-[#0a1128] hover:border-gray-400 transition-all duration-200">
-                    <Mail className="w-4 h-4" strokeWidth={1.5} />
-                  </a>
-                </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
