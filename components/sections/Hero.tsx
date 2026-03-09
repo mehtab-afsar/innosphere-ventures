@@ -7,7 +7,7 @@ import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import { motion } from "framer-motion";
 
-const ease = [0.22, 1, 0.36, 1];
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 // ─── Hero ────────────────────────────────────────────────────────────────────
 
