@@ -91,7 +91,7 @@ export default function IndiaPage() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
             className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed mb-16"
           >
-            India's founder density and industrial expansion create a multi-decade deep tech growth opportunity — one that remains structurally undercapitalised at the early stage.
+            India&apos;s founder density and industrial expansion create a multi-decade deep tech growth opportunity — one that remains structurally undercapitalised at the early stage.
           </motion.p>
 
           {/* Key stats inline */}
@@ -220,7 +220,7 @@ export default function IndiaPage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-xl mb-12"
           >
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Why We're Here</p>
+            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-4">Why We&apos;re Here</p>
             <h2
               className="text-[#0a1128] leading-[1.15]"
               style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem', fontWeight: 200, letterSpacing: '-0.02em' }}

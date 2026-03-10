@@ -102,7 +102,7 @@ export default function JoinPage() {
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
                 className="text-xl font-light text-gray-500 max-w-lg leading-relaxed"
               >
-                A small, thoughtful community of investors backing India's edge founders — with full transparency, no management fees on initial deployment, and direct access to our deal flow.
+                A small, thoughtful community of investors backing India&apos;s edge founders — with full transparency, no management fees on initial deployment, and direct access to our deal flow.
               </motion.p>
             </div>
 
@@ -189,7 +189,7 @@ export default function JoinPage() {
                 <span style={{ fontWeight: 500 }}>interest</span>
               </h2>
               <p className="text-base font-light text-gray-500 leading-relaxed mb-8">
-                Fill in the form and we'll be in touch within 48 hours to schedule a conversation about how you can participate in the LP Collective.
+                Fill in the form and we&apos;ll be in touch within 48 hours to schedule a conversation about how you can participate in the LP Collective.
               </p>
               <div className="border-l-4 border-[#0d9488] pl-5">
                 <p className="text-sm font-light text-gray-600 leading-relaxed">
@@ -226,7 +226,7 @@ export default function JoinPage() {
                       transition={{ duration: 0.5, delay: 0.2 }}
                       className="text-2xl font-light text-[#0a1128] mb-2"
                     >
-                      We'll be in touch
+                      We&apos;ll be in touch
                     </motion.h3>
                     <motion.p
                       initial={{ opacity: 0, y: 8 }}

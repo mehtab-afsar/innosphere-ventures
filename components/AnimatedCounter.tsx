@@ -24,13 +24,14 @@ export function AnimatedCounter({ end, duration = 2000, suffix = "", className =
       { threshold: 0.5 }
     );
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    const el = counterRef.current;
+    if (el) {
+      observer.observe(el);
     }
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
+      if (el) {
+        observer.unobserve(el);
       }
     };
   }, [isVisible]);

@@ -333,7 +333,7 @@ export default function ApproachPage() {
           </div>
           <div className="mt-12 p-8 border-l-4 border-[#ff6b5a] bg-white">
             <p className="text-lg font-light text-[#0a1128] leading-relaxed">
-              We don't just invest in companies. We help position them for follow-on capital, strategic partnerships, and international market access — so that capital follows performance.
+              We don&apos;t just invest in companies. We help position them for follow-on capital, strategic partnerships, and international market access — so that capital follows performance.
             </p>
           </div>
         </div>
@@ -406,7 +406,7 @@ export default function ApproachPage() {
             className="text-[#0a1128] mb-14 leading-[1.15]"
             style={{ fontSize: 'clamp(1.8rem, 3vw + 0.5rem, 3rem)', fontWeight: 200, letterSpacing: '-0.02em' }}
           >
-            Top-decile returns in India's industrial transformation —<br />
+            Top-decile returns in India&apos;s industrial transformation —<br />
             <span style={{ fontWeight: 500 }} className="text-[#ff6b5a]">powered by Edge Alpha</span>
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-px bg-gray-200">

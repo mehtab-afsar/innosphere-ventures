@@ -29,7 +29,7 @@ export function Footer() {
                 </span>
               </Link>
               <p className="text-sm font-light text-white/50 leading-relaxed mb-6 max-w-xs">
-                Scaling early-stage venture for India's deep tech expansion. Powered by Edge Alpha.
+                Scaling early-stage venture for India&apos;s deep tech expansion. Powered by Edge Alpha.
               </p>
               <div className="flex items-center gap-3">
                 <a href="https://www.linkedin.com/company/innosphere-vc/" target="_blank" rel="noopener noreferrer"
@@ -42,14 +42,14 @@ export function Footer() {
             <div>
               <p className="text-xs font-medium text-white/30 uppercase tracking-widest mb-6">Stay Updated</p>
               <p className="text-sm font-light text-white/50 leading-relaxed mb-5">
-                Portfolio updates, insights, and exclusive opportunities from India's innovation frontier.
+                Portfolio updates, insights, and exclusive opportunities from India&apos;s innovation frontier.
               </p>
               {submitted ? (
                 <div className="flex items-center gap-2 text-sm text-[#7affd4] font-light">
                   <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  You're on the list!
+                  You&apos;re on the list!
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex gap-2">

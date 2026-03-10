@@ -104,7 +104,7 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
                 className="text-xl font-light text-gray-500 max-w-xl leading-relaxed"
               >
-                Our thesis is aligned with India's structural capability expansion — investing at the intersection of deep tech, industrial transformation, and long-term demand.
+                Our thesis is aligned with India&apos;s structural capability expansion — investing at the intersection of deep tech, industrial transformation, and long-term demand.
               </motion.p>
             </div>
 

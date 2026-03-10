@@ -64,7 +64,7 @@ export default function LeadershipPage() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
             className="text-xl font-light text-gray-500 max-w-2xl leading-relaxed"
           >
-            "To be the catalyst for India's most ambitious founders — providing not just capital, but conviction, connection, and the courage to build at the frontier."
+            &ldquo;To be the catalyst for India&apos;s most ambitious founders — providing not just capital, but conviction, connection, and the courage to build at the frontier.&rdquo;
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -123,7 +123,7 @@ export default function LeadershipPage() {
               Roman and Jocelyn first connected while collaborating on innovation and leadership studies at{" "}
               <span className="font-medium text-[#ff6b5a]">Harvard</span>. They shared a conviction that the future of venture would be built through{" "}
               <span className="font-medium text-[#0d9488]">ecosystems</span>, not unicorn-chasing — a belief that led to the creation of{" "}
-              <span className="font-medium text-[#0a1128]">InnoSphere</span> and its mission to back founders shaping India's next frontier.
+              <span className="font-medium text-[#0a1128]">InnoSphere</span> and its mission to back founders shaping India&apos;s next frontier.
             </p>
           </div>
         </div>
@@ -198,10 +198,10 @@ export default function LeadershipPage() {
           <div>
             <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">Want to connect?</p>
             <h2 className="text-2xl sm:text-3xl font-light text-[#0a1128] mb-2">
-              We're always looking to meet exceptional founders and partners.
+              We&apos;re always looking to meet exceptional founders and partners.
             </h2>
             <p className="text-sm font-light text-gray-400">
-              Share our vision for India's innovation future.
+              Share our vision for India&apos;s innovation future.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">

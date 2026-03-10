@@ -50,7 +50,7 @@ export function Hero() {
         >
           <span className="text-[#0a1128]">Conviction Capital</span>
           <br />
-          <span className="text-[#0a1128]">for India's{" "}</span><span style={{ fontWeight: 400, fontStyle: 'italic', letterSpacing: '-0.01em' }} className="text-[#ff6b5a] whitespace-nowrap">Edge Founders</span>
+          <span className="text-[#0a1128]">for India&apos;s{" "}</span><span style={{ fontWeight: 400, fontStyle: 'italic', letterSpacing: '-0.01em' }} className="text-[#ff6b5a] whitespace-nowrap">Edge Founders</span>
         </motion.h1>
 
         <motion.p
@@ -59,7 +59,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease, delay: 0.2 }}
           className="text-base sm:text-lg font-light text-gray-400 max-w-xl mx-auto mb-12 leading-relaxed"
         >
-          Scaling early-stage venture for India's deep tech expansion — powered by Edge Alpha, our proprietary investment operating system.
+          Scaling early-stage venture for India&apos;s deep tech expansion — powered by Edge Alpha, our proprietary investment operating system.
         </motion.p>
 
         {/* Stats */}
