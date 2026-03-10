@@ -70,16 +70,16 @@ export function Hero() {
           className="flex flex-wrap justify-center gap-10 mb-12"
         >
           <div className="border-l border-gray-200 pl-5 text-left">
-            <AnimatedCounter end={18} suffix="+" className="text-2xl font-mono font-medium text-[#0a1128] mb-0.5" />
+            <AnimatedCounter end={300} suffix="+" className="text-2xl font-mono font-medium text-[#0a1128] mb-0.5" />
             <div className="text-xs font-light text-gray-400 uppercase tracking-wider">Companies Tracked</div>
           </div>
           <div className="border-l border-gray-200 pl-5 text-left">
-            <AnimatedCounter end={5} className="text-2xl font-mono font-medium text-[#0a1128] mb-0.5" />
-            <div className="text-xs font-light text-gray-400 uppercase tracking-wider">Investments</div>
+            <AnimatedCounter end={150} suffix="–200" className="text-2xl font-mono font-medium text-[#0a1128] mb-0.5" />
+            <div className="text-xs font-light text-gray-400 uppercase tracking-wider">Target Portfolio</div>
           </div>
           <div className="border-l border-gray-200 pl-5 text-left">
             <div className="text-2xl font-mono font-medium text-[#0a1128] mb-0.5">
-              $<AnimatedCounter end={20} className="inline" />K
+              $<AnimatedCounter end={200} className="inline" />K
             </div>
             <div className="text-xs font-light text-gray-400 uppercase tracking-wider">Min LP Ticket</div>
           </div>
