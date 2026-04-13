@@ -29,34 +29,46 @@ const steps = [
 
 const parameters = [
   {
-    name: "Market",
-    description: "TAM/SAM/SOM framing, growth trajectory, timing, and competitive density. Is the market real, large, and winnable?",
-    indicators: "6 indicators",
-  },
-  {
-    name: "Team",
-    description: "Founder-market fit, execution history, domain depth, and complementarity. Do these people have the right to win?",
+    code: "P1",
+    name: "Market Readiness",
+    subtitle: "Market Validation",
+    description: "Paying customers, customer conversations, retention, sales cycle length, and commitment level — LOIs and signed contracts.",
     indicators: "5 indicators",
   },
   {
-    name: "IP & Moat",
-    description: "Proprietary technology, defensibility, network effects, and switching costs. What prevents replication?",
-    indicators: "5 indicators",
+    code: "P2",
+    name: "Market Potential",
+    subtitle: "Market & Competition",
+    description: "TAM size, market urgency (why now), competitor landscape, and degree of differentiation from existing solutions.",
+    indicators: "4 indicators",
   },
   {
-    name: "Traction",
-    description: "Revenue, user growth, retention, partnerships, and pilot depth. What has actually been validated in market?",
-    indicators: "6 indicators",
+    code: "P3",
+    name: "IP & Defensibility",
+    subtitle: "Technology",
+    description: "Patents and trade secrets, months to replicate, technical depth, and build complexity. What stops a well-funded competitor from copying this in 6 months?",
+    indicators: "4 indicators",
   },
   {
-    name: "Financials",
-    description: "Unit economics, burn rate, runway, and capital efficiency. Does the business model hold at scale?",
-    indicators: "5 indicators",
-  },
-  {
-    name: "Go-to-Market",
-    description: "Distribution strategy, customer acquisition clarity, and channel conviction. Is there a credible path to revenue?",
+    code: "P4",
+    name: "Founder & Team",
+    subtitle: "People",
+    description: "Years of domain experience, founder-market fit, and functional coverage across tech, sales, and product. The right team for this specific problem.",
     indicators: "3 indicators",
+  },
+  {
+    code: "P5",
+    name: "Structural Impact",
+    subtitle: "Mission Alignment",
+    description: "Impact focus and mission alignment. Weighted low for most sectors — weighted higher for health and climate. Not a vibe check; a structural signal.",
+    indicators: "2 indicators",
+  },
+  {
+    code: "P6",
+    name: "Financials",
+    subtitle: "Business Model",
+    description: "MRR/ARR, monthly burn rate, runway in months, and gross margin. Does the unit economics story hold at the next stage of scale?",
+    indicators: "4 indicators",
   },
 ];
 
@@ -235,11 +247,10 @@ export default function EdgeAlphaPage() {
                 transition={{ duration: 0.6, ease, delay: i * 0.07 }}
                 className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-8 py-6"
               >
-                <div className="flex items-center gap-3 sm:w-36 shrink-0">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b5a] shrink-0" />
-                  <p className="text-sm font-medium text-[#0a1128] uppercase tracking-widest">
-                    {param.name}
-                  </p>
+                <div className="sm:w-44 shrink-0">
+                  <p className="text-xs font-mono text-[#ff6b5a] mb-1">{param.code}</p>
+                  <p className="text-sm font-medium text-[#0a1128]">{param.name}</p>
+                  <p className="text-xs font-light text-gray-400 uppercase tracking-wider mt-0.5">{param.subtitle}</p>
                 </div>
                 <div className="flex-1">
                   <p className="text-sm font-light text-gray-500 leading-relaxed mb-2">
