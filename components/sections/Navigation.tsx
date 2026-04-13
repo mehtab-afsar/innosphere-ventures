@@ -44,9 +44,9 @@ export function Navigation() {
     { href: "/india", label: "India" },
     { href: "/approach", label: "Approach" },
     { href: "/portfolio", label: "Portfolio" },
-    { href: "/edge-alpha", label: "Edge Alpha", rainbow: true },
     { href: "/join", label: "Join" },
     { href: "/leadership", label: "Team" },
+    { href: "/edge-alpha", label: "Edge Alpha", rainbow: true },
   ];
 
   return (
@@ -56,7 +56,7 @@ export function Navigation() {
       transition={{ duration: visible ? 0.35 : 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       {/* Pill navbar */}
-      <nav className="w-full max-w-3xl rounded-full border border-white/40 shadow-lg shadow-black/5"
+      <nav className="w-full max-w-5xl rounded-full border border-white/40 shadow-lg shadow-black/5"
         style={{
           background: 'linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(240,244,255,0.6) 50%, rgba(255,255,255,0.75) 100%)',
           backgroundSize: '200% 200%',
@@ -146,7 +146,7 @@ export function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden w-full max-w-3xl rounded-2xl border border-white/40 shadow-lg shadow-black/5 px-4 py-3 space-y-1"
+            className="md:hidden w-full max-w-5xl rounded-2xl border border-white/40 shadow-lg shadow-black/5 px-4 py-3 space-y-1"
             style={{
               background: 'rgba(255,255,255,0.92)',
               backdropFilter: 'blur(20px) saturate(180%)',
