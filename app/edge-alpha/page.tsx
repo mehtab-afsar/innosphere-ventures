@@ -128,8 +128,8 @@ export default function EdgeAlphaPage() {
             Edge Alpha benchmarks every dimension that matters to institutional investors — market, team, IP, traction, financials — and gives you a single, actionable score in minutes.
           </motion.p>
 
-          {/* Metrics strip */}
-          <div className="grid grid-cols-3 gap-px bg-gray-200 max-w-2xl">
+          {/* Metrics strip + CTA */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-gray-200 max-w-3xl">
             {[
               { v: "30", l: "Scoring Indicators" },
               { v: "6", l: "Parameters" },
@@ -146,6 +146,22 @@ export default function EdgeAlphaPage() {
                 <div className="text-xs font-light text-gray-400 mt-1">{l}</div>
               </motion.div>
             ))}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease, delay: 0.58 }}
+              className="bg-white px-6 py-5 flex items-center"
+            >
+              <a
+                href="https://edgealpha.vc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[#0a1128] hover:text-[#ff6b5a] transition-colors duration-200 group"
+              >
+                Assess My Startup
+                <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+              </a>
+            </motion.div>
           </div>
 
           {/* Scroll indicator */}
