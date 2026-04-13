@@ -451,6 +451,11 @@
   }
 }
 
+@keyframes rainbowShift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
 @keyframes liquidBg {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -132,13 +132,13 @@ export function EdgeAlpha() {
             className="bg-[#0a1128] text-white hover:bg-[#0a1128]/90 font-medium text-sm group transition-all duration-300 rounded-none px-8"
             asChild
           >
-            <Link href="#">
+            <a href="https://edgealpha.vc" target="_blank" rel="noopener noreferrer">
               Assess My Startup
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+              <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            </a>
           </Button>
           <Link
-            href="#"
+            href="/edge-alpha"
             className="text-sm font-light text-[#0a1128] underline underline-offset-4 hover:text-[#ff6b5a] transition-colors duration-300"
           >
             How scoring works

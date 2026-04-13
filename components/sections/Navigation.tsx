@@ -44,6 +44,7 @@ export function Navigation() {
     { href: "/india", label: "India" },
     { href: "/approach", label: "Approach" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/edge-alpha", label: "Edge Alpha", rainbow: true },
     { href: "/join", label: "Join" },
     { href: "/leadership", label: "Team" },
   ];
@@ -75,6 +76,32 @@ export function Navigation() {
             <div className="hidden md:flex items-center space-x-6">
               {navLinks.map((link) => {
                 const active = pathname === link.href;
+                if (link.rainbow) {
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="relative text-sm font-medium group"
+                      style={{
+                        background: "linear-gradient(90deg, #ff6b5a, #f59e0b, #22c55e, #3b82f6, #a855f7, #ff6b5a)",
+                        backgroundSize: "200% auto",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        animation: "rainbowShift 3s linear infinite",
+                      }}
+                    >
+                      {link.label}
+                      <span className={`absolute -bottom-0.5 left-0 h-px transition-all duration-300 ${
+                        active ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                        style={{
+                          background: "linear-gradient(90deg, #ff6b5a, #f59e0b, #22c55e, #3b82f6, #a855f7)",
+                        }}
+                      />
+                    </Link>
+                  );
+                }
                 return (
                   <Link
                     key={link.href}
@@ -130,7 +157,17 @@ export function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-2 py-2.5 text-sm font-light text-gray-600 hover:text-[#0a1128] transition-colors border-b border-gray-100 last:border-0"
+                className={`block px-2 py-2.5 text-sm border-b border-gray-100 last:border-0 transition-colors ${
+                  link.rainbow ? "font-medium" : "font-light text-gray-600 hover:text-[#0a1128]"
+                }`}
+                style={link.rainbow ? {
+                  background: "linear-gradient(90deg, #ff6b5a, #f59e0b, #22c55e, #3b82f6, #a855f7, #ff6b5a)",
+                  backgroundSize: "200% auto",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  animation: "rainbowShift 3s linear infinite",
+                } : undefined}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
