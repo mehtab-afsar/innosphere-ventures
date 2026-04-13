@@ -120,7 +120,6 @@ export default function EdgeAlphaPage() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.24 }}
-            className="flex flex-col sm:flex-row gap-3"
           >
             <Button
               size="lg"
@@ -130,16 +129,6 @@ export default function EdgeAlphaPage() {
               <a href="https://edgealpha.vc" target="_blank" rel="noopener noreferrer">
                 Assess My Startup
                 <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border border-gray-200 text-[#0a1128] font-light text-sm hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 rounded-none px-8"
-              asChild
-            >
-              <a href="https://edgealpha.vc" target="_blank" rel="noopener noreferrer">
-                How scoring works
               </a>
             </Button>
           </motion.div>
@@ -312,7 +301,7 @@ export default function EdgeAlphaPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease, delay: 0.24 }}
-            className="flex flex-col sm:flex-row justify-center gap-3 mb-10"
+            className="flex justify-center mb-10"
           >
             <Button
               size="lg"
@@ -323,14 +312,6 @@ export default function EdgeAlphaPage() {
                 Assess My Startup
                 <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border border-gray-200 text-[#0a1128] font-light text-sm hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 rounded-none px-8"
-              asChild
-            >
-              <Link href="/approach">Our Investment Framework</Link>
             </Button>
           </motion.div>
 
